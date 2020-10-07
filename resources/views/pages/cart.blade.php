@@ -72,9 +72,57 @@
             <div class="hr mt-4"></div>
         </div>
     </div>
-    <div class="right">Right</div>
+    <div class="right ml-5 mb-4">
+        <h4 class="pl-5 pt-4 title">ORDER SUMMARY</h4>
+        <div class="hr"></div>
+        <div class="d-flex">
+            <div class="pl-5 pt-4 sub">SUBTOTAL</div>
+            <div class="pl-5 pt-4 mr-5">30.000 VNĐ</div>
+        </div>
+        <div class="d-flex total">
+            <div class="pl-5 pt-4 sub">TOTAL</div>
+            <div class="pl-5 pt-4 mr-5">30.000 VNĐ</div>
+        </div>
+        <a href="{{URL::to('/checkout')}}" class="btn btn-primary btn-checkout mt-5">PROCEED TO CHECKOUT</a>
+        <div class="hr mt-4"></div>
+
+
+        <div id="open-coup">
+            <div class="d-flex" onclick="showCoupon()">
+                <div class="pl-5 pt-4 total app-coup mr-4">Apply Coupon</div>
+                <i class="fas fa-chevron-down pr-5 down-icon"></i>
+            </div>
+        </div>
+
+        <div id="close-coup" style="display: none;">
+            <div class="d-flex" onclick="closeCoupon()">
+                <div class="pl-5 pt-4 total app-coup mr-4">Apply Coupon</div>
+                <i class="fas fa-chevron-up pr-5 down-icon"></i>
+            </div>
+        </div>
+
+        <div id="coupon" style="display: none;">
+            <div class="pl-5 pt-4">If you have a promotion code enter it here</div>
+            <input class="input-coup mt-4" type="text" placeholder="Coupon..">
+            <button class="btn btn-primary btn-apply">APPLY</button>
+        </div>
+
+    </div>
 </div>
 
+<script>
+    function showCoupon() {
+        document.getElementById("open-coup").style.display = "none";
+        document.getElementById("close-coup").style.display = "block";
+        document.getElementById("coupon").style.display = "block";
+    }
+
+    function closeCoupon() {
+        document.getElementById("open-coup").style.display = "block";
+        document.getElementById("close-coup").style.display = "none";
+        document.getElementById("coupon").style.display = "none";
+    }
+</script>
 
 
 @endsection

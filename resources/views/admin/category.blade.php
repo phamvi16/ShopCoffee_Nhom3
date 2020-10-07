@@ -14,18 +14,10 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
-                                <th>
-                                    STT
-                                </th>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Image
-                                </th>
-                                <th>
-                                    Action
-                                </th>
+                                <th>STT</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Action</th>
 
 
                             </thead>

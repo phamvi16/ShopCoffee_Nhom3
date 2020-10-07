@@ -11,6 +11,7 @@
   <link href="{{asset('Page/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/font-awesome.min.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/templatemo-style.css')}}" rel="stylesheet">
+  <link href="{{asset('Page/css/main_layout.css')}}" rel="stylesheet">
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" />
 
 
@@ -55,7 +56,7 @@
       </div>
     </div>
     <section class="tm-welcome-section">
-      <div class="container tm-position-relative">
+      <div class="tm-position-relative">
         <div class="tm-lights-container">
           <img src="{{asset('Page/img/light.png')}}" alt="Light" class="light light-1">
           <img src="{{asset('Page/img/light.png')}}" alt="Light" class="light light-2">
@@ -67,7 +68,8 @@
           <p class="gray-text tm-welcome-description">Cafe House template is a mobile-friendly responsive <span class="gold-text">Bootstrap v3.3.5</span> layout by <span class="gold-text">templatemo</span>. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculusnec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
           <a href="#main" class="tm-more-button tm-more-button-welcome">Details</a>
         </div>
-        <img src="{{asset('Page/img/table-set.png')}}" alt="Table Set" class="tm-table-set img-responsive">
+        <div class="empty"></div>
+        <!-- <img src="{{asset('Page/img/table-set.png')}}" alt="Table Set" class="tm-table-set img-responsive"> -->
       </div>
     </section>
 

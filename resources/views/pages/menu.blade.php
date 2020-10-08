@@ -59,52 +59,64 @@
                             </div>
                         </div>
                     </a> -->
+                <a class="menu-item" href="{{URL::to('/product-detail')}}">
+                    <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
+                        <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
+                        <div class="card-body mt-1">
+                            <h5 class="card-title">Name of drink</h5>
+                            <p class="card-text">Some quick example text to build on the card title</p>
+                            <div class="d-flex">
+                                <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
+                                <a href="#" class="btn btn-primary more-info">MORE INFO</a>
+                            </div>
 
-                <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                    <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Name of drink</h5>
-                        <p class="card-text">Some quick example text to build on the card title</p>
-                        <div class="d-flex">
-                            <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
-                            <a href="#" class="btn btn-primary more-info">MORE INFO</a>
                         </div>
+                    </div>
+                </a>
 
-                    </div>
-                </div>
-                <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                    <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Name of drink</h5>
-                        <p class="card-text">Some quick example text to build on the card title</p>
-                        <div class="d-flex">
-                            <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
-                            <a href="#" class="btn btn-primary more-info">MORE INFO</a>
+
+                <a class="menu-item" href="{{URL::to('/product-detail')}}">
+                    <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
+                        <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
+                        <div class="card-body mt-1">
+                            <h5 class="card-title">Name of drink</h5>
+                            <p class="card-text">Some quick example text to build on the card title</p>
+                            <div class="d-flex">
+                                <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
+                                <a href="#" class="btn btn-primary more-info">MORE INFO</a>
+                            </div>
+
                         </div>
                     </div>
-                </div>
-                <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                    <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Name of drink</h5>
-                        <p class="card-text">Some quick example text to build on the card title</p>
-                        <div class="d-flex">
-                            <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
-                            <a href="#" class="btn btn-primary more-info">MORE INFO</a>
+                </a>
+                <a class="menu-item" href="{{URL::to('/product-detail')}}">
+                    <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
+                        <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
+                        <div class="card-body mt-1">
+                            <h5 class="card-title">Name of drink</h5>
+                            <p class="card-text">Some quick example text to build on the card title</p>
+                            <div class="d-flex">
+                                <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
+                                <a href="#" class="btn btn-primary more-info">MORE INFO</a>
+                            </div>
+
                         </div>
                     </div>
-                </div>
-                <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                    <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Name of drink</h5>
-                        <p class="card-text">Some quick example text to build on the card title</p>
-                        <div class="d-flex">
-                            <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
-                            <a href="#" class="btn btn-primary more-info">MORE INFO</a>
+                </a>
+                <a class="menu-item" href="{{URL::to('/product-detail')}}">
+                    <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
+                        <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
+                        <div class="card-body mt-1">
+                            <h5 class="card-title">Name of drink</h5>
+                            <p class="card-text">Some quick example text to build on the card title</p>
+                            <div class="d-flex">
+                                <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
+                                <a href="#" class="btn btn-primary more-info">MORE INFO</a>
+                            </div>
+
                         </div>
                     </div>
-                </div>
+                </a>
                 <!-- </div> -->
             </div>
         </section>

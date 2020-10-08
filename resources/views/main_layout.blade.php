@@ -15,6 +15,9 @@
   <link href="{{asset('Page/css/templatemo-style.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/main_layout.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/cart.css')}}" rel="stylesheet">
+  <link href="{{asset('Page/css/menu.css')}}" rel="stylesheet">
+  <link href="{{asset('Page/css/product-detail.css')}}" rel="stylesheet">
+
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" />
 
 

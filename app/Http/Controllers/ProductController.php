@@ -17,4 +17,12 @@ class ProductController extends Controller
     public function edit_pro(){
         return view('admin.editpro');
     }
+
+
+
+    // --------Pages
+
+    public function detail_pro(){
+        return view('pages.product-detail');
+    }
 }

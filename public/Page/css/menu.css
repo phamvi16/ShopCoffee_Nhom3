@@ -1,0 +1,87 @@
+.tm-section {
+    margin-left: 15%;
+}
+.tm-menu-product-content a {
+    border-radius: 0;
+    color: #fff;
+    background-color: #644a3b;
+}
+.tm-menu-product-content a:hover {
+    background-color: #88614a;
+}
+.tm-menu-product-content a:active {
+    background-color: #88614a;
+}
+.tm-menu-product-content a:visited {
+    background-color: #88614a;
+}
+a:hover {
+    text-decoration: none !important;
+}
+.tm-menu-product-content .menu-item {
+    display: flex;
+}
+.tm-menu-product-content .card-menu {
+    margin-left: 100px;
+}
+.add-to-cart {
+    color: #fff;
+    border-radius: 0;
+    margin-left: -15px;
+    font-weight: 900;
+    background-color: #644a3b;
+    font-size: 13px;
+    border: none;
+}
+.add-to-cart:hover {
+    color: #fff;
+    background-color: #88614a;
+
+}
+.more-info {
+    color: #644a3b;
+    border-radius: 0;
+    font-weight: 600;
+    background-color: #fff;
+    border: 1px solid #644a3b;
+    font-size: 13px;
+    margin-left: 5px;
+}
+.more-info:hover {
+    color: #fff;
+    background-color: #644a3b;
+}
+.card-title {
+    font-weight: 900;
+    font-size: 16px;
+}
+.card-text {
+    font-size: 12px;
+}
+.img-menu {
+    margin-left: -15px;
+}
+.pr-container{
+    margin-top:40px ;
+}
+.pr-prince{
+    color: chocolate;
+    font-weight: bold;
+}
+.pr-btn-1{
+    background-color: darkorange;
+    border: solid darkorange;
+    color: azure;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+}
+.pr-btn-2{
+    background-color: #fff;
+    border: solid darkorange;
+    color: darkorange;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+
+}

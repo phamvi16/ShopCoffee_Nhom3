@@ -62,11 +62,7 @@
             <span class="col-sm-2 qty mt-4">
                 <input class="quant-input pl-3" id="qty2632" type="number" min="1" value="1" placeholder="1">
                 <div class="mt-4 dlt update">Update</div>
-                <!-- <input type="hidden" name="colid0" value="2633"> -->
-                <!-- <span class="mt-2">
-                    <button type="button" class="qty-up" data-target="#qtyItem2632">+</button>
-                    <button type="button" class="qty-up qty-down" data-target="#qtyItem2632">-</button>
-                </span> -->
+
             </span>
             <span class="col-sm-2 mt-4 total">30.000 VNĐ</span>
             <div class="hr mt-4"></div>
@@ -106,6 +102,7 @@
             <input class="input-coup mt-4" type="text" placeholder="Coupon..">
             <button class="btn btn-primary btn-apply">APPLY</button>
         </div>
+        <div class="hr mt-4"></div>
 
     </div>
 </div>

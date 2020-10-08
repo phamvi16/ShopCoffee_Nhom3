@@ -33,6 +33,7 @@ Route::get('/lien-he', [ContactController::class,'index']);
 Route::get('/dang-nhap', [LoginController::class, 'index']);
 Route::get('/gio-hang', [CartController::class,'index']);
 Route::get('/checkout', [CheckoutController::class,'index']);
+Route::get('/product-detail/', [ProductController::class,'detail_pro']);
 
 //Admin
 Route::get('/admin', [AdminController::class, 'index']);

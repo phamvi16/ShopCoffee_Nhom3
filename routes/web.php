@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
@@ -35,6 +36,8 @@ Route::get('/menu', [MenuController::class, 'index']);
 Route::get('/lien-he', [ContactController::class,'index']);
 Route::get('/dang-nhap', [LoginController::class, 'index']);
 Route::get('/gio-hang', [CartController::class,'index']);
+Route::get('/checkout', [CheckoutController::class,'index']);
+Route::get('/product-detail/', [ProductController::class,'detail_pro']);
 
 //Admin
 Route::get('/admin', [AdminController::class, 'index']);

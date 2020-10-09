@@ -14,7 +14,7 @@ class CreateAttributeTable extends Migration
     public function up()
     {
         Schema::create('attribute', function (Blueprint $table) {
-            $table->integer('Id_Order_Detail')->unsigned();
+            $table->integer('Id_Order_Product')->unsigned();
             $table->integer('Sugar')->unsigned();
             $table->integer('Ice')->unsigned();
             $table->string('Hot');
@@ -22,8 +22,8 @@ class CreateAttributeTable extends Migration
         });
 
         Schema::table('attribute', function (Blueprint $table) {
-            $table->primary('Id_Order_Detail');
-            $table->foreign('Id_Order_Detail')->references('Id')->on('order_detail');
+            $table->primary('Id_Order_Product');
+            $table->foreign('Id_Order_Product')->references('Id')->on('order_product');
         });
     }
 

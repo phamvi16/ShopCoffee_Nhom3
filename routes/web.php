@@ -24,6 +24,10 @@ use App\Http\Controllers\OrderController;
 |
 */
 
+Route::get('api/product/getall', function() {
+    $data = DB::table('topping')->get();
+    var_dump($data);
+});
 
 Route::get('/',[HomeController::class, 'index'] );
 Route::get('/trang-chu', [HomeController::class, 'index']);

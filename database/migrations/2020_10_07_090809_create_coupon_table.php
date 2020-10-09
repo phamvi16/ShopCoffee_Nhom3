@@ -18,7 +18,8 @@ class CreateCouponTable extends Migration
             $table->string('Type');
             $table->float('Value');
             $table->longText('Description');
-            $table->dateTime('Expiry_Date');
+            $table->dateTime('Started_at');
+            $table->dateTime('Ended_at');
             $table->timestamps();
         });
     }

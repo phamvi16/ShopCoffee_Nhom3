@@ -14,14 +14,14 @@ class CreateOrderToppingTable extends Migration
     public function up()
     {
         Schema::create('order_topping', function (Blueprint $table) {
-            $table->integer('Id_Order_Detail')->unsigned();
+            $table->integer('Id_Order_Product')->unsigned();
             $table->integer('Id_Topping')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('order_topping', function (Blueprint $table) {
-            $table->primary('Id_Order_Detail', 'Id_Topping');
-            $table->foreign('Id_Order_Detail')->references('Id')->on('order_detail');
+            $table->primary('Id_Order_Product', 'Id_Topping');
+            $table->foreign('Id_Order_Product')->references('Id')->on('order_product');
             $table->foreign('Id_Topping')->references('Id')->on('topping');
         });
     }

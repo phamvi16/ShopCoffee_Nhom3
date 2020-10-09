@@ -12,4 +12,3 @@ insert into `topping` (`Name`,`Price`,`Status`) values
 ('Thạch pudding phô mai',10000,'Còn hàng'),
 ('Thạch pudding trái cây',10000,'Còn hàng'),
 ('Bánh flan',15000,'Còn hàng');
-

@@ -5,4 +5,3 @@ insert into `category` (`Name`,`Image`) values
 ('Đá xay',''),
 ('Bánh ngọt',''),
 ('Bánh mặn','');
-

@@ -64,6 +64,8 @@ a:hover {
     font-size: 12px;
 }
 .img-menu {
+    width: 250px;
+    height: 220px;
     margin-left: -15px;
 }
 .pr-container{

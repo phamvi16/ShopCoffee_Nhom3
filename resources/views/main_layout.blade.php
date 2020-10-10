@@ -17,6 +17,7 @@
   <link href="{{asset('Page/css/cart.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/menu.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/product-detail.css')}}" rel="stylesheet">
+  <link href="{{asset('Page/css/checkout.css')}}" rel="stylesheet">
 
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" />
 

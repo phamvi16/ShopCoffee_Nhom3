@@ -61,7 +61,7 @@
                     </a> -->
                 <a class="menu-item" href="{{URL::to('/product-detail')}}">
                     <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                        <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
+                        <img class="card-img-top img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
                         <div class="card-body mt-1">
                             <h5 class="card-title">Name of drink</h5>
                             <p class="card-text">Some quick example text to build on the card title</p>
@@ -77,7 +77,7 @@
 
                 <a class="menu-item" href="{{URL::to('/product-detail')}}">
                     <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                        <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
+                        <img class="card-img-top img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
                         <div class="card-body mt-1">
                             <h5 class="card-title">Name of drink</h5>
                             <p class="card-text">Some quick example text to build on the card title</p>
@@ -91,7 +91,7 @@
                 </a>
                 <a class="menu-item" href="{{URL::to('/product-detail')}}">
                     <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                        <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
+                        <img class="card-img-top img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
                         <div class="card-body mt-1">
                             <h5 class="card-title">Name of drink</h5>
                             <p class="card-text">Some quick example text to build on the card title</p>
@@ -105,7 +105,7 @@
                 </a>
                 <a class="menu-item" href="{{URL::to('/product-detail')}}">
                     <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                        <img class="card-img-top img-detail img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
+                        <img class="card-img-top img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
                         <div class="card-body mt-1">
                             <h5 class="card-title">Name of drink</h5>
                             <p class="card-text">Some quick example text to build on the card title</p>

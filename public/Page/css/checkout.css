@@ -1,0 +1,99 @@
+.checkout {
+    padding-left: 0px;
+}
+.wrapper-checkout-left label {
+    position: relative;
+}
+.wrapper-checkout-left .name {
+    font-weight: 900;
+    letter-spacing: 10px;
+    color: #d7b983;
+    text-transform: uppercase;
+}
+.wrapper-checkout-left .cre-acc {
+    font-weight: 600;
+}
+.hr-small {
+    height: 1px;
+    background-color: #333;
+    width: 70px;
+}
+.wrapper-checkout-left .in-mail {
+    width: 138%;
+    font-weight: normal;
+    border-radius: 0;
+    border: 1px solid #aaa;
+}
+.wrapper-checkout-left .required {
+    color: #f00;
+    display: inline-block;
+    font-size: 15px;
+    top: 10px;
+    right: -55px;
+    position: absolute;
+    /* margin: auto; */
+    height: 26px;
+}
+.wrapper-checkout-left .required:before {
+    content: '*';
+    display: block;
+}
+.wrapper-checkout-left .lab-2 {
+    margin-left: 75px;
+}
+.in-ln {
+    width: 135.5% !important;
+}
+.in-com {
+    border-radius: 0;
+    border: 1px solid #aaa;
+}
+.in-add {
+    width: 134% !important;
+}
+.in-city {
+    width: 50% !important;
+    margin-left: 120px;
+}
+.in-phone {
+    width: 200% !important;
+    margin-left: -10px;
+}
+.wrapper-checkout-left .lab-address {
+    width: 55%;
+}
+.wrapper-checkout-left .lab-address .req-add {
+    right: -85.5px;
+}
+.wrapper-checkout-left .lab-city {
+    width: 18.5%;
+    margin-left: 100px;
+}
+.wrapper-checkout-left .lab-city .req-city {
+    right: -20px;
+}
+.wrapper-checkout-left .req-mail {
+    right: -75.5px;
+}
+.req-phone {
+    right: -70px !important;
+}
+.wrapper-checkout-left .chkout-sub {
+    background-color: #4a3b22;
+    border: none;
+    border-radius: 0;
+    padding: 7px 20px;
+    margin-left: 0px;
+    width: 100%;
+    letter-spacing: 5px;
+    font-weight: 700;
+    margin-top: -2.5px;
+}
+.wrapper-checkout-left .chkout-sub:hover {
+    background-color: #887759;
+}
+.wrapper-checkout-left .textarea {
+    border: 1px solid #aaa;
+    resize: none;
+    padding-left: 13px;
+}

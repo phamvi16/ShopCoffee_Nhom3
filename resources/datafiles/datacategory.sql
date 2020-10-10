@@ -1,7 +1,7 @@
 insert into `category` (`Name`,`Image`) values
-('Cà phê',''),
-('Trà tươi',''),
-('Trà sữa',''),
-('Đá xay',''),
-('Bánh ngọt',''),
-('Bánh mặn','');
+('Cà Phê',''),
+('Trà Tươi',''),
+('Trà Sữa',''),
+('Đá Xay',''),
+('Bánh Ngọt',''),
+('Bánh Mặn','');

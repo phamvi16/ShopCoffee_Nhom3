@@ -10,6 +10,8 @@ class Category extends Model
     use HasFactory;
 
     protected $table = "category";
+    protected $primaryKey = 'Id';
+    public $incrementing = true;
 
     public function product()
     {

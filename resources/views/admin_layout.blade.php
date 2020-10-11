@@ -17,6 +17,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('Admins/demo/demo.css')}}" rel="stylesheet" />
     <link href="{{asset('Admins/css/category.css')}}" rel="stylesheet" />
+    @yield('style', '')
 
 </head>
 
@@ -35,31 +36,31 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
-                        <a href="{{URL::to('/admin')}}">
+                        <a href="/admin">
                             <i class="now-ui-icons design_app"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
-                        <a href="{{URL::to('/category')}}">
+                        <a href="/admin/category">
                             <i class="now-ui-icons education_atom"></i>
                             <p>Category</p>
                         </a>
                     </li>
                     <li>
-                        <a href="{{URL::to('/product')}}">
+                        <a href="/admin/product">
                             <i class="now-ui-icons location_map-big"></i>
                             <p>Product</p>
                         </a>
                     </li>
                     <li>
-                        <a href="{{URL::to('/customer')}}">
+                        <a href="/admin/customer">
                             <i class="now-ui-icons ui-1_bell-53"></i>
                             <p>Customer</p>
                         </a>
                     </li>
                     <li>
-                        <a href="{{URL::to('/order')}}">
+                        <a href="/admin/order">
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Order</p>
                         </a>

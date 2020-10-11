@@ -39,22 +39,32 @@ Route::get('/gio-hang', [CartController::class,'index']);
 Route::get('/checkout', [CheckoutController::class,'index']);
 Route::get('/product-detail/', [ProductController::class,'detail_pro']);
 
-//Admin
-Route::get('/admin', [AdminController::class, 'index']);
+//Admin route group
+Route::group(['prefix' => 'admin'], function(){
+	Route::get('/', [AdminController::class, 'index']);
+	//Category
+	Route::get('/category', [CategoryController::class, 'index']);
+	Route::get('/add-category', [CategoryController::class, 'add_cat']);
+	Route::get('/edit-category', [CategoryController::class, 'edit_cat']);
 
-//Category
-Route::get('/category', [CategoryController::class, 'index']);
-Route::get('/add-category', [CategoryController::class, 'add_cat']);
-Route::get('/edit-category', [CategoryController::class, 'edit_cat']);
+	//Product route group
+	Route::group(['prefix' => 'product'], function(){
+		Route::get('/', [ProductController::class, 'index']);
+		Route::get('/create', [ProductController::class, 'create']);
+		Route::post('/store', [ProductController::class, 'store']);
+		Route::get('/edit', [ProductController::class, 'edit']);
+		Route::post('/update', [ProductController::class, 'update']);
+		Route::get('/show', [ProductController::class, 'show']);
+	});
+	
 
-//Product
-Route::get('/product', [ProductController::class, 'index']);
-Route::get('/add-product', [ProductController::class, 'add_pro']);
-Route::get('/edit-product', [ProductController::class, 'edit_pro']);
+	//Customer
+	Route::get('/customer', [CustomerController::class, 'index']);
 
-//Customer
-Route::get('/customer', [CustomerController::class, 'index']);
+	//Order
+	Route::get('/order', [OrderController::class, 'index']);
+});
 
-//Order
-Route::get('/order', [OrderController::class, 'index']);
+
+
 

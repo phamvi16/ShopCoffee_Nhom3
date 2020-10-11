@@ -8,7 +8,7 @@
                     <div class="card ">
                         <div class="card-header d-flex">
                         <h4 class="card-title">All Product</h4>
-                        <button class="btn btn-primary btn--icon add-btn"></button>
+                        <a href="product/create" class="btn btn-primary btn--icon add-btn"></a>
                         </div>
                         <div class="card-body ">
                             <div class="table-responsive">
@@ -53,9 +53,9 @@
                                                 abc@gmail.com
                                             </td>
                                             <td>
-                                                <a href="{{URL::to('/edit-product')}}" class="active styling-edit">
+                                                <a href="/admin/edit-product" class="active styling-edit">
                                                     <i class="fas fa-edit icon"></i></a>
-                                                <a onclick="return confirm('Are you sure to delete this product?')" href="{{URL::to('/delete-product')}}" class="active styling-edit">
+                                                <a onclick="return confirm('Are you sure to delete this product?')" href="/admin/delete-product" class="active styling-edit">
                                                     <i class="fa fa-times icon text-danger text"></i>
                                                 </a>
                                             </td>

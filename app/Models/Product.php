@@ -10,7 +10,10 @@ class Product extends Model
     use HasFactory;
 
     protected $table = "product";
-
+    protected $primaryKey = 'Id';
+    public $incrementing = true;
+    protected $fillable = ['Name', 'Image', 'Description', 'Size', 'Price', 'Sale_Price', 'Visibility'];
+    
     public function statistical()
     {
         return $this->hasOne(Statistical::class, 'Id_Product');

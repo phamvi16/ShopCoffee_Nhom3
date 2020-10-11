@@ -80,6 +80,11 @@
                                           <input type="checkbox" name="Size[]" value="L">
                                           <span class="checkmark"></span>
                                         </label>
+
+                                        <label class="checkbox-container">None
+                                          <input type="checkbox" name="Size[]" value="None">
+                                          <span class="checkmark"></span>
+                                        </label>
                                         @if($errors->has('Size'))
                                             <div class="alert-box error"><span>error: </span> {{ $errors->first('Size') }}</div>
                                         @endif

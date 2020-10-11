@@ -1,5 +1,10 @@
 .checkout {
     padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 345px;
+}
+.wrapper-checkout-left {
+    margin-left: -140px;
 }
 .wrapper-checkout-left label {
     position: relative;
@@ -10,7 +15,7 @@
     color: #d7b983;
     text-transform: uppercase;
 }
-.wrapper-checkout-left .cre-acc {
+.cre-acc {
     font-weight: 600;
 }
 .hr-small {
@@ -19,7 +24,7 @@
     width: 70px;
 }
 .wrapper-checkout-left .in-mail {
-    width: 138%;
+    width: 165%;
     font-weight: normal;
     border-radius: 0;
     border: 1px solid #aaa;
@@ -29,7 +34,7 @@
     display: inline-block;
     font-size: 15px;
     top: 10px;
-    right: -55px;
+    right: -110px;
     position: absolute;
     /* margin: auto; */
     height: 26px;
@@ -42,41 +47,46 @@
     margin-left: 75px;
 }
 .in-ln {
-    width: 135.5% !important;
+    width: 130% !important;
+    margin-left: 50px;
 }
 .in-com {
+    width: 118%;
     border-radius: 0;
     border: 1px solid #aaa;
 }
 .in-add {
-    width: 134% !important;
+    width: 120% !important;
 }
 .in-city {
-    width: 50% !important;
-    margin-left: 120px;
+    width: 228.5% !important;
+    font-weight: normal;
+    border-radius: 0;
+    border: 1px solid #aaa;
+    margin-left: 30px;
 }
 .in-phone {
-    width: 200% !important;
-    margin-left: -10px;
+    width: 427% !important;
+    margin-left: 90px;
 }
 .wrapper-checkout-left .lab-address {
-    width: 55%;
+    width: 75%;
 }
 .wrapper-checkout-left .lab-address .req-add {
-    right: -85.5px;
+    right: -67px;
 }
 .wrapper-checkout-left .lab-city {
-    width: 18.5%;
-    margin-left: 100px;
+    width: 12%;
+    margin-left: 50px;
 }
 .wrapper-checkout-left .lab-city .req-city {
-    right: -20px;
+    right: -105px;
 }
 .wrapper-checkout-left .req-mail {
     right: -75.5px;
 }
 .req-phone {
-    right: -70px !important;
+    right: -287px !important;
 }
 .wrapper-checkout-left .chkout-sub {
     background-color: #4a3b22;
@@ -84,7 +94,7 @@
     border-radius: 0;
     padding: 7px 20px;
     margin-left: 0px;
-    width: 100%;
+    width: 118%;
     letter-spacing: 5px;
     font-weight: 700;
     margin-top: -2.5px;
@@ -95,5 +105,61 @@
 .wrapper-checkout-left .textarea {
     border: 1px solid #aaa;
     resize: none;
-    padding-left: 13px;
+    padding-left: 10px;
+}
+
+/* ----------------------------------------- */
+
+.wrapper-checkout-right {
+    max-width: 150%;
+    background-color: #f7f7f7;
+    width: 424px;
+    height: 100%;
+    margin-left: 12%;
+}
+.wrapper-checkout-right .order-sum {
+    font-weight: 900;
+    font-size: 16px;
+    flex-grow: 1;
+}
+.wrapper-checkout-right .edit {
+    color: #3072ab;
+    margin-right: 15px;
+}
+.wrapper-checkout-right .img-order-sum {
+    width: 15%;
+    height: 50px;
+}
+.in-coupon {
+    border: 1px solid #aaa;
+    border-radius: 0px;
+    width: 75%;
+}
+.wrapper-checkout-right .btn-apply {
+    border-radius: 0px;
+    background-color: #bca483;
+    border: none;
+    padding: 6.9px 20px;
+    margin-bottom: 3px;
+}
+.wrapper-checkout-right .btn-apply:hover {
+    background-color: #d7b983;
+}
+.wrapper-checkout-right .subtotal {
+    color: #333;
+    font-size: 16px;
+    flex-grow: 1;
+}
+.wrapper-checkout-right .wrapper-total {
+    font-weight: 900;
+}
+.wrapper-checkout-right .total-w {
+    flex-grow: 1;
+}
+.wrapper-checkout-right .total {
+    font-size: 20px;
+}
+.wrapper-checkout-right .name-sum {
+    font-size: 13px;
+    color: #3072ab;
 }

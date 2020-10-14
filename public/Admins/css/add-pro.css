@@ -68,56 +68,77 @@
 }
 
 label.checkbox-container {
-    margin: 1em 2em;
-    margin-bottom: 1.5em !important;
+  margin: 1em 2em;
+  margin-bottom: 1.5em !important;
 }
 
 /*CARD STYLE OVERLOAD*/
 .card .card-body {
-    padding: 15px 15px 10px 3em !important;
+  padding: 15px 15px 10px 3em !important;
 }
 
 .card label {
-    font-size: 1em;
-    margin-top: 12px;
-    margin-bottom: 10px;
-    color: #9A9A9A;
+  font-size: 1em;
+  margin-top: 12px;
+  margin-bottom: 10px;
+  color: #9A9A9A;
 }
 
 /*BUTTON SAVE STYLE*/
 button.btn.btn-info {
-    margin: 3em 0em;
-    font-size: 1em;
+  margin: 3em 0em;
+  font-size: 1em;
+  margin-left: 4em;
+  margin-right: 2em;
 }
 
 /*ALERT BOX STYLE*/
 .alert-box {
-    color: #555;
-    border-radius: 10px;
-    font-family: Tahoma, Geneva, Arial, sans-serif;
-    font-size: 14px;
-    padding: 10px 10px 10px 36px;
-    margin: 10px;
-    cursor: pointer;
-    position: relative;
+  color: #555;
+  border-radius: 10px;
+  font-family: Tahoma, Geneva, Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 10px 10px 36px;
+  margin: 10px;
+  cursor: pointer;
+  position: relative;
 }
 
 .alert-box span {
-    font-weight: bold;
-    text-transform: uppercase;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .error {
-    background: #ffecec /* url('assets/logo_thongbao/error.png') */ no-repeat 10px 50%;
-    border: 1px solid #f5aca6;
+  background: #ffecec no-repeat 10px 50%;
+  border: 1px solid #f5aca6;
 }
 
 .success {
-    background: #e9ffd9 /* url("{{ asset('/assets/logo_thongbao/success.png') }}") */ no-repeat 10px 50%;
-    border: 1px solid #a6ca8a;
+  background: #e9ffd9 no-repeat 10px 50%;
+  border: 1px solid #a6ca8a;
 }
 
 /*Btn back*/
 a.btn.back {
-    background: firebrick;
+  background: firebrick;
+}
+
+/*Input price*/
+input.form-control.price {
+  width: 37em !important;
+  margin-left: 3em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: none;
+}
+
+label.lbPrice {
+  margin-left: 2em;
+  display: none;
+}
+
+/*EDIT PRODUCT*/
+#edit-pro-form img {
+  margin: 2em 5em;
 }

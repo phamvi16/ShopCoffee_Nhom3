@@ -171,5 +171,6 @@
         demo.initDashboardPageCharts();
     });
 </script>
+@yield('script')
 
 </html>

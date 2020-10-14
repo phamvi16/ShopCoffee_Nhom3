@@ -54,6 +54,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/admin/topping">
+                        <i class="now-ui-icons design_bullet-list-67"></i>
+                            <p>Topping</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/admin/customer">
                             <i class="now-ui-icons ui-1_bell-53"></i>
                             <p>Customer</p>

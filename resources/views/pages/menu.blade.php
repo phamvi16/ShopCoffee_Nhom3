@@ -1,5 +1,6 @@
 @extends('main_layout')
 @section('content')
+
 <div class="tm-main-section light-gray-bg">
     <div class="container-fluid" id="main">
         <!-- <section class="tm-section row">

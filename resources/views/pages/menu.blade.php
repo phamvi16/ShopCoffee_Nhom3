@@ -29,7 +29,7 @@
                         <nav class="tm-side-menu">
                             <ul>
                             @foreach($all_category as $cate)
-                                    <li><a href="'menu/'{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
+                                    <li><a href="/menu/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
                                 <!--  <li><a href="#">Caffee Americano</a></li>
                                     <li><a href="#">Caffee latte</a></li>
                                     <li><a href="#">Coffee milk</a></li>
@@ -40,7 +40,7 @@
                                     <li><a href="#">Instant coffee</a></li>
                                     <li><a href="#">Mocha</a></li>
                                     <li><a href="#">black coffee</a></li> -->
-                                
+
                             </ul>
                             @endforeach
                         </nav>
@@ -64,22 +64,24 @@
                         </div>
                     </a> -->
                 <a class="menu-item" href="{{URL::to('/product-detail')}}">
+                @foreach($all_product as $pro)
                     <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                    @foreach($all_product as $pro)
+
                         <img class="card-img-top img-menu" src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap">
                         <div class="card-body mt-1">
                             <h5 class="card-title">{{$pro->Name}}</h5>
-                            <p class="card-text">{{$pro->Discrition}}</p>
+                            <p class="card-text">{{$pro->Description}}</p>
                             <div class="d-flex">
                                 <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
                                 <a href="#" class="btn btn-primary more-info">{{$pro->Price}}</a>
                             </div>
 
                         </div>
-                    @endforeach
+
                     </div>
+                    @endforeach
                 </a>
-                
+
 
 
                 <!-- <a class="menu-item" href="{{URL::to('/product-detail')}}">

@@ -71,7 +71,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/topping', [ToppingController::class, 'index']);
 });
 //show Product_category Menu
-Route::get('/menu/{{Id_Category}', [MenuController::class, 'show_menu']);
+Route::get('/menu/{Id_Category}', [MenuController::class, 'show_menu']);
 
 
 

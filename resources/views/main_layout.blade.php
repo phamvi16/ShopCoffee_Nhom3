@@ -17,6 +17,7 @@
   <link href="{{asset('Page/css/cart.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/menu.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/product-detail.css')}}" rel="stylesheet">
+  <link href="{{asset('Page/css/checkout.css')}}" rel="stylesheet">
 
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" />
 
@@ -101,7 +102,7 @@
       <div>
         <div class="container">
           <div class="row tm-copyright">
-           <p class="col-lg-12 small copyright-text text-center">Copyright &copy; 2084 Your Cafe House</p>
+           <p class="col-lg-12 small copyright-text text-center">Copyright &copy; 2020 Cafe House</p>
          </div>
        </div>
      </div>

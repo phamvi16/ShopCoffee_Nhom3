@@ -67,7 +67,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    // 'timezone' => 'UTC',
+    'timezone' => 'Asia/Ho_Chi_Minh', //change timezone to Vietnam
 
     /*
     |--------------------------------------------------------------------------

@@ -3,10 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\ProductCategory;
+use Session;
+use App\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
+use DB;
 class MenuController extends Controller
 {
+
     public function index(){
-    	return view('pages.menu');
+        $all_category = Category::All();
+     	$all_product = Product::All();
+        return view('pages.menu', compact('all_product','all_category'));
+
+    }
+
+     public function show_menu($Id_Category){
+
+        //  $all_product = Category::where('Id',$Id_Category)->ProductCategory->get();
+        $all_category = Category::All();
+        $all_product = Category::find($Id_Category)->product;
+        // dd($cate->product);
+        return view('pages.menu', compact('all_product','all_category'));
     }
 }

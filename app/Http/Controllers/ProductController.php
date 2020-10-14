@@ -9,6 +9,7 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Support\Carbon;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductSize;
 use App\Models\Category;
 
 class ProductController extends Controller
@@ -58,31 +59,32 @@ class ProductController extends Controller
         try {
             $sizes = $request->Size;
 
-            // 1 size - 1 product data
-            foreach ($sizes as $item) {
-                
-                // Store product in db
-                $newpro = Product::create([
-                    'Name' => $request->Name,
-                    'Description' => $request->Description,
-                    'Size' => $item,
-                    'Price' => $request->input('Price'.$item),
-                    'Sale_Price' => $request->input('SalePrice'.$item),
-                    'Image' => $imageName,
-                    'Visibility' => $request->Visibility
-                ]);
-                
-                // Get categories from user
-                $categories = $request->Category;
-                foreach ($categories as $category) {
-                    //Store product with category
-                    ProductCategory::create([
-                        'Id_Category' => $category,
-                        'Id_Product' => $newpro->Id
-                    ]);
+            // Store product in db
+            $newpro = Product::create([
+                'Name' => $request->Name,
+                'Description' => $request->Description,
+                'Image' => $imageName,
+                'Visibility' => $request->Visibility
+            ]);
 
-                }
-                
+            // // Get categories from user
+            $categories = $request->Category;
+            foreach ($categories as $category) {
+                //Store product with category
+                ProductCategory::create([
+                    'Id_Category' => $category,
+                    'Id_Product' => $newpro->Id
+                ]);
+            }
+
+            // Store size
+            foreach ($sizes as $item) {
+                DB::table('product_size')->insert([
+                    'Id_Product' => $newpro->Id,
+                    'Size' => $item,
+                    'Price' => $request->input("Price" . $item),
+                    'Sale_Price' => $request->input("SalePrice" . $item)
+                ]);
             }
 
             DB::commit();
@@ -97,16 +99,21 @@ class ProductController extends Controller
 
     //Edit Product
     public function edit($id) {
+
         $categories = Category::All();
         $pro = Product::find($id);
-        // Array all categories
-        $arrayCategories = array_column($categories->toArray(), 'Id');
+        $commonCategories = null;
 
-        // Array categories of product
-        $arrayProCategories = array_column($pro->category->toArray(), 'Id');
+        if ($pro != null) {
+            // Array all categories
+            $arrayCategories = array_column($categories->toArray(), 'Id');
 
-        // Get categories from array ProCategories that are present in array Categories
-        $commonCategories = array_intersect($arrayProCategories, $arrayCategories);
+            // Array categories of product
+            $arrayProCategories = array_column($pro->category->toArray(), 'Id');
+
+            // Get categories from array ProCategories that are present in array Categories
+            $commonCategories = array_intersect($arrayProCategories, $arrayCategories);
+        }
         
         return view('admin.editpro', compact('categories', 'pro', 'commonCategories'));
     }

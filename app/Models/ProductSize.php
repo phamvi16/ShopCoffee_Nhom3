@@ -11,6 +11,9 @@ class ProductSize extends Model
 
     protected $table = "product_size";
 
+    protected $fillable = ['Id_Product', 'Size', 'Price', 'Sale_Price'];
+    public $timestamps = true;
+
     public function order()
     {
         return $this->belongsToMany(Order::class, 'order_product', 'Id_Product_Size', 'Id_Order');
@@ -18,6 +21,6 @@ class ProductSize extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class, 'Id_Product')
+        return $this->belongsTo(Product::class, 'Id_Product');
     }
 }

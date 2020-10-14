@@ -79,30 +79,105 @@
                                 <div class="row">
                                     <div class="col-md-6 pr-1">
                                         <div class="form-group">
-                                            <label>Size:</label>
-                                            <input type="text" class="form-control" name="Size" readonly value="{{$pro->Size ?? ""}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="row">
-                                    <div class="col-md-6 pr-1">
-                                        <div class="form-group">
-                                            <label>Price</label>
-                                            <input type="number" class="form-control" name="Price" id="Price" value="{{$pro->Price ?? ""}}" required min="0">
-                                            @if($errors->has('Price'))
-                                                <div class="alert-box error"><span>error: </span> {{ $errors->first('Price') }}</div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 pr-1">
-                                        <div class="form-group">
-                                            <label>Sale Price</label>
-                                            <input type="number" class="form-control" name="Sale_Price" id="Sale_Price" value="{{$pro->Sale_Price ?? ""}}" required min="0">
-                                            @if($errors->has('Sale_Price'))
-                                                <div class="alert-box error"><span>error: </span> {{ $errors->first('Sale_Price') }}</div>
-                                            @endif
+                                            <label>Size</label>
+                                            @foreach ($pro->product_size as $product_size)
+                                                {{-- SIZE SMALL --}}
+                                                <label class="checkbox-container">Small
+                                                  <input type="checkbox" name="Size[]" id="S" value="S" {{ ($product_size->Size == 'S') ? 'checked' : '' }}>
+                                                  <span class="checkmark"></span>
+                                                </label>
+
+                                                {{-- PRICE SMALL --}}
+                                                <label class="lbPrice"> Price
+                                                    <input type="number" class="form-control price" name="PriceS" min="0" value="{{ old('PriceS') }}" required disabled>   
+                                                </label>
+                                                @if($errors->has('PriceS'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('PriceS') }}</div>
+                                                @endif
+
+                                                {{-- SALE PRICE SMALL --}}
+                                                <label class="lbPrice"> Sale Price
+                                                    <input type="number" min="0" class="form-control price" name="SalePriceS" required disabled>
+                                                </label>
+                                                @if($errors->has('SalePriceS'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('SalePriceS') }}</div>
+                                                @endif
+                                                
+                                                <hr>
+                                                {{-- SIZE MEDIUM --}}
+                                                <label class="checkbox-container">Medium
+                                                  <input type="checkbox" name="Size[]" id="M" value="M" {{ ($product_size->Size == 'M') ? 'checked' : '' }}>
+                                                  <span class="checkmark"></span>
+                                                </label>
+
+                                                {{-- PRICE MEDIUM --}}
+                                                <label class="lbPrice"> Price
+                                                    <input type="number" class="form-control price" name="PriceM" min="0" value="{{ old('PriceM') }}" required disabled>
+                                                </label>
+                                                @if($errors->has('PriceM'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('PriceM') }}</div>
+                                                @endif
+
+                                                {{-- SALE PRICE MEDIUM --}}
+                                                <label class="lbPrice"> Sale Price
+                                                    <input type="number" min="0" class="form-control price" name="SalePriceM" value="{{ old('SalePriceM') }}" required disabled>
+                                                </label>
+                                                @if($errors->has('SalePriceM'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('SalePriceM') }}</div>
+                                                @endif
+                                                
+                                                <hr>
+                                                {{-- SIZE LARGE --}}
+                                                <label class="checkbox-container">Large
+                                                  <input type="checkbox" name="Size[]" id="L" value="L" {{ ($product_size->Size == 'L') ? 'checked' : '' }}>
+                                                  <span class="checkmark"></span>
+                                                </label>
+
+                                                {{-- PRICE LARGE --}}
+                                                <label class="lbPrice"> Price
+                                                    <input type="number" class="form-control price" name="PriceL" min="0" value="{{ old('PriceL') }}" required disabled>   
+                                                </label>
+                                                @if($errors->has('PriceL'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('PriceL') }}</div>
+                                                @endif
+
+                                                {{-- SALE PRICE LARGE --}}
+                                                <label class="lbPrice"> Sale Price
+                                                    <input type="number" min="0" class="form-control price" name="SalePriceL" value="{{ old('SalePriceL') }}" required disabled>
+                                                </label>
+                                                @if($errors->has('SalePriceL'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('SalePriceL') }}</div>
+                                                @endif
+                                                
+                                                <hr>
+                                                {{-- SIZE NONE --}}
+                                                <label class="checkbox-container">None
+                                                  <input type="checkbox" name="Size[]" id="None" value="None" {{ ($product_size->Size == 'None') ? 'checked' : '' }}>
+                                                  <span class="checkmark"></span>
+                                                </label>
+
+                                                {{-- PRICE NONE --}}
+                                                <label class="lbPrice"> Price
+                                                    <input type="number" min="0" class="form-control price" name="PriceNone" value="{{ old('PriceNone') }}" required disabled>
+                                                </label>
+                                                @if($errors->has('PriceNone'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('PriceNone') }}</div>
+                                                @endif
+
+                                                {{-- SALE PRICE NONE --}}
+                                                <label class="lbPrice"> Sale Price
+                                                    <input type="number" min="0" class="form-control price" name="SalePriceNone" value="{{ old('SalePriceNone') }}" required disabled>
+                                                </label>
+                                                @if($errors->has('SalePriceNone'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('SalePriceNone') }}</div>
+                                                @endif
+                                                
+                                                @if($errors->has('Size'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('Size') }}</div>
+                                                @endif
+                                            @endforeach
+                                            
+                                            
                                         </div>
                                     </div>
                                 </div>

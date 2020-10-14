@@ -27,18 +27,21 @@
                     <div class="tm-position-relative margin-bottom-30">
                         <nav class="tm-side-menu">
                             <ul>
-                                <li><a href="#" class="active">Affogato</a></li>
-                                <li><a href="#">Caffè Americano</a></li>
-                                <li><a href="#">Caffè latte</a></li>
-                                <li><a href="#">Coffee milk</a></li>
-                                <li><a href="#">Café mocha</a></li>
-                                <li><a href="#">Cappuccino</a></li>
-                                <li><a href="#">Espresso</a></li>
-                                <li><a href="#">Iced coffee</a></li>
-                                <li><a href="#">Instant coffee</a></li>
-                                <li><a href="#">Mocha</a></li>
-                                <li><a href="#">black coffee</a></li>
+                            @foreach($all_category as $cate)
+                                    <li><a href="'menu/'{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
+                                <!--  <li><a href="#">Caffee Americano</a></li>
+                                    <li><a href="#">Caffee latte</a></li>
+                                    <li><a href="#">Coffee milk</a></li>
+                                    <li><a href="#">Café mocha</a></li>
+                                    <li><a href="#">Cappuccino</a></li>
+                                    <li><a href="#">Espresso</a></li>
+                                    <li><a href="#">Iced coffee</a></li>
+                                    <li><a href="#">Instant coffee</a></li>
+                                    <li><a href="#">Mocha</a></li>
+                                    <li><a href="#">black coffee</a></li> -->
+                                
                             </ul>
+                            @endforeach
                         </nav>
                         <img src={{asset("Page/img/vertical-menu-bg.png")}} alt="Menu bg" class="tm-side-menu-bg">
                     </div>
@@ -61,21 +64,24 @@
                     </a> -->
                 <a class="menu-item" href="{{URL::to('/product-detail')}}">
                     <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                        <img class="card-img-top img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
+                    @foreach($all_product as $pro)
+                        <img class="card-img-top img-menu" src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap">
                         <div class="card-body mt-1">
-                            <h5 class="card-title">Name of drink</h5>
-                            <p class="card-text">Some quick example text to build on the card title</p>
+                            <h5 class="card-title">{{$pro->Name}}</h5>
+                            <p class="card-text">{{$pro->Discrition}}</p>
                             <div class="d-flex">
                                 <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
-                                <a href="#" class="btn btn-primary more-info">MORE INFO</a>
+                                <a href="#" class="btn btn-primary more-info">{{$pro->Price}}</a>
                             </div>
 
                         </div>
+                    @endforeach
                     </div>
                 </a>
+                
 
 
-                <a class="menu-item" href="{{URL::to('/product-detail')}}">
+                <!-- <a class="menu-item" href="{{URL::to('/product-detail')}}">
                     <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
                         <img class="card-img-top img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
                         <div class="card-body mt-1">
@@ -116,7 +122,7 @@
 
                         </div>
                     </div>
-                </a>
+                </a> -->
                 <!-- </div> -->
             </div>
         </section>

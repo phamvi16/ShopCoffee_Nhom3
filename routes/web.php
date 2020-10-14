@@ -64,6 +64,9 @@ Route::group(['prefix' => 'admin'], function(){
 	//Order
 	Route::get('/order', [OrderController::class, 'index']);
 });
+//show Product_category Menu
+Route::get('/menu/{{Id_Category}', [MenuController::class, 'show_menu']);
+
 
 
 

@@ -14,8 +14,10 @@ use App\Models\Category;
 class ProductController extends Controller
 {
     public function index(){
-        return view('admin.product');
+          $all_product = Product::all();
+            return view('admin.product', compact('all_product'));
     }
+    
 
     // Show form to add new product
     public function create(){

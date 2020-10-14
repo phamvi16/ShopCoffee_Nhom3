@@ -20,7 +20,7 @@ class CreateOrderToppingTable extends Migration
         });
 
         Schema::table('order_topping', function (Blueprint $table) {
-            $table->primary('Id_Order_Product', 'Id_Topping');
+            $table->primary(['Id_Order_Product', 'Id_Topping']);
             $table->foreign('Id_Order_Product')->references('Id')->on('order_product');
             $table->foreign('Id_Topping')->references('Id')->on('topping');
         });

@@ -13,7 +13,7 @@ class Order extends Model
 
     public function product()
     {
-        return $this->belongsToMany(Product::class, 'order_product', 'Id_Order', 'Id_Product');
+        return $this->belongsToMany(Product::class, 'order_product', 'Id_Order', 'Id_Product_Size');
     }
 
     public function customer_shipping()

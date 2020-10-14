@@ -17,7 +17,7 @@
         <!-- <img src="{{asset('Page/img/table-set.png')}}" alt="Table Set" class="tm-table-set img-responsive"> -->
       </div>
     </section>
-<div class="tm-main-section light-gray-bg">
+  <div class="tm-main-section light-gray-bg">
       <div class="container" id="main">
         <section class="tm-section row">
           <div class="col-lg-9 col-md-9 col-sm-8">

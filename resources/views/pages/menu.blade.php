@@ -23,111 +23,39 @@
                     <hr class="tm-hr">
                 </div>
             </div>
-            <div>
                 <div class="col-lg-3 col-sm-2">
                     <div class="tm-position-relative margin-bottom-30">
+                    @foreach($all_category as $cate)
                         <nav class="tm-side-menu">
-                            <ul>
-                            @foreach($all_category as $cate)
-                                    <li><a href="/menu/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
-                                <!--  <li><a href="#">Caffee Americano</a></li>
-                                    <li><a href="#">Caffee latte</a></li>
-                                    <li><a href="#">Coffee milk</a></li>
-                                    <li><a href="#">Café mocha</a></li>
-                                    <li><a href="#">Cappuccino</a></li>
-                                    <li><a href="#">Espresso</a></li>
-                                    <li><a href="#">Iced coffee</a></li>
-                                    <li><a href="#">Instant coffee</a></li>
-                                    <li><a href="#">Mocha</a></li>
-                                    <li><a href="#">black coffee</a></li> -->
-
-                            </ul>
-                            @endforeach
+                            <ul>                      
+                                    <li><a href="/menu/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>                                
+                            </ul>                          
                         </nav>
+                        @endforeach
                         <img src={{asset("Page/img/vertical-menu-bg.png")}} alt="Menu bg" class="tm-side-menu-bg">
                     </div>
                 </div>
                 <!-- <div class="tm-menu-product-content col-lg-9 col-md-9"> -->
                 <!-- menu content -->
 
-
-                <!-- <a class="menu-item" href="{{URL::to('/product-detail')}}">
-                        <div class="tm-product wrapper-item">
-                            <img src={{asset("Page/img/menu-1.jpg")}} alt="Product">
-                            <div class="tm-product-text ml-4">
-                                <h3 class="tm-product-title">Americano 1</h3>
-                                <p class="tm-product-description">Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque. Red ipsum.</p>
-                            </div>
-                            <div class="tm-product-price">
-                                <a href="#" class="tm-product-price-link tm-handwriting-font"><span class="tm-product-price-currency">$</span>30</a>
-                            </div>
-                        </div>
-                    </a> -->
-                <a class="menu-item" href="{{URL::to('/product-detail')}}">
-                @foreach($all_product as $pro)
-                    <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-
-                        <img class="card-img-top img-menu" src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap">
+                 <a class="menu-item" href="{{URL::to('/product-detail')}}">
+                 @foreach($all_product as $pro)
+                    <div class="card card-menu col-sm-3 ml-4 mb-4 " style="width: 25.1rem;">
+                        <img class="card-img-top img-menu" src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
                         <div class="card-body mt-1">
                             <h5 class="card-title">{{$pro->Name}}</h5>
                             <p class="card-text">{{$pro->Description}}</p>
                             <div class="d-flex">
                                 <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
-                                <a href="#" class="btn btn-primary more-info">{{$pro->Price}}</a>
+                                <a href="#" class="btn btn-primary more-info ">{{$pro->Price}}</span>$</a>
                             </div>
-
                         </div>
-
                     </div>
                     @endforeach
-                </a>
-
-
-
-                <!-- <a class="menu-item" href="{{URL::to('/product-detail')}}">
-                    <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                        <img class="card-img-top img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
-                        <div class="card-body mt-1">
-                            <h5 class="card-title">Name of drink</h5>
-                            <p class="card-text">Some quick example text to build on the card title</p>
-                            <div class="d-flex">
-                                <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
-                                <a href="#" class="btn btn-primary more-info">MORE INFO</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </a>
-                <a class="menu-item" href="{{URL::to('/product-detail')}}">
-                    <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                        <img class="card-img-top img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
-                        <div class="card-body mt-1">
-                            <h5 class="card-title">Name of drink</h5>
-                            <p class="card-text">Some quick example text to build on the card title</p>
-                            <div class="d-flex">
-                                <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
-                                <a href="#" class="btn btn-primary more-info">MORE INFO</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </a>
-                <a class="menu-item" href="{{URL::to('/product-detail')}}">
-                    <div class="card card-menu col-sm-3 ml-4 mb-4" style="width: 25.1rem;">
-                        <img class="card-img-top img-menu" src={{asset("Page/img/special-1.jpg")}} alt="Card image cap">
-                        <div class="card-body mt-1">
-                            <h5 class="card-title">Name of drink</h5>
-                            <p class="card-text">Some quick example text to build on the card title</p>
-                            <div class="d-flex">
-                                <a href="#" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
-                                <a href="#" class="btn btn-primary more-info">MORE INFO</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </a> -->
-                <!-- </div> -->
-            </div>
+                </a>   
+                </div>
+            </div> 
+            </div> 
         </section>
     </div>
 </div>

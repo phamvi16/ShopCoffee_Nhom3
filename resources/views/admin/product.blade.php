@@ -18,11 +18,11 @@
                                 <th>Stt</th>
                                 <th>Name</th>
                                 <th>Image</th>
-                                <th>Price</th>
                                 <th>Size</th>
+                                <th>Price</th>
+                                <th>Sale_Price</th>
                                 <th>Category</th>
-                                <th>Action</th>
-
+                                <th>Action</th>                             
                             </thead>
                             <tbody>
                                     @php
@@ -38,8 +38,26 @@
                                         <td>{{$i}}</td>                       
                                         <td>{{ $pro -> Name }}</td>
                                         <td><img src="/ProductImages/Products/{{$pro -> Image}}" height="100" width="100"></td>
-                                        <td>{{$pro ->Price }}</td>
-                                        <td>{{$pro ->Size }}</td>
+
+
+                                        <td>
+                                        @foreach($pro -> product_size as $cate)
+                                        <P><br>{{ $cate-> Size }}</p>
+                                        @endforeach
+                                        </td>
+
+                                        <td>
+                                        @foreach($pro -> product_size as $cate)
+                                        <p><br>{{ $cate-> Price }}$</p>
+                                        @endforeach
+                                        </td>
+
+                                        <td>
+                                        @foreach($pro -> product_size as $cate)
+                                        <p><br>{{ $cate-> Sale_Price }}$</p>
+                                        @endforeach
+                                        </td>
+
                                         @foreach($pro -> category as $cate)
                                         <td>{{ $cate-> Name }}</td>
                                         @endforeach

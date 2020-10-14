@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ToppingController;
 
 
 /*
@@ -39,6 +40,8 @@ Route::get('/gio-hang', [CartController::class,'index']);
 Route::get('/checkout', [CheckoutController::class,'index']);
 Route::get('/product-detail/', [ProductController::class,'detail_pro']);
 
+
+
 //Admin route group
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('/', [AdminController::class, 'index']);
@@ -62,10 +65,13 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::get('/customer', [CustomerController::class, 'index']);
 
 	//Order
-	Route::get('/order', [OrderController::class, 'index']);
+    Route::get('/order', [OrderController::class, 'index']);
+
+    //Topping
+    Route::get('/topping', [ToppingController::class, 'index']);
 });
 //show Product_category Menu
-Route::get('/menu/{{Id_Category}', [MenuController::class, 'show_menu']);
+Route::get('/menu/{Id_Category}', [MenuController::class, 'show_menu']);
 
 
 

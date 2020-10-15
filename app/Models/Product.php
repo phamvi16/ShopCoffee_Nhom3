@@ -12,7 +12,7 @@ class Product extends Model
     protected $table = "product";
     protected $primaryKey = 'Id';
     public $incrementing = true;
-    protected $fillable = ['Name', 'Image', 'Description', 'Size', 'Price', 'Sale_Price', 'Visibility'];
+    protected $fillable = ['Name', 'Image', 'Description', 'Visibility'];
     
     public function statistical()
     {

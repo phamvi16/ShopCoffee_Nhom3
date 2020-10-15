@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Arr;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductSize;
 use App\Models\Category;
 
 class ProductController extends Controller
@@ -58,31 +60,32 @@ class ProductController extends Controller
         try {
             $sizes = $request->Size;
 
-            // 1 size - 1 product data
-            foreach ($sizes as $item) {
-                
-                // Store product in db
-                $newpro = Product::create([
-                    'Name' => $request->Name,
-                    'Description' => $request->Description,
-                    'Size' => $item,
-                    'Price' => $request->input('Price'.$item),
-                    'Sale_Price' => $request->input('SalePrice'.$item),
-                    'Image' => $imageName,
-                    'Visibility' => $request->Visibility
-                ]);
-                
-                // Get categories from user
-                $categories = $request->Category;
-                foreach ($categories as $category) {
-                    //Store product with category
-                    ProductCategory::create([
-                        'Id_Category' => $category,
-                        'Id_Product' => $newpro->Id
-                    ]);
+            // Store product in db
+            $newpro = Product::create([
+                'Name' => $request->Name,
+                'Description' => $request->Description,
+                'Image' => $imageName,
+                'Visibility' => $request->Visibility
+            ]);
 
-                }
-                
+            // // Get categories from user
+            $categories = $request->Category;
+            foreach ($categories as $category) {
+                //Store product with category
+                ProductCategory::create([
+                    'Id_Category' => $category,
+                    'Id_Product' => $newpro->Id
+                ]);
+            }
+
+            // Store size
+            foreach ($sizes as $item) {
+                DB::table('product_size')->insert([
+                    'Id_Product' => $newpro->Id,
+                    'Size' => $item,
+                    'Price' => $request->input("Price" . $item),
+                    'Sale_Price' => $request->input("SalePrice" . $item)
+                ]);
             }
 
             DB::commit();
@@ -97,18 +100,40 @@ class ProductController extends Controller
 
     //Edit Product
     public function edit($id) {
+
         $categories = Category::All();
         $pro = Product::find($id);
-        // Array all categories
-        $arrayCategories = array_column($categories->toArray(), 'Id');
+        $commonCategories = $restSize = null;
 
-        // Array categories of product
-        $arrayProCategories = array_column($pro->category->toArray(), 'Id');
+        // All size and size name
+        $allSize = [
+            ["Size" => "S", "Name" => "Small"],
+            ["Size" => "M", "Name" => "Medium"],
+            ["Size" => "L", "Name" => "Large"],
+            ["Size" => "None", "Name" => "None"]
+        ];
 
-        // Get categories from array ProCategories that are present in array Categories
-        $commonCategories = array_intersect($arrayProCategories, $arrayCategories);
+        // Get array all size name with key = size and value = name(size)
+        $AllSizeName = Arr::pluck($allSize, "Name", "Size");
+
+        if ($pro != null) {
+            // Array all categories
+            $arrayCategories = array_column($categories->toArray(), 'Id');
+
+            // Array categories of product
+            $arrayProCategories = array_column($pro->category->toArray(), 'Id');
+
+            // Get categories from array ProCategories that are present in array Categories
+            $commonCategories = array_intersect($arrayProCategories, $arrayCategories);
+
+            // Get only size of product 
+            $proSize = array_column($pro->product_size->toArray(), 'Size');
+
+            // Get size from array allSize that are not present in array proSize 
+            $restSize = array_diff(array_column($allSize, "Size"), $proSize);
+        }
         
-        return view('admin.editpro', compact('categories', 'pro', 'commonCategories'));
+        return view('admin.editpro', compact('categories', 'pro', 'commonCategories', 'restSize', 'AllSizeName'));
     }
 
     // Update Product
@@ -118,25 +143,25 @@ class ProductController extends Controller
             'Name' => ['required', 'string'],
             'Category' => ['required'],
             'Description' => ['required', 'string'],
-            'Price' => ['required', 'numeric', 'min:0'],
-            'Sale_Price' => ['required', 'numeric', 'min:0'],
+            'Size' => ['required'],
             'Image' => ['image'],
             'Visibility' => ['required', 'string'],
         ],
         [
             'required' => ':Attribute must be filled.',
-            'string' => 'The price muse be a string.',
-            'image' => 'The :attribute field is not a valid image.',
-            'numeric' => 'The price muse be a number.',
-            'min' => ":Attribute must be greater than or equal to zero (0)."
+            'string' => ':Attribute muse be a string.',
+            'image' => 'The :attribute field is not a valid image.'
         ])->validate();
 
         DB::beginTransaction();
          try {
             $pro = Product::find($request->Id);
 
-            // A value is present on the request and is not empty?
-            if($request->filled('Image')){
+            // Update product in db
+            $pro->update($request->All());
+
+            // An Image is present on the request?
+            if($request->hasFile('Image')){
                 $image = $request->Image;
 
                 // Set name for image
@@ -147,28 +172,65 @@ class ProductController extends Controller
 
                 // Change image of product
                 $pro->Image = $imageName;
-            }
 
-            // Store product in db
-            
-            $pro->Name = $request->Name;
-            $pro->Description = $request->Description;
-            $pro->Price = $request->Price;
-            $pro->Sale_Price = $request->Sale_Price;
-            $pro->Visibility = $request->Visibility;
+            }
+            // Save change
             $pro->save();
 
-            // Remove all old categories
-            DB::table('product_category')->where('Id_Product', $pro->Id)->delete();
+            // Update Categories
+            // Array Product categories (old)
+            $arrOldCategories = array_column($pro->category->toArray(), 'Id');
 
-            // Get categories from user
-            $categories = $request->Category;
-            foreach ($categories as $category) {
-                //Store product with new categories
+            // Array Product categories (new from user)
+            $arrNewCategories = $request->Category;
+
+            // Get categories from array arrOldCategories that are not present in array arrNewCategories
+            // Deleted categories
+            $deletedCategories = array_diff($arrOldCategories, $arrNewCategories);
+            
+            // Get categories from array arrNewCategories that are not present in array arrOldCategories
+            // Added categories
+            $addedCategories = array_diff($arrNewCategories, $arrOldCategories);
+
+            // Update new categories in db
+            foreach ($deletedCategories as $deletedCategory) {
+                //Delete category that user did not check
+                DB::table("product_category")->where("Id_Category", $deletedCategory)
+                                            ->where("Id_Product", $pro->Id)
+                                            ->delete();
+            }
+
+            foreach ($addedCategories as $addedCategory) {
+                // Add new category
                 ProductCategory::create([
-                    'Id_Category' => $category,
+                    'Id_Category' => $addedCategory,
                     'Id_Product' => $pro->Id
                 ]);
+            }
+
+            // Update Size
+            // Array Product sizes (new from user)
+            $arrNewSizes = $request->Size;
+
+            // Array Product sizes (old from db)
+            $arrOldSizes = array_column($pro->product_size->toArray(), 'Size');
+
+            // Get sizes from array arrOldSizes that are not present in array arrNewSizes
+            // Deleted sizes
+            $deletedSizes = array_diff($arrOldSizes, $arrNewSizes);
+
+            foreach ($deletedSizes as $deletedSize) {
+                //Delete size that user did not check
+                DB::table("product_size")->where("Id_Product", $pro->Id)
+                                            ->where("Size", $deletedSize)
+                                            ->delete();
+            }
+            
+            foreach ($arrNewSizes as $newSize) {
+                // new size -> not found in db -> insert new size
+                // new size -> found in db -> update
+                DB::table("product_size")->updateOrInsert(["Id_Product" => $pro->Id, "Size" => $newSize],
+                                                    ["Price" => $request->input("Price" . $newSize), "Sale_Price" => $request->input("SalePrice" . $newSize)]);
             }
 
             DB::commit();
@@ -184,7 +246,7 @@ class ProductController extends Controller
 
     // --------Pages
 
-    public function detail_pro(){
+    public function detail_pro() {
         return view('pages.product-detail');
     }
 }

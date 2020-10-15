@@ -19,8 +19,9 @@
                     <h4 class="card-title">Edit Product</h4>
                     </div>
                     <div class="card-body ">
-                            <form action="/admin/product/update" id="edit-pro-form" method="post" enctype="multipart/form-data">
+                        <form action="/admin/product/update" id="edit-pro-form" method="post" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="_method" value="PUT">
                             @if ($pro != NULL)
                                 <div class="row">
                                     <div class="col-md-6 pr-1">
@@ -79,30 +80,59 @@
                                 <div class="row">
                                     <div class="col-md-6 pr-1">
                                         <div class="form-group">
-                                            <label>Size:</label>
-                                            <input type="text" class="form-control" name="Size" readonly value="{{$pro->Size ?? ""}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="row">
-                                    <div class="col-md-6 pr-1">
-                                        <div class="form-group">
-                                            <label>Price</label>
-                                            <input type="number" class="form-control" name="Price" id="Price" value="{{$pro->Price ?? ""}}" required min="0">
-                                            @if($errors->has('Price'))
-                                                <div class="alert-box error"><span>error: </span> {{ $errors->first('Price') }}</div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 pr-1">
-                                        <div class="form-group">
-                                            <label>Sale Price</label>
-                                            <input type="number" class="form-control" name="Sale_Price" id="Sale_Price" value="{{$pro->Sale_Price ?? ""}}" required min="0">
-                                            @if($errors->has('Sale_Price'))
-                                                <div class="alert-box error"><span>error: </span> {{ $errors->first('Sale_Price') }}</div>
-                                            @endif
+                                            <label>Size</label>
+                                            @foreach ($pro->product_size as $product_size)
+                                                {{-- SIZE --}}
+                                                <label class="checkbox-container">{{ $product_size->getSizeName() }}
+                                                  <input type="checkbox" name="Size[]" id="{{ $product_size->Size }}" value="{{ $product_size->Size }}" checked>
+                                                  <span class="checkmark"></span>
+                                                </label>
+
+                                                <div class="Size{{ $product_size->Size }}">
+                                                    {{-- PRICE --}}
+                                                    <label class="lbPrice"> Price
+                                                        <input type="number" class="form-control price" name="Price{{ $product_size->Size }}" min="0" value="{{ $product_size->Price }}" required>   
+                                                    </label>
+                                                    @if($errors->has('Price' . $product_size->Size))
+                                                        <div class="alert-box error"><span>error: </span> {{ $errors->first('Price' . $product_size->Size) }}</div>
+                                                    @endif
+
+                                                    {{-- SALE PRICE --}}
+                                                    <label class="lbPrice"> Sale Price
+                                                        <input type="number" min="0" class="form-control price" name="SalePrice{{ $product_size->Size }}" value="{{ $product_size->Sale_Price }}" required>
+                                                    </label>
+                                                    @if($errors->has('SalePrice' . $product_size->Size))
+                                                        <div class="alert-box error"><span>error: </span> {{ $errors->first('SalePrice' . $product_size->Size) }}</div>
+                                                    @endif
+                                                </div>
+                                                <hr>
+                                            @endforeach
+                                            @foreach ($restSize as $size)
+                                                {{-- SIZE --}}
+                                                <label class="checkbox-container">{{ $AllSizeName[$size] }}
+                                                  <input type="checkbox" name="Size[]" id="{{ $size }}" value="{{ $size }}">
+                                                  <span class="checkmark"></span>
+                                                </label>
+                                                <div class="Size{{ $size }}">
+                                                    {{-- PRICE --}}
+                                                    <label class="lbPrice"> Price
+                                                        <input type="number" class="form-control price" name="Price{{ $size }}" min="0" value="" required>   
+                                                    </label>
+                                                    @if($errors->has('Price' . $size))
+                                                        <div class="alert-box error"><span>error: </span> {{ $errors->first('Price' . $size) }}</div>
+                                                    @endif
+
+                                                    {{-- SALE PRICE --}}
+                                                    <label class="lbPrice"> Sale Price
+                                                        <input type="number" min="0" class="form-control price" name="SalePrice{{ $size }}" value="" required>
+                                                    </label>
+                                                    @if($errors->has('SalePrice' . $size))
+                                                        <div class="alert-box error"><span>error: </span> {{ $errors->first('SalePrice' . $size) }}</div>
+                                                    @endif
+                                                </div>
+                                                
+                                                <hr>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +140,7 @@
                                     <div class="col-md-6 pr-1">
                                         <div class="form-group">
                                             <label>Image</label>
-                                            <input style="opacity: 1; position: static" type="file" class="form-control" name="Image" id="Image" value="{{$pro->Image ?? ""}}">
+                                            <input style="opacity: 1; position: static" type="file" class="form-control" name="Image" id="Image">
                                             <img src="{{asset('ProductImages/Products/').'/'.$pro->Image}}" width="400px" height="400px" alt="{{$pro->Name ?? ""}}">
                                             @if($errors->has('Image'))
                                                 <div class="alert-box error"><span>error: </span> {{ $errors->first('Image') }}</div>
@@ -141,7 +171,7 @@
                                 <p>Please checks if this product exists.</p></div>
                             @endif
 
-                            </form>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -149,4 +179,7 @@
     </div>
 
 
+@endsection
+@section('script')
+<script type="text/javascript" src="{{ asset('Admins/js/addpro.js') }}"></script>
 @endsection

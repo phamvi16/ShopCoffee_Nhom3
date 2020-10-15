@@ -56,7 +56,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('/create', [ProductController::class, 'create']);
 		Route::post('/store', [ProductController::class, 'store']);
 		Route::get('/edit/{id}', [ProductController::class, 'edit']);
-		Route::post('/update', [ProductController::class, 'update']);
+		Route::put('/update', [ProductController::class, 'update']);
 		Route::get('/show', [ProductController::class, 'show']);
 	});
 

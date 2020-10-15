@@ -23,4 +23,25 @@ class ProductSize extends Model
     {
         return $this->belongsTo(Product::class, 'Id_Product');
     }
+
+    // Get size name
+    public function getSizeName(){
+        switch ($this->Size) {
+            case "S":
+                return "Small";
+                break;
+            
+            case "M":
+                return "Medium";
+                break;
+            
+            case "L":
+                return "Large";
+                break;
+            
+            default:
+                return "None";
+                break;
+        }
+    }
 }

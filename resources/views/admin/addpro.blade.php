@@ -39,7 +39,7 @@
                                         @if (!$categories->isEmpty())
                                             @foreach ($categories as $item)
                                                 <label class="checkbox-container">{{ $item->Name}}
-                                                <input type="checkbox" class="Category" name="Category[]" value="{{ $item->Id }}">
+                                                <input type="checkbox" class="Category" name="Category[]" value="{{ $item->Id }}" {{ (old('Category') != null) ? ((in_array($item->Id, old('Category'))) ? "checked" : "") : "" }}>
                                                 <span class="checkmark"></span>
                                                 </label>
                                                 
@@ -167,11 +167,12 @@
                                             @if($errors->has('SalePriceNone'))
                                                 <div class="alert-box error"><span>error: </span> {{ $errors->first('SalePriceNone') }}</div>
                                             @endif
-                                            
-                                            @if($errors->has('Size'))
-                                                <div class="alert-box error"><span>error: </span> {{ $errors->first('Size') }}</div>
-                                            @endif
                                         </div>
+
+                                            
+                                        @if($errors->has('Size'))
+                                            <div class="alert-box error"><span>error: </span> {{ $errors->first('Size') }}</div>
+                                        @endif
                                         
                                     </div>
                                 </div>

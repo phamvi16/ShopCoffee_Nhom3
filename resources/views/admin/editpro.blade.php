@@ -133,6 +133,9 @@
                                                 
                                                 <hr>
                                             @endforeach
+                                            @if($errors->has('Size'))
+                                            <div class="alert-box error"><span>error: </span> {{ $errors->first('Size') }}</div>
+                                        @endif
                                         </div>
                                     </div>
                                 </div>

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -15,7 +14,7 @@ class MenuController extends Controller
 
     public function index(){
         $all_category = Category::All();
-     	$all_product = Product::All();
+     	$all_product = Product::all();
         return view('pages.menu', compact('all_product','all_category'));
 
     }

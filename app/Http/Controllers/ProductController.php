@@ -84,7 +84,9 @@ class ProductController extends Controller
                     'Id_Product' => $newpro->Id,
                     'Size' => $item,
                     'Price' => $request->input("Price" . $item),
-                    'Sale_Price' => $request->input("SalePrice" . $item)
+                    'Sale_Price' => $request->input("SalePrice" . $item),
+                    "created_at" =>  \Carbon\Carbon::now(), 
+                    "updated_at" => \Carbon\Carbon::now()
                 ]);
             }
 
@@ -230,7 +232,7 @@ class ProductController extends Controller
                 // new size -> not found in db -> insert new size
                 // new size -> found in db -> update
                 DB::table("product_size")->updateOrInsert(["Id_Product" => $pro->Id, "Size" => $newSize],
-                                                    ["Price" => $request->input("Price" . $newSize), "Sale_Price" => $request->input("SalePrice" . $newSize)]);
+                                                    ["Price" => $request->input("Price" . $newSize), "Sale_Price" => $request->input("SalePrice" . $newSize), "created_at" => \Carbon\Carbon::now(), "updated_at" => \Carbon\Carbon::now()]);
             }
 
             DB::commit();
@@ -246,7 +248,8 @@ class ProductController extends Controller
 
     // --------Pages
 
-    public function detail_pro() {
-        return view('pages.product-detail');
+    public function show($id = null){
+        $pro = Product::find($id);
+        return ($pro != null) ?  view('pages.product-detail', compact('pro')) : abort(404);
     }
 }

@@ -19,13 +19,10 @@
                             </div>
                         </div>
                     </section>
-                
                 </div>
                 
                 <div class="pp-right-column col-xs-12  col-sm-7 col-md-7">
-                  
                     <h1 class="h1 productpage_title" id="name">{{ $pro->Name ?? '' }}</h1>
-                    
                     <div class="product-reference">
                         <label class="label">Category: </label>
                         <span id="category">
@@ -49,7 +46,7 @@
                             <div class="clearfix product-variants-item">
                                 <span class="control-label">Size</span>
                                 <ul id="product-size-area">
-                                    @foreach ($pro->product_size as $size)
+                                    @foreach ($pro->product_size->sortByDesc("Size") as $size)
                                         <li class="input-container pull-xs-left">
                                             <input class="input-radio" type="radio" name="Size" data-product-id="{{ $size->Id_Product ?? '' }}" data-saleprice="{{ number_format($size->Sale_Price, 0, '.', '.') ?? 0 }}" data-price="{{ number_format($size->Price, 0, '.', '.') ?? 0 }}" value="{{ $size->Id ?? '' }}" {{ ($loop->first) ? "checked" : "" }}>
                                             <span class="radio-label">{{ $size->Size ?? '' }}</span>
@@ -61,11 +58,11 @@
                         <div class="product-prices">
                             <div class="product-price h5">
                                 <div class="current-price">
-                                    <span id="saleprice">{{ number_format($pro->product_size->first()->Sale_Price, 0, '.', '.') ?? 0 }} VND</span>
+                                    <span id="saleprice">{{ number_format($pro->product_size->sortByDesc("Size")->first()->Sale_Price, 0, '.', '.') ?? 0 }} VND</span>
                                 </div>
                             </div>
                             <div class="tax-shipping-delivery-label" id="price">
-                                {{ number_format($pro->product_size->first()->Price, 0, '.', '.') ?? 0 }} VND                            
+                                {{ number_format($pro->product_size->sortByDesc("Size")->first()->Price, 0, '.', '.') ?? 0 }} VND                            
                             </div>
                         </div>
 

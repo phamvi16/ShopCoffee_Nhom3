@@ -16,6 +16,7 @@ class CreateOrderToppingTable extends Migration
         Schema::create('order_topping', function (Blueprint $table) {
             $table->integer('Id_Order_Product')->unsigned();
             $table->integer('Id_Topping')->unsigned();
+            $table->integer('Price_Buy')->unsigned();
             $table->timestamps();
         });
 

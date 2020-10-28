@@ -51,8 +51,9 @@
                 <li><a href="{{URL::to('/lien-he')}}">LIÊN HỆ</a></li>
                 <li><a href="{{URL::to('/dang-nhap')}}">ĐĂNG NHẬP</a></li>
                 <li>
-                 <form class="form-inline " style="margin-top: 10px;">
-                  <input class="form-control mr-sm-2 "  type="search" placeholder="Nhập nội dung..." aria-label="Search">
+                 <form action="{{URL::to('/tim-kiem')}}" method="post" class="form-inline " style="margin-top: 10px;">
+                 @csrf
+                  <input class="form-control mr-sm-2 " name="keywords_submit"  type="text" placeholder="Nhập nội dung..." aria-label="Search">
                   <button class="btn btn-outline-success my-2 my-sm-0" style="background-color:#140718" type="submit">Tìm kiếm</button>
                 </form>
               </li>

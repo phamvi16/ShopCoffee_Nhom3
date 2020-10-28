@@ -72,6 +72,8 @@ Route::group(['prefix' => 'admin'], function(){
 });
 //show Product_category Menu
 Route::get('/menu/{Id_Category}', [MenuController::class, 'show_menu']);
+Route::post('/tim-kiem',[MenuController::class, 'search']);
+
 
 
 

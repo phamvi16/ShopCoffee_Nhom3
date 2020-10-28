@@ -106,18 +106,19 @@
                                     <input class="quant-input-modal pl-3" id="qty2632" type="number" min="1" value="1" placeholder="1" >
 
                                 </span>
-                                
+
                                    <div class="form-group row ">
                                   <div class="col-md-6 ml-auto">
                                     <input type="" class="btn btn-block btn-primary text-white py-3 px-5 add-to-cart" value="Giá:" >
-                                   
+
                                   </div>
+
                                 </div>
                                 <div class="form-group row">
                                   <div class="col-md-6 ml-auto">
                                     <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5 add-to-cart" value="Thêm vào giỏ" >
-                                   
-                                    
+
+
                                   </div>
                                 </div>
                               </form>

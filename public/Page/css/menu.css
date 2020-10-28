@@ -111,3 +111,10 @@ a:hover {
 
 
 /* --------------------- */
+
+.quant-input-modal {
+    width: 50px !important;
+    height: 30px !important;
+    border-radius: 20px;
+    border: 1px solid #88614a;
+}

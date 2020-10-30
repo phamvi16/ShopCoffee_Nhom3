@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shop Coffee</title>
 
@@ -21,7 +22,7 @@
 
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" />
 
-
+  @yield('style', '')
 
   </head>
   <body>
@@ -110,6 +111,9 @@
    <!-- JS -->
    <script type="text/javascript" src="{{asset('Page/js/jquery-1.11.2.min.js')}}"></script>      <!-- jQuery -->
    <script type="text/javascript" src="{{asset('Page/js/templatemo-script.js')}}"></script>      <!-- Templatemo Script -->
+
+   @yield('script', '')
+
    <script type="text/javascript" src="{{asset('Page/js/jquery-3.3.1.min.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/jquery-ui.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/popper.min.js')}}"></script>
@@ -122,6 +126,6 @@
    <script type="text/javascript" src="{{asset('Page/js/aos.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/main.js')}}"></script>
 
-
  </body>
  </html>
+

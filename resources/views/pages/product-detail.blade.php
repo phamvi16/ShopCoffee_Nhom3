@@ -4,23 +4,23 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('Page/css/prodetails.css') }}">
 @endsection
     <!-- Caffeine - Coffee Store PrestaShop Theme -->
-    <div class="container">       
+    <div class="container">
         <div id="content-wrapper">
             <div class="row">
                 <div class="pp-left-column col-xs-12 col-sm-5 col-md-5">
                     <section class="page-content" id="content">
                         <div class="product-leftside">
                              <div class="images-container">
-                                <div class="product-cover">
+
                                   <a href="/product-detail/{{ $pro->Id ?? '' }}">
-                                  <img class="js-qv-product-cover" src="{{ asset('ProductImages/Products/') . '/' . ($pro->Image ?? '') }}" alt="{{ $pro->Name ?? '' }}" style="width:100%;">
+                                  <img class="js-qv-product-cover" src="{{ asset('ProductImages/Products/') . '/' . ($pro->Image ?? '') }}" alt="{{ $pro->Name ?? '' }}" style="width: 300px;height:300px;
+                                  margin-left: 20%;">
                                   </a>
-                                </div>
                             </div>
                         </div>
                     </section>
                 </div>
-                
+
                 <div class="pp-right-column col-xs-12  col-sm-7 col-md-7">
                     <h1 class="h1 productpage_title" id="name">{{ $pro->Name ?? '' }}</h1>
                     <div class="product-reference">
@@ -62,18 +62,18 @@
                                 </div>
                             </div>
                             <div class="tax-shipping-delivery-label" id="price">
-                                {{ number_format($pro->product_size->sortByDesc("Size")->first()->Price, 0, '.', '.') ?? 0 }} VND                            
+                                {{ number_format($pro->product_size->sortByDesc("Size")->first()->Price, 0, '.', '.') ?? 0 }} VND
                             </div>
                         </div>
 
                         <div class="product-add-to-cart">
                             <div class="add">
-                              <button class="btn btn-primary add-to-cart" data-button-action="add-to-cart">
+                              <button class="btn btn-primary add-to-cart" data-button-action="add-to-cart" style="background-color: #644a3b">
                                 Add to cart
                               </button>
                             </div>
                             <div class="clearfix"></div>
-            
+
                             <span id="product-availability">
                                 <span class="product-{{ ($pro->Visibility == "Public") ? "available" : "unavailable" }}" id="status">
                                     @if ($pro->Visibility == "Public")
@@ -100,7 +100,7 @@
                 </div>
             </div>
         </div>
-        <section class="product-tabcontent">    
+        <section class="product-tabcontent">
             <div class="tabs">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -113,13 +113,13 @@
                         <div id="description">
                             {{ $pro->Description ?? '' }}
                         </div>
-                    </div> 
-                </div>            
+                    </div>
+                </div>
             </div>
         </section>
     </div>
 </div>
-    
+
 @endsection
 @section('script')
 <script type="text/javascript" src="{{ asset('Page/js/prodetails.js') }}"></script>

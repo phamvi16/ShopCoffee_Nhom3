@@ -27,9 +27,9 @@
 
                     </div>
                 </div>
-                 <a class="menu-item" href="{{URL::to('/product-detail')}}">
-                 @foreach($all_product as $pro)
 
+                 @foreach($all_product as $pro)
+                    <a class="menu-item" href="/product-detail/{{$pro->Id}}">
                     <div class="card card-menu col-sm-3 ml-4 mb-4 m-5 ">
                         <img class="card-img-top img-menu " src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
                         <div class="card-body mt-1">
@@ -41,8 +41,9 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                     @endforeach
-                </a>
+
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                       <div class="modal-content">
@@ -68,8 +69,8 @@
                                   </div>
                                   <div class="form-check form-check-inline mr-4">
                                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
-                                    <label class="form-check-label" for="inlineRadio3">L</label>
                                   </div>
+                                    <label class="form-check-label" for="inlineRadio3">L</label>
 
                                 </div>
 

@@ -17,7 +17,7 @@ class LoginController extends Controller
 
         $result = (new CustomerService())->CheckLogin($phone,$password);
         if($result){
-            $_SESSION['user'] = $phone;
+            $request->session()->put('user', $phone);
             return redirect()->to('/menu');
         }
         else{

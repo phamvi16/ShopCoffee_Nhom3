@@ -10,6 +10,7 @@ class Loyalty extends Model
     use HasFactory;
 
     protected $table = "loyalty";
+    protected $fillable = ['phone','level','point','discount_loyalty'];
 
     public function customer_account()
     {

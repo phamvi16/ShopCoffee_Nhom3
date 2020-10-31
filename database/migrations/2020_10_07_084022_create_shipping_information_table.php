@@ -16,7 +16,7 @@ class CreateShippingInformationTable extends Migration
         Schema::create('shipping_information', function (Blueprint $table) {
             $table->increments('Id');
             $table->string('Name');
-            $table->bigInteger('Phone');
+            $table->string('Phone');
             $table->string('Email');
             $table->string('Address');
             $table->timestamps();

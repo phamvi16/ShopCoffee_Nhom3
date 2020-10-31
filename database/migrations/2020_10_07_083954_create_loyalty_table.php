@@ -14,7 +14,7 @@ class CreateLoyaltyTable extends Migration
     public function up()
     {
         Schema::create('loyalty', function (Blueprint $table) {
-            $table->bigInteger('Phone')->unsigned();
+            $table->string('Phone');
             $table->string('Level');
             $table->integer('Point');
             $table->integer('Discount_Loyalty');

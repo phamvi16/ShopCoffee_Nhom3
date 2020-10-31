@@ -10,6 +10,7 @@ class CustomerAccount extends Model
     use HasFactory;
 
     protected $table = "customer_account";
+    protected $fillable = ['phone','password'];
 
     public function customer_detail()
     {

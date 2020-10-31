@@ -19,6 +19,8 @@
   <link href="{{asset('Page/css/menu.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/product-detail.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/checkout.css')}}" rel="stylesheet">
+  <link href="{{asset('Page/css/login.css')}}" rel="stylesheet">
+  
 
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" />
 
@@ -126,6 +128,7 @@
    <script type="text/javascript" src="{{asset('Page/js/jquery.animateNumber.min.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/aos.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/main.js')}}"></script>
+   <script type="text/javascript" src="{{asset('Page/js/login.js')}}"></script>
 
  </body>
  </html>

@@ -14,7 +14,7 @@ class CreateCustomerDetailTable extends Migration
     public function up()
     {
         Schema::create('customer_detail', function (Blueprint $table) {
-            $table->bigInteger('Phone')->unsigned();
+            $table->string('Phone');
             $table->string('Name');
             $table->date('Birthday');
             $table->string('Email');

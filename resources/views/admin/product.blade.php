@@ -45,7 +45,6 @@
                                         <P><br>{{ $cate-> Size }}</p>
                                         @endforeach
                                         </td>
-
                                         <td>
                                         @foreach($pro -> product_size as $cate)
                                         <p><br>{{ $cate-> Price }}$</p>
@@ -57,9 +56,10 @@
                                         <p><br>{{ $cate-> Sale_Price }}$</p>
                                         @endforeach
                                         </td>
-
+                                        
+                                        <td>
                                         @foreach($pro -> category as $cate)
-                                        <td>{{ $cate-> Name }}</td>
+                                        <p><br>{{ $cate-> Name }}</p>
                                         @endforeach
                                         <td>
                                     <td>

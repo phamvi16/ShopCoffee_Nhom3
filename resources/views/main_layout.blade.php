@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name = "csrf-token" conten="{{csrf_token()}}"/>
   <title>Shop Coffee</title>
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet' type='text/css'>
@@ -18,7 +19,7 @@
   <link href="{{asset('Page/css/menu.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/product-detail.css')}}" rel="stylesheet">
   <link href="{{asset('Page/css/checkout.css')}}" rel="stylesheet">
-
+  <link href="{{asset('Page/css/sweetalert.css')}}" rel="stylesheet">
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" />
 
 
@@ -121,7 +122,8 @@
    <script type="text/javascript" src="{{asset('Page/js/jquery.animateNumber.min.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/aos.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/main.js')}}"></script>
-
-
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <script type="text/javascript" src="{{ asset('Page/js/addcart.js') }}"></script>
+<!-- Show In Cart -->
  </body>
  </html>

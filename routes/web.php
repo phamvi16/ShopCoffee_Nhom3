@@ -47,6 +47,7 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::get('/', [AdminController::class, 'index']);
 	//Category
 	Route::get('/category', [CategoryController::class, 'index']);
+	Route::post('/add-category', [CategoryController::class, 'store']);
 	Route::get('/add-category', [CategoryController::class, 'add_cat']);
 	Route::get('/edit-category', [CategoryController::class, 'edit_cat']);
 
@@ -59,7 +60,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::put('/update', [ProductController::class, 'update']);
 		Route::get('/show', [ProductController::class, 'show']);
 	});
-
+	
 
 	//Customer
 	Route::get('/customer', [CustomerController::class, 'index']);
@@ -72,6 +73,12 @@ Route::group(['prefix' => 'admin'], function(){
 });
 //show Product_category Menu
 Route::get('/menu/{Id_Category}', [MenuController::class, 'show_menu']);
+
+//Cart
+Route::post('/add-cart', [CartController::class,'add_cart']);
+Route::get('/gio-hang', [CartController::class,'gio_hang']);
+Route::get('/del-pro-cart/{session_is}', [CartController::class,'del_product']);
+
 
 
 

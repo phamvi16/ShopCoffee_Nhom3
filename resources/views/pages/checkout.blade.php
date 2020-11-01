@@ -115,9 +115,15 @@
                         <div class="ml-4 mb-2 name-sum">'.$data[$i]['name'].'</div>
                         <div class="ml-4">Topping:';
                        
-            $list_topping = collect($data[$i]['topping'])->keys();
-            for($y=0;$y<Count($list_topping);$y++){
-                $item = collect($all_topping)->where('Id',$list_topping[$y])->first();
+            // $list_topping = collect($data[$i]['topping'])->keys();
+            // forea($y=0;$y<Count($list_topping);$y++){
+            //     $item = collect($all_topping)->where('Id',$list_topping[$y])->first();
+            //     echo  '<div><small><i>'.$item->Name.'</i></small></div>';
+            //     $totalPrice_Topping+=$item->Price;
+            // }
+            
+            foreach($data[$i]['topping'] as $id => $gia){
+                $item = collect($all_topping)->where('Id',$id)->first();
                 echo  '<div><small><i>'.$item->Name.'</i></small></div>';
                 $totalPrice_Topping+=$item->Price;
             }

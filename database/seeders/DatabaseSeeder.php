@@ -11,19 +11,1102 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        $fake  = Faker\Factory::create();
-        $limit = 5;
+        //Tạo dữ liệu rác
+        // // \App\Models\User::factory(10)->create();
+        // $fake  = Faker\Factory::create();
+        // $limit = 5;
 
-        for ($i = 0; $i < $limit; $i++){
-            DB::table('topping')->insert([
-                'Name' => $fake->name,
-                'Price' => 	$fake->numerify($string ='###'),
-                'Status' => $fake->sentence
-            ]);
-        }
+        // for ($i = 0; $i < $limit; $i++){
+        //     DB::table('topping')->insert([
+        //         'Name' => $fake->name,
+        //         'Price' => 	$fake->numerify($string ='###'),
+        //         'Status' => $fake->sentence
+        //     ]);
+        // }
+
+        //Add datafile
+        //category
+        DB::table('category')->insert([
+        	'Name'=>'Cà Phê',
+            'Image'=>'',
+            'Count'=>7
+        ]);
+        DB::table('category')->insert([
+        	'Name'=>'Trà Tươi',
+            'Image'=>'',
+            'Count'=>6
+        ]);
+        DB::table('category')->insert([
+        	'Name'=>'Trà Sữa',
+            'Image'=>'',
+            'Count'=>3
+        ]);
+        DB::table('category')->insert([
+        	'Name'=>'Đá Xay',
+            'Image'=>'',
+            'Count'=>4
+        ]);
+        DB::table('category')->insert([
+        	'Name'=>'Bánh Ngọt',
+            'Image'=>'',
+            'Count'=>7
+        ]);
+        DB::table('category')->insert([
+        	'Name'=>'Bánh Mặn',
+            'Image'=>'',
+            'Count'=>4
+        ]);
+
+        //product
+        DB::table('product')->insert([
+        	'Name'=>'Espresso / Americano',
+            'Image'=>'',
+            'Description'=>'Classical Coffee',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Latte / Cappucino',
+            'Image'=>'',
+            'Description'=>'Classical Coffee',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Mocha / Caramel Macchiato',
+            'Image'=>'',
+            'Description'=>'Classical Coffee',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Cà Phê Đen',
+            'Image'=>'',
+            'Description'=>'Vietnamese Coffee',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Cà Phê Sữa',
+            'Image'=>'',
+            'Description'=>'Vietnamese Coffee With Condensed Milk',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bạc Xỉu',
+            'Image'=>'',
+            'Description'=>'Vietnamese White Coffee',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Phin',
+            'Image'=>'',
+            'Description'=>'PHIN Coffee',
+        	'Visibility'=>'Delete',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Trà Oolong',
+            'Image'=>'',
+            'Description'=>'Oolong Tea',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Trà Đen',
+            'Image'=>'',
+            'Description'=>'Black Tea',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Trà Xanh',
+            'Image'=>'',
+            'Description'=>'Green Tea',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Trà Lài',
+            'Image'=>'',
+            'Description'=>'Jasmine Tea',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Trà Đào Cam Sả',
+            'Image'=>'',
+            'Description'=>'Peach Tea Mania',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Trà Sen',
+            'Image'=>'',
+            'Description'=>'Lotus Tea',
+        	'Visibility'=>'Hidden',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Trà Sữa',
+            'Image'=>'',
+            'Description'=>'Milk Tea',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Trà Sữa Matcha',
+            'Image'=>'',
+            'Description'=>'Matcha Milk Tea',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Trà Sữa Dâu',
+            'Image'=>'',
+            'Description'=>'Strawberry Milk Tea',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Cà Phê Đá Xay',
+            'Image'=>'',
+            'Description'=>'Coffee Freeze',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Matcha Đá Xay',
+            'Image'=>'',
+            'Description'=>'Matcha Freeze',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Socola Đá Xay',
+            'Image'=>'',
+            'Description'=>'Socola Freeze',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Caramel Đá Xay',
+            'Image'=>'',
+            'Description'=>'Caramel Freeze',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Tiramisu',
+            'Image'=>'',
+            'Description'=>'Tiramisu Cake',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bánh Socola',
+            'Image'=>'',
+            'Description'=>'Socola Cake',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bánh Dâu',
+            'Image'=>'',
+            'Description'=>'Strawberry Cake',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bánh Matcha',
+            'Image'=>'',
+            'Description'=>'Matcha Cake',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bánh Phô Mai Socola',
+            'Image'=>'',
+            'Description'=>'Socola Cheese Cake',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bánh Phô Mai Dâu',
+            'Image'=>'',
+            'Description'=>'Strawberry Cheese Cake',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bánh Phô Mai Matcha',
+            'Image'=>'',
+            'Description'=>'Matcha Cheese Cake',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bánh Mì Thịt Nguội',
+            'Image'=>'',
+            'Description'=>'Ham + Vietnamese Bread',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bánh Mì Gà Xé',
+            'Image'=>'',
+            'Description'=>'Shredded Chicken + Vietnamese Bread',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bánh Mì Xíu Mại',
+            'Image'=>'',
+            'Description'=>'Vietnamese Meatball + Vietnamese Bread',
+        	'Visibility'=>'Public',
+        ]);
+        DB::table('product')->insert([
+        	'Name'=>'Bánh Mì Cá Ngừ',
+            'Image'=>'',
+            'Description'=>'Tuna + Vietnamese Bread',
+        	'Visibility'=>'Public',
+        ]);
+        
+        //product_size
+        DB::table('product_size')->insert([
+            'Id_Product'=>1,
+            'Size'=>'S',
+            'Price'=>30000,
+            'Sale_Price'=>30000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>1,
+            'Size'=>'M',
+            'Price'=>40000,
+            'Sale_Price'=>40000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>1,
+            'Size'=>'L',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>2,
+            'Size'=>'S',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>2,
+            'Size'=>'M',
+            'Price'=>55000,
+            'Sale_Price'=>55000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>2,
+            'Size'=>'L',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>3,
+            'Size'=>'S',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>3,
+            'Size'=>'M',
+            'Price'=>55000,
+            'Sale_Price'=>55000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>3,
+            'Size'=>'L',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>4,
+            'Size'=>'S',
+            'Price'=>25000,
+            'Sale_Price'=>25000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>4,
+            'Size'=>'M',
+            'Price'=>30000,
+            'Sale_Price'=>30000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>4,
+            'Size'=>'L',
+            'Price'=>35000,
+            'Sale_Price'=>35000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>5,
+            'Size'=>'S',
+            'Price'=>25000,
+            'Sale_Price'=>25000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>5,
+            'Size'=>'M',
+            'Price'=>30000,
+            'Sale_Price'=>30000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>5,
+            'Size'=>'L',
+            'Price'=>35000,
+            'Sale_Price'=>35000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>6,
+            'Size'=>'S',
+            'Price'=>25000,
+            'Sale_Price'=>25000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>6,
+            'Size'=>'M',
+            'Price'=>30000,
+            'Sale_Price'=>30000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>6,
+            'Size'=>'L',
+            'Price'=>35000,
+            'Sale_Price'=>35000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>7,
+            'Size'=>'S',
+            'Price'=>25000,
+            'Sale_Price'=>25000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>7,
+            'Size'=>'M',
+            'Price'=>30000,
+            'Sale_Price'=>30000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>7,
+            'Size'=>'L',
+            'Price'=>35000,
+            'Sale_Price'=>35000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>8,
+            'Size'=>'S',
+            'Price'=>35000,
+            'Sale_Price'=>35000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>8,
+            'Size'=>'M',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>8,
+            'Size'=>'L',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>9,
+            'Size'=>'S',
+            'Price'=>35000,
+            'Sale_Price'=>35000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>9,
+            'Size'=>'M',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>9,
+            'Size'=>'L',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>10,
+            'Size'=>'S',
+            'Price'=>35000,
+            'Sale_Price'=>35000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>10,
+            'Size'=>'M',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>10,
+            'Size'=>'L',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>11,
+            'Size'=>'S',
+            'Price'=>35000,
+            'Sale_Price'=>35000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>11,
+            'Size'=>'M',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>11,
+            'Size'=>'L',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>12,
+            'Size'=>'S',
+            'Price'=>40000,
+            'Sale_Price'=>40000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>12,
+            'Size'=>'M',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>12,
+            'Size'=>'L',
+            'Price'=>55000,
+            'Sale_Price'=>55000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>13,
+            'Size'=>'S',
+            'Price'=>35000,
+            'Sale_Price'=>35000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>13,
+            'Size'=>'M',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>13,
+            'Size'=>'L',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>14,
+            'Size'=>'S',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>14,
+            'Size'=>'M',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>14,
+            'Size'=>'L',
+            'Price'=>55000,
+            'Sale_Price'=>55000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>15,
+            'Size'=>'S',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>15,
+            'Size'=>'M',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>15,
+            'Size'=>'L',
+            'Price'=>55000,
+            'Sale_Price'=>55000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>16,
+            'Size'=>'S',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>16,
+            'Size'=>'M',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>16,
+            'Size'=>'L',
+            'Price'=>55000,
+            'Sale_Price'=>55000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>17,
+            'Size'=>'S',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>17,
+            'Size'=>'M',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>17,
+            'Size'=>'L',
+            'Price'=>65000,
+            'Sale_Price'=>65000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>18,
+            'Size'=>'S',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>18,
+            'Size'=>'M',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>18,
+            'Size'=>'L',
+            'Price'=>65000,
+            'Sale_Price'=>65000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>19,
+            'Size'=>'S',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>19,
+            'Size'=>'M',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>19,
+            'Size'=>'L',
+            'Price'=>65000,
+            'Sale_Price'=>65000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>20,
+            'Size'=>'S',
+            'Price'=>50000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>20,
+            'Size'=>'M',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>21,
+            'Size'=>'None',
+            'Price'=>20000,
+            'Sale_Price'=>20000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>21,
+            'Size'=>'None',
+            'Price'=>20000,
+            'Sale_Price'=>20000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>22,
+            'Size'=>'None',
+            'Price'=>25000,
+            'Sale_Price'=>25000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>23,
+            'Size'=>'None',
+            'Price'=>25000,
+            'Sale_Price'=>25000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>24,
+            'Size'=>'None',
+            'Price'=>25000,
+            'Sale_Price'=>25000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>25,
+            'Size'=>'None',
+            'Price'=>30000,
+            'Sale_Price'=>30000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>26,
+            'Size'=>'None',
+            'Price'=>30000,
+            'Sale_Price'=>30000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>27,
+            'Size'=>'None',
+            'Price'=>30000,
+            'Sale_Price'=>30000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>28,
+            'Size'=>'None',
+            'Price'=>20000,
+            'Sale_Price'=>20000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>29,
+            'Size'=>'None',
+            'Price'=>20000,
+            'Sale_Price'=>20000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>30,
+            'Size'=>'None',
+            'Price'=>20000,
+            'Sale_Price'=>20000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>31,
+            'Size'=>'None',
+            'Price'=>20000,
+            'Sale_Price'=>20000,
+        ]);
+
+        //product_category
+        DB::table('product_category')->insert([
+        	'Id_Category'=>1,
+        	'Id_Product'=>1,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>1,
+        	'Id_Product'=>2,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>1,
+        	'Id_Product'=>3,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>1,
+        	'Id_Product'=>4,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>1,
+        	'Id_Product'=>5,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>1,
+        	'Id_Product'=>6,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>1,
+        	'Id_Product'=>7,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>2,
+        	'Id_Product'=>8,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>2,
+        	'Id_Product'=>9,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>2,
+        	'Id_Product'=>10,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>2,
+        	'Id_Product'=>11,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>2,
+        	'Id_Product'=>12,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>2,
+        	'Id_Product'=>13,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>3,
+        	'Id_Product'=>14,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>3,
+        	'Id_Product'=>15,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>3,
+        	'Id_Product'=>16,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>4,
+        	'Id_Product'=>17,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>4,
+        	'Id_Product'=>18,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>4,
+        	'Id_Product'=>19,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>4,
+        	'Id_Product'=>20,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>5,
+        	'Id_Product'=>21,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>5,
+        	'Id_Product'=>22,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>5,
+        	'Id_Product'=>23,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>5,
+        	'Id_Product'=>24,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>5,
+        	'Id_Product'=>25,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>5,
+        	'Id_Product'=>26,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>5,
+        	'Id_Product'=>27,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>6,
+        	'Id_Product'=>28,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>6,
+        	'Id_Product'=>29,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>6,
+        	'Id_Product'=>30,
+        ]);
+        DB::table('product_category')->insert([
+        	'Id_Category'=>6,
+        	'Id_Product'=>31,
+        ]);
+
+        //statistical
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>1,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>2,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>3,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>4,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>5,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>6,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>7,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>8,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>9,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>10,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>11,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>12,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>13,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>14,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>15,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>16,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>17,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>18,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>19,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>20,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>21,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>22,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>23,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>24,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>25,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>26,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>27,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>28,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>29,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>30,
+        ]);
+        DB::table('statistical')->insert([
+        	'Purchase'=>0,
+        	'Id_Product'=>31,
+        ]);
+
+        
+
+        //topping
+        DB::table('topping')->insert([
+        	'Name'=>'Trân Châu Đen',
+        	'Price'=>5000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Trân Châu Trắng',
+        	'Price'=>5000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Trân Châu Hoàng Kim',
+        	'Price'=>5000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Thạch Rau Câu Vị Cà Phê',
+        	'Price'=>8000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Thạch Rau Câu Vị Dâu',
+        	'Price'=>8000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Thạch Rau Câu Vị Matcha',
+        	'Price'=>8000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Hạt Thủy Tinh Nguyên Vị',
+        	'Price'=>8000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Hạt Thủy Tinh Vị Dâu',
+        	'Price'=>8000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Hạt Thủy Tinh Vị Cam',
+        	'Price'=>8000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Thạch Pudding Trứng',
+        	'Price'=>10000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Thạch Pudding Phô Mai',
+        	'Price'=>10000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Thạch Pudding Trái Cây',
+        	'Price'=>10000,
+        	'Status'=>'Còn hàng',
+        ]);
+        DB::table('topping')->insert([
+        	'Name'=>'Bánh Flan',
+        	'Price'=>15000,
+        	'Status'=>'Còn hàng',
+        ]);
+        
+        //customer_account
+        DB::table('customer_account')->insert([
+        	'Phone'=>'081412',
+        	'Password'=>'123',
+        ]);
+        DB::table('customer_account')->insert([
+        	'Phone'=>'741780',
+        	'Password'=>'123',
+        ]);
+        DB::table('customer_account')->insert([
+        	'Phone'=>'384921',
+        	'Password'=>'123',
+        ]);
+        DB::table('customer_account')->insert([
+        	'Phone'=>'123123',
+        	'Password'=>'123',
+        ]);
+
+        //customer_detail
+        DB::table('customer_detail')->insert([
+        	'Phone'=>'081412',
+        	'Name'=>'Tài',
+            'Birthday'=>'1999-02-24',
+            'Email'=>'taivuongduy2@gmail.com',
+        ]);
+        DB::table('customer_detail')->insert([
+        	'Phone'=>'741780',
+        	'Name'=>'Khoa',
+            'Birthday'=>'1999-10-10',
+            'Email'=>'ohwhynotme1999@gmail.com',
+        ]);
+        DB::table('customer_detail')->insert([
+        	'Phone'=>'384921',
+        	'Name'=>'Ân',
+            'Birthday'=>'1999-05-01',
+            'Email'=>'an.nt.techdev@gmail.com',
+        ]);
+        DB::table('customer_detail')->insert([
+        	'Phone'=>'123123',
+        	'Name'=>'Nhã',
+            'Birthday'=>'1999-11-18',
+            'Email'=>'nha1999@gmail.com',
+        ]);
+
+       //coupon
+        DB::table('coupon')->insert([
+            'Type'=>'Percent',
+            'Value'=>50,
+            'Description'=>'Giảm 50%',
+            'Started_at'=>'2020-10-27',
+            'Ended_at'=>'2020-10-31',
+        ]);
+        DB::table('coupon')->insert([
+            'Type'=>'Percent',
+            'Value'=>30,
+            'Description'=>'Giảm 30%',
+            'Started_at'=>'2020-10-27',
+            'Ended_at'=>'2020-10-31',
+        ]);
+        DB::table('coupon')->insert([
+            'Type'=>'Fixed',
+            'Value'=>50000,
+            'Description'=>'Giảm 50.000 vnđ',
+            'Started_at'=>'2020-10-27',
+            'Ended_at'=>'2020-10-31',
+        ]);
+        DB::table('coupon')->insert([
+            'Type'=>'Fixed',
+            'Value'=>30000,
+            'Description'=>'Giảm 30.000 vnđ',
+            'Started_at'=>'2020-10-27',
+            'Ended_at'=>'2020-10-31',
+        ]);
+        DB::table('coupon')->insert([
+            'Type'=>'Product',
+            'Value'=>1,
+            'Description'=>'Mua 1 Tặng 1',
+            'Started_at'=>'2020-10-27',
+            'Ended_at'=>'2020-10-31',
+        ]);
+
+        //payment_method
+        DB::table('payment_method')->insert([
+            'Name'=>'Thanh Toán Trực Tiếp',
+            'Status'=>'Hỗ trợ',
+        ]);
+        DB::table('payment_method')->insert([
+            'Name'=>'Thanh Toán Qua Thẻ Tín Dụng',
+            'Status'=>'Hỗ trợ',
+        ]);
+        DB::table('payment_method')->insert([
+            'Name'=>'Thanh Toán Qua Ví Điện Tử Paypal',
+            'Status'=>'Hỗ trợ',
+        ]);
+        DB::table('payment_method')->insert([
+            'Name'=>'Thanh Toán Qua Ví Điện Tử Momo',
+            'Status'=>'Hỗ trợ',
+        ]);
+        DB::table('payment_method')->insert([
+            'Name'=>'Thanh Toán Qua Ví Điện Tử Zalopay',
+            'Status'=>'Không hỗ trợ',
+        ]);
+
     }
 }
-/*
+
+/* Auto add datafiles
 php artisan db:seed --class=DatabaseSeeder
+*/
+
+/*
+php artisan migrate:rollback
+php artisan migrate
+php artisan db:seed --class=DatabaseSeeder
+php artisan serve
 */

@@ -114,10 +114,9 @@
    <!-- JS -->
    <script type="text/javascript" src="{{asset('Page/js/jquery-1.11.2.min.js')}}"></script>      <!-- jQuery -->
    <script type="text/javascript" src="{{asset('Page/js/templatemo-script.js')}}"></script>      <!-- Templatemo Script -->
+   
+   <script type="text/javascript" src="{{asset('Page/js/jquery-3.3.1.min.js')}}"></script>
 
-   @yield('script', '')
-
-   <!-- <script type="text/javascript" src="{{asset('Page/js/jquery-3.3.1.min.js')}}"></script> -->
    <script type="text/javascript" src="{{asset('Page/js/jquery-ui.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/popper.min.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/bootstrap.min.js')}}"></script>
@@ -128,7 +127,9 @@
    <script type="text/javascript" src="{{asset('Page/js/jquery.animateNumber.min.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/aos.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/main.js')}}"></script>
+
    <script type="text/javascript" src="{{asset('Page/js/login.js')}}"></script>
+   @yield('script', '')
 
  </body>
  </html>

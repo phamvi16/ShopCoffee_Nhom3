@@ -45,7 +45,6 @@ Route::get('/product-detail/{id?}', [ProductController::class,'show']);
 //Admin route group
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('/', [AdminController::class, 'index']);
-<<<<<<< HEAD
 
 	//Category route group
 	Route::group(['prefix' => 'category'], function(){
@@ -55,13 +54,6 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('/edit/{id}', [CategoryController::class, 'edit']);
 		Route::put('/update', [CategoryController::class, 'update']);
 	});
-=======
-	//Category
-	Route::get('/category', [CategoryController::class, 'index']);
-	Route::post('/add-category', [CategoryController::class, 'store']);
-	Route::get('/add-category', [CategoryController::class, 'add_cat']);
-	Route::get('/edit-category', [CategoryController::class, 'edit_cat']);
->>>>>>> OCA-32-Show_cart
 
 	//Product route group
 	Route::group(['prefix' => 'product'], function(){

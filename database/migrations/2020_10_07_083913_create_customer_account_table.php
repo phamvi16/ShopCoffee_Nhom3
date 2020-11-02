@@ -14,7 +14,7 @@ class CreateCustomerAccountTable extends Migration
     public function up()
     {
         Schema::create('customer_account', function (Blueprint $table) {
-            $table->bigInteger('Phone')->unsigned();
+            $table->string('Phone');
             $table->string('Password');
             $table->timestamps();
         });

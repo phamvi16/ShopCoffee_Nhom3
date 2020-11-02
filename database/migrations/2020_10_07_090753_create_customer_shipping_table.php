@@ -15,7 +15,7 @@ class CreateCustomerShippingTable extends Migration
     {
         Schema::create('customer_shipping', function (Blueprint $table) {
             $table->increments('Id');
-            $table->bigInteger('Phone')->unsigned();
+            $table->string('Phone');
             $table->integer('Id_Shipping')->unsigned();
             $table->timestamps();
         });

@@ -38,7 +38,7 @@ Route::get('/lien-he', [ContactController::class,'index']);
 Route::get('/dang-nhap', [LoginController::class, 'index']);
 Route::get('/gio-hang', [CartController::class,'index']);
 Route::get('/checkout', [CheckoutController::class,'index']);
-Route::get('/product-detail/', [ProductController::class,'detail_pro']);
+Route::get('/product-detail/{id?}', [ProductController::class,'show']);
 
 
 
@@ -73,6 +73,12 @@ Route::group(['prefix' => 'admin'], function(){
 });
 //show Product_category Menu
 Route::get('/menu/{Id_Category}', [MenuController::class, 'show_menu']);
+Route::post('/tim-kiem',[MenuController::class, 'search']);
+
+// login and signup route
+Route::get('/login', [LoginController::class, 'login']);
+Route::post('/signup', [LoginController::class, 'SignUp']);
+
 
 //Cart
 Route::post('/add-cart', [CartController::class,'add_cart']);

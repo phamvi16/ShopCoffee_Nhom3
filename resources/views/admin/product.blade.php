@@ -63,7 +63,7 @@
                                         @endforeach
                                         <td>
                                     <td>
-                                        <a href="{{URL::to('/edit-product')}}" class="active styling-edit">
+                                        <a href="{{URL::to('/admin/product/edit/' . $pro -> Id)}}" class="active styling-edit">
                                             <i class="fas fa-edit icon"></i></a>
                                         <a onclick="return confirm('Are you sure to delete this category?')" href="{{URL::to('/delete-product')}}" class="active styling-edit">
                                             <i class="fa fa-times icon text-danger text"></i>

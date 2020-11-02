@@ -5,7 +5,7 @@
 
         <section class="tm-section row">
             <div class="col-lg-12 tm-section-header-container margin-bottom-30">
-                <h2 class="tm-section-header gold-text tm-handwriting-font"><img src={{asset("Page/img/logo.png")}} alt="Logo" class="tm-site-logo"> Our Menus</h2>
+                <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="{{asset("Page/img/logo.png")}}" alt="Logo" class="tm-site-logo"> Our Menus</h2>
                 <div class="tm-hr-container">
                     <hr class="tm-hr">
                 </div>
@@ -22,13 +22,14 @@
                       </div>
 
                         @endforeach
+                        <img src="{{asset("Page/img/vertical-menu-bg.png")}}" alt="Menu bg" class="tm-side-menu-bg">
 
-                            <img src={{asset("Page/img/vertical-menu-bg.png")}} alt="Menu bg" class="tm-side-menu-bg " >
                     </div>
                 </div>
-                <a class="menu-item" href="{{URL::to('/product-detail')}}">
+
                  @foreach($all_product as $pro)
-                     @csrf
+                    <a class="menu-item" href="/product-detail/{{$pro->Id}}">
+                       @csrf
                     <div class="card card-menu col-sm-3 ml-4 mb-4 m-5 ">
                     <input type="hidden" value="{{$pro->Id}}" class="cart_product_id_{{$pro->Id}}">
                     <input type="hidden" value="{{$pro->Name}}" class="cart_product_name_{{$pro->Id}}">
@@ -38,7 +39,7 @@
 
                         <img class="card-img-top img-menu " src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
                         <div class="card-body mt-1">
-                            <h5 class="card-title">{{$pro->Name}}</h5>
+                            <h5 class="card-title"><a href="/product-detail/{{$pro->Id}}">{{$pro->Name}}</a></h5>
                             <p class="card-text">{{$pro->Description}}</p>
                             <div class="d-flex">
                             <a href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
@@ -47,7 +48,10 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach 
+                    </a>
+                    @endforeach
+
+
         </section>
     </div>
 </div>

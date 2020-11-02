@@ -127,16 +127,10 @@
    <script type="text/javascript" src="{{asset('Page/js/jquery.animateNumber.min.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/aos.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/main.js')}}"></script>
-<<<<<<< HEAD
-
-   <script type="text/javascript" src="{{asset('Page/js/login.js')}}"></script>
-   @yield('script', '')
-
-=======
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <script type="text/javascript" src="{{ asset('Page/js/addcart.js') }}"></script>
     <script type="text/javascript" src="{{asset('Page/js/login.js')}}"></script>
->>>>>>> OCA-32-Show_cart
+    @yield('script', '')
  </body>
  </html>
 

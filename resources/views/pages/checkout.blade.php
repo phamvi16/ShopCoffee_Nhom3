@@ -37,6 +37,7 @@
  ?>
 
 <div class="container checkout mb-4">
+
     <div class="col-xs-12 col-sm-7 wrapper-checkout-left">
         <!-- <h1 class="name text-center">Cafe House</h1>
         <div class="mt-5">
@@ -52,45 +53,29 @@
                 <span class="required"></span>
             </label>
         </div> -->
+        <form id="verify_form" method="post">
+        {{ csrf_field() }}
+            <h3  class="cre-acc" >Xác Nhận Thông Tin <small style="font-size:50%;"> (* Truy xuất thông tin cũ - tiết kiệm thời gian) </small> </h3>
+            <hr>
+            <label class="lab-2" for="phone">
+                <input class="form-control in-mail in-add" type="text" placeholder="Nhập Số Điện Thoại.." onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="phone" required>
+            </label>
+            <hr>
+            <label class="lab-2" for="isbought">
+                <input type="radio" name="isbought" value="first_time">Mua Lần Đầu</input>
+                <input type="radio" name="isbought" value="n_time">Đã Từng Mua</input>
+            </label>
+            <input  name="_token" type="hidden" value="{{csrf_token()}}">
+            <label class="lab-2">
+                <button class="btn btn-success" id="verifyBtn" type="submit">Xác Nhận</button>
+            </label>
+            
+        </form>
 
-        <h3 class="cre-acc">BILLING INFORMATION</h3>
-        <div class="hr-small"></div>
-        <div class="hr" style="width: 120%"></div>
-        <label>
-            <input class="form-control in-mail" type="text" placeholder="Frist Name">
-            <span class="required"></span>
-        </label>
-        <label class="lab-2">
-            <input class="form-control in-mail in-ln" type="text" placeholder="Last Name">
-            <span class="required"></span>
-        </label>
+        <div id="result">
+        </div>
 
-        <input class="form-control in-com mt-3" type="text" placeholder="Company">
-
-        <label class="mt-4 lab-address">
-            <input class="form-control in-mail in-add" type="text" placeholder="Address">
-            <span class="required req-add"></span>
-        </label>
-        <label class="lab-2 lab-city">
-            <input class="form-control in-city" type="text" placeholder="City">
-            <span class="required req-city"></span>
-        </label>
-
-        <label class="mt-3" style="width: 40%">
-            <input class="form-control in-mail" type="text" placeholder="Email">
-            <!-- <span class="required req-mail"></span> -->
-        </label>
-        <label class="lab-2 lab-city">
-            <input class="form-control in-mail in-phone" type="text" placeholder="Phone">
-            <span class="required req-phone"></span>
-        </label>
-
-        <textarea class="textarea pt-2 mt-3 form-group" name="note" id="note" cols="83" rows="5"
-            placeholder="Note.."></textarea>
-
-        <button class="btn btn-primary chkout-sub mt-4">CHECK OUT</button>
-
-    </div>
+    </div> <!--end form-->
 
     <div class="col-sm-5 wrapper-checkout-right pr-0">
         <div class="d-flex align-items-center">

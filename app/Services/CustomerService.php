@@ -52,6 +52,11 @@ class CustomerService{
             }
         }
     }
+    public function GetLastInfor($phone){
+        $phone = CustomerAccount::where('phone', '=', $phone)->first();
+        if($phone == null) return false;
+        
+    }
 }
 
 ?>

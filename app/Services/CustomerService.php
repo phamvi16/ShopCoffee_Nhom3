@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Models\CustomerAccount;
 use App\Models\CustomerDetail;
 use App\Models\CustomerShipping;
+use App\Models\ShippingInformation;
 use App\Models\Loyalty;
 use Illuminate\Support\Facades\DB;
 class CustomerService{
@@ -51,6 +52,26 @@ class CustomerService{
                 return 0;
             }
         }
+    }
+    public function GetInfor($phone){
+        $account = CustomerAccount::where('phone', '=', $phone)->first();
+        if($account == null) return false;
+
+        $general = CustomerShipping::where('phone','=',$phone)->first();
+        if($general == null) return false;
+
+        $detail = CustomerDetail::where('phone','=',$phone)->first();
+        $shipping_info = ShippingInformation::where('id','=',$general->Id_Shipping)->first();
+
+        $data = [];
+
+        $data['phone']=$phone;
+        $data['name']=$shipping_info->Name;
+        $data['email']=$shipping_info->Email;
+        $data['address']=$shipping_info->Address;
+        $data['birthday'] = $detail->Birthday;
+        // echo dd($data);
+        return $data;
     }
 }
 

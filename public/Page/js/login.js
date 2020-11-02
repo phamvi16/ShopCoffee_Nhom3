@@ -7,32 +7,43 @@ $(document).ready(function () {
         var phone = $("input[name='sphone']").val();
         var password = $("input[name='spassword']").val();
         var email = $("input[name='email']").val();
-
+        var email_regex= /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $.ajax({
-            url: "/signup",
-            type: 'POST',
-            data: {
-                name:name,
-                birthday:birthday,
-                phone:phone,
-                password:password,
-                email:email,
-            },
-            success: function (data) {
-                if(data =="Đăng Ký Thành Công"){
-                    $("#alert_mess").html("<h4 style='color:green'><b>"+data+"</b></h4>");
+        if(phone.length <9 || phone.length >11){
+            $("#alert_mess").html("<h4 style='color:red'><b>Số Điện Thoài gồm 9 - 11 kí tự</b></h4>");
+        }
+        else if(password.length <5 || password.length>20){
+            $("#alert_mess").html("<h4 style='color:red'><b>Mật Khẩu dài 5 - 20 kí tự</b></h4>");
+        }
+        else if(!email_regex.test(email)){
+            $("#alert_mess").html("<h4 style='color:red'><b>Email Sai Định dạng</b></h4>");
+        }
+        else{
+            $.ajax({
+                url: "/signup",
+                type: 'POST',
+                data: {
+                    name:name,
+                    birthday:birthday,
+                    phone:phone,
+                    password:password,
+                    email:email,
+                },
+                success: function (data) {
+                    if(data =="Đăng Ký Thành Công"){
+                        $("#alert_mess").html("<h4 style='color:green'><b>"+data+"</b></h4>");
+                    }
+                    else{
+                        $("#alert_mess").html("<h4 style='color:red'><b>"+data+"</b></h4>");
+                    }
                 }
-                else{
-                    $("#alert_mess").html("<h4 style='color:red'><b>"+data+"</b></h4>");
-                }
-            }
-        });
-
+            });
+    
+        }
 
     });
 

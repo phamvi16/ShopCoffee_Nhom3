@@ -14,7 +14,7 @@ $(document).ready(function () {
             }
         });
         if(phone.length <9 || phone.length >11){
-            $("#alert_mess").html("<h4 style='color:red'><b>Số Điện Thoài gồm 9 - 11 kí tự</b></h4>");
+            $("#alert_mess").html("<h4 style='color:red'><b>Số Điện Thoài dài 9 - 11 số</b></h4>");
         }
         else if(password.length <5 || password.length>20){
             $("#alert_mess").html("<h4 style='color:red'><b>Mật Khẩu dài 5 - 20 kí tự</b></h4>");
@@ -60,6 +60,10 @@ $(document).ready(function () {
         if(phone ==null || phone ==""){
             $('#result').empty();
             $('#result').append('<h4 style="color:red">Bạn Chưa Nhập Số điện thoại</h4>');
+        }
+        if(phone.length <9 || phone.length >11){
+            $('#result').empty();
+            $('#result').append('<h4 style="color:red">Số Điện Thoài dài 9 - 11 số</h4>');
         }
         else{
             $.ajax({

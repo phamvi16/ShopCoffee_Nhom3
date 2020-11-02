@@ -45,10 +45,15 @@ Route::get('/product-detail/{id?}', [ProductController::class,'show']);
 //Admin route group
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('/', [AdminController::class, 'index']);
-	//Category
-	Route::get('/category', [CategoryController::class, 'index']);
-	Route::get('/add-category', [CategoryController::class, 'add_cat']);
-	Route::get('/edit-category', [CategoryController::class, 'edit_cat']);
+
+	//Category route group
+	Route::group(['prefix' => 'category'], function(){
+		Route::get('/', [CategoryController::class, 'index']);
+		Route::get('/add', [CategoryController::class, 'add']);
+		Route::post('/insert', [CategoryController::class, 'insert']);
+		Route::get('/edit/{id}', [CategoryController::class, 'edit']);
+		Route::put('/update', [CategoryController::class, 'update']);
+	});
 
 	//Product route group
 	Route::group(['prefix' => 'product'], function(){

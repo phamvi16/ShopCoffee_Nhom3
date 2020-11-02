@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductSize;
 use App\Models\Category;
+use App\Services\CategoryService;
 
 class ProductController extends Controller
 {
@@ -76,7 +77,9 @@ class ProductController extends Controller
                     'Id_Category' => $category,
                     'Id_Product' => $newpro->Id
                 ]);
+                $upCount = (new CategoryService())->addCount($category);
             }
+            
 
             // Store size
             foreach ($sizes as $item) {
@@ -182,9 +185,17 @@ class ProductController extends Controller
             // Update Categories
             // Array Product categories (old)
             $arrOldCategories = array_column($pro->category->toArray(), 'Id');
+            foreach ($arrOldCategories as $categories)
+            {
+                $subCount = (new CategoryService())->subCount($categories);
+            }
 
             // Array Product categories (new from user)
             $arrNewCategories = $request->Category;
+            foreach ($arrNewCategories as $categories)
+            {
+                $addCount = (new CategoryService())->addCount($categories);
+            }
 
             // Get categories from array arrOldCategories that are not present in array arrNewCategories
             // Deleted categories

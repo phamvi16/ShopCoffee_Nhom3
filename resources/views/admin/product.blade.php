@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header d-flex">
-                    <h4 class="card-title"> All Category</h4>
+                    <h4 class="card-title"> All Product</h4>
                     <a href="product/create"class="btn btn-primary btn--icon add-btn">
                     <i class="card-title">Creatr Category </i></a>
                 </div>

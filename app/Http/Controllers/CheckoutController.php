@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Topping;
+use App\Services\CustomerService;
 use DB;
 class CheckoutController extends Controller
 {
@@ -18,7 +19,9 @@ class CheckoutController extends Controller
             return 0;
         }
         else{
-            return 1;
+            $data = (new CustomerService())->GetInfor($phone);
+            if(!$data) return 0;
+            return $data;
         }
     }
 }

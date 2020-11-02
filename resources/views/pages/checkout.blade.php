@@ -58,11 +58,12 @@
             <h3  class="cre-acc" >Xác Nhận Thông Tin <small style="font-size:50%;"> (* Truy xuất thông tin cũ - tiết kiệm thời gian) </small> </h3>
             <hr>
             <label class="lab-2" for="phone">
+            Nhập Số Điện Thoại 
                 <input class="form-control in-mail in-add" type="text" placeholder="Nhập Số Điện Thoại.." onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="phone" required>
             </label>
             <hr>
             <label class="lab-2" for="isbought">
-                <input type="radio" name="isbought" value="first_time">Mua Lần Đầu</input>
+                <input type="radio" name="isbought" value="first_time" checked>Mua Lần Đầu</input>
                 <input type="radio" name="isbought" value="n_time">Đã Từng Mua</input>
             </label>
             <input  name="_token" type="hidden" value="{{csrf_token()}}">
@@ -98,6 +99,7 @@
                     <img class="img-order-sum" src="/ProductImages/Products/'.$data[$i]['image'].'" alt="">
                     <div class="flex-column" style="flex-grow: 1">
                         <div class="ml-4 mb-2 name-sum">'.$data[$i]['name'].'</div>
+                        <div class="ml-4">Size: '.$data[$i]["size"].'</div>
                         <div class="ml-4">Topping:';
                        
             // $list_topping = collect($data[$i]['topping'])->keys();

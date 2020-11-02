@@ -53,17 +53,17 @@
                               <input type="date" placeholder="Ngày Sinh.." name="birthday" required>
 
                               <label for="sphone"><b>Số Điện Thoại</b></label>
-                              <input type="text" placeholder="điện thoại.." name="sphone" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+                              <input type="text" placeholder="điện thoại..(9-11 số)" maxlength="11" name="sphone" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
 
                               <label for="spassword"><b>Password</b></label>
-                              <input type="password" placeholder="Mật Khẩu..." name="spassword" required>
+                              <input type="password" maxlength="12" minlength="5" placeholder="Mật Khẩu (5-20 kí tự)" name="spassword" required>
 
                               <label for="email"><b>Email</b></label>
                               <input type="email" placeholder="Email.." name="email" required>
 
                               <input  name="_token" type="hidden" value="{{csrf_token()}}">
 
-                              <button class="signup-submit" id="signupBtn">Sign Up</button>
+                              <button class="signup-submit" id="signupBtn" type="submit">Sign Up</button>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12 control">

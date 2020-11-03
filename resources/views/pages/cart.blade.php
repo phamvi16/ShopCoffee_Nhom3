@@ -47,6 +47,8 @@
             <span class="col-sm-2 mt-4 total">30.000 VNĐ</span>
             <div class="hr hr-2 mt-4"></div>
         </div> -->
+      
+
       @if(Session::get('cart')==true)
 						@php
 								$total = 0;
@@ -56,6 +58,7 @@
 								$subtotal = $cart['product_price'];
 								$total+=$subtotal;
 							@endphp
+
           <div class="row items"> 
             <span class="col-xs-12 col-sm-6 d-flex align-items-center">
                 <img class="item-img" src="/ProductImages/Products/{{$cart['product_image']}}" >
@@ -74,7 +77,8 @@
             </span>
             <span class="col-sm-2 pl-5 mt-4">{{number_format($cart['product_price'],0,',','.')}} VNĐ</span>
             <span class="col-sm-2 qty mt-4">
-                <a href="#" data-id_form="{{$cart['product_id']}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary show-form mt-5">ADD TO CART</a>
+
+                <a href="#" data-id_form="{{$cart['product_id']}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary show-form mt-5">Up Date</a>
             </span>
             <span class="col-sm-2 mt-4 total">{{number_format($cart['product_price'],0,',','.')}} VNĐ</span>
             <div class="hr mt-4"></div>
@@ -136,10 +140,9 @@
                                   <div class="mb-4 mb-lg-0 mr-5"> Size:</div>
                                   <div class="form-check form-check-inline mr-5">
                                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="click_radio" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">{{$cart['product_size']}}</label>
+                                    <label class="form-check-label" for="inlineRadio1"></label>
                                   </div>
                                 </div>
-
                                 <div class="form-group row modal-header">
                                   <div class="col-md-12">
                                     <div class="m-4">Topping:</div>
@@ -150,15 +153,6 @@
                                         <label class="form-check-label" for="inlineRadio1">{{$topi->Name }} <p>{{$topi->Price }}</p> ></a> </label>
                                       </div>
                                       @endforeach
-
-                                      <!-- <div class="form-check form-check-inline mr-5">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Trân châu đen</label>
-                                      </div>
-                                      <div class="form-check form-check-inline mr-5">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Thạch trái cây</label>
-                                      </div> -->
                                     </div>
                                   </div>
                                   </div>

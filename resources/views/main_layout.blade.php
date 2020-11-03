@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name = "csrf-token" conten="{{csrf_token()}}"/>
   <title>Shop Coffee</title>
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet' type='text/css'>
@@ -130,6 +129,13 @@
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    <script type="text/javascript" src="{{ asset('Page/js/addcart.js') }}"></script>
     <script type="text/javascript" src="{{asset('Page/js/login.js')}}"></script>
+    <script>
+    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
     @yield('script', '')
  </body>
  </html>

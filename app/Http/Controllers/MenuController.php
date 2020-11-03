@@ -32,7 +32,6 @@ class MenuController extends Controller
        $search_product = Product::where('Name', 'like', '%' .$keywords. '%')->get();
 
        return view('pages.search')->with('search_product',$search_product)->with('all_category', $all_category);
-
    }
 }
 

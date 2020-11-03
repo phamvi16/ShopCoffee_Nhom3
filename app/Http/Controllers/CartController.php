@@ -6,16 +6,21 @@ use App\Models\ProductSize;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Cart;
-
+use session_start;
 class CartController extends Controller
 {
+
+    public function show($id = null){
+        $pro = Product::find($id);
+        return ($pro != null) ?  view('pages.product-detail', compact('pro')) : abort(404);
+    }
      public function gio_hang(Request $request){
-     // --seo
+    
        return view('pages.cart');
-     }
+    }
     // cách 1 fail:
     public function add_cart(Request $request){
-    // Session::forget('cart');
+        // Session::forget('cart');
       $data = $request->all();
       $session_id = substr(md5(microtime()),rand(0,26),5);
       $cart = Session::get('cart');
@@ -34,6 +39,16 @@ class CartController extends Controller
               'product_image' => $data['cart_product_image'],
               'product_price' => $data['cart_product_price'],
               'product_size' => $data['cart_product_size'],
+              'topping'=>[
+                'Name'=>'2000',
+                "Price"=>'30000',
+                "Status"=>'2000'
+               ],
+               'attribute'=>[
+                'Ice'=>'100',
+                'Sugar'=>'100'
+               ],
+               
               );
               Session::put('cart',$cart);    
           }
@@ -44,12 +59,21 @@ class CartController extends Controller
               'product_id' => $data['cart_product_id'],
               'product_image' => $data['cart_product_image'],
               'product_price' => $data['cart_product_price'],  
-              'product_size' => $data['cart_product_size'], 
+              'product_size' => $data['cart_product_size'],
+              'topping'=>[
+                '123'=>'2000',
+                "1"=>'30000',
+                "3"=>'2000'
+               ],
+                'attribute'=>[
+                'Ice'=>'100',
+                'Sugar'=>'100'],
           );
           Session::put('cart',$cart);
       }
       Session::save();
-    // print_r($data);
+        // echo json_encode($cart);
+    //  print_r($data);
     }
    public function del_product($session_id){
         $cart =Session::get('cart');
@@ -62,7 +86,7 @@ class CartController extends Controller
             session::put('cart',$cart);
             return redirect()->back()->with('message','delete successfully');
         }else{
-            return redirect()->back()->with('message','delete fali');
+            return redirect()->back()->with('message','delete falil');
         }
     }
 

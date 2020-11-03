@@ -46,9 +46,10 @@
                             <div class="clearfix product-variants-item">
                                 <span class="control-label">Size</span>
                                 <ul id="product-size-area">
-                                    @foreach ($pro->product_size->sortByDesc("Size") as $size)
+                                     @foreach ($pro->product_size->sortByDesc("Size") as $size)
+                                     @csrf
                                         <li class="input-container pull-xs-left">
-                                            <input class="input-radio" type="radio" name="Size" data-product-id="{{ $size->Id_Product ?? '' }}" data-saleprice="{{ number_format($size->Sale_Price, 0, '.', '.') ?? 0 }}" data-price="{{ number_format($size->Price, 0, '.', '.') ?? 0 }}" value="{{ $size->Id ?? '' }}" {{ ($loop->first) ? "checked" : "" }}>
+                                            <input class="input-radio add-to-cart" type="radio"  name="Size" data-product-id="{{ $size->Id_Product ?? '' }}" data-saleprice="{{ number_format($size->Sale_Price, 0, '.', '.') ?? 0 }}" data-price="{{ number_format($size->Price, 0, '.', '.') ?? 0 }}" value="{{ $size->Id ?? '' }}" {{ ($loop->first) ? "checked" : "" }}>
                                             <span class="radio-label">{{ $size->Size ?? '' }}</span>
                                         </li>
                                     @endforeach
@@ -65,15 +66,18 @@
                                 {{ number_format($pro->product_size->sortByDesc("Size")->first()->Price, 0, '.', '.') ?? 0 }} VND
                             </div>
                         </div>
-
                         <div class="product-add-to-cart">
                             <div class="add">
-                              <button class="btn btn-primary add-to-cart" data-button-action="add-to-cart" style="background-color: #644a3b">
-                                Add to cart
-                              </button>
+                            <input type="hidden" value="{{$pro->Id}}" class="cart_product_id_{{$pro->Id}}">
+                            <input type="hidden" value="{{$pro->Name}}" class="cart_product_name_{{$pro->Id}}">
+                            <input type="hidden" value="{{$pro->Image}}" class="cart_product_image_{{$pro->Id}}">
+                        
+                            <input type="hidden" value="{{$pro->product_size->first()->Sale_Price}}" class="cart_product_price_{{$pro->Id}}">
+                            <input type="hidden" value="{{$pro->product_size->first()->Size}}" class="cart_product_size_{{$pro->Id}}">
+                            
+                            <a href="#" data-id="{{$size->Id_Product}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
                             </div>
                             <div class="clearfix"></div>
-
                             <span id="product-availability">
                                 <span class="product-{{ ($pro->Visibility == "Public") ? "available" : "unavailable" }}" id="status">
                                     @if ($pro->Visibility == "Public")

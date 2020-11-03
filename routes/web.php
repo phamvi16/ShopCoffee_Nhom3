@@ -90,6 +90,7 @@ Route::post('/verify', [CheckoutController::class, 'Verify']);
 Route::post('/add-cart', [CartController::class,'add_cart']);
 Route::get('/gio-hang', [CartController::class,'gio_hang']);
 Route::get('/del-pro-cart/{session_is}', [CartController::class,'del_product']);
+Route::get('/show', [CartController::class, 'show']);
 
 
 

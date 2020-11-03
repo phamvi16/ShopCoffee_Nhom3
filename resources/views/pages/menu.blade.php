@@ -34,9 +34,11 @@
                     <input type="hidden" value="{{$pro->Id}}" class="cart_product_id_{{$pro->Id}}">
                     <input type="hidden" value="{{$pro->Name}}" class="cart_product_name_{{$pro->Id}}">
                     <input type="hidden" value="{{$pro->Image}}" class="cart_product_image_{{$pro->Id}}">
-                    <input type="hidden" value="{{$pro->product_size->first()->Sale_Price}}" class="cart_product_price_{{$pro->Id}}">
-                    <input type="hidden" value="{{$pro->product_size->first()->Size}}" class="cart_product_size_{{$pro->Id}}">
-
+                    
+                    @foreach($pro->product_size as $size)
+                    <input type="hidden" value="{{ $size->Sale_Price}}" class="cart_product_price_{{ $size->Id_Product}}">
+                    <input type="hidden" value="{{ $size->Size}}" class="cart_product_size_{{ $size->Id_Product}}">
+                    @endforeach
                         <img class="card-img-top img-menu " src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
                         <div class="card-body mt-1">
                             <h5 class="card-title"><a href="/product-detail/{{$pro->Id}}">{{$pro->Name}}</a></h5>

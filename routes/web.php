@@ -64,7 +64,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::put('/update', [ProductController::class, 'update']);
 		Route::get('/show', [ProductController::class, 'show']);
 	});
-	
+
 
 	//Customer
 	Route::get('/customer', [CustomerController::class, 'index']);
@@ -77,7 +77,7 @@ Route::group(['prefix' => 'admin'], function(){
 });
 //show Product_category Menu
 Route::get('/menu/{Id_Category}', [MenuController::class, 'show_menu']);
-Route::post('/tim-kiem',[MenuController::class, 'search']);
+Route::get('/tim-kiem',[MenuController::class, 'search']);
 
 // login and signup route
 Route::get('/login', [LoginController::class, 'login']);

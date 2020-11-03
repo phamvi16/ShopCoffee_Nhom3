@@ -53,6 +53,117 @@ class CustomerService{
             }
         }
     }
+    // Account Manage
+    public function InsertAccountFromView(Request $request){
+        DB::beginTransaction();
+        try {
+            CustomerAccount::create([
+                'phone'=> $request->phone,
+                'password'=>"random"
+            ]);
+            CustomerDetail::create([
+                'phone'=>$request->phone,
+                'name'=>$request->name,
+                'birthday'=>$request->birthday,
+                'email'=>$request->email
+            ]);
+            Loyalty::create([
+                'phone'=>$request->phone,
+                'level'=>'Bronze',
+                'point'=>0,
+                'discount_loyalty'=>0
+                
+            ]);
+            ShippingInformation::create([
+                'name'=>$request->name,
+                'phone'=>$request->phone,
+                'email'=>$request->email,
+                'address'=>$request->address
+            ]);
+            $idship = ShippingInformation::latest()->first();
+
+            CustomerShipping::create([
+                'phone'=>$request->phone,
+                'id_shipping'=>$idship['Id']
+            ]);
+            DB::commit();
+            return 1;
+        }catch (Exception $e) {
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+            return 0;
+        }
+    }
+    // ---------------------------------------------------Detail manage ------------------------------------------------------------------------------------
+    public function UpdateCustomerDetail($request){
+        DB::beginTransaction();
+        try{
+            DB::table('customer_detail')
+            ->updateOrInsert(
+                ['phone' => $request->phone],
+                [   'name' => $request->name,
+                    'email'=>$request->email,
+                    'birthday'=>$request->birthday
+                ]
+            );
+            // $findID = CustomerShipping::where('phone',$request->phone)->first();
+
+            // echo dd($findID['id_shipping']);
+
+            DB::table('shipping_information')
+            ->updateOrInsert(
+                ['phone'=>$request->phone ],
+                ['name'=>$request->name,'email'=>$request->email,'address'=>$request->address,'phone' => $request->phone]
+            );
+
+            $findID = DB::table('shipping_information')->where('phone', $request->phone)->first();
+
+            DB::table('customer_shipping')
+            ->updateOrInsert(
+                ['phone'=>$request->phone],
+                ['id_shipping'=>$findID->Id ]
+            );
+            // update loyalty when checkout success
+
+            DB::commit();
+            return 1;
+        }
+        catch(Exception $e){
+            DB::rollBack();
+            throw new Exception($e->getMessage());
+            return 0;
+        }
+
+    }
+    // ------------------------------------------- customer shipping ---------------------
+    public function InsertCustomerShipping($phone){
+
+        return 1;
+    }
+    // ----------------------------------------------end------------------------------
+
+    public function InsertOrUpdate(Request $request){
+        $isExistPhone = CustomerAccount::where('phone', '=', $request->phone)->first();
+        if($isExistPhone){
+            if($this->UpdateCustomerDetail($request) ){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+
+        }
+        else{
+            if($this-> InsertAccountFromView($request) == 1){
+                 return 1;
+            }
+            else{
+                return 0;
+            }
+            
+        }
+
+    }
     public function GetInfor($phone){
         $account = CustomerAccount::where('phone', '=', $phone)->first();
         if($account == null) return false;

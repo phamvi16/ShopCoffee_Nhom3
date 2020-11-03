@@ -1,38 +1,37 @@
 @extends('main_layout')
 @section('content')
 <?php 
-  Session::forget('cart');
-  $item = [
-    'id'=>'1',
-    'name'=>'Espresso / Americano',
-    'image'=>'product-20201012134003.jpeg',
-    'id_product_size'=>'2',
-    'size'=>'M',
-    'price_buy'=>'40000', // = sale_price
-    'sugar'=>'30',
-    'ice'=>'50',
-    'hot'=>'70',
-    'topping'=>[
-        "2"=>"5000"
-    ]
-  ];
-  Session::push('cart', $item);
-  $item = [
-    'id'=>'5',
-    'name'=>'Cà Phê Sữa',
-    'image'=>'product-20201012134003.jpeg',
-    'id_product_size'=>'13',
-    'size'=>'S',
-    'price_buy'=>'25000', // = sale_price
-    'sugar'=>'30',
-    'ice'=>'50',
-    'hot'=>'70',
-    'topping'=>[
-        "2"=>"5000",
-        "3"=>"1000"
-    ]
-  ];
-  Session::push('cart', $item);
+//   Session::forget('cart');
+//   $item = [
+//     'product_id'=>'1',
+//     'product_name'=>'Espresso / Americano',
+//     'product_image'=>'product-20201012134003.jpeg',
+//     'product_size'=>'M',
+//     'product_price'=>'40000', // = sale_price
+//     'sugar'=>'30',
+//     'ice'=>'50',
+//     'hot'=>'70',
+//     'topping'=>[
+//         "2"=>"5000"
+//     ]
+//   ];
+//   Session::push('cart', $item);
+//   $item = [
+//     'product_id'=>'5',
+//     'product_name'=>'Cà Phê Sữa',
+//     'product_image'=>'product-20201012134003.jpeg',
+//     'product_size'=>'S',
+//     'product_price'=>'25000', // = sale_price
+//     'sugar'=>'30',
+//     'ice'=>'50',
+//     'hot'=>'70',
+//     'topping'=>[
+//         "2"=>"5000",
+//         "3"=>"1000"
+//     ]
+//   ];
+//   Session::push('cart', $item);
+//   echo dd( Session::get('cart'));
 
  ?>
 
@@ -59,7 +58,7 @@
             <hr>
             <label class="lab-2" for="phone">
             Nhập Số Điện Thoại 
-                <input class="form-control in-mail in-add" type="text" placeholder="Nhập Số Điện Thoại.." onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="phone" required>
+                <input class="form-control in-mail in-add" type="text" placeholder="Nhập Số Điện Thoại.." onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="phone" maxlength="11" required>
             </label>
             <hr>
             <label class="lab-2" for="isbought">
@@ -68,7 +67,7 @@
             </label>
             <input  name="_token" type="hidden" value="{{csrf_token()}}">
             <label class="lab-2">
-                <button class="btn btn-success" id="verifyBtn" type="submit">Xác Nhận</button>
+                <button class="btn btn-success" id="verifyBtn">Xác Nhận</button>
             </label>
             
         </form>
@@ -93,13 +92,13 @@
 
             for($i=0; $i < Count($data);$i++){
                 
-                $totalPrice_Product += $data[$i]['price_buy'];
+                $totalPrice_Product += $data[$i]['product_price'];
         echo '<div class="hr mt-4"></div>
                 <div class="d-flex align-items-center">
-                    <img class="img-order-sum" src="/ProductImages/Products/'.$data[$i]['image'].'" alt="">
+                    <img class="img-order-sum" src="/ProductImages/Products/'.$data[$i]['product_image'].'" alt="">
                     <div class="flex-column" style="flex-grow: 1">
-                        <div class="ml-4 mb-2 name-sum">'.$data[$i]['name'].'</div>
-                        <div class="ml-4">Size: '.$data[$i]["size"].'</div>
+                        <div class="ml-4 mb-2 name-sum">'.$data[$i]['product_name'].'</div>
+                        <div class="ml-4">Size: '.$data[$i]["product_size"].'</div>
                         <div class="ml-4">Topping:';
                        
             // $list_topping = collect($data[$i]['topping'])->keys();
@@ -108,7 +107,8 @@
             //     echo  '<div><small><i>'.$item->Name.'</i></small></div>';
             //     $totalPrice_Topping+=$item->Price;
             // }
-            
+            if(Count($data[$i]['topping']) == 0) echo'none';
+            else
             foreach($data[$i]['topping'] as $id => $gia){
                 $item = collect($all_topping)->where('Id',$id)->first();
                 echo  '<div><small><i>'.$item->Name.'</i></small></div>';
@@ -116,7 +116,7 @@
             }
             echo'</div>
                     </div>
-                    <div class="mr-4">'.number_format($data[$i]['price_buy']).' VNĐ</div>
+                    <div class="mr-4">'.number_format($data[$i]['product_price']).' VNĐ</div>
                     
                 </div>
                 ';

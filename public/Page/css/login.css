@@ -46,3 +46,6 @@ span.psw {
     cursor: pointer;
     width: 100%;
 }
+.errorLog {
+    color: red;
+}

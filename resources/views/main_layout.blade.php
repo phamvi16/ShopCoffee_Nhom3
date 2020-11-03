@@ -116,7 +116,6 @@
    <script type="text/javascript" src="{{asset('Page/js/templatemo-script.js')}}"></script>      <!-- Templatemo Script -->
 
    <script type="text/javascript" src="{{asset('Page/js/jquery-3.3.1.min.js')}}"></script>
-
    <script type="text/javascript" src="{{asset('Page/js/jquery-ui.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/popper.min.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/bootstrap.min.js')}}"></script>
@@ -137,6 +136,7 @@
    </script>
    <script type="text/javascript" src="{{ asset('Page/js/addcart.js') }}"></script>
     <script type="text/javascript" src="{{asset('Page/js/login.js')}}"></script>
+    <script type="text/javascript" src="{{asset('Page/js/jquery.validate.js')}}"></script>
     @yield('script', '')
  </body>
  </html>

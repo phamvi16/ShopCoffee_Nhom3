@@ -17,14 +17,29 @@ use Illuminate\Support\Facades\DB;
 class OrderService{
 
     public function InsertOrder($data,Request $request){
-        $update_Customer = (new CustomerService())->InsertOrUpdate($request); // xong phan nay
 
-        if($update_Customer){
-            return 1;
-        }
-        else{
-            return 0;
-        }
+
+            $ProcessCustomer = (new CustomerService())->InsertOrUpdate_FromView($request); // xong phan nay
+
+            if($ProcessCustomer){
+                $ProcessOrder = $this->InsertData_Order($data,$request->phone);
+                if($ProcessOrder){
+                    return 1;
+                }
+                else{
+                    return "Xảy ra lỗi khi xác nhận hóa đơn! chúng tôi sẽ xử lý nhanh thôi!";
+                }
+            }
+            else{
+                return "Xảy ra lỗi khi nạp thông tin khách hàng! chúng tôi sẽ xử lý nhanh thôi!";
+            }
+
+    }
+    public function InsertData_Order($data,$phone){
+        return 1;
+    }
+    public function Insert_SingleRecord($phone){
+
     }
 }
 

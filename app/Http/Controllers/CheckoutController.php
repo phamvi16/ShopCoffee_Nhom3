@@ -37,12 +37,11 @@ class CheckoutController extends Controller
 
         $result = (new OrderService())->InsertOrder($data, $request);
         // echo dd($data);
-        if($result == 0){
-            return "fail";
+        if($result == 1){
+            return "success";
         }
         else{
-            return " success";
+            return $result;
         }
-            return 1;
     }
 }

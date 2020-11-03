@@ -28,32 +28,32 @@ class DatabaseSeeder extends Seeder
         //category
         DB::table('category')->insert([
         	'Name'=>'Cà Phê',
-            'Image'=>'',
+            'Image'=>'caphe.jpg',
             'Count'=>7
         ]);
         DB::table('category')->insert([
         	'Name'=>'Trà Tươi',
-            'Image'=>'',
+            'Image'=>'tratuoi.jpg',
             'Count'=>6
         ]);
         DB::table('category')->insert([
         	'Name'=>'Trà Sữa',
-            'Image'=>'',
+            'Image'=>'trasua.jpg',
             'Count'=>3
         ]);
         DB::table('category')->insert([
         	'Name'=>'Đá Xay',
-            'Image'=>'',
+            'Image'=>'daxay.jpg',
             'Count'=>4
         ]);
         DB::table('category')->insert([
         	'Name'=>'Bánh Ngọt',
-            'Image'=>'',
+            'Image'=>'banhngot.jpg',
             'Count'=>7
         ]);
         DB::table('category')->insert([
         	'Name'=>'Bánh Mặn',
-            'Image'=>'',
+            'Image'=>'banhman.jpg',
             'Count'=>4
         ]);
 

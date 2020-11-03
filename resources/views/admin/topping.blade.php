@@ -8,7 +8,7 @@
                     <div class="card ">
                         <div class="card-header d-flex">
                         <h4 class="card-title">All Topping</h4>
-                        <a href="" class="btn btn-primary btn--icon add-btn"></a>
+                        <a href="topping/add" class="btn btn-primary btn--icon add-btn"></a>
                         </div>
                         <div class="card-body ">
                             <div class="table-responsive">
@@ -33,28 +33,40 @@
 
                                     </thead>
                                     <tbody>
+
+                                    @php
+                                        $i=0;
+                                    @endphp
+                                            
+                                    @foreach($all_topping as $top)
+    
+                                        @php
+                                            $i++;
+                                        @endphp
+
                                         <tr>
                                             <td>
-                                                1
+                                                {{$i}}
                                             </td>
                                             <td>
-                                                Dakota Rice
+                                                {{$top->Name}}
                                             </td>
                                             <td>
-                                                20000
+                                                {{$top->Price}}
                                             </td>
                                             <td>
-                                                Còn hàng
+                                                {{$top->Status}}
                                             </td>
                                             <td>
-                                                <a href="" class="active styling-edit">
+                                                <a href="{{URL::to('/admin/topping/edit/' . $top->Id)}}" class="active styling-edit">
                                                     <i class="fas fa-edit icon"></i></a>
-                                                <a onclick="return confirm('Are you sure to delete this topping?')" href="" class="active styling-edit">
+                                                <a onclick="return confirm('Are you sure to delete this topping?')" href="{{URL::to('/admin/topping/delete/' . $top->Id)}}" class="active styling-edit">
                                                     <i class="fa fa-times icon text-danger text"></i>
                                                 </a>
                                             </td>
-
                                         </tr>
+                                    
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

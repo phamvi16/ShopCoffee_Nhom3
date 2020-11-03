@@ -54,7 +54,7 @@ class CustomerService{
         }
     }
     // Account Manage
-    public function InsertAccountFromView(Request $request){
+    public function InsertAccount_FromView(Request $request){
         DB::beginTransaction();
         try {
             CustomerAccount::create([
@@ -94,8 +94,9 @@ class CustomerService{
             return 0;
         }
     }
-    // ---------------------------------------------------Detail manage ------------------------------------------------------------------------------------
-    public function UpdateCustomerDetail($request){
+
+
+    public function UpdateCustomerInformation_FromView($request){
         DB::beginTransaction();
         try{
             DB::table('customer_detail')
@@ -106,9 +107,6 @@ class CustomerService{
                     'birthday'=>$request->birthday
                 ]
             );
-            // $findID = CustomerShipping::where('phone',$request->phone)->first();
-
-            // echo dd($findID['id_shipping']);
 
             DB::table('shipping_information')
             ->updateOrInsert(
@@ -123,7 +121,6 @@ class CustomerService{
                 ['phone'=>$request->phone],
                 ['id_shipping'=>$findID->Id ]
             );
-            // update loyalty when checkout success
 
             DB::commit();
             return 1;
@@ -135,35 +132,27 @@ class CustomerService{
         }
 
     }
-    // ------------------------------------------- customer shipping ---------------------
-    public function InsertCustomerShipping($phone){
 
-        return 1;
-    }
-    // ----------------------------------------------end------------------------------
 
-    public function InsertOrUpdate(Request $request){
+    public function InsertOrUpdate_FromView(Request $request){
         $isExistPhone = CustomerAccount::where('phone', '=', $request->phone)->first();
         if($isExistPhone){
-            if($this->UpdateCustomerDetail($request) ){
+            if($this->UpdateCustomerInformation_FromView($request) ){
                 return 1;
             }
-            else{
-                return 0;
-            }
+            else return 0;
 
         }
         else{
-            if($this-> InsertAccountFromView($request) == 1){
+            if($this->InsertAccount_FromView($request) == 1){
                  return 1;
             }
-            else{
-                return 0;
-            }
+            else return 0;
             
         }
 
     }
+
     public function GetInfor($phone){
         $account = CustomerAccount::where('phone', '=', $phone)->first();
         if($account == null) return false;

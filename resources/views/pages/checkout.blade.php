@@ -90,15 +90,15 @@
 
             $totalPrice_Product=0;
 
-            for($i=0; $i < Count($data);$i++){
+            foreach($data as $key =>$value){
                 
-                $totalPrice_Product += $data[$i]['product_price'];
+                $totalPrice_Product += $value['product_price'];
         echo '<div class="hr mt-4"></div>
                 <div class="d-flex align-items-center">
-                    <img class="img-order-sum" src="/ProductImages/Products/'.$data[$i]['product_image'].'" alt="">
+                    <img class="img-order-sum" src="/ProductImages/Products/'.$value['product_image'].'" alt="">
                     <div class="flex-column" style="flex-grow: 1">
-                        <div class="ml-4 mb-2 name-sum">'.$data[$i]['product_name'].'</div>
-                        <div class="ml-4">Size: '.$data[$i]["product_size"].'</div>
+                        <div class="ml-4 mb-2 name-sum">'.$value['product_name'].'</div>
+                        <div class="ml-4">Size: '.$value["product_size"].'</div>
                         <div class="ml-4">Topping:';
                        
             // $list_topping = collect($data[$i]['topping'])->keys();
@@ -107,16 +107,16 @@
             //     echo  '<div><small><i>'.$item->Name.'</i></small></div>';
             //     $totalPrice_Topping+=$item->Price;
             // }
-            if(Count($data[$i]['topping']) == 0) echo'none';
+            if(Count($value['topping']) == 0) echo'none';
             else
-            foreach($data[$i]['topping'] as $id => $gia){
+            foreach($value['topping'] as $id => $gia){
                 $item = collect($all_topping)->where('Id',$id)->first();
                 echo  '<div><small><i>'.$item->Name.'</i></small></div>';
                 $totalPrice_Topping+=$item->Price;
             }
             echo'</div>
                     </div>
-                    <div class="mr-4">'.number_format($data[$i]['product_price']).' VNĐ</div>
+                    <div class="mr-4">'.number_format($value['product_price']).' VNĐ</div>
                     
                 </div>
                 ';

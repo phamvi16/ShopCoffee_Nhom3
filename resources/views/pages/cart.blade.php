@@ -50,13 +50,8 @@
                                 </div>
                             </div>
                         </span>
-                        <span class="col-sm-2 mt-5 price-cart">{{ number_format($cart['product_price'], 0, ',', '.') }}
-                            VNĐ</span>
-                        {{-- <span class="col-sm-2 qty mt-4">
-                            <a href="#" data-id_form="{{ $cart['product_id'] }}" name="add-to-cart" type="add-to-cart"
-                                data-toggle="modal" data-target="#exampleModal" class="btn btn-primary show-form mt-5">ADD
-                                TO CART</a>
-                        </span> --}}
+                        <span class="col-sm-2 mt-5 price-cart">{{ number_format($cart['product_price'], 0, ',', '.') }} VNĐ</span>
+
                         <span data-id_form="{{ $cart['product_id'] }}" name="add-to-cart" type="add-to-cart"
                         data-toggle="modal" data-target="#exampleModal" class="col-sm-2 mt-5 show-form">{{ number_format($cart['product_price'], 0, ',', '.') }}
                             VNĐ
@@ -105,8 +100,6 @@
                 <button class="btn btn-primary btn-apply">APPLY</button>
             </div>
             <div class="hr mt-4"></div>
-
-
         </div>
     </div>
 
@@ -125,6 +118,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body p-5">
                     <form>
                         <div class="form-group row modal-header" id="size_form">
@@ -138,50 +132,43 @@
 
                         <div class="form-group row modal-header">
                             <div class="col-md-12">
-                                <div class="m-4">Topping:</div>
-                                <div class="text-center">
+                                <div class="m-4 font-weight-bold">Topping:</div>
+                                <div class="text-center row">
                                     @foreach (App\Models\Topping::All() as $topi)
-                                        <div class="form-check form-check-inline mr-4">
-                                            <input class="form-check-input" type="checkbox" name="topping[]"
-                                                id="inlineRadio1" value="option1">
-                                            <label class="form-check-label" for="inlineRadio1">{{ $topi->Name }}
-                                                <p>{{ $topi->Price }}</p> </a>
-                                            </label>
-                                        </div>
+                                        <ul style="list-style: none" class="text-left col-md-6">
+                                            <li class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label font-weight-normal ml-5" for="exampleCheck1">
+                                                    {{ $topi->Name }}
+                                                    <span style="font-size: 1.3rem"> &nbsp;&nbsp;&nbsp;{{ number_format($topi->Price, 0, ',', '.') }}đ</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <ul style="list-style: none" class="text-left col-md-6">
+                                            <li class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label font-weight-normal ml-5" for="exampleCheck1">
+                                                    {{ $topi->Name }}
+                                                    <span style="font-size: 1.3rem"> &nbsp;&nbsp;&nbsp;{{ number_format($topi->Price, 0, ',', '.') }}đ</span>
+                                                </label>
+                                            </li>
+                                        </ul>
                                     @endforeach
-
-                                    <!-- <div class="form-check form-check-inline mr-5">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Trân châu đen</label>
-                                                  </div>
-                                                  <div class="form-check form-check-inline mr-5">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Thạch trái cây</label>
-                                                  </div> -->
                                 </div>
                             </div>
                         </div>
-
-                        <span class="col-sm-2 qty mt-4">
-                            <input class="quant-input-modal pl-3" id="qty2632" type="number" min="1" value="1"
-                                placeholder="1">
-                        </span>
-                        <div class="form-group row ">
-                            <div class="col-md-6 ml-auto">
-                                <h4 class="modal-title text-black m-5" id="Size_click">Giá:
-                                    {{ number_format($total, 0, ',', '.') }}
-                                </h4>
-
+                        <div class="form-group text-center">
+                            <div class="ml-auto modal-title btn m-5 update-topping-btn" id="Size_click">
+                                OK: + {{ number_format($total, 0, ',', '.') }}
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <div class="col-md-6 ml-auto">
-                                <!-- <input type="text" hrf="#"   class="btn btn-block btn-primary text-white py-3 px-5 add-to-cart" value="Thêm vào giỏ" > -->
                                 <a href="{{ URL::to('/add-cart/1') }}"
                                     class=" btn btn-block btn-primary text-white py-3 px-5 add-to-cart" type="text"
                                     name="add-to-cart" id="iccart"> Add To Cart</a>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
             </div>

@@ -142,3 +142,9 @@
     height: fit-content;
     margin-top: 2.5rem;
 }
+.update-topping-btn {
+    background-color: #cf2127 !important;
+    color: #fff;
+    font-weight: 700;
+    padding: 1.2rem 8rem;
+}

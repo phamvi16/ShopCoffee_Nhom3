@@ -13,7 +13,7 @@
 .hr {
     background-color: #ddd;
     height: 0.5px;
-    width: 100%;
+    width: 90%;
     margin-bottom: 30px;
 }
 .wrapper-cart .left .items .hr-2 {
@@ -74,6 +74,7 @@
     grid-column: 5/7;
     border: 1px solid #ddd;
     margin-top: 120px;
+    height: fit-content;
 }
 .wrapper-cart .right .title {
     font-weight: 900;
@@ -125,4 +126,19 @@
 .wrapper-cart .right .btn-apply:hover {
     background-color: #88614a;
 }
-
+.icon-edit {
+    color: green;
+    font-size: 2.5rem;
+}
+.icon-dlt {
+    color: red;
+    font-size: 2rem;
+}
+.price-cart {
+    margin-left: -6%;
+}
+.btn-update {
+    max-width: fit-content;
+    height: fit-content;
+    margin-top: 2.5rem;
+}

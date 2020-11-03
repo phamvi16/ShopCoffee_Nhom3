@@ -15,6 +15,7 @@
   <!-- <link href="{{asset('Page/css/fontawsome-allcss.css')}}" rel="stylesheet"> -->
   <link href="{{asset('Page/css/bootstrap.min.css')}}" rel="stylesheet" async>
   <link href="{{asset('Page/css/font-awesome.min.css')}}" rel="stylesheet" async>
+  <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet">
   <link href="{{asset('Page/css/templatemo-style.css')}}" rel="stylesheet"async>
   <link href="{{asset('Page/css/main_layout.css')}}" rel="stylesheet"async>
   <link href="{{asset('Page/css/cart.css')}}" rel="stylesheet"async>

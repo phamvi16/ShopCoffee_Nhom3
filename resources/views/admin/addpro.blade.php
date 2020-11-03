@@ -192,7 +192,11 @@
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
                                     <label>Visibility</label>
-                                    <input type="text" class="form-control" name="Visibility" id="Visibility" value="{{ old('Visibility') }}" required>
+                                    <select style="opacity: 1; position: static" class="form-control" name="Visibility" id="Visibility" required>
+                                        <option value="Publish">Publish</option>
+                                        <option value="Hidden">Hidden</option>
+                                        <option value="Out-Stock">Out-Stock</option>
+                                    </select>
                                     @if($errors->has('Visibility'))
                                             <div class="alert-box error"><span>error: </span> {{ $errors->first('Visibility') }}</div>
                                         @endif

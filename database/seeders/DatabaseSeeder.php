@@ -28,32 +28,32 @@ class DatabaseSeeder extends Seeder
         //category
         DB::table('category')->insert([
         	'Name'=>'Cà Phê',
-            'Image'=>'',
+            'Image'=>'caphe.jpg',
             'Count'=>7
         ]);
         DB::table('category')->insert([
         	'Name'=>'Trà Tươi',
-            'Image'=>'',
+            'Image'=>'tratuoi.jpg',
             'Count'=>6
         ]);
         DB::table('category')->insert([
         	'Name'=>'Trà Sữa',
-            'Image'=>'',
+            'Image'=>'trasua.jpg',
             'Count'=>3
         ]);
         DB::table('category')->insert([
         	'Name'=>'Đá Xay',
-            'Image'=>'',
+            'Image'=>'daxay.jpg',
             'Count'=>4
         ]);
         DB::table('category')->insert([
         	'Name'=>'Bánh Ngọt',
-            'Image'=>'',
+            'Image'=>'banhngot.jpg',
             'Count'=>7
         ]);
         DB::table('category')->insert([
         	'Name'=>'Bánh Mặn',
-            'Image'=>'',
+            'Image'=>'banhman.jpg',
             'Count'=>4
         ]);
 
@@ -62,37 +62,37 @@ class DatabaseSeeder extends Seeder
         	'Name'=>'Espresso / Americano',
             'Image'=> 'espresso.jpeg',
             'Description'=>'Classical Coffee',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Latte / Cappucino',
             'Image'=>'latte.jpg',
             'Description'=>'Classical Coffee',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Mocha / Caramel Macchiato',
             'Image'=>'mocha.jpg',
             'Description'=>'Classical Coffee',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Cà Phê Đen',
             'Image'=>'cpd.jpg',
             'Description'=>'Vietnamese Coffee',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Cà Phê Sữa',
             'Image'=>'cps.jpeg',
             'Description'=>'Vietnamese Coffee With Condensed Milk',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bạc Xỉu',
             'Image'=>'bacxiu.jpg',
             'Description'=>'Vietnamese White Coffee',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Phin',
@@ -104,31 +104,31 @@ class DatabaseSeeder extends Seeder
         	'Name'=>'Trà Oolong',
             'Image'=>'oolong.jpg',
             'Description'=>'Oolong Tea',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Trà Đen',
             'Image'=>'blacktea.jpg',
             'Description'=>'Black Tea',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Trà Xanh',
             'Image'=>'greentea.jpg',
             'Description'=>'Green Tea',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Trà Lài',
             'Image'=>'jasminetea.jpg',
             'Description'=>'Jasmine Tea',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Trà Đào Cam Sả',
             'Image'=>'peachtea.jpg',
             'Description'=>'Peach Tea Mania',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Trà Sen',
@@ -140,109 +140,109 @@ class DatabaseSeeder extends Seeder
         	'Name'=>'Trà Sữa',
             'Image'=>'milktea.jpg',
             'Description'=>'Milk Tea',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Trà Sữa Matcha',
             'Image'=>'matchamt.jpg',
             'Description'=>'Matcha Milk Tea',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Trà Sữa Dâu',
             'Image'=>'strawberrymt.jpg',
             'Description'=>'Strawberry Milk Tea',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Cà Phê Đá Xay',
             'Image'=>'coffeefre.jpg',
             'Description'=>'Coffee Freeze',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Matcha Đá Xay',
             'Image'=>'matchafre.jpg',
             'Description'=>'Matcha Freeze',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Socola Đá Xay',
             'Image'=>'socolafre.jpg',
             'Description'=>'Socola Freeze',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Caramel Đá Xay',
             'Image'=>'caramelfre.jpg',
             'Description'=>'Caramel Freeze',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Tiramisu',
             'Image'=>'tiramisu.jpg',
             'Description'=>'Tiramisu Cake',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bánh Socola',
             'Image'=>'socolacake.jpg',
             'Description'=>'Socola Cake',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bánh Dâu',
             'Image'=>'strawberrycake.jpg',
             'Description'=>'Strawberry Cake',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bánh Matcha',
             'Image'=>'matchacake.jpg',
             'Description'=>'Matcha Cake',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bánh Phô Mai Socola',
             'Image'=>'socolacake.jpg',
             'Description'=>'Socola Cheese Cake',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bánh Phô Mai Dâu',
             'Image'=>'strawberrycake.jpg',
             'Description'=>'Strawberry Cheese Cake',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bánh Phô Mai Matcha',
             'Image'=>'matchacake.jpg',
             'Description'=>'Matcha Cheese Cake',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bánh Mì Thịt Nguội',
             'Image'=>'banhmi.jpeg',
             'Description'=>'Ham + Vietnamese Bread',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bánh Mì Gà Xé',
             'Image'=>'banhmi.jpeg',
             'Description'=>'Shredded Chicken + Vietnamese Bread',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bánh Mì Xíu Mại',
             'Image'=>'banhmi.jpeg',
             'Description'=>'Vietnamese Meatball + Vietnamese Bread',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Bánh Mì Cá Ngừ',
             'Image'=>'banhmi.jpeg',
             'Description'=>'Tuna + Vietnamese Bread',
-        	'Visibility'=>'Public',
+        	'Visibility'=>'Publish',
         ]);
         
         //product_size

@@ -63,21 +63,30 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('/edit/{id}', [ProductController::class, 'edit']);
 		Route::put('/update', [ProductController::class, 'update']);
 		Route::get('/show', [ProductController::class, 'show']);
+		Route::get('/delete/{id}', [ProductController::class, 'delete']);
 	});
 	
+	//Topping route group
+	Route::group(['prefix' => 'topping'], function(){
+		Route::get('/', [ToppingController::class, 'index']);
+		Route::get('/add', [ToppingController::class, 'add']);
+		Route::post('/insert', [ToppingController::class, 'insert']);
+		Route::get('/edit/{id}', [ToppingController::class, 'edit']);
+		Route::put('/update', [ToppingController::class, 'update']);
+		Route::get('/delete/{id}', [ToppingController::class, 'delete']);
+	});
+
 
 	//Customer
 	Route::get('/customer', [CustomerController::class, 'index']);
 
 	//Order
     Route::get('/order', [OrderController::class, 'index']);
-
-    //Topping
-    Route::get('/topping', [ToppingController::class, 'index']);
+    
 });
 //show Product_category Menu
 Route::get('/menu/{Id_Category}', [MenuController::class, 'show_menu']);
-Route::post('/tim-kiem',[MenuController::class, 'search']);
+Route::get('/tim-kiem',[MenuController::class, 'search']);
 
 // login and signup route
 Route::get('/login', [LoginController::class, 'login']);

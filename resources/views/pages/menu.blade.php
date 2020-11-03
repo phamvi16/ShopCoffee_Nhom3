@@ -5,7 +5,7 @@
 
         <section class="tm-section row">
             <div class="col-lg-12 tm-section-header-container margin-bottom-30">
-                <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="{{asset("Page/img/logo.png")}}" alt="Logo" class="tm-site-logo"> Our Menus</h2>
+                <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="{{asset("Page/img/logo.png")}}" alt="Logo" class="tm-site-logo"> {{(Request::is('tim-kiem')) ? 'Kết quả tìm kiếm cho "' . ($keywords??"") . '"': "Our Menus"}}</h2>
                 <div class="tm-hr-container">
                     <hr class="tm-hr">
                 </div>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                 @foreach($all_product as $pro)
+                 @forelse($all_product as $pro)
                     <a class="menu-item" href="/product-detail/{{$pro->Id}}">
                        @csrf
                     <div class="card card-menu col-sm-3 ml-4 mb-4 m-5 ">
@@ -49,7 +49,9 @@
                         </div>
                     </div>
                     </a>
-                    @endforeach
+                    @empty
+                    <div>Không có sản phẩm để hiển thị</div>
+                    @endforelse
 
 
         </section>

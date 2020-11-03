@@ -24,14 +24,17 @@ class MenuController extends Controller
         // dd($cate->product);
         return view('pages.menu', compact('all_product','all_category'));
 
-    }  
+    }
    public function search(Request $request){
         $keywords = $request->keywords_submit;
 
        $all_category = Category::All();
-       $search_product = Product::where('Name', 'like', '%' .$keywords. '%')->get();
+       $all_product = Product::where('Name', 'like', '%' .$keywords. '%')->get();
 
-       return view('pages.search')->with('search_product',$search_product)->with('all_category', $all_category);
+
+
+       return view('pages.menu')->with('all_product',$all_product)->with('all_category', $all_category)->with('keywords', $keywords);
+
    }
 }
 

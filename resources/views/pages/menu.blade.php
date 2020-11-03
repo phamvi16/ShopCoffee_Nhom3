@@ -42,9 +42,9 @@
                             <h5 class="card-title"><a href="/product-detail/{{$pro->Id}}">{{$pro->Name}}</a></h5>
                             <p class="card-text">{{$pro->Description}}</p>
                             <div class="d-flex">
-                            <a href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
-                            <a href="#"  class="btn btn-primary more-info ">{{$pro->product_size->sortByDesc("Size")->first()->Sale_Price}}</span>$</a>
-                            <a href="#"  class="btn btn-primary more-info ">{{$pro->product_size->sortByDesc("Size")->first()->Price}}</span>$</a>
+                            <p href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4">ADD TO CART</p>
+                            <p style="text-decoration: line-through" class="mt-4 mr-3 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Sale_Price)}}</span>đ</p>
+                            <p class="mt-4 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Price)}}</span>đ</p>
                             </div>
                         </div>
                     </div>

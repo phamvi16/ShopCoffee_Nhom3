@@ -22,31 +22,8 @@
             <span class="col-sm-2 total">TOTAL</span>
         </div>
         <div class="hr"></div>
-       
-        <!-- <div class="row items">
-            <span class="col-xs-12 col-sm-6 d-flex align-items-center">
-                <img class="item-img" src="https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG">
-                <div class="item-content">
-                    <div class="mt-5" style="font-weight: 600; font-size: 16px">Name</div>
-                    <div class="text mt-4">
-                        <div>Size: <apan></span></div>
-                        <div>Topping: ..</div>
-                    </div>
-                    <div class="mt-4 dlt">
-                        <i class="fas fa-times"></i>
-                        Delete
-                    </div>
-                </div>
-            </span>
-            <span class="col-sm-2 pl-5 mt-4"> VNĐ</span>
-            <span class="col-sm-2 qty mt-4">
-                <input class="quant-input pl-3" id="qty2632" type="number" min="1" value="1" placeholder="">
-                <div class="mt-4 dlt update">Update</div>
 
-            </span>
-            <span class="col-sm-2 mt-4 total">30.000 VNĐ</span>
-            <div class="hr hr-2 mt-4"></div>
-        </div> -->
+
       @if(Session::get('cart')==true)
 						@php
 								$total = 0;
@@ -56,7 +33,7 @@
 								$subtotal = $cart['product_price'];
 								$total+=$subtotal;
 							@endphp
-          <div class="row items"> 
+          <div class="row items">
             <span class="col-xs-12 col-sm-6 d-flex align-items-center">
                 <img class="item-img" src="/ProductImages/Products/{{$cart['product_image']}}" >
                 <div class="item-content">
@@ -67,7 +44,7 @@
                     </div>
                     <div class="mt-4 dlt">
                         <a href="{{url('/del-pro-cart/'.$cart['session_id'])}}"  class="btn btn-primary mr-4 mt-4">Delete</a>
-                        <i > 
+                        <i >
                         </i>
                     </div>
                 </div>
@@ -78,7 +55,7 @@
             </span>
             <span class="col-sm-2 mt-4 total">{{number_format($cart['product_price'],0,',','.')}} VNĐ</span>
             <div class="hr mt-4"></div>
-        </div> 
+        </div>
         @endforeach
         </div>
         <div class="right ml-5 mb-4">
@@ -92,7 +69,7 @@
               <div class="pl-5 pt-4 mr-5">Total Money</div>
               <div class="pl-5 pt-4 ">	{{number_format($total,0,',','.')}}VNĐ</div>
           </div>
-         
+
           <div class="hr mt-4"></div>
           <div id="open-coup">
               <div class="d-flex" onclick="showCoupon()">
@@ -118,7 +95,7 @@
       </div>
 
 
-                  
+
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                       <div class="modal-content">
@@ -145,9 +122,9 @@
                                     <div class="m-4">Topping:</div>
                                     <div class="text-center">
                                     @foreach(App\Models\Topping::All() as $topi)
-                                    <div class="form-check form-check-inline mr-4">        
+                                    <div class="form-check form-check-inline mr-4">
                                         <input class="form-check-input" type="checkbox" name="topping[]"  id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">{{$topi->Name }} <p>{{$topi->Price }}</p> ></a> </label>
+                                        <label class="form-check-label" for="inlineRadio1">{{$topi->Name }} <p>{{$topi->Price }}</p> </a> </label>
                                       </div>
                                       @endforeach
 
@@ -162,14 +139,14 @@
                                     </div>
                                   </div>
                                   </div>
-                                  
+
                                 <span class="col-sm-2 qty mt-4" >
                                     <input class="quant-input-modal pl-3" id="qty2632" type="number" min="1" value="1" placeholder="1" >
                                 </span>
                                    <div class="form-group row ">
                                   <div class="col-md-6 ml-auto">
                                   <h4 class="modal-title text-black m-5" id="Size_click" >Giá: {{number_format($total,0,',','.')}}</h4>
-                                   
+
                                   </div>
                                 </div>
                                 <div class="form-group row">
@@ -182,7 +159,7 @@
                          </div>
                       </div>
                     </div>
-              
+
                     @endif
 <script>
     function showCoupon() {

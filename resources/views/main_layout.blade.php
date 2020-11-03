@@ -114,7 +114,7 @@
    <!-- JS -->
    <script type="text/javascript" src="{{asset('Page/js/jquery-1.11.2.min.js')}}"></script>      <!-- jQuery -->
    <script type="text/javascript" src="{{asset('Page/js/templatemo-script.js')}}"></script>      <!-- Templatemo Script -->
-   
+
    <script type="text/javascript" src="{{asset('Page/js/jquery-3.3.1.min.js')}}"></script>
 
    <script type="text/javascript" src="{{asset('Page/js/jquery-ui.js')}}"></script>
@@ -128,6 +128,13 @@
    <script type="text/javascript" src="{{asset('Page/js/aos.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/main.js')}}"></script>
    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <script>
+    $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+   </script>
    <script type="text/javascript" src="{{ asset('Page/js/addcart.js') }}"></script>
     <script type="text/javascript" src="{{asset('Page/js/login.js')}}"></script>
     @yield('script', '')

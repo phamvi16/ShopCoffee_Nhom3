@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header d-flex">
-                    <h4 class="card-title"> All Category</h4>
+                    <h4 class="card-title"> All Product</h4>
                     <a href="product/create"class="btn btn-primary btn--icon add-btn">
                     <i class="card-title">Creatr Category </i></a>
                 </div>
@@ -45,7 +45,6 @@
                                         <P><br>{{ $cate-> Size }}</p>
                                         @endforeach
                                         </td>
-
                                         <td>
                                         @foreach($pro -> product_size as $cate)
                                         <p><br>{{ $cate-> Price }}$</p>
@@ -57,9 +56,10 @@
                                         <p><br>{{ $cate-> Sale_Price }}$</p>
                                         @endforeach
                                         </td>
-
+                                        
+                                        <td>
                                         @foreach($pro -> category as $cate)
-                                        <td>{{ $cate-> Name }}</td>
+                                        <p><br>{{ $cate-> Name }}</p>
                                         @endforeach
                                         <td>
                                     <td>

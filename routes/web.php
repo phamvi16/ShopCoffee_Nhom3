@@ -45,10 +45,15 @@ Route::get('/product-detail/{id?}', [ProductController::class,'show']);
 //Admin route group
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('/', [AdminController::class, 'index']);
-	//Category
-	Route::get('/category', [CategoryController::class, 'index']);
-	Route::get('/add-category', [CategoryController::class, 'add_cat']);
-	Route::get('/edit-category', [CategoryController::class, 'edit_cat']);
+
+	//Category route group
+	Route::group(['prefix' => 'category'], function(){
+		Route::get('/', [CategoryController::class, 'index']);
+		Route::get('/add', [CategoryController::class, 'add']);
+		Route::post('/insert', [CategoryController::class, 'insert']);
+		Route::get('/edit/{id}', [CategoryController::class, 'edit']);
+		Route::put('/update', [CategoryController::class, 'update']);
+	});
 
 	//Product route group
 	Route::group(['prefix' => 'product'], function(){
@@ -59,7 +64,7 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::put('/update', [ProductController::class, 'update']);
 		Route::get('/show', [ProductController::class, 'show']);
 	});
-
+	
 
 	//Customer
 	Route::get('/customer', [CustomerController::class, 'index']);
@@ -77,8 +82,15 @@ Route::post('/tim-kiem',[MenuController::class, 'search']);
 // login and signup route
 Route::get('/login', [LoginController::class, 'login']);
 Route::post('/signup', [LoginController::class, 'SignUp']);
+
 //checkout route
 Route::post('/verify', [CheckoutController::class, 'Verify']);
+Route::post('/processcheckout', [CheckoutController::class, 'Checkout']);
+
+//Cart
+Route::post('/add-cart', [CartController::class,'add_cart']);
+Route::get('/gio-hang', [CartController::class,'gio_hang']);
+Route::get('/del-pro-cart/{session_is}', [CartController::class,'del_product']);
 
 
 

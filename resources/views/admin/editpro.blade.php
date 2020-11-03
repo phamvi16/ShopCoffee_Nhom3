@@ -154,7 +154,21 @@
                                 <div class="col-md-6 pr-1">
                                     <div class="form-group">
                                         <label>Visibility</label>
-                                        <input type="text" class="form-control" name="Visibility" id="Visibility" value="{{$pro->Visibility ?? ""}}" required>
+                                        <select style="opacity: 1; position: static" class="form-control" name="Visibility" id="Visibility" required>
+                                            @if ($pro->Visibility == 'Publish')
+                                                <option value="Publish" selected>Publish</option>
+                                                <option value="Hidden">Hidden</option>
+                                                <option value="Out-Stock">Out-Stock</option>
+                                            @elseif ($pro->Visibility == 'Hidden')
+                                                <option value="Publish">Publish</option>
+                                                <option value="Hidden" selected>Hidden</option>
+                                                <option value="Out-Stock">Out-Stock</option>
+                                            @elseif ($pro->Visibility == 'Out-Stock')
+                                                <option value="Publish">Publish</option>
+                                                <option value="Hidden">Hidden</option>
+                                                <option value="Out-Stock" selected>Out-Stock</option>
+                                            @endif
+                                        </select>
                                         @if($errors->has('Email'))
                                             <div class="alert-box error"><span>error: </span> {{ $errors->first('Email') }}</div>
                                         @endif

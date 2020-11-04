@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\OrderTopping;
 use App\Models\ProductSize;
+use App\Models\Attribute;
 
 use App\Models\CustomerAccount;
 use App\Models\CustomerDetail;
@@ -98,11 +99,11 @@ class OrderService{
         }
     }
     public function Insert_OrderProduct($data){
+        $Order = Order::latest()->first(); // $isOder['Id'];
+
         DB::beginTransaction();
         try{
             foreach($data as $key => $product){
-
-                $Order = Order::latest()->first(); // $isOder['Id'];
                 $productsize = DB::table('product_size')->where('Size', $product['product_size'])->where('Id_product',$product['product_id'])->first();
 
                 OrderProduct::create([
@@ -110,8 +111,26 @@ class OrderService{
                     'id_order'=>$Order->Id,
                     'price_buy'=>$productsize->Sale_Price
                 ]);
+                DB::commit();
+                
+                $OrderProduct = OrderProduct::latest()->first();
+
+                foreach($product['topping'] as $id_topping=>$price){
+                    OrderTopping::create([
+                        'id_order_product'=> $OrderProduct->Id,
+                        'id_topping'=>$id_topping,
+                        'price_buy'=>$price
+                    ]);
                 }
-            DB::commit();
+                // Attribute::create([
+                //     'id_order_product'=>$OrderProduct->Id,
+                //     'sugar'=>$product['sugar'],
+                //     'ice'=>$product['ice'],
+                //     'hot'=>$product['hot']
+                // ]);
+
+                DB::commit();   
+            }
             return 1;
         }
         catch(Exception $e){

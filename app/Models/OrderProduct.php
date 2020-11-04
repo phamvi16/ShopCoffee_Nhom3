@@ -10,6 +10,8 @@ class OrderProduct extends Model
     use HasFactory;
 
     protected $table = "order_product";
+    protected $primaryKey = 'Id';
+    protected $fillable = ['id_product_size','id_order','price_buy'];
 
     public function topping()
     {

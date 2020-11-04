@@ -107,10 +107,13 @@ $(document).ready(function () {
                         </label>
 
                         <input class="form-control in-com mt-3" type="text" placeholder="Địa Chỉ.." name="address" required>
-                        <select class="form-control in-com mt-3" id="selectList">
+
+                        <select class="form-control in-com mt-3" id="select_PaymentMethod" name="payment">
                         </select>
-                        
-                        <select class="form-control in-com mt-3" id="select_ShippingMethod">
+
+                        <select class="form-control in-com mt-3" id="select_ShippingMethod" name="shipping">
+                            <option vale="Giao Tận nơi" >Giao Tận Nơi</option>
+                            <option value="Khách Đến Nhận">Khách Đến Nhận</option>
                         </select>
 
 
@@ -122,7 +125,7 @@ $(document).ready(function () {
                         ready(function () {
 
                             for(var i = 0;i<data['all_paymentmethod'].length;i++){
-                                $('#selectList').append(`<option>`+data['all_paymentmethod'][i].Name+`</option>`)
+                                $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i]+`">`+data['all_paymentmethod'][i].Name+`</option>`);
                             }
 
                             $('#checkoutBtn').click(function (e) {
@@ -170,11 +173,14 @@ $(document).ready(function () {
                                     var birthday = $('input[name="birthday"]').val();
                                     var address = $('input[name="address"]').val();
                                     var email = $('input[name="email"]').val();
+                                    var payment = $('#select_PaymentMethod').children("option:selected").val();
+                                    var shipping = $('#select_ShippingMethod').children("option:selected").val();
                                     $.ajaxSetup({
                                         headers: {
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         }
                                     });
+
                                     $.ajax({
                                         url: "/processcheckout",
                                         type: 'POST',
@@ -183,7 +189,10 @@ $(document).ready(function () {
                                             phone: phone,
                                             birthday: birthday,
                                             address: address,
-                                            email: email
+                                            email: email,
+                                            payment:payment,
+                                            shipping:shipping
+
                                         },
                                         success: function (data) {
                                             alert(data);
@@ -215,10 +224,12 @@ $(document).ready(function () {
                             </label>
                             <input class="form-control in-com mt-3" type="text" placeholder="Địa Chỉ.." name="address" value="` + data['address'] + `" required>
 
-                            <select class="form-control in-com mt-3" id="selectList">
+                            <select class="form-control in-com mt-3" id="select_PaymentMethod">
                             </select>    
 
                             <select class="form-control in-com mt-3" id="select_ShippingMethod">
+                                <option vale="Giao Tận nơi" >Giao Tận Nơi</option>
+                                <option value="Khách Đến Nhận">Khách Đến Nhận</option>
                             </select>
                             
                             <textarea class="textarea pt-2 mt-3 form-group" name="note" id="note" cols="83" rows="5"
@@ -228,7 +239,7 @@ $(document).ready(function () {
                         </form>
                         `).ready(function () {
                             for(var i = 0;i<data['all_paymentmethod'].length;i++){
-                                $('#selectList').append(`<option>`+data['all_paymentmethod'][i].Name+`</option>`)
+                                $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i]+`">`+data['all_paymentmethod'][i].Name+`</option>`);
                             }
                             $('#checkoutBtn').click(function (e) {
                                 e.preventDefault();
@@ -275,6 +286,8 @@ $(document).ready(function () {
                                     var birthday = $('input[name="birthday"]').val();
                                     var address = $('input[name="address"]').val();
                                     var email = $('input[name="email"]').val();
+                                    var payment = $('#select_PaymentMethod').children("option:selected").val();
+                                    var shipping = $('#select_ShippingMethod').children("option:selected").val();
                                     $.ajaxSetup({
                                         headers: {
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -288,7 +301,9 @@ $(document).ready(function () {
                                             phone: phone,
                                             birthday: birthday,
                                             address: address,
-                                            email: email
+                                            email: email,
+                                            payment:payment,
+                                            shipping:shipping
                                         },
                                         success: function (data) {
                                             alert(data);

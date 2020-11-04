@@ -17,25 +17,26 @@ class CheckoutController extends Controller
     public function Verify(Request $request){
         $phone = $request->phone;
         $isbought = $request->isbought;
+
+        // echo json_encode($all_paymentmethod);
         $all_paymentmethod = DB::table('payment_method')->where('status','Hỗ Trợ')->get();
         
-        // echo json_encode($all_paymentmethod);
-
         if($isbought == "first_time"){
             $data['isBought']=0;
             $data['all_paymentmethod']=$all_paymentmethod;
             return $data;
         }
         else{
-            $data = (new CustomerService())->GetInfor($phone);
-            $all_paymentmethod = DB::table('payment_method')->where('status','Hỗ Trợ')->get();
-            $data['all_paymentmethod']=$all_paymentmethod;
-
-            if(!$data){
-                $data['isBought']=0;
+            $data2 = (new CustomerService())->GetInfor($phone);
+            // $all_paymentmethod = DB::table('payment_method')->where('status','Hỗ Trợ')->get();
+            if(!$data2){
+                $data2['isBought']=0;
             }
-            $data['isBought']=1;
-            return $data;
+            else{
+                $data2['isBought']=1;
+            }
+            $data2['all_paymentmethod']=$all_paymentmethod;
+            return $data2;
         }
     }
     public function Checkout(Request $request){
@@ -49,7 +50,7 @@ class CheckoutController extends Controller
         // $data = Session::get('cart'); -- ko hieu sao lai ko chay dc lenh nay`
         $data = session('cart');
 
-        $result = (new OrderService())->InsertOrder($data, $request);
+        $result = (new OrderService())->InsertCheckout($data, $request);
         // echo dd($data);
         if($result == 1){
             return "success";

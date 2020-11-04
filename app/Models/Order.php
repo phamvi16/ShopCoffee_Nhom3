@@ -10,6 +10,8 @@ class Order extends Model
     use HasFactory;
 
     protected $table = "order";
+    protected $primaryKey = 'Id';
+    protected $fillable = ['customer','coupon','payment_method','shipping_method','total_quantity','total','point','status'];
 
     public function product()
     {

@@ -37,37 +37,43 @@
                 <ul class="nav">
                     <li>
                         <a href="/admin">
-                            <i class="now-ui-icons design_app"></i>
+                            <i class="now-ui-icons business_chart-bar-32"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/category">
-                            <i class="now-ui-icons education_atom"></i>
+                            <i class="now-ui-icons design_bullet-list-67"></i>
                             <p>Category</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/product">
-                            <i class="now-ui-icons location_map-big"></i>
+                            <i class="now-ui-icons design_app"></i>
                             <p>Product</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/topping">
-                        <i class="now-ui-icons design_bullet-list-67"></i>
+                        <i class="now-ui-icons shopping_box"></i>
                             <p>Topping</p>
                         </a>
                     </li>
                     <li>
+                        <a href="/admin/coupon">
+                            <i class="now-ui-icons shopping_tag-content"></i>
+                            <p>Coupon</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/admin/customer">
-                            <i class="now-ui-icons ui-1_bell-53"></i>
+                            <i class="now-ui-icons users_single-02"></i>
                             <p>Customer</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/order">
-                            <i class="now-ui-icons users_single-02"></i>
+                            <i class="now-ui-icons shopping_cart-simple"></i>
                             <p>Order</p>
                         </a>
                     </li>

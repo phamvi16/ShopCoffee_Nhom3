@@ -18,6 +18,7 @@ class CreateOrderTable extends Migration
             $table->integer('Customer')->unsigned();
             $table->integer('Coupon')->unsigned();
             $table->integer('Payment_Method')->unsigned();
+            $table->string('Shipping_Method');
             $table->integer('Total_Quantity')->unsigned();
             $table->float('Total');
             $table->integer('Point');

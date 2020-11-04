@@ -64,9 +64,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{URL::to('/admin/customer/' . $phone)}}" class="active styling-edit">
-                                                    <i class="fas fa-edit icon"></i></a>
-                                                <a href="{{URL::to('/admin/customer/shipping/' . $phone)}}" class="active styling-edit">
-                                                    <i class="fas fa-edit icon"></i></a>
+                                                    <i class="fas fa-list icon"></i>
                                                 </a>
                                             </td>
                                         </tr>

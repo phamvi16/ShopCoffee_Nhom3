@@ -10,6 +10,9 @@ class Topping extends Model
     use HasFactory;
 
     protected $table = "topping";
+    protected $primaryKey = 'Id';
+    public $incrementing = true;
+    protected $fillable = ['Name', 'Price', 'Status'];
 
     public function order()
     {

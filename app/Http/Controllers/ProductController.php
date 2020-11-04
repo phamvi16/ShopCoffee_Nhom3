@@ -12,11 +12,13 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductSize;
 use App\Models\Category;
+use App\Models\Statistical;
+use App\Services\CategoryService;
 
 class ProductController extends Controller
 {
     public function index(){
-          $all_product = Product::all();
+          $all_product = Product::where('Visibility', '<>', 'Delete')->get();
             return view('admin.product', compact('all_product'));
     }
     
@@ -65,7 +67,9 @@ class ProductController extends Controller
                 'Name' => $request->Name,
                 'Description' => $request->Description,
                 'Image' => $imageName,
-                'Visibility' => $request->Visibility
+                'Visibility' => $request->Visibility,
+                "created_at" =>  \Carbon\Carbon::now(), 
+                "updated_at" => \Carbon\Carbon::now()
             ]);
 
             // // Get categories from user
@@ -76,7 +80,17 @@ class ProductController extends Controller
                     'Id_Category' => $category,
                     'Id_Product' => $newpro->Id
                 ]);
+                $upCount = (new CategoryService())->addCount($category);
             }
+
+            // Auto Create Statistical
+            $pur = 0;
+            Statistical::create([
+                'Id_Product' => $newpro->Id,
+                'Purchase' => $pur,
+                "created_at" =>  \Carbon\Carbon::now(), 
+                "updated_at" => \Carbon\Carbon::now()
+            ]);
 
             // Store size
             foreach ($sizes as $item) {
@@ -182,9 +196,17 @@ class ProductController extends Controller
             // Update Categories
             // Array Product categories (old)
             $arrOldCategories = array_column($pro->category->toArray(), 'Id');
+            foreach ($arrOldCategories as $categories)
+            {
+                $subCount = (new CategoryService())->subCount($categories);
+            }
 
             // Array Product categories (new from user)
             $arrNewCategories = $request->Category;
+            foreach ($arrNewCategories as $categories)
+            {
+                $addCount = (new CategoryService())->addCount($categories);
+            }
 
             // Get categories from array arrOldCategories that are not present in array arrNewCategories
             // Deleted categories
@@ -244,6 +266,25 @@ class ProductController extends Controller
             return redirect("admin/product/edit/" . $pro->Id)->with('error', $message);
         }
 
+    }
+    
+    // Delete Product
+    public function delete($id)
+    {
+        DB::beginTransaction();
+        try {
+            $top = Product::find($id);            
+            $top->Visibility = 'Delete';
+            $top->save();
+
+            DB::commit();
+            return redirect("admin/product");
+        }
+        catch (Exception $e) {
+            DB::rollBack();
+            $message = "An unexpected error occurred. Failed to delete Product.";
+            return redirect("admin/product")->with('error', $message);
+        }
     }
 
     // --------Pages

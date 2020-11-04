@@ -10,7 +10,8 @@ class CustomerShipping extends Model
     use HasFactory;
 
     protected $table = "customer_shipping";
-
+    protected $primaryKey = 'Id';
+    protected $fillable = ['phone','id_shipping'];
     public function order()
     {
         return $this->hasMany(Order::class, 'Customer');

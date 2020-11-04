@@ -36,7 +36,11 @@ class OrderService{
 
     }
     public function InsertData_Order($data,$phone){
-        return 1;
+        for($i = 0 ;$i<Count($data);$i++){
+            $data[$i]['coupon']='1';
+            // $data[$i]['payment_method']="1";
+            // $data[$i]
+        }
     }
     public function Insert_SingleRecord($phone){
 

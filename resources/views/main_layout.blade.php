@@ -136,7 +136,7 @@
             });
    </script>
    <script type="text/javascript" src="{{ asset('Page/js/addcart.js') }}"async></script>
-    <script type="text/javascript" src="{{asset('Page/js/login.js')}}" async></script>
+    <script type="text/javascript" src="{{asset('Page/js/khoa.js')}}" async></script>
     <script type="text/javascript" src="{{asset('Page/js/jquery.validate.js')}}"async></script>
     @yield('script', '')
  </body>

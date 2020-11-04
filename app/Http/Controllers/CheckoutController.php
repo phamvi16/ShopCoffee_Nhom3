@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Topping;
+use App\Models\PaymentMethod;
 use App\Services\CustomerService;
 use App\Services\OrderService;
 use DB;
@@ -16,12 +17,24 @@ class CheckoutController extends Controller
     public function Verify(Request $request){
         $phone = $request->phone;
         $isbought = $request->isbought;
+        $all_paymentmethod = DB::table('payment_method')->where('status','Hỗ Trợ')->get();
+        
+        // echo json_encode($all_paymentmethod);
+
         if($isbought == "first_time"){
-            return 0;
+            $data['isBought']=0;
+            $data['all_paymentmethod']=$all_paymentmethod;
+            return $data;
         }
         else{
             $data = (new CustomerService())->GetInfor($phone);
-            if(!$data) return 0;
+            $all_paymentmethod = DB::table('payment_method')->where('status','Hỗ Trợ')->get();
+            $data['all_paymentmethod']=$all_paymentmethod;
+
+            if(!$data){
+                $data['isBought']=0;
+            }
+            $data['isBought']=1;
             return $data;
         }
     }
@@ -32,6 +45,7 @@ class CheckoutController extends Controller
         // $birthday = $request->birthday;
         // $address = $request->address;
         // $email = $request->email;
+
         // $data = Session::get('cart'); -- ko hieu sao lai ko chay dc lenh nay`
         $data = session('cart');
 

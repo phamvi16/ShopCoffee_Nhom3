@@ -34,6 +34,7 @@ class CartController extends Controller
               'product_image' => $data['cart_product_image'],
               'product_price' => $data['cart_product_price'],
               'product_size' => $data['cart_product_size'],
+              'topping'=>[]
               );
               Session::put('cart',$cart);    
           }
@@ -44,7 +45,8 @@ class CartController extends Controller
               'product_id' => $data['cart_product_id'],
               'product_image' => $data['cart_product_image'],
               'product_price' => $data['cart_product_price'],  
-              'product_size' => $data['cart_product_size'], 
+              'product_size' => $data['cart_product_size'],
+              'topping'=>[] 
           );
           Session::put('cart',$cart);
       }

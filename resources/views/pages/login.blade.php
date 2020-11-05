@@ -11,7 +11,8 @@
                     <h4>Đăng Nhập</h4>
                </div>
                <div style="padding-top:30px" class="panel-body">
-                    <form id="loginform" class="form-horizontal" role="form" action="/login">
+                    <form id="loginform" method="post" action="/login">
+                    <h4 style="color:red"><b id="warning_mess"></b></h4>
                         <div class="container">
                               <label for="phone"><b>Số Điện Thoại</bbe></label>
                               <input type="text" placeholder="Tài Khoản..." name="phone" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
@@ -53,10 +54,10 @@
                               <input type="date" placeholder="Ngày Sinh.." name="birthday" required>
 
                               <label for="sphone"><b>Số Điện Thoại</b></label>
-                              <input type="text" placeholder="điện thoại..(9-11 số)" maxlength="11" name="sphone" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
+                              <input type="text" placeholder="điện thoại..(9-11 số)" maxlength="11" minlength="9" name="sphone" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
 
                               <label for="spassword"><b>Password</b></label>
-                              <input type="password" maxlength="12" minlength="5" placeholder="Mật Khẩu (5-20 kí tự)" name="spassword" required>
+                              <input type="password" maxlength="20" minlength="5" placeholder="Mật Khẩu (5-20 kí tự)" name="spassword" required>
 
                               <label for="email"><b>Email</b></label>
                               <input type="email" placeholder="Email.." name="email" required>

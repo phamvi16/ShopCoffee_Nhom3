@@ -12,7 +12,8 @@
 //     'ice'=>'50',
 //     'hot'=>'70',
 //     'topping'=>[
-//         "2"=>"5000"
+//         "2"=>"5000",
+//         "3"=>"8000"
 //     ]
 //   ];
 //   Session::push('cart', $item);
@@ -26,8 +27,7 @@
 //     'ice'=>'50',
 //     'hot'=>'70',
 //     'topping'=>[
-//         "2"=>"5000",
-//         "3"=>"1000"
+//         "2"=>"5000"
 //     ]
 //   ];
 //   Session::push('cart', $item);
@@ -112,7 +112,7 @@
             foreach($value['topping'] as $id => $gia){
                 $item = collect($all_topping)->where('Id',$id)->first();
                 echo  '<div><small><i>'.$item->Name.'</i></small></div>';
-                $totalPrice_Topping+=$item->Price;
+                $totalPrice_Topping+=$gia;
             }
             echo'</div>
                     </div>
@@ -144,14 +144,14 @@
 
         <div class="d-flex">
             <div class="subtotal mb-2">Shipping</div>
-            <div class="mr-4">Free Ship</div>
+            <div class="mr-4" id="ShipCost">0 VNĐ</div>
         </div>
 
         <div class="hr mt-4 mb-4"></div>
 
         <div class="d-flex wrapper-total">
             <div class="total-w">Tổng Cộng</div>
-            <div class="mr-4 total">{{number_format($totalPrice_Topping + $totalPrice_Product)}} VNĐ</div>
+            <div class="mr-4 total" id="SumCost" data-value="{{$totalPrice_Topping + $totalPrice_Product}}">{{number_format($totalPrice_Topping + $totalPrice_Product)}} VNĐ</div>
         </div>
 
 

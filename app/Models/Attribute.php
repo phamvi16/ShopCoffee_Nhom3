@@ -10,6 +10,7 @@ class Attribute extends Model
     use HasFactory;
 
     protected $table = "attribute";
+    protected $fillable = ['id_order_product','sugar','ice','hot'];
 
     public function order_product()
     {

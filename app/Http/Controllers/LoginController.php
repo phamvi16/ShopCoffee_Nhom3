@@ -18,11 +18,10 @@ class LoginController extends Controller
         $result = (new CustomerService())->CheckLogin($phone,$password);
         if($result){
             $request->session()->put('user', $phone);
-            return redirect()->to('/menu');
+            // return redirect()->to('/menu');
+            return 1;
         }
-        else{
-            echo "fail";
-        }
+        else return 0;
     }
     public function SignUp(Request $request){
         $name = $request->name;

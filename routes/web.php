@@ -88,7 +88,9 @@ Route::group(['prefix' => 'admin'], function(){
 	});
 
 	//Customer
-	Route::get('/customer', [CustomerController::class, 'index']);
+	Route::group(['prefix' => 'customer'], function(){
+		Route::get('/', [CustomerController::class, 'index']);
+	});
 
 	//Order
     Route::get('/order', [OrderController::class, 'index']);
@@ -100,7 +102,7 @@ Route::get('/menu/{Id_Category}', [MenuController::class, 'show_menu']);
 Route::get('/tim-kiem',[MenuController::class, 'search']);
 
 // login and signup route
-Route::get('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'Login']);
 Route::post('/signup', [LoginController::class, 'SignUp']);
 
 //checkout route

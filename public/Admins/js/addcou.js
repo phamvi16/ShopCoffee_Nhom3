@@ -42,14 +42,14 @@ $(document).ready(function() {
             document.getElementById('Value').setAttribute("Min", 0);
             document.getElementById('Value').setAttribute("Max", 50);
             $('#Value').val(50);
-            //document.getElementById('Value').setAttribute("Value", 0);
+            $('#Value').attr('disabled', false);
         }
         else
         {
             document.getElementById('Value').setAttribute("Min", 0);
             document.getElementById('Value').setAttribute("Max", 30000);
             $('#Value').val(30000);
-            //document.getElementById('Value').setAttribute("Value", 0);
+            $('#Value').attr('disabled', false);
         }
     });
 

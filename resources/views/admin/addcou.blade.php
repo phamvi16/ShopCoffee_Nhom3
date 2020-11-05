@@ -39,7 +39,7 @@
                                         <label>Type</label>
                                         <br>
                                         <!-- <select style="opacity: 1; position: static" class="form-control" name="Type" id="Type" onmousedown="checkType()" required> -->
-                                        <input id="per" type="radio" name="Type" value="Percent" checked >
+                                        <input id="per" type="radio" name="Type" value="Percent">
                                         <label>Percent (0% -> 50%)</label>
                                         <br>
                                         <input id="fix" type="radio" name="Type" value="Fixed">
@@ -59,7 +59,7 @@
                                 <div class="col-md-6 pr-1">
                                     <div class="form-group">
                                         <label>Value</label>
-                                        <input style="opacity: 1; position: static" type="number" class="form-control" name="Value" id="Value" min="0" max="50" required>
+                                        <input style="opacity: 1; position: static" type="number" class="form-control" name="Value" value="0" id="Value" min="0" max="50" required disabled>
                                         @if($errors->has('Value'))
                                             <div class="alert-box error"><span>error: </span> {{ $errors->first('Value') }}</div>
                                         @endif

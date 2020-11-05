@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\OrderTopping;
 use App\Models\ProductSize;
+use App\Models\Attribute;
 
 use App\Models\CustomerAccount;
 use App\Models\CustomerDetail;
@@ -44,7 +45,12 @@ class OrderService{
         $customer_shipping = DB::table('shipping_information')->where('phone', $phone)->first();
         $coupon = "1";
         $total_quantity=0;
-        $total=0;
+        if($shipping_method =="Giao Tận Nơi"){
+            $total=15000;
+        }
+        else{
+            $total=0;
+        }
         foreach($data as $key =>$value){
             $total_quantity+=1;
             $total += $value['product_price'];
@@ -64,7 +70,13 @@ class OrderService{
 
         $isSuccess_InsertOder = $this->Insert_OrderTable($customer_shipping->Id,$coupon,$payment_method,$shipping_method,$total_quantity,$total,$point,$status);
         if($isSuccess_InsertOder){
-            return $this->Insert_OrderProduct($data);
+            $isSuccess_UpdatePoint = (new CustomerService)->UpdatePoint($point,$phone);
+            if($isSuccess_UpdatePoint){
+                return $this->Insert_OrderProduct($data);
+            }
+            else{
+                return 0;
+            }
         }
         else{
             return 0;
@@ -98,19 +110,32 @@ class OrderService{
         }
     }
     public function Insert_OrderProduct($data){
+        $Order = Order::latest()->first(); // $isOder['Id'];
         DB::beginTransaction();
         try{
-            foreach($data as $key => $product){
-
-                $Order = Order::latest()->first(); // $isOder['Id'];
+        foreach($data as $key => $product){
                 $productsize = DB::table('product_size')->where('Size', $product['product_size'])->where('Id_product',$product['product_id'])->first();
 
-                OrderProduct::create([
+                $newOrderProduct = OrderProduct::create([
                     'id_product_size'=>$productsize->Id,
                     'id_order'=>$Order->Id,
                     'price_buy'=>$productsize->Sale_Price
                 ]);
+
+                foreach($product['topping'] as $id_topping=>$price){
+                    OrderTopping::create([
+                        'id_order_product'=> $newOrderProduct->Id,
+                        'id_topping'=>$id_topping,
+                        'price_buy'=>$price
+                    ]);
                 }
+                Attribute::create([
+                    'id_order_product'=>$newOrderProduct->Id,
+                    'sugar'=>$product['sugar'],
+                    'ice'=>$product['ice'],
+                    'hot'=>$product['hot']
+                ]);
+            }
             DB::commit();
             return 1;
         }

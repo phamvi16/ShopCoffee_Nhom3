@@ -6,6 +6,7 @@ use App\Models\CustomerDetail;
 use App\Models\CustomerShipping;
 use App\Models\ShippingInformation;
 use App\Models\Loyalty;
+
 use Illuminate\Support\Facades\DB;
 class CustomerService{
 
@@ -55,11 +56,12 @@ class CustomerService{
     }
     // Account Manage
     public function InsertAccount_FromView(Request $request){
+        $newpass = substr(md5(microtime()),rand(0,26),10);
         DB::beginTransaction();
         try {
             CustomerAccount::create([
                 'phone'=> $request->phone,
-                'password'=>"random"
+                'password'=>$newpass
             ]);
             CustomerDetail::create([
                 'phone'=>$request->phone,
@@ -74,17 +76,17 @@ class CustomerService{
                 'discount_loyalty'=>0
                 
             ]);
-            ShippingInformation::create([
+            $newShippingInfo = ShippingInformation::create([
                 'name'=>$request->name,
                 'phone'=>$request->phone,
                 'email'=>$request->email,
                 'address'=>$request->address
             ]);
-            $idship = ShippingInformation::latest()->first();
+            // $idship = ShippingInformation::latest()->first();
 
             CustomerShipping::create([
                 'phone'=>$request->phone,
-                'id_shipping'=>$idship['Id']
+                'id_shipping'=>$newShippingInfo->Id
             ]);
             DB::commit();
             return 1;
@@ -172,6 +174,9 @@ class CustomerService{
         $data['birthday'] = $detail->Birthday;
         // echo dd($data);
         return $data;
+    }
+    public function UpdatePoint($point,$phone){
+            return Loyalty::where('phone',$phone)->increment('Point',$point);
     }
 }
 

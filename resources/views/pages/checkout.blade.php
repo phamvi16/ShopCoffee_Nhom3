@@ -1,36 +1,36 @@
 @extends('main_layout')
 @section('content')
 <?php 
-//   Session::forget('cart');
-//   $item = [
-//     'product_id'=>'1',
-//     'product_name'=>'Espresso / Americano',
-//     'product_image'=>'product-20201012134003.jpeg',
-//     'product_size'=>'M',
-//     'product_price'=>'40000', // = sale_price
-//     'sugar'=>'30',
-//     'ice'=>'50',
-//     'hot'=>'70',
-//     'topping'=>[
-//         "2"=>"5000"
-//     ]
-//   ];
-//   Session::push('cart', $item);
-//   $item = [
-//     'product_id'=>'5',
-//     'product_name'=>'Cà Phê Sữa',
-//     'product_image'=>'product-20201012134003.jpeg',
-//     'product_size'=>'S',
-//     'product_price'=>'25000', // = sale_price
-//     'sugar'=>'30',
-//     'ice'=>'50',
-//     'hot'=>'70',
-//     'topping'=>[
-//         "2"=>"5000",
-//         "3"=>"1000"
-//     ]
-//   ];
-//   Session::push('cart', $item);
+  Session::forget('cart');
+  $item = [
+    'product_id'=>'1',
+    'product_name'=>'Espresso / Americano',
+    'product_image'=>'product-20201012134003.jpeg',
+    'product_size'=>'M',
+    'product_price'=>'40000', // = sale_price
+    'sugar'=>'30',
+    'ice'=>'50',
+    'hot'=>'70',
+    'topping'=>[
+        "2"=>"5000",
+        "3"=>"8000"
+    ]
+  ];
+  Session::push('cart', $item);
+  $item = [
+    'product_id'=>'5',
+    'product_name'=>'Cà Phê Sữa',
+    'product_image'=>'product-20201012134003.jpeg',
+    'product_size'=>'S',
+    'product_price'=>'25000', // = sale_price
+    'sugar'=>'30',
+    'ice'=>'50',
+    'hot'=>'70',
+    'topping'=>[
+        "2"=>"5000"
+    ]
+  ];
+  Session::push('cart', $item);
 //   echo dd( Session::get('cart'));
 
  ?>
@@ -112,7 +112,7 @@
             foreach($value['topping'] as $id => $gia){
                 $item = collect($all_topping)->where('Id',$id)->first();
                 echo  '<div><small><i>'.$item->Name.'</i></small></div>';
-                $totalPrice_Topping+=$item->Price;
+                $totalPrice_Topping+=$gia;
             }
             echo'</div>
                     </div>
@@ -144,14 +144,14 @@
 
         <div class="d-flex">
             <div class="subtotal mb-2">Shipping</div>
-            <div class="mr-4">Free Ship</div>
+            <div class="mr-4" id="ShipCost">0 VNĐ</div>
         </div>
 
         <div class="hr mt-4 mb-4"></div>
 
         <div class="d-flex wrapper-total">
             <div class="total-w">Tổng Cộng</div>
-            <div class="mr-4 total">{{number_format($totalPrice_Topping + $totalPrice_Product)}} VNĐ</div>
+            <div class="mr-4 total" id="SumCost" data-value="{{$totalPrice_Topping + $totalPrice_Product}}">{{number_format($totalPrice_Topping + $totalPrice_Product)}} VNĐ</div>
         </div>
 
 

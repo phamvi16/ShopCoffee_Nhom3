@@ -89,7 +89,7 @@ Route::get('/menu/{Id_Category}', [MenuController::class, 'show_menu']);
 Route::get('/tim-kiem',[MenuController::class, 'search']);
 
 // login and signup route
-Route::get('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'Login']);
 Route::post('/signup', [LoginController::class, 'SignUp']);
 
 //checkout route

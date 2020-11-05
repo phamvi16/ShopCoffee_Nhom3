@@ -66,6 +66,7 @@
                                             <div class="form-group">
                                                 <label>Value</label>
                                                 <input style="opacity: 1; position: static" type="number" class="form-control" name="Value" id="Value" min="0" max="50" value="{{$cou->Value ?? ""}}" required >
+                                                <label>Phá là tui khóa đó nha!</label>
                                                 @if($errors->has('Value'))
                                                     <div class="alert-box error"><span>error: </span> {{ $errors->first('Value') }}</div>
                                                 @endif
@@ -78,6 +79,7 @@
                                             <div class="form-group">
                                                 <label>Value</label>
                                                 <input style="opacity: 1; position: static" type="number" class="form-control" name="Value" id="Value" min="0" max="30000" value="{{$cou->Value ?? ""}}" required >
+                                                <label>Phá là tui khóa đó nha!</label>
                                                 @if($errors->has('Value'))
                                                     <div class="alert-box error"><span>error: </span> {{ $errors->first('Value') }}</div>
                                                 @endif

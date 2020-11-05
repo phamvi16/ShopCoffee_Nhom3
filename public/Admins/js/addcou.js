@@ -53,15 +53,40 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on("change, mouseup, keyup", "#Value", function()
+    $(document).on("click", function()
+    {
+        $('#Value').attr('disabled', false);
+    });
+
+    $(document).on("change, mouseup, mousemove, keyup, keydown, keypress", function()
     {
         var maxVal = $('#Value').attr('max');
         var val = $('#Value').val();
-        if (val > maxVal)
+        if (val.length >= maxVal.length)
         {
-            $('#Value').val(maxVal);
+            if (val.length == maxVal.length)
+            {
+                if (val > maxVal)
+                {
+                    $('#Value').val($('#Value').attr('max'));
+                    $('#Value').attr('disabled', true);
+                }
+            }
+            else
+            {
+                $('#Value').val($('#Value').attr('max'));
+                $('#Value').attr('disabled', true);
+            }
         }
         
     });
+
+    // $('#Value').on('keyup, keydown, keypress', function(){
+    //     if ($('#Value').val() > $('#Value').attr('max').length)
+    //     {
+    //         $('#Value').val($('#Value').attr('max'));
+    //     }
+        
+    // });
 
 });

@@ -60,6 +60,7 @@
                                     <div class="form-group">
                                         <label>Value</label>
                                         <input style="opacity: 1; position: static" type="number" class="form-control" name="Value" value="0" id="Value" min="0" max="50" required disabled>
+                                        <label>Phá là tui khóa đó nha!</label>
                                         @if($errors->has('Value'))
                                             <div class="alert-box error"><span>error: </span> {{ $errors->first('Value') }}</div>
                                         @endif

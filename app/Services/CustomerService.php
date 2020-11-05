@@ -6,6 +6,7 @@ use App\Models\CustomerDetail;
 use App\Models\CustomerShipping;
 use App\Models\ShippingInformation;
 use App\Models\Loyalty;
+
 use Illuminate\Support\Facades\DB;
 class CustomerService{
 
@@ -172,6 +173,9 @@ class CustomerService{
         $data['birthday'] = $detail->Birthday;
         // echo dd($data);
         return $data;
+    }
+    public function UpdatePoint($point,$phone){
+            return Loyalty::where('phone',$phone)->increment('Point',$point);
     }
 }
 

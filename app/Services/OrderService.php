@@ -70,7 +70,13 @@ class OrderService{
 
         $isSuccess_InsertOder = $this->Insert_OrderTable($customer_shipping->Id,$coupon,$payment_method,$shipping_method,$total_quantity,$total,$point,$status);
         if($isSuccess_InsertOder){
-            return $this->Insert_OrderProduct($data);
+            $isSuccess_UpdatePoint = (new CustomerService)->UpdatePoint($point,$phone);
+            if($isSuccess_UpdatePoint){
+                return $this->Insert_OrderProduct($data);
+            }
+            else{
+                return 0;
+            }
         }
         else{
             return 0;

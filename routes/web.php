@@ -13,6 +13,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ToppingController;
+use App\Http\Controllers\CouponController;
 
 
 /*
@@ -76,20 +77,32 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('/delete/{id}', [ToppingController::class, 'delete']);
 	});
 
+	//Coupon
+	Route::group(['prefix' => 'coupon'], function(){
+		Route::get('/', [CouponController::class, 'index']);
+		Route::get('/add', [CouponController::class, 'add']);
+		Route::post('/insert', [CouponController::class, 'insert']);
+		Route::get('/edit/{id}', [CouponController::class, 'edit']);
+		Route::put('/update', [CouponController::class, 'update']);
+		Route::get('/delete/{id}', [CouponController::class, 'delete']);
+	});
 
 	//Customer
-	Route::get('/customer', [CustomerController::class, 'index']);
+	Route::group(['prefix' => 'customer'], function(){
+		Route::get('/', [CustomerController::class, 'index']);
+	});
 
 	//Order
     Route::get('/order', [OrderController::class, 'index']);
     
 });
+
 //show Product_category Menu
 Route::get('/menu/{Id_Category}', [MenuController::class, 'show_menu']);
 Route::get('/tim-kiem',[MenuController::class, 'search']);
 
 // login and signup route
-Route::get('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'Login']);
 Route::post('/signup', [LoginController::class, 'SignUp']);
 
 //checkout route
@@ -100,6 +113,7 @@ Route::post('/processcheckout', [CheckoutController::class, 'Checkout']);
 Route::post('/add-cart', [CartController::class,'add_cart']);
 Route::get('/gio-hang', [CartController::class,'gio_hang']);
 Route::get('/del-pro-cart/{session_is}', [CartController::class,'del_product']);
+Route::get('/show', [CartController::class, 'show']);
 
 
 

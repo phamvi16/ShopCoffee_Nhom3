@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name = "csrf-token" conten="{{csrf_token()}}"/>
   <title>Shop Coffee</title>
 
   <link href="{{asset('Page/fonts/font_googleapis.css')}}" rel='stylesheet' type='text/css' async>
@@ -119,6 +118,7 @@
    <script type="text/javascript" src="{{asset('Page/js/jquery-1.11.2.min.js')}}"></script>      <!-- jQuery -->
    <script type="text/javascript" src="{{asset('Page/js/templatemo-script.js')}}"></script>      <!-- Templatemo Script -->
 
+
    <script type="text/javascript" src="{{asset('Page/js/jquery-3.3.1.min.js')}}"></script>
    <script type="text/javascript" src="{{asset('Page/js/jquery-ui.js')}}" async></script>
    <script type="text/javascript" src="{{asset('Page/js/popper.min.js')}}"async></script>
@@ -139,7 +139,7 @@
             });
    </script>
    <script type="text/javascript" src="{{ asset('Page/js/addcart.js') }}"async></script>
-    <script type="text/javascript" src="{{asset('Page/js/login.js')}}" async></script>
+    <script type="text/javascript" src="{{asset('Page/js/khoa.js')}}" async></script>
     <script type="text/javascript" src="{{asset('Page/js/jquery.validate.js')}}"async></script>
     @yield('script', '')
  </body>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Topping;
+use App\Models\PaymentMethod;
 use App\Services\CustomerService;
 use App\Services\OrderService;
 use DB;
@@ -16,26 +17,34 @@ class CheckoutController extends Controller
     public function Verify(Request $request){
         $phone = $request->phone;
         $isbought = $request->isbought;
+
+        $all_paymentmethod = DB::table('payment_method')->where('status','Hỗ Trợ')->get();
+        
         if($isbought == "first_time"){
-            return 0;
+            $data['isBought']=0;
+            $data['TryGetVal']=0;
+            $data['all_paymentmethod']=$all_paymentmethod;
+            return $data;
         }
         else{
-            $data = (new CustomerService())->GetInfor($phone);
-            if(!$data) return 0;
-            return $data;
+            $data2 = (new CustomerService())->GetInfor($phone);
+            if(!$data2){
+                $data2['isBought']=0;
+                $data2['TryGetVal']=1;
+            }
+            else{
+                $data2['isBought']=1;
+            }
+            $data2['all_paymentmethod']=$all_paymentmethod;
+            return $data2;
         }
     }
     public function Checkout(Request $request){
-
-        // $phone = $request->phone;
-        // $name = $request->name;
-        // $birthday = $request->birthday;
-        // $address = $request->address;
-        // $email = $request->email;
+        
         // $data = Session::get('cart'); -- ko hieu sao lai ko chay dc lenh nay`
         $data = session('cart');
 
-        $result = (new OrderService())->InsertOrder($data, $request);
+        $result = (new OrderService())->InsertCheckout($data, $request);
         // echo dd($data);
         if($result == 1){
             return "success";

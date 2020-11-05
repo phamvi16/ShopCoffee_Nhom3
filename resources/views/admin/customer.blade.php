@@ -12,6 +12,7 @@
                         <div class="card-body ">
                             <div class="table-responsive">
                                 <table class="table">
+
                                     <thead class=" text-primary">
                                         <th>
                                             STT
@@ -20,42 +21,57 @@
                                             Name
                                         </th>
                                         <th>
-                                            Birthday
-                                        </th>
-                                        <th>
                                             Phone
                                         </th>
                                         <th>
                                             Email
                                         </th>
                                         <th>
-                                            Address
+                                            Level
                                         </th>
-
-
+                                        <th>
+                                            Action
+                                        </th>
                                     </thead>
+
                                     <tbody>
+                                    @php
+                                        $i=0;
+                                    @endphp
+                                            
+                                    @foreach($account as $acc)
+                                            
+                                        @php
+                                            $i++;
+                                            $phone = $acc['Phone'];
+                                        @endphp
+
                                         <tr>
                                             <td>
-                                                1
+                                                {{$i}}
                                             </td>
                                             <td>
-                                                Dakota Rice
+                                                {{$acc['Name']}}
                                             </td>
                                             <td>
-                                                01/01/2020
+                                                {{$phone}}
                                             </td>
                                             <td>
-                                                0123456789
+                                                {{$acc['Email']}}
                                             </td>
                                             <td>
-                                                abc@gmail.com
+                                                {{$acc['Level']}}
                                             </td>
                                             <td>
-                                                TPHCM
+                                                <a href="{{URL::to('/admin/customer/' . $phone)}}" class="active styling-edit">
+                                                    <i class="fas fa-list icon"></i>
+                                                </a>
                                             </td>
                                         </tr>
+
+                                    @endforeach
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>

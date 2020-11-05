@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Services;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
@@ -63,6 +65,7 @@ class ToppingService
 
     public function delete($id)
     {
+        if (Topping::find($id) == null) return "Id không có :))";
         DB::beginTransaction();
         try {
             $top = Topping::find($id);            

@@ -11,6 +11,7 @@ class ShippingInformation extends Model
 
     protected $table = "shipping_information";
     protected $primaryKey = 'Id';
+    public $incrementing = true;
     protected $fillable = ['name','phone','email','address'];
     public function customer_shipping()
     {

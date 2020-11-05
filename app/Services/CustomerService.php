@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Services;
+
 use Illuminate\Http\Request;
 use App\Models\CustomerAccount;
 use App\Models\CustomerDetail;
@@ -8,9 +10,11 @@ use App\Models\ShippingInformation;
 use App\Models\Loyalty;
 
 use Illuminate\Support\Facades\DB;
+
 class CustomerService{
 
-    public function CheckLogin($phone,$password){
+    public function CheckLogin($phone,$password)
+    {
         $phone = CustomerAccount::where('phone', '=', $phone)->first();
         if($phone == null) return false;
         
@@ -21,7 +25,9 @@ class CustomerService{
             return false;
         }
     }
-    public function CheckSignup($name,$birthday,$phone,$password,$email){
+
+    public function CheckSignup($name,$birthday,$phone,$password,$email)
+    {
         $isExistPhone = CustomerAccount::where('phone', '=', $phone)->first();
         if($isExistPhone !=null) return 0;
         else{
@@ -54,6 +60,7 @@ class CustomerService{
             }
         }
     }
+
     // Account Manage
     public function InsertAccount_FromView(Request $request){
         $newpass = substr(md5(microtime()),rand(0,26),10);
@@ -97,8 +104,8 @@ class CustomerService{
         }
     }
 
-
-    public function UpdateCustomerInformation_FromView($request){
+    public function UpdateCustomerInformation_FromView($request)
+    {
         DB::beginTransaction();
         try{
             DB::table('customer_detail')
@@ -135,8 +142,8 @@ class CustomerService{
 
     }
 
-
-    public function InsertOrUpdate_FromView(Request $request){
+    public function InsertOrUpdate_FromView(Request $request)
+    {
         $isExistPhone = CustomerAccount::where('phone', '=', $request->phone)->first();
         if($isExistPhone){
             if($this->UpdateCustomerInformation_FromView($request) ){
@@ -155,7 +162,8 @@ class CustomerService{
 
     }
 
-    public function GetInfor($phone){
+    public function GetInfor($phone)
+    {
         $account = CustomerAccount::where('phone', '=', $phone)->first();
         if($account == null) return false;
 
@@ -177,6 +185,31 @@ class CustomerService{
     }
     public function UpdatePoint($point,$phone){
             return Loyalty::where('phone',$phone)->increment('Point',$point);
+    }
+
+    //Admin - get all customer
+    public function getAll()
+    {
+        $data = [];
+        $i = 0;
+
+        $account = CustomerDetail::all();
+
+        foreach ($account as $acc)
+        {
+            $loy = Loyalty::where('phone', '=', $acc->Phone)->first();
+
+            $arr_acc = [];
+            $arr_acc['Name'] = $acc->Name;
+            $arr_acc['Phone'] = $acc->Phone;
+            $arr_acc['Email'] = $acc->Email;
+            $arr_acc['Level'] = $loy->Level;
+
+            $i++;
+            $data[$i] = $arr_acc;
+        }
+
+        return $data;
     }
 }
 

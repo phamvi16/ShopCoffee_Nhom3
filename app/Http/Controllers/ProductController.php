@@ -119,6 +119,10 @@ class ProductController extends Controller
 
         $categories = Category::All();
         $pro = Product::find($id);
+        
+        //check status
+        if ($pro->Visibility == "Delete") return redirect("admin/product")->with('error', 'Id không có :))');
+
         $commonCategories = $restSize = null;
 
         // All size and size name

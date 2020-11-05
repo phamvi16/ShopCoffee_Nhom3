@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Services;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -17,11 +19,12 @@ use App\Models\Loyalty;
 
 
 use App\Services\CustomerService;
-
 use Illuminate\Support\Facades\DB;
-class OrderService{
 
     public function InsertCheckout($data,Request $request){
+
+    public function InsertOrder($data,Request $request)
+    {
 
 
             $ProcessCustomer = (new CustomerService())->InsertOrUpdate_FromView($request); // xong phan nay
@@ -31,11 +34,13 @@ class OrderService{
                 if($ProcessOrder){
                     return 1;
                 }
-                else{
+                else
+                {
                     return "Xảy ra lỗi khi xác nhận hóa đơn! chúng tôi sẽ xử lý nhanh thôi!";
                 }
             }
-            else{
+            else
+            {
                 return "Xảy ra lỗi khi nạp thông tin khách hàng! chúng tôi sẽ xử lý nhanh thôi!";
             }
 
@@ -84,6 +89,9 @@ class OrderService{
     }
 
     public function Insert_SingleRecord($phone){
+
+    public function Insert_SingleRecord($phone)
+    {
 
     }
     public function Insert_OrderTable($customer_shippingid,$coupon,$payment_method,$shipping_method,$total_quantity,$total,$point,$status){

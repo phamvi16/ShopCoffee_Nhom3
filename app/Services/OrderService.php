@@ -17,7 +17,6 @@ use App\Models\CustomerShipping;
 use App\Models\ShippingInformation;
 use App\Models\Loyalty;
 
-
 use App\Services\CustomerService;
 use Illuminate\Support\Facades\DB;
 
@@ -97,8 +96,8 @@ class OrderService{
         try{
             Order::create([
                 'customer'=>$customer_shippingid,
-                'coupon'=>1,
-                'payment_method'=>1,
+                'coupon'=>"BigSale",
+                'payment_method'=>$payment_method,
                 'shipping_method'=>$shipping_method,
                 'total_quantity'=>$total_quantity,
                 'total'=>$total,

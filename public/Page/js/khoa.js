@@ -163,7 +163,7 @@ $(document).ready(function () {
                               });
 
                             for(var i = 0;i<data['all_paymentmethod'].length;i++){
-                                $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i]+`">`+data['all_paymentmethod'][i].Name+`</option>`);
+                                $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i].Id+`">`+data['all_paymentmethod'][i].Name+`</option>`);
                             }
                             $('#checkoutBtn').click(function (e) {
                                 e.preventDefault();
@@ -299,7 +299,7 @@ $(document).ready(function () {
                               });
 
                             for(var i = 0;i<data['all_paymentmethod'].length;i++){
-                                $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i]+`">`+data['all_paymentmethod'][i].Name+`</option>`);
+                                $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i].Id+`">`+data['all_paymentmethod'][i].Name+`</option>`);
                             }
                             
                             $('#checkoutBtn').click(function (e) {

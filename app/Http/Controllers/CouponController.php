@@ -16,13 +16,13 @@ class CouponController extends Controller
         return view('admin.coupon', compact('all_coupon', 'realtime'));
     }
 
-    // Show form new Topping
+    // Show form new Coupon
     public function add()
     {
         return view('admin.addcou');
     }
 
-    // Insert New Topping
+    // Insert New Coupon
     public function insert(Request $request)
     {
         //echo $request->Started_at;
@@ -36,37 +36,44 @@ class CouponController extends Controller
         }
     }
 
-    // Show form edit Topping
-    // public function edit($id)
-    // {
-    //     $top = (new ToppingService())->getById($id);
-    //     return view('admin.edittop', compact('top'));
-    // }
+    //Show form edit Coupon
+    public function edit($id)
+    {
+        return redirect("admin/coupon")->with('error', 'Id không có :))');
 
-    // // Update Topping
-    // public function update(Request $request)
-    // {
-    //     if ((new ToppingService())->update($request) == true)
-    //     {
-    //         return redirect("admin/topping/edit/" . $request->Id)->with('success', "The topping detail was successfully updated.");
-    //     }
-    //     else
-    //     {
-    //         return redirect("admin/topping/edit/" . $request->Id)->with('error', $message);
-    //     }
-    // }
+        $realtime = \Carbon\Carbon::now();
+        $cou = (new CouponService())->getById($id);
+        $start = (new CouponService())->getStartDateLoad($cou->Started_at);
+        $end = (new CouponService())->getEndDateLoad($cou->Ended_at);
+        //echo $start;
+        return view('admin.editcou', compact('id', 'cou', 'realtime', 'start', 'end'));
+    }
+
+    // Update Coupon
+    public function update(Request $request)
+    {
+        if ((new CouponService())->update($request) == true)
+        {
+            return redirect("admin/coupon/edit/" . $request->Id)->with('success', "The topping detail was successfully updated.");
+        }
+        else
+        {
+            return redirect("admin/coupon/edit/" . $request->Id)->with('error', $message);
+        }
+    }
 
     // // Delete Topping
-    // public function delete($id)
-    // {
-    //     if ((new ToppingService())->delete($id) == true)
-    //     {
-    //         return redirect("admin/topping");
-    //     }
-    //     else
-    //     {
-    //         return redirect("admin/topping")->with('error', $message);
-    //     }
-    // }
+    public function delete($id)
+    {
+        if ((new CouponService())->delete($id) == true)
+        {
+            sleep(1);
+            return redirect("admin/coupon");
+        }
+        else
+        {
+            return redirect("admin/coupon")->with('error', $message);
+        }
+    }
 
 }

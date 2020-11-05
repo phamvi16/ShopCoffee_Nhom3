@@ -82,6 +82,9 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::get('/', [CouponController::class, 'index']);
 		Route::get('/add', [CouponController::class, 'add']);
 		Route::post('/insert', [CouponController::class, 'insert']);
+		Route::get('/edit/{id}', [CouponController::class, 'edit']);
+		Route::put('/update', [CouponController::class, 'update']);
+		Route::get('/delete/{id}', [CouponController::class, 'delete']);
 	});
 
 	//Customer

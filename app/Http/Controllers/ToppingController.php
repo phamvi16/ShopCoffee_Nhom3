@@ -37,6 +37,7 @@ class ToppingController extends Controller
     public function edit($id)
     {
         $top = (new ToppingService())->getById($id);
+        if ($top->Status == "Delete") return redirect("admin/topping")->with('error', "Id không có :))"); 
         return view('admin.edittop', compact('top'));
     }
 

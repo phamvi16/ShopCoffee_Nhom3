@@ -10,9 +10,9 @@ class Coupon extends Model
     use HasFactory;
 
     protected $table = "coupon";
-    protected $primaryKey = 'Id';
+    //protected $primaryKey = 'Id';
     //public $incrementing = true;
-    protected $fillable = ['Id', 'Type', 'Value', 'Description', 'Started_at', 'Ended_at'];
+    protected $fillable = ['Type', 'Value', 'Description', 'Started_at', 'Ended_at'];
 
     public function order()
     {

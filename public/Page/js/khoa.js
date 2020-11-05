@@ -48,6 +48,7 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     if (data == "Đăng Ký Thành Công") {
+                        swal("Thành Công!", "Bạn Đã Đăng Ký Thành Công!", "success");
                         $("#alert_mess").html("<h4 style='color:green'><b>" + data + "</b></h4>");
                     } else {
                         $("#alert_mess").html("<h4 style='color:red'><b>" + data + "</b></h4>");

@@ -88,7 +88,9 @@ Route::group(['prefix' => 'admin'], function(){
 	});
 
 	//Customer
-	Route::get('/customer', [CustomerController::class, 'index']);
+	Route::group(['prefix' => 'customer'], function(){
+		Route::get('/', [CustomerController::class, 'index']);
+	});
 
 	//Order
     Route::get('/order', [OrderController::class, 'index']);

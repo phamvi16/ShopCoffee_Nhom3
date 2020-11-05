@@ -22,13 +22,20 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        if (phone.length < 9 || phone.length > 11) {
+        if(name.length==0){
+            $("#alert_mess").html("<h4 style='color:red'><b>Bạn Chưa nhập Tên</b></h4>");
+        }
+        else if(birthday.length==0){
+            $("#alert_mess").html("<h4 style='color:red'><b>Vui Lòng Chọn Ngày Sinh</b></h4>");
+        }
+        else if (phone.length < 9 || phone.length > 11) {
             $("#alert_mess").html("<h4 style='color:red'><b>Số Điện Thoài dài 9 - 11 số</b></h4>");
         } else if (password.length < 5 || password.length > 20) {
             $("#alert_mess").html("<h4 style='color:red'><b>Mật Khẩu dài 5 - 20 kí tự</b></h4>");
         } else if (!email_regex.test(email)) {
             $("#alert_mess").html("<h4 style='color:red'><b>Email Sai Định dạng</b></h4>");
-        } else {
+        } 
+        else {
             $.ajax({
                 url: "/signup",
                 type: 'POST',
@@ -239,17 +246,17 @@ $(document).ready(function () {
                             <div class="hr" style="width: 120%"></div>
                             <input name="getPhone" type="hidden" value="` + phone + `" ">
                             <label class="mt-4" for="name">
-                                <input class="form-control in-mail" type="text" placeholder="Họ Tên" name="name" value="` + data['name'] + `"required>
+                                <input class="form-control in-mail" type="text" placeholder="Họ Tên" name="name" value="` + data['name'] + `"required style="background:#a5e8c1">
                             </label>
                             <label class="mt-4 lab-address" for="birthday">
-                                <input class="form-control in-mail in-add" type="date" placeholder="Ngày Sinh" name="birthday" value ="` + data['birthday'] + `"required>
+                                <input class="form-control in-mail in-add" type="date" placeholder="Ngày Sinh" name="birthday" value ="` + data['birthday'] + `"required style="background:#a5e8c1">
                             </label>
             
                         
                             <label class="mt-4 lab-address" for="email">
-                                <input class="form-control in-mail in-add" type="email" placeholder="Email.." name="email" value ="` + data['email'] + `"required>
+                                <input class="form-control in-mail in-add" type="email" placeholder="Email.." name="email" value ="` + data['email'] + `" style="background:#a5e8c1" >
                             </label>
-                            <input class="form-control in-com mt-3" type="text" placeholder="Địa Chỉ.." name="address" value="` + data['address'] + `" required>
+                            <input class="form-control in-com mt-3" type="text" placeholder="Địa Chỉ.." name="address" value="` + data['address'] + `" required style="background:#a5e8c1">
 
                             <select class="form-control in-com mt-3" id="select_PaymentMethod">
                             </select>    
@@ -372,37 +379,28 @@ $(document).ready(function () {
     });
     
     // end get thong tin -check out
-    function PostCheckout(event) {
-        // alert('wtf');
-        event.preventDefault();
+    //login ajax
+    $('#loginBtn').click(function(e){
+        e.preventDefault();
+        var phone = $("input[name='phone']").val();
+        var password = $("input[name='password']").val();
 
-        var phone = $('input[name="getPhone"]').val();
-        var name = $('input[name="name"]').val();
-        var birthday = $('input[name="birthday"]').val();
-        var address = $('input[name="address"]').val();
-        var email = $('input[name="email"]').val();
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        alert(phone);
-        console.log("cac");
         $.ajax({
-            url: "/processcheckout",
+            url: "/login",
             type: 'POST',
             data: {
-                name: name,
                 phone: phone,
-                birthday: birthday,
-                address: address,
-                email: email,
-                test: "1"
+                password: password,
             },
             success: function (data) {
-                alert(data);
+                if(data==0){
+                    $('#warning_mess').text("Đăng Nhập Thất Bại! vui Lòng Kiểm Tra Lại Tài Khoản/Mật Khẩu");
+                }
+                else{
+                    $('#warning_mess').text("");
+                    alert("success + redirect");
+                }
             }
         });
-    };
+    });
 });

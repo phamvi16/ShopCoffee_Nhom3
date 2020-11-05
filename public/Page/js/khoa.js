@@ -100,6 +100,9 @@ $(document).ready(function () {
                     if (data['isBought'] == 0) {
                         $('#result').empty(); 
                         // console.log(data['all_paymentmethod']);
+                        if(data['TryGetVal']==1){
+                            $("#result").append("<p style='color:red'>Không Thể Tìm Thấy Dữ Liệu</p>");
+                        }
                         $('#result').append(` 
                         <h3 class="cre-acc">BILLING INFORMATION</h3>
                     <form id="info_form" class="append" method="post" action="/processcheckout">

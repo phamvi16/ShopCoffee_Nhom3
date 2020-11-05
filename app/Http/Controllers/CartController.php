@@ -39,13 +39,10 @@ class CartController extends Controller
               'product_image' => $data['cart_product_image'],
               'product_price' => $data['cart_product_price'],
               'product_size' => $data['cart_product_size'],
-              'Ice'=>'100',
-              'Sugar'=>'100',
-              'Hot'=>'100',
+              'ice'=>'100',
+              'sugar'=>'100',
+              'hot'=>'100',
               'topping'=>[
-                'Name'=>'2000',
-                "Price"=>'30000',
-                "Status"=>'2000'
                ],
             
               );
@@ -59,13 +56,10 @@ class CartController extends Controller
               'product_image' => $data['cart_product_image'],
               'product_price' => $data['cart_product_price'],  
               'product_size' => $data['cart_product_size'],
-              'Ice'=>'100',
-              'Sugar'=>'100',
-              'Hot'=>'100',
+              'ice'=>'100',
+              'sugar'=>'100',
+              'hot'=>'100',
               'topping'=>[
-                '123'=>'2000',
-                "1"=>'30000',
-                "3"=>'2000'
                ],
               
           );

@@ -40,10 +40,10 @@
                                         <br>
                                         <!-- <select style="opacity: 1; position: static" class="form-control" name="Type" id="Type" onmousedown="checkType()" required> -->
                                         <input id="per" type="radio" name="Type" value="Percent" checked >
-                                        <label>Percent</label>
+                                        <label>Percent (0% -> 50%)</label>
                                         <br>
                                         <input id="fix" type="radio" name="Type" value="Fixed">
-                                        <label>Fixed</label>
+                                        <label>Fixed (0$ -> 30.000$)</label>
                                             <!-- <option value="Hết hàng">Product</option> -->
                                         <!-- </select> -->
 
@@ -83,7 +83,7 @@
                                 <div class="col-md-6 pr-1">
                                     <div class="form-group">
                                         <label>Start Date</label>
-                                        <input type="date" class="form-control" name="Started_at" id="Started_at" value="{{ old('Started_at') }}" required>
+                                        <input type="datetime-local" class="form-control" name="Started_at" id="Started_at" value="2020-01-01T00:00:00" required>
                                         @if($errors->has('Started_at'))
                                             <div class="alert-box error"><span>error: </span> {{ $errors->first('Started_at') }}</div>
                                         @endif
@@ -95,7 +95,7 @@
                                 <div class="col-md-6 pr-1">
                                     <div class="form-group">
                                         <label>End Date</label>
-                                        <input type="date" class="form-control" name="Ended_at" id="Ended_at" value="{{ old('Ended_at') }}" required>
+                                        <input type="datetime-local" class="form-control" name="Ended_at" id="Ended_at" value="2020-01-01T00:00:00" required>
                                         @if($errors->has('Ended_at'))
                                             <div class="alert-box error"><span>error: </span> {{ $errors->first('Ended_at') }}</div>
                                         @endif
@@ -107,7 +107,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <button type="submit" name="btnSave" class="btn btn-info">Save</button>
-                                        <a href="/admin/product" name="btnBack" class="btn back">Back</a>
+                                        <a href="/admin/coupon" name="btnBack" class="btn back">Back</a>
                                     </div>
                                 </div>
                             </div>
@@ -122,63 +122,5 @@
 @endsection
 @section('script')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript">
-
-    $(document).ready(function() {
-
-        $(function(){
-            var dtToday = new Date();
-            
-            var month = dtToday.getMonth() + 1;
-            var day = dtToday.getDate();
-            var year = dtToday.getFullYear();
-            if(month < 10)
-                month = '0' + month.toString();
-            if(day < 10)
-                day = '0' + day.toString();
-            
-            var maxDate = year + '-' + month + '-' + day;
-            //alert(maxDate);
-            $('#Started_at').attr('min', maxDate);
-            $('#Ended_at').attr('min', maxDate);
-        });
-
-        $("#Started_at").change(function(){
-            var maxDate = $('#Started_at').val();
-            $('#Ended_at').val($('#Started_at').val());
-            $('#Ended_at').attr('min', maxDate);
-        });
-
-        $("input[type='radio']").change(function()
-        {
-            var type = document.getElementsByName('Type')[0].checked;
-            if (type == true)
-            {
-                document.getElementById('Value').setAttribute("Min", 0);
-                document.getElementById('Value').setAttribute("Max", 50);
-                $('#Value').val(50);
-                //document.getElementById('Value').setAttribute("Value", 0);
-            }
-            else
-            {
-                document.getElementById('Value').setAttribute("Min", 0);
-                document.getElementById('Value').setAttribute("Max", 30000);
-                $('#Value').val(30000);
-                //document.getElementById('Value').setAttribute("Value", 0);
-            }
-        });
-
-        $(document).on("change, mouseup, keyup", "#Value", function()
-        {
-            var maxVal = $('#Value').attr('max');
-            var val = $('#Value').val();
-            if (val > maxVal)
-            {
-                $('#Value').val(maxVal);
-            }
-        });
-
-    });
-
-</script>
+<script type="text/javascript" src="{{ asset('Admins/js/addcou.js') }}"></script>
 @endsection

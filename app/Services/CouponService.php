@@ -19,15 +19,21 @@ class CouponService
 
     public function insert(Request $request)
     {
+        $start = str_replace('T', ' ', $request->Started_at);
+        $start = $start . ':00';
+        $end = str_replace('T', ' ', $request->Ended_at);
+        $end = $end . ':00';
+
         DB::beginTransaction();
         try {
-            $count = 0;
-
-            // Store product in db
-            $newcat = Category::create([
-                'Name' => $request->Name,
-                'Image' => $imageName,
-                'Count' => $count,
+            // insert coupon in db
+            $newcou = Coupon::create([
+                'Id' => $request->Id,
+                'Type' => $request->Type,
+                'Value' => $request->Value,
+                'Description' => $request->Description,
+                "Started_at" => $start,
+                "Ended_at" => $end,
                 "created_at" => \Carbon\Carbon::now(), 
                 "updated_at" => \Carbon\Carbon::now()
             ]);

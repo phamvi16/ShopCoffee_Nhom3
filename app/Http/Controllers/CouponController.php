@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Services\CouponService;
 
 class CouponController extends Controller
@@ -11,7 +12,8 @@ class CouponController extends Controller
     public function index()
     {
         $all_coupon = (new CouponService())->getAll();
-        return view('admin.coupon', compact('all_coupon'));
+        $realtime = \Carbon\Carbon::now();
+        return view('admin.coupon', compact('all_coupon', 'realtime'));
     }
 
     // Show form new Topping
@@ -23,6 +25,7 @@ class CouponController extends Controller
     // Insert New Topping
     public function insert(Request $request)
     {
+        //echo $request->Started_at;
         if ((new CouponService())->insert($request) == true)
         {
             return redirect("admin/coupon");

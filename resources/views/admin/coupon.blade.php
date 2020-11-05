@@ -15,6 +15,7 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>STT</th>
+                                <th>ID Coupon</th>
                                 <th>Type</th>
                                 <th>Value</th>
                                 <th>Description</th>
@@ -37,6 +38,9 @@
                                     <tr>
                                         <td>
                                             {{$i}}
+                                        </td>
+                                        <td>
+                                            {{$cou->Id}}
                                         </td>
                                         <td>
                                             {{$cou->Type}}
@@ -65,13 +69,16 @@
                                         <td>
                                             {{$cou->Ended_at}}
                                         </td>
-                                        <td>
-                                            <a href="{{URL::to('/admin/coupon/edit/' . $cou->Id)}}" class="active styling-edit">
-                                                <i class="fas fa-edit icon"></i></a>
-                                            <a onclick="return confirm('Are you sure to delete this category?')" href="{{URL::to('/admin/coupon/delete/' . $cou->Id)}}" class="active styling-edit">
-                                                <i class="fa fa-times icon text-danger text"></i>
-                                            </a>
-                                        </td>
+
+                                        @if ($cou->Ended_at >= $realtime)
+                                            <td>
+                                                <a href="{{URL::to('/admin/coupon/edit/' . $cou->Id)}}" class="active styling-edit">
+                                                    <i class="fas fa-edit icon"></i></a>
+                                                <a onclick="return confirm('Are you sure to delete this category?')" href="{{URL::to('/admin/coupon/delete/' . $cou->Id)}}" class="active styling-edit">
+                                                    <i class="fa fa-times icon text-danger text"></i></a>
+                                            </td>
+                                        @Endif
+                                            
                                     </tr>
 
                             @endforeach

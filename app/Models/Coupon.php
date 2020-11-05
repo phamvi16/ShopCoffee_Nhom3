@@ -12,7 +12,7 @@ class Coupon extends Model
     protected $table = "coupon";
     //protected $primaryKey = 'Id';
     //public $incrementing = true;
-    protected $fillable = ['Type', 'Value', 'Description', 'Started_at', 'Ended_at'];
+    protected $fillable = ['Id', 'Type', 'Value', 'Description', 'Started_at', 'Ended_at'];
 
     public function order()
     {

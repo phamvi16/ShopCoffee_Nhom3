@@ -39,7 +39,7 @@ class CouponController extends Controller
     //Show form edit Coupon
     public function edit($id)
     {
-        return redirect("admin/coupon")->with('error', 'Id không có :))');
+        if ((new CouponService())->getById($id) == null) return redirect("admin/coupon")->with('error', 'Id không có :))');
 
         $realtime = \Carbon\Carbon::now();
         $cou = (new CouponService())->getById($id);

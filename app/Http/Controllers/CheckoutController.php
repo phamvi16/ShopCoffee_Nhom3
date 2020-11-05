@@ -23,6 +23,7 @@ class CheckoutController extends Controller
         
         if($isbought == "first_time"){
             $data['isBought']=0;
+            $data['TryGetVal']=0;
             $data['all_paymentmethod']=$all_paymentmethod;
             return $data;
         }
@@ -31,6 +32,7 @@ class CheckoutController extends Controller
             // $all_paymentmethod = DB::table('payment_method')->where('status','Hỗ Trợ')->get();
             if(!$data2){
                 $data2['isBought']=0;
+                $data2['TryGetVal']=1;
             }
             else{
                 $data2['isBought']=1;

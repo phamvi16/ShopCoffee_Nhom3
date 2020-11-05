@@ -74,17 +74,17 @@ class CustomerService{
                 'discount_loyalty'=>0
                 
             ]);
-            ShippingInformation::create([
+            $newShippingInfo = ShippingInformation::create([
                 'name'=>$request->name,
                 'phone'=>$request->phone,
                 'email'=>$request->email,
                 'address'=>$request->address
             ]);
-            $idship = ShippingInformation::latest()->first();
+            // $idship = ShippingInformation::latest()->first();
 
             CustomerShipping::create([
                 'phone'=>$request->phone,
-                'id_shipping'=>$idship['Id']
+                'id_shipping'=>$newShippingInfo->Id
             ]);
             DB::commit();
             return 1;

@@ -45,7 +45,12 @@ class OrderService{
         $customer_shipping = DB::table('shipping_information')->where('phone', $phone)->first();
         $coupon = "1";
         $total_quantity=0;
-        $total=0;
+        if($shipping_method =="Giao Tận Nơi"){
+            $total=15000;
+        }
+        else{
+            $total=0;
+        }
         foreach($data as $key =>$value){
             $total_quantity+=1;
             $total += $value['product_price'];
@@ -100,37 +105,32 @@ class OrderService{
     }
     public function Insert_OrderProduct($data){
         $Order = Order::latest()->first(); // $isOder['Id'];
-
         DB::beginTransaction();
         try{
-            foreach($data as $key => $product){
+        foreach($data as $key => $product){
                 $productsize = DB::table('product_size')->where('Size', $product['product_size'])->where('Id_product',$product['product_id'])->first();
 
-                OrderProduct::create([
+                $newOrderProduct = OrderProduct::create([
                     'id_product_size'=>$productsize->Id,
                     'id_order'=>$Order->Id,
                     'price_buy'=>$productsize->Sale_Price
                 ]);
-                DB::commit();
-                
-                $OrderProduct = OrderProduct::latest()->first();
 
                 foreach($product['topping'] as $id_topping=>$price){
                     OrderTopping::create([
-                        'id_order_product'=> $OrderProduct->Id,
+                        'id_order_product'=> $newOrderProduct->Id,
                         'id_topping'=>$id_topping,
                         'price_buy'=>$price
                     ]);
                 }
-                // Attribute::create([
-                //     'id_order_product'=>$OrderProduct->Id,
-                //     'sugar'=>$product['sugar'],
-                //     'ice'=>$product['ice'],
-                //     'hot'=>$product['hot']
-                // ]);
-
-                DB::commit();   
+                Attribute::create([
+                    'id_order_product'=>$newOrderProduct->Id,
+                    'sugar'=>$product['sugar'],
+                    'ice'=>$product['ice'],
+                    'hot'=>$product['hot']
+                ]);
             }
+            DB::commit();
             return 1;
         }
         catch(Exception $e){

@@ -1,5 +1,12 @@
 $(document).ready(function () {
+    function formatNumber (num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
 
+    $Ship1Name="Giao Tận Nơi";
+    $Ship1Cost="15,000 VNĐ";
+    $Ship2Name="Khách Đến Nhận";
+    $Ship2Cost="0 VNĐ";
     // sign up 
     $("#signupBtn").click(function (e) {
         e.preventDefault();
@@ -123,11 +130,30 @@ $(document).ready(function () {
                         <button class="btn btn-primary chkout-sub mt-4" id="checkoutBtn" >Thanh Toán</button>
                      </form>`).
                         ready(function () {
+                            $sum = $('#SumCost').data('value');
+                            if($('#select_ShippingMethod').children('option:selected').val()==$Ship1Name){
+                                $('#ShipCost').text($Ship1Cost);
+                                $('#SumCost').text(formatNumber( $sum + 15000) + "VNĐ");
+                            }
+                            else{
+                                $('#ShipCost').text($Ship2Cost);
+                                $('#SumCost').text(formatNumber($sum) + "VNĐ");
+                            }
+
+                            $('#select_ShippingMethod').change(function() {
+                                if(this.value==$Ship1Name){
+                                    $('#ShipCost').text($Ship1Cost);
+                                    $('#SumCost').text(formatNumber($sum + 15000) + "VNĐ");
+                                }
+                                else{
+                                    $('#ShipCost').text($Ship2Cost);
+                                    $('#SumCost').text(formatNumber($sum) + "VNĐ");
+                                }
+                              });
 
                             for(var i = 0;i<data['all_paymentmethod'].length;i++){
                                 $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i]+`">`+data['all_paymentmethod'][i].Name+`</option>`);
                             }
-
                             $('#checkoutBtn').click(function (e) {
                                 e.preventDefault();
                                 if ($('#info_form').validate({
@@ -175,6 +201,7 @@ $(document).ready(function () {
                                     var email = $('input[name="email"]').val();
                                     var payment = $('#select_PaymentMethod').children("option:selected").val();
                                     var shipping = $('#select_ShippingMethod').children("option:selected").val();
+  
                                     $.ajaxSetup({
                                         headers: {
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -238,9 +265,32 @@ $(document).ready(function () {
                             <button class="btn btn-primary chkout-sub mt-4" id="checkoutBtn" >Thanh Toán</button>
                         </form>
                         `).ready(function () {
+
+                            $sum = $('#SumCost').data('value');
+                            if($('#select_ShippingMethod').children('option:selected').val()==$Ship1Name){
+                                $('#ShipCost').text($Ship1Cost);
+                                $('#SumCost').text(formatNumber( $sum + 15000) + "VNĐ");
+                            }
+                            else{
+                                $('#ShipCost').text($Ship2Cost);
+                                $('#SumCost').text(formatNumber($sum) + "VNĐ");
+                            }
+
+                            $('#select_ShippingMethod').change(function() {
+                                if(this.value==$Ship1Name){
+                                    $('#ShipCost').text($Ship1Cost);
+                                    $('#SumCost').text(formatNumber($sum + 15000) + "VNĐ");
+                                }
+                                else{
+                                    $('#ShipCost').text($Ship2Cost);
+                                    $('#SumCost').text(formatNumber($sum) + "VNĐ");
+                                }
+                              });
+
                             for(var i = 0;i<data['all_paymentmethod'].length;i++){
                                 $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i]+`">`+data['all_paymentmethod'][i].Name+`</option>`);
                             }
+                            
                             $('#checkoutBtn').click(function (e) {
                                 e.preventDefault();
                                 if ($('#info_form').validate({
@@ -288,6 +338,7 @@ $(document).ready(function () {
                                     var email = $('input[name="email"]').val();
                                     var payment = $('#select_PaymentMethod').children("option:selected").val();
                                     var shipping = $('#select_ShippingMethod').children("option:selected").val();
+
                                     $.ajaxSetup({
                                         headers: {
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -319,6 +370,7 @@ $(document).ready(function () {
             });
         }
     });
+    
     // end get thong tin -check out
     function PostCheckout(event) {
         // alert('wtf');

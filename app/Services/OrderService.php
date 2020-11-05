@@ -21,10 +21,9 @@ use App\Models\Loyalty;
 use App\Services\CustomerService;
 use Illuminate\Support\Facades\DB;
 
+class OrderService{
     public function InsertCheckout($data,Request $request){
 
-    public function InsertOrder($data,Request $request)
-    {
 
 
             $ProcessCustomer = (new CustomerService())->InsertOrUpdate_FromView($request); // xong phan nay
@@ -87,8 +86,6 @@ use Illuminate\Support\Facades\DB;
             return 0;
         }
     }
-
-    public function Insert_SingleRecord($phone){
 
     public function Insert_SingleRecord($phone)
     {

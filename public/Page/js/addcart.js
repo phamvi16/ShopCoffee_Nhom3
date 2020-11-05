@@ -14,10 +14,18 @@ $(document).ready(function(){
               type: 'post',
               data: {cart_product_id:cart_product_id,cart_product_size:cart_product_size,cart_product_name:cart_product_name,cart_product_image:cart_product_image,_token:_token,cart_product_price:cart_product_price},
                dataType:('json'),
-              success:function(data){
-                //  alert(data);
+              success:function(cart){
+               alert(cart);
                 swal("Add to cart success !", "success");
               },
          });
       });
   });
+  jQuery(document).ready(function($) {
+    // Show price when click on Size
+    $(document).on('click', 'input[name="Size"]', function(event) {
+      $(".product-prices #saleprice").text($(this).data('saleprice') + ' VND');
+      $(".product-prices #price").text($(this).data('price') + ' VND');
+    });
+  });
+

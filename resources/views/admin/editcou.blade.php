@@ -60,17 +60,31 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 pr-1">
-                                        <div class="form-group">
-                                            <label>Value</label>
-                                            <input style="opacity: 1; position: static" type="number" class="form-control" name="Value" id="Value" min="0" value="{{$cou->Value ?? ""}}" required>
-                                            @if($errors->has('Value'))
-                                                <div class="alert-box error"><span>error: </span> {{ $errors->first('Value') }}</div>
-                                            @endif
+                                @if ($cou->Type == 'Percent')
+                                    <div class="row">
+                                        <div class="col-md-6 pr-1">
+                                            <div class="form-group">
+                                                <label>Value</label>
+                                                <input style="opacity: 1; position: static" type="number" class="form-control" name="Value" id="Value" min="0" max="50" value="{{$cou->Value ?? ""}}" required >
+                                                @if($errors->has('Value'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('Value') }}</div>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="row">
+                                        <div class="col-md-6 pr-1">
+                                            <div class="form-group">
+                                                <label>Value</label>
+                                                <input style="opacity: 1; position: static" type="number" class="form-control" name="Value" id="Value" min="0" max="30000" value="{{$cou->Value ?? ""}}" required >
+                                                @if($errors->has('Value'))
+                                                    <div class="alert-box error"><span>error: </span> {{ $errors->first('Value') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
 
                                 <div class="row">
                                     <div class="col-md-6 pr-1">
@@ -157,4 +171,9 @@
 @section('script')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="{{ asset('Admins/js/addcou.js') }}"></script>
+<!-- <script type="text/javascript">
+    $(document).mousemove(function(){
+        $("#Value").attr('disabled', false);
+    });
+</script> -->
 @endsection

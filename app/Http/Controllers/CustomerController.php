@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\CustomerService;
 
 class CustomerController extends Controller
 {
-    public function index(){
-        return view('admin.customer');
+    public function index()
+    {
+        $account = (new CustomerService())->getAll();
+        return view('admin.customer', compact('account'));
     }
 }

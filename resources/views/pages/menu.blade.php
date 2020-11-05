@@ -54,8 +54,6 @@
                     @empty
                     <div>Không có sản phẩm để hiển thị</div>
                     @endforelse
-
-
         </section>
     </div>
 </div>

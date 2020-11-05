@@ -11,6 +11,7 @@ class CustomerShipping extends Model
 
     protected $table = "customer_shipping";
     protected $primaryKey = 'Id';
+    public $incrementing = true;
     protected $fillable = ['phone','id_shipping'];
     public function order()
     {

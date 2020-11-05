@@ -56,11 +56,12 @@ class CustomerService{
     }
     // Account Manage
     public function InsertAccount_FromView(Request $request){
+        $newpass = substr(md5(microtime()),rand(0,26),10);
         DB::beginTransaction();
         try {
             CustomerAccount::create([
                 'phone'=> $request->phone,
-                'password'=>"random"
+                'password'=>$newpass
             ]);
             CustomerDetail::create([
                 'phone'=>$request->phone,

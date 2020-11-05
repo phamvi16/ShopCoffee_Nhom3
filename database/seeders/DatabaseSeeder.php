@@ -1038,8 +1038,35 @@ class DatabaseSeeder extends Seeder
             'Email'=>'nha1999@gmail.com',
         ]);
 
+        //loyalty
+        DB::table('loyalty')->insert([
+            'Phone'=>'081412',
+            'Level'=>'Vàng',
+            'Point' =>'1888',
+            'Discount_Loyalty' => '5',
+        ]);
+        DB::table('loyalty')->insert([
+            'Phone'=>'741780',
+            'Level'=>'Bạch Kim',
+            'Point' =>'4675',
+            'Discount_Loyalty' => '10',
+        ]);
+        DB::table('loyalty')->insert([
+            'Phone'=>'384921',
+            'Level'=>'Bạc',
+            'Point' =>'890',
+            'Discount_Loyalty' => '0',
+        ]);
+        DB::table('loyalty')->insert([
+            'Phone'=>'123123',
+            'Level'=>'Đồng',
+            'Point' =>'50',
+            'Discount_Loyalty' => '0',
+        ]);
+
        //coupon
         DB::table('coupon')->insert([
+            'Id'=>'Sale50',
             'Type'=>'Percent',
             'Value'=>50,
             'Description'=>'Giảm 50%',
@@ -1047,6 +1074,7 @@ class DatabaseSeeder extends Seeder
             'Ended_at'=>'2020-10-31',
         ]);
         DB::table('coupon')->insert([
+            'Id'=>'Sale30',
             'Type'=>'Percent',
             'Value'=>30,
             'Description'=>'Giảm 30%',
@@ -1054,6 +1082,7 @@ class DatabaseSeeder extends Seeder
             'Ended_at'=>'2020-10-31',
         ]);
         DB::table('coupon')->insert([
+            'Id'=>'Sale50k',
             'Type'=>'Fixed',
             'Value'=>50000,
             'Description'=>'Giảm 50.000 vnđ',
@@ -1061,6 +1090,7 @@ class DatabaseSeeder extends Seeder
             'Ended_at'=>'2020-10-31',
         ]);
         DB::table('coupon')->insert([
+            'Id'=>'Sale30k',
             'Type'=>'Fixed',
             'Value'=>30000,
             'Description'=>'Giảm 30.000 vnđ',
@@ -1068,6 +1098,7 @@ class DatabaseSeeder extends Seeder
             'Ended_at'=>'2020-10-31',
         ]);
         DB::table('coupon')->insert([
+            'Id'=>'BigSale',
             'Type'=>'Product',
             'Value'=>1,
             'Description'=>'Mua 1 Tặng 1',
@@ -1096,7 +1127,7 @@ class DatabaseSeeder extends Seeder
             'Name'=>'Thanh Toán Qua Ví Điện Tử Zalopay',
             'Status'=>'Không hỗ trợ',
         ]);
-
+        
     }
 }
 

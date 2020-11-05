@@ -1,36 +1,36 @@
 @extends('main_layout')
 @section('content')
 <?php 
-  Session::forget('cart');
-  $item = [
-    'product_id'=>'1',
-    'product_name'=>'Espresso / Americano',
-    'product_image'=>'product-20201012134003.jpeg',
-    'product_size'=>'M',
-    'product_price'=>'40000', // = sale_price
-    'sugar'=>'30',
-    'ice'=>'50',
-    'hot'=>'70',
-    'topping'=>[
-        "2"=>"5000",
-        "3"=>"8000"
-    ]
-  ];
-  Session::push('cart', $item);
-  $item = [
-    'product_id'=>'5',
-    'product_name'=>'Cà Phê Sữa',
-    'product_image'=>'product-20201012134003.jpeg',
-    'product_size'=>'S',
-    'product_price'=>'25000', // = sale_price
-    'sugar'=>'30',
-    'ice'=>'50',
-    'hot'=>'70',
-    'topping'=>[
-        "2"=>"5000"
-    ]
-  ];
-  Session::push('cart', $item);
+//   Session::forget('cart');
+//   $item = [
+//     'product_id'=>'1',
+//     'product_name'=>'Espresso / Americano',
+//     'product_image'=>'product-20201012134003.jpeg',
+//     'product_size'=>'M',
+//     'product_price'=>'40000', // = sale_price
+//     'sugar'=>'30',
+//     'ice'=>'50',
+//     'hot'=>'70',
+//     'topping'=>[
+//         "2"=>"5000",
+//         "3"=>"8000"
+//     ]
+//   ];
+//   Session::push('cart', $item);
+//   $item = [
+//     'product_id'=>'5',
+//     'product_name'=>'Cà Phê Sữa',
+//     'product_image'=>'product-20201012134003.jpeg',
+//     'product_size'=>'S',
+//     'product_price'=>'25000', // = sale_price
+//     'sugar'=>'30',
+//     'ice'=>'50',
+//     'hot'=>'70',
+//     'topping'=>[
+//         "2"=>"5000"
+//     ]
+//   ];
+//   Session::push('cart', $item);
 //   echo dd( Session::get('cart'));
 
  ?>

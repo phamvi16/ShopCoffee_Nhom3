@@ -8,6 +8,9 @@
                 <div class="alert alert-success">
                     {!! session()->get('message') !!}
                 </div>
+
+           
+
             @elseif(session()->has('error'))
                 <div class="alert alert-danger">
                     {!! session()->get('error') !!}
@@ -65,6 +68,7 @@
                         <div class="hr mt-4 w-100"></div>
                     </div>
                 @endforeach
+
         </div>
         <div class="right ml-5 mb-4">
             <h4 class="pl-5 pt-4 title">ORDER SUMMARY</h4>
@@ -129,6 +133,8 @@
                                 <label class="form-check-label" for="inlineRadio1">{{ $cart['product_size'] }}</label>
                             </div>
                         </div>
+
+
 
                         <div class="form-group row modal-header">
                             <div class="col-md-12">

@@ -27,41 +27,33 @@
                     </div>
                 </div>
 
-                @forelse($all_product as $pro)
-                    @if ($pro->Visibility != "Delete" && $pro->Visibility != "Hidden")
-                        <a class="menu-item" href="/product-detail/{{$pro->Id}}">
-                        @csrf
-                        <div class="card card-menu col-sm-3 ml-4 mb-4 m-5 ">
-                        <input type="hidden" value="{{$pro->Id}}" class="cart_product_id_{{$pro->Id}}">
-                        <input type="hidden" value="{{$pro->Name}}" class="cart_product_name_{{$pro->Id}}">
-                        <input type="hidden" value="{{$pro->Image}}" class="cart_product_image_{{$pro->Id}}">
-                        <input type="hidden" value="{{$pro->product_size->first()->Sale_Price}}" class="cart_product_price_{{$pro->Id}}">
-                        <input type="hidden" value="{{$pro->product_size->first()->Size}}" class="cart_product_size_{{$pro->Id}}">
-
-                            <img class="card-img-top img-menu " src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
-                            <div class="card-body mt-1">
-                                <h5 class="card-title"><a href="/product-detail/{{$pro->Id}}">{{$pro->Name}}</a></h5>
-                                <p class="card-text">{{$pro->Description}}</p>
-                                <div class="d-flex">
-                                
-                                @if ($pro->Visibility == "Out-Stock")
-                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled>ADD TO CART</button>
-                                @else
-                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4">ADD TO CART</button>
-                                @endif
-
-                                <p style="text-decoration: line-through" class="mt-4 mr-3 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Sale_Price)}}</span>đ</p>
-                                <p class="mt-4 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Price)}}</span>đ</p>
-                                </div>
+                 @forelse($all_product as $pro)
+                    <a class="menu-item" href="/product-detail/{{$pro->Id}}">
+                       @csrf
+                    <div class="card card-menu col-sm-3 ml-4 mb-4 m-5 ">
+                    <input type="hidden" value="{{$pro->Id}}" class="cart_product_id_{{$pro->Id}}">
+                    <input type="hidden" value="{{$pro->Name}}" class="cart_product_name_{{$pro->Id}}">
+                    <input type="hidden" value="{{$pro->Image}}" class="cart_product_image_{{$pro->Id}}">
+                    
+                    @foreach($pro->product_size as $size)
+                    <input type="hidden" value="{{ $size->Sale_Price}}" class="cart_product_price_{{ $size->Id_Product}}">
+                    <input type="hidden" value="{{ $size->Size}}" class="cart_product_size_{{ $size->Id_Product}}">
+                    @endforeach
+                        <img class="card-img-top img-menu " src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
+                        <div class="card-body mt-1">
+                            <h5 class="card-title"><a href="/product-detail/{{$pro->Id}}">{{$pro->Name}}</a></h5>
+                            <p class="card-text">{{$pro->Description}}</p>
+                            <div class="d-flex">
+                            <p href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4">ADD TO CART</p>
+                            <p style="text-decoration: line-through" class="mt-4 mr-3 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Sale_Price)}}</span>đ</p>
+                            <p class="mt-4 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Price)}}</span>đ</p>
                             </div>
                         </div>
-                        </a>
-                    @endif
-                @empty
+                    </div>
+                    </a>
+                    @empty
                     <div>Không có sản phẩm để hiển thị</div>
-                @endforelse
-
-
+                    @endforelse
         </section>
     </div>
 </div>

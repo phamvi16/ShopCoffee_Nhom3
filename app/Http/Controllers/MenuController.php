@@ -28,6 +28,8 @@ class MenuController extends Controller
        $all_category = Category::All();
        $all_product = Product::where('Name', 'like', '%' .$keywords. '%')->get();
 
+
+
        return view('pages.menu')->with('all_product',$all_product)->with('all_category', $all_category)->with('keywords', $keywords);
 
    }

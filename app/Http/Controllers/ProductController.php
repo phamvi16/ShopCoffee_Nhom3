@@ -18,8 +18,8 @@ use App\Services\CategoryService;
 class ProductController extends Controller
 {
     public function index(){
-          $all_product = Product::where('Visibility', '<>', 'Delete')->get();
-            return view('admin.product', compact('all_product'));
+        $all_product = Product::where('Visibility', '<>', 'Delete')->get();
+        return view('admin.product', compact('all_product'));
     }
     
 
@@ -295,6 +295,8 @@ class ProductController extends Controller
 
     public function show($id = null){
         $pro = Product::find($id);
-        return ($pro != null) ?  view('pages.product-detail', compact('pro')) : abort(404);
+        if ($pro->Visibility == "Delete") return redirect("admin/product")->with('error', "Sản phẩm này đã bị xóa!");
+        else if ($pro->Visibility == "Hidden") return redirect("admin/product")->with('error', "Sản phẩm này đã bị ẩn!");
+        else return ($pro != null) ?  view('pages.product-detail', compact('pro')) : abort(404);
     }
 }

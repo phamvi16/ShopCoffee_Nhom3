@@ -67,18 +67,26 @@
                         </div>
 
                         <div class="product-add-to-cart">
-                            <div class="add">
-                              <button class="btn btn-primary add-to-cart" data-button-action="add-to-cart" style="background-color: #644a3b">
-                                Add to cart
-                              </button>
-                            </div>
+                            @if ($pro->Visibility == "Publish")
+                                <div class="add">
+                                    <button class="btn btn-primary add-to-cart" data-button-action="add-to-cart" style="background-color: #644a3b">
+                                        Add to cart
+                                    </button>
+                                </div>
+                            @else ($pro->Visibility == "Out-Stock")
+                                <div class="add">
+                                    <button class="btn btn-primary add-to-cart" data-button-action="add-to-cart" style="background-color: #644a3b" disabled>
+                                        Add to cart
+                                    </button>
+                                </div>
+                            @endif
                             <div class="clearfix"></div>
 
                             <span id="product-availability">
-                                <span class="product-{{ ($pro->Visibility == "Public") ? "available" : "unavailable" }}" id="status">
-                                    @if ($pro->Visibility == "Public")
+                                <span class="product-{{ ($pro->Visibility == "Publish") ? "available" : "unavailable" }}" id="status">
+                                    @if ($pro->Visibility == "Publish")
                                         In stock
-                                    @else
+                                    @elseif ($pro->Visibility == "Out-Stock")
                                         Out of stock/Not available
                                     @endif
                                 </span>

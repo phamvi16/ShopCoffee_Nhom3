@@ -49,8 +49,8 @@
             <div class="mobile-menu-icon">
               <i class="fa fa-bars"></i>
             </div>
-            <nav class="tm-nav " >
-              <ul>
+            <nav class="tm-nav  " >
+              <ul >
                 <li><a href="{{URL::to('/trang-chu')}}" class="active">TRANG CHỦ</a></li>
                 <li><a href="{{URL::to('/menu')}}">THỰC ĐƠN</a></li>
                 <li><a href="{{URL::to('/gio-hang')}}">GIỎ HÀNG</a></li>
@@ -72,11 +72,12 @@
                   </div>
                 </li>
                 <li>
-                 <form action="{{URL::to('/tim-kiem')}}" method="get" class="form-inline " style="margin-top: 10px;">
+                 <form action="{{URL::to('/tim-kiem')}}" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
 
-                  <input class="form-control mr-sm-2 " name="keywords_submit"  type="text" placeholder="Nhập nội dung..." aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" style="background-color:#140718" type="submit">Tìm kiếm</button>
+                  <input class="form-control mr-sm-2  "  name="keywords_submit"  type="text" placeholder="Nhập nội dung..." aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0 fas fa-search" style="background-color:#140718" type="submit"></button>
                 </form>
+
               </li>
               </ul>
             </nav>

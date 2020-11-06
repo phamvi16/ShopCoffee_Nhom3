@@ -86,7 +86,7 @@ if($data==null){
     <div class="col-sm-5 wrapper-checkout-right pr-0">
         <div class="d-flex align-items-center">
             <div class="order-sum mt-4">Order Summary</div>
-            <div class="edit mt-4"><a href="/gio-hang">Edit</a></div>
+            <div class="edit mt-4"><a href="/gio-hang">Chỉnh Sửa</a></div>
         </div>
 
         <?php
@@ -102,7 +102,7 @@ if($data!=null){
                 <div class="d-flex align-items-center">
                     <img class="img-order-sum" src="/ProductImages/Products/'.$value['product_image'].'" alt="">
                     <div class="flex-column" style="flex-grow: 1">
-                        <div class="ml-4 mb-2 name-sum">'.$value['product_name'].'</div>
+                        <div class="ml-4 mb-2 name-sum"><a href="./product-detail/'.$value['product_id'].'">'.$value['product_name'].'</a></div>
                         <div class="ml-4">Size: '.$value["product_size"].'</div>
                         <div class="ml-4">Topping:';
                        

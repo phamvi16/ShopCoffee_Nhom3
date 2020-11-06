@@ -63,7 +63,7 @@
                     <div class=" dropdown-menu " aria-labelledby="dropdownMenuLink">
                         <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/dang-nhap')}}">Đăng nhập</a>
                         <hr/>
-                      <a class=" dropdown-menu-color dropdown-item" href="#">Tài khoản của tôi</a>
+                      <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/tai-khoan')}}">Tài khoản của tôi</a>
                       <hr/>
                       <a class=" dropdown-menu-color dropdown-item" href="#">Cài đặt</a>
 

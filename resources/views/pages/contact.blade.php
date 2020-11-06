@@ -1,80 +1,45 @@
 
 @extends('main_layout')
- @section('content')
+@section('content')
 
 
+<body>
+
+
+    <section class="tm-welcome-section">
+
+    </section>
     <div class="tm-main-section light-gray-bg">
       <div class="container" id="main">
         <section class="tm-section row">
-          <h2 class="col-lg-12 margin-bottom-30">Send us a message</h2>
+          <h2 class="col-lg-12 margin-bottom-30">Hãy liên hệ với chúng tôi</h2>
           <form action="#" method="post" class="tm-contact-form">
-            <div class="col-lg-12 col-md-12">
+            <div class="col-lg-6 col-md-6">
               <div class="form-group">
-                <input type="text" id="contact_name" class="form-control" placeholder="NAME" />
+                <input type="text" id="contact_name" class="form-control" placeholder="Tên" />
               </div>
               <div class="form-group">
-                <input type="email" id="contact_email" class="form-control" placeholder="EMAIL" />
+                <input type="email" id="contact_email" class="form-control" placeholder="EMail" />
               </div>
               <div class="form-group">
-                <input type="text" id="contact_subject" class="form-control" placeholder="SUBJECT" />
+                <input type="text" id="contact_subject" class="form-control" placeholder="Số điện thoại " />
               </div>
               <div class="form-group">
-                <textarea id="contact_message" class="form-control" rows="6" placeholder="MESSAGE"></textarea>
+                <textarea id="contact_message" class="form-control" rows="6" placeholder="Nội dung"></textarea>
               </div>
               <div class="form-group">
-                <button class="tm-more-button" type="submit" name="submit">Send message</button>
+                <button class="tm-more-button" type="submit" name="submit">Gửi</button>
               </div>
             </div>
-            <!-- <div class="col-lg-6 col-md-6">
-              <div id="google-map"></div>
-            </div> -->
+            <div class="col-lg-6 col-md-6" >
+              <div ><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6510365319805!2d106.680019513951!3d10.761354662416391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b888ab357%3A0xc469f6e800231314!2zMjgwIEFuIEQuIFbGsMahbmcsIFBoxrDhu51uZyA0LCBRdeG6rW4gNSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1604650181614!5m2!1svi!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+            </div>
           </form>
         </section>
       </div>
     </div>
 
-   <!-- JS -->
-   <script type="text/javascript" src={{asset("Page/js/jquery-1.11.2.min.js")}}></script>      <!-- jQuery -->
-   <script type="text/javascript" src={{asset("Page/js/templatemo-script.js")}}></script>      <!-- Templatemo Script -->
-   <script>
-      /* Google map
-      ------------------------------------------------*/
-      var map = '';
-      var center;
-
-      function initialize() {
-        var mapOptions = {
-          zoom: 16,
-          center: new google.maps.LatLng(13.758468,100.567481),
-          scrollwheel: false
-        };
-
-        map = new google.maps.Map(document.getElementById('google-map'),  mapOptions);
-
-        google.maps.event.addDomListener(map, 'idle', function() {
-          calculateCenter();
-        });
-
-        google.maps.event.addDomListener(window, 'resize', function() {
-          map.setCenter(center);
-        });
-      }
-
-      function calculateCenter() {
-        center = map.getCenter();
-      }
-
-      function loadGoogleMap(){
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' + 'callback=initialize';
-        document.body.appendChild(script);
-      }
-      $(document).ready(function(){
-        loadGoogleMap();
-      });
-      </script>
     </body>
     </html>
 
-      @endsection
+     @endsection

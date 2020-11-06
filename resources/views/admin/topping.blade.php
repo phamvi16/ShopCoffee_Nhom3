@@ -18,16 +18,16 @@
                                             STT
                                         </th>
                                         <th>
-                                            Name
+                                            Tên
                                         </th>
                                         <th>
-                                            Price
+                                            Giá
                                         </th>
                                         <th>
-                                            Status
+                                            Trạng thái
                                         </th>
                                         <th>
-                                            Action
+                                            Tác vụ
                                         </th>
 
 
@@ -37,9 +37,9 @@
                                     @php
                                         $i=0;
                                     @endphp
-                                            
+
                                     @foreach($all_topping as $top)
-    
+
                                         @php
                                             $i++;
                                         @endphp
@@ -65,7 +65,7 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                    
+
                                     @endforeach
                                     </tbody>
                                 </table>

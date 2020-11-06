@@ -1,5 +1,5 @@
 @extends('admin_layout')
-@section('title', 'Order')
+@section('title', 'Đơn hàng')
 @section('content')
     <div class="panel-header panel-header-sm"></div>
     <div class="content">
@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header ">
-                    <h4 class="card-title"> All Order</h4>
+                    <h4 class="card-title">Danh sách đơn hàng</h4>
                     </div>
                     <div class="card-body ">
                         <div class="table-responsive">
@@ -17,13 +17,13 @@
                                         STT
                                     </th>
                                     <th>
-                                        Name
+                                        Tên
                                     </th>
                                     <th>
-                                        Image
+                                        Hình ảnh
                                     </th>
                                     <th>
-                                        Action
+                                        Tác vụ
                                     </th>
 
 

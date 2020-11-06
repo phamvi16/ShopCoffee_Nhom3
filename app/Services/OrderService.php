@@ -75,7 +75,7 @@ class OrderService{
         if($isSuccess_InsertOder){
             $isSuccess_UpdatePoint = (new CustomerService)->UpdatePoint($point,$phone);
             if($isSuccess_UpdatePoint){
-                return $this->Insert_OrderProduct($data);
+                return $this->Insert_OrderProduct($data,$isSuccess_InsertOder);
             }
             else{
                 return 0;
@@ -94,7 +94,7 @@ class OrderService{
         
         DB::beginTransaction();
         try{
-            Order::create([
+            $newOrder = Order::create([
                 'customer'=>$customer_shippingid,
                 'coupon'=>"BigSale",
                 'payment_method'=>$payment_method,
@@ -105,7 +105,7 @@ class OrderService{
                 'status'=>$status
             ]);
             DB::commit();
-            return 1;
+            return $newOrder->Id;
         }
         catch(Exception $e){
             DB::rollBack();
@@ -113,8 +113,8 @@ class OrderService{
             return 0;
         }
     }
-    public function Insert_OrderProduct($data){
-        $Order = Order::latest()->first(); // $isOder['Id'];
+    public function Insert_OrderProduct($data,$newOrderId){
+        // $Order = Order::latest()->first(); // $isOder['Id'];
         DB::beginTransaction();
         try{
         foreach($data as $key => $product){
@@ -122,7 +122,7 @@ class OrderService{
 
                 $newOrderProduct = OrderProduct::create([
                     'id_product_size'=>$productsize->Id,
-                    'id_order'=>$Order->Id,
+                    'id_order'=>$newOrderId,
                     'price_buy'=>$productsize->Sale_Price
                 ]);
 

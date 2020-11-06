@@ -32,6 +32,12 @@
 //   ];
 //   Session::push('cart', $item);
 //   echo dd( Session::get('cart'));
+$data = Session::get('cart');
+if($data==null){
+    echo '<script async>
+    window.location.href ="/gio-hang"</script>';
+}
+
 
  ?>
 
@@ -84,11 +90,10 @@
         </div>
 
         <?php
-            $data = Session::get('cart');
-
             $totalPrice_Topping=0;
 
             $totalPrice_Product=0;
+if($data!=null){
 
             foreach($data as $key =>$value){
                 
@@ -121,6 +126,7 @@
                 </div>
                 ';
             }
+        }
 
         ?>
 

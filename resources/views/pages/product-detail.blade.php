@@ -68,21 +68,25 @@
                         </div>
                         <div class="product-add-to-cart">
                             <div class="add">
-                            <input type="hidden" value="{{$pro->Id}}" class="cart_product_id_{{$pro->Id}}">
-                            <input type="hidden" value="{{$pro->Name}}" class="cart_product_name_{{$pro->Id}}">
-                            <input type="hidden" value="{{$pro->Image}}" class="cart_product_image_{{$pro->Id}}">
-                        
-                            <input type="hidden" value="{{$pro->product_size->first()->Sale_Price}}" class="cart_product_price_{{$pro->Id}}">
-                            <input type="hidden" value="{{$pro->product_size->first()->Size}}" class="cart_product_size_{{$pro->Id}}">
+                                <input type="hidden" value="{{$pro->Id}}" class="cart_product_id_{{$pro->Id}}">
+                                <input type="hidden" value="{{$pro->Name}}" class="cart_product_name_{{$pro->Id}}">
+                                <input type="hidden" value="{{$pro->Image}}" class="cart_product_image_{{$pro->Id}}">
                             
-                            <a href="#" data-id="{{$size->Id_Product}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
+                                <input type="hidden" value="{{$pro->product_size->first()->Sale_Price}}" class="cart_product_price_{{$pro->Id}}">
+                                <input type="hidden" value="{{$pro->product_size->first()->Size}}" class="cart_product_size_{{$pro->Id}}">
+                                
+                                @if ($pro->Visibility == "Publish")
+                                    <a href="#" data-id="{{$size->Id_Product}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
+                                @elseif ($pro->Visibility == "Out-Stock")
+                                    <a href="#" name="add-to-cart" type="add-to-cart" class="btn btn-primary add-to-cart mr-4" disabled>ADD TO CART</a>
+                                @endif
                             </div>
                             <div class="clearfix"></div>
                             <span id="product-availability">
-                                <span class="product-{{ ($pro->Visibility == "Public") ? "available" : "unavailable" }}" id="status">
-                                    @if ($pro->Visibility == "Public")
+                                <span class="product-{{ ($pro->Visibility == "Publish") ? "available" : "unavailable" }}" id="status">
+                                    @if ($pro->Visibility == "Publish")
                                         In stock
-                                    @else
+                                    @elseif ($pro->Visibility == "Out-Stock")
                                         Out of stock/Not available
                                     @endif
                                 </span>

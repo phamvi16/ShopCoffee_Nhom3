@@ -29,7 +29,7 @@
     -->
             <div class="logo">
 
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                <a href="" class="simple-text logo-normal">
                     Cafe House
                 </a>
             </div>
@@ -57,6 +57,12 @@
                         <a href="/admin/topping">
                         <i class="now-ui-icons design_bullet-list-67"></i>
                             <p>Topping</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/coupon">
+                            <i class="now-ui-icons shopping_tag-content"></i>
+                            <p>Phiếu giảm giá</p>
                         </a>
                     </li>
                     <li>

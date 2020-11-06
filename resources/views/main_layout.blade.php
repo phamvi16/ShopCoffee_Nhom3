@@ -55,7 +55,22 @@
                 <li><a href="{{URL::to('/menu')}}">THỰC ĐƠN</a></li>
                 <li><a href="{{URL::to('/gio-hang')}}">GIỎ HÀNG</a></li>
                 <li><a href="{{URL::to('/lien-he')}}">LIÊN HỆ</a></li>
-                <li><a href="{{URL::to('/dang-nhap')}}">ĐĂNG NHẬP</a></li>
+                {{-- <li><a href="{{URL::to('/dang-nhap')}}">ĐĂNG NHẬP</a></li> --}}
+                <li>
+                <div class="dropdown show">
+                    <a class=" dropdown-toggle" href="{{URL::to('/dang-nhap')}}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ĐĂNG NHẬP
+                    </a>
+                    <div class=" dropdown-menu " aria-labelledby="dropdownMenuLink">
+                        <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/dang-nhap')}}">Đăng nhập</a>
+                        <hr/>
+                      <a class=" dropdown-menu-color dropdown-item" href="#">Tài khoản của tôi</a>
+                      <hr/>
+                      <a class=" dropdown-menu-color dropdown-item" href="#">Cài đặt</a>
+
+                    </div>
+                  </div>
+                </li>
                 <li>
                  <form action="{{URL::to('/tim-kiem')}}" method="get" class="form-inline " style="margin-top: 10px;">
 

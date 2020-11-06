@@ -24,6 +24,8 @@
   <link href="{{asset('Page/css/sweetalert.css')}}" rel="stylesheet"async>
   <link href="{{asset('Page/css/login.css')}}" rel="stylesheet"async>
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" async/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
 
   @yield('style', '')
 
@@ -50,7 +52,7 @@
             <nav class="tm-nav " >
               <ul>
                 <li><a href="{{URL::to('/trang-chu')}}" class="active">TRANG CHỦ</a></li>
-                <li><a href="{{URL::to('/menu')}}">MENU</a></li>
+                <li><a href="{{URL::to('/menu')}}">THỰC ĐƠN</a></li>
                 <li><a href="{{URL::to('/gio-hang')}}">GIỎ HÀNG</a></li>
                 <li><a href="{{URL::to('/lien-he')}}">LIÊN HỆ</a></li>
                 <li><a href="{{URL::to('/dang-nhap')}}">ĐĂNG NHẬP</a></li>

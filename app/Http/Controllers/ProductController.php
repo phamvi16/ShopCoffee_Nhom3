@@ -295,8 +295,8 @@ class ProductController extends Controller
 
     public function show($id = null){
         $pro = Product::find($id);
-        if ($pro->Visibility == "Delete") return redirect("admin/product")->with('error', "Sản phẩm này đã bị xóa!");
-        else if ($pro->Visibility == "Hidden") return redirect("admin/product")->with('error', "Sản phẩm này đã bị ẩn!");
+        if ($pro->Visibility == "Delete") return redirect("menu")->with('error', "Sản phẩm này đã bị xóa!");
+        else if ($pro->Visibility == "Hidden") return redirect("menu")->with('error', "Sản phẩm này đã bị ẩn!");
         else return ($pro != null) ?  view('pages.product-detail', compact('pro')) : abort(404);
     }
 }

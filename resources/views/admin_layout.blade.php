@@ -29,52 +29,52 @@
     -->
             <div class="logo">
 
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    The Coffee Shop
+                <a href="" class="simple-text logo-normal">
+                    Cafe House
                 </a>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
                         <a href="/admin">
-                            <i class="now-ui-icons business_chart-bar-32"></i>
-                            <p>Dashboard</p>
+                            <i class="now-ui-icons shopping_shop"></i>
+                            <p>Trang chủ</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/category">
-                            <i class="now-ui-icons design_bullet-list-67"></i>
-                            <p>Category</p>
+                            <i class="now-ui-icons files_paper"></i>
+                            <p>Danh mục</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/product">
-                            <i class="now-ui-icons design_app"></i>
-                            <p>Product</p>
+                            <i class="now-ui-icons shopping_bag-16"></i>
+                            <p>Sản phẩm</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/topping">
-                        <i class="now-ui-icons shopping_box"></i>
+                        <i class="now-ui-icons design_bullet-list-67"></i>
                             <p>Topping</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/coupon">
                             <i class="now-ui-icons shopping_tag-content"></i>
-                            <p>Coupon</p>
+                            <p>Phiếu giảm giá</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/customer">
                             <i class="now-ui-icons users_single-02"></i>
-                            <p>Customer</p>
+                            <p>Khách hàng</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/order">
-                            <i class="now-ui-icons shopping_cart-simple"></i>
-                            <p>Order</p>
+                            <i class="now-ui-icons education_paper"></i>
+                            <p>Đơn hàng</p>
                         </a>
                     </li>
 

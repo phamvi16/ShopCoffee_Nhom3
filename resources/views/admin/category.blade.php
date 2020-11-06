@@ -15,19 +15,19 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>STT</th>
-                                <th>Tên</th>
-                                <th>Hình ảnh</th>
-                                <th>Số lượng</th>
-                                <th>Hành đông</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Count</th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
 
                             @php
                                 $i=0;
                             @endphp
-
+                                    
                             @foreach($all_category as $cat)
-
+                                    
                                 @php
                                     $i++;
                                 @endphp

@@ -1,11 +1,13 @@
 .card-title {
     flex-grow: 1;
 }
+
 .btn--icon {
     border-radius: 50%;
     width: 44px;
     height: 44px;
 }
+
 .add-btn:before {
     content: '+';
     font-size: 40px;
@@ -13,7 +15,40 @@
     top: 4px;
     right: 11px;
 }
+
 .icon {
     font-size: 20px;
     margin-right: 20px;
+}
+
+
+/* ---------------- */
+
+
+/* --------------- */
+
+.hide {
+    display: none!important;
+}
+
+.option .custom-dropdown .custom-dropdown__select {
+    font-size: 14px;
+    display: block;
+    height: 35px;
+    padding: 5px 20px 5px 10px;
+    border-color: transparent;
+    border: 1px solid #f08865;
+    background-color: #fff;
+    outline: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 50px;
+    -moz-appearance: none;
+    /* -webkit-appearance: none; */
+    cursor: pointer;
+    text-indent: 1px;
+}
+
+.icon-edit {
+    margin-left: -100%;
 }

@@ -7,6 +7,7 @@ $(document).ready(function () {
     $Ship1Cost="15,000 VNĐ";
     $Ship2Name="Khách Đến Nhận";
     $Ship2Cost="0 VNĐ";
+    let timeLeft = 10;
     // sign up 
     $("#signupBtn").click(function (e) {
         e.preventDefault();
@@ -17,11 +18,11 @@ $(document).ready(function () {
         var password = $("input[name='spassword']").val();
         var email = $("input[name='email']").val();
         var email_regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
         if(name.length==0){
             $("#alert_mess").html("<h4 style='color:red'><b>Bạn Chưa nhập Tên</b></h4>");
         }
@@ -76,11 +77,7 @@ $(document).ready(function () {
 
         var phone = $("input[name='phone']").val();
         var isbought = $("input[name='isbought']:checked").val();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+
         if (phone == null || phone == "") {
             $('#result').empty();
             $('#result').append('<h4 style="color:red">Bạn Chưa Nhập Số điện thoại</h4>');
@@ -213,12 +210,6 @@ $(document).ready(function () {
                                     var payment = $('#select_PaymentMethod').children("option:selected").val();
                                     var shipping = $('#select_ShippingMethod').children("option:selected").val();
   
-                                    $.ajaxSetup({
-                                        headers: {
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        }
-                                    });
-
                                     $.ajax({
                                         url: "/processcheckout",
                                         type: 'POST',
@@ -349,28 +340,183 @@ $(document).ready(function () {
                                     var email = $('input[name="email"]').val();
                                     var payment = $('#select_PaymentMethod').children("option:selected").val();
                                     var shipping = $('#select_ShippingMethod').children("option:selected").val();
+                                    $('#left').empty();
+                                    $('#right').empty();
+                                    localStorage.setItem('time',120);
+                                    $('#left').append(`<h4><b><i id="timmer">Bạn Cón <span style="color:red">`+localStorage.getItem('time')+` </span>Giây Để Xác Nhận Đơn Hàng </i></b></h4>
+                                                        <button class="btn btn-danger" id="CancelOrder_Btn">Hủy Đơn Hàng</button>
+                                                        <button class="btn btn-success" id="SubmitOrder_Btn">Xác Nhận Đơn Hàng </button>
+                                                        
+                                                        <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="invoice-title">
+                                                                    <h2>Cafe House</h2><h3 class="pull-right">New Order</h3>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-xs-6">
+                                                                        <address>
+                                                                        <strong>Khách Hàng :</strong><br>
+                                                                            `+name+`<br>
+                                                                            `+address+`
+                                                                        </address>
+                                                                    </div>
+                                                                    <div class="col-xs-6 text-right">
+                                                                        <address>
+                                                                        <strong>Giao Tới:</strong><br>
+                                                                            `+name+`<br>
+                                                                            `+address+`
+                                                                        </address>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-xs-6">
+                                                                        <address>
+                                                                            <strong>Hình Thức Giao Hàng:</strong><br>
+                                                                            `+shipping+`<br>
+                                                                        </address>
+                                                                    </div>
+                                                                    <div class="col-xs-6 text-right">
+                                                                        <address>
+                                                                            <strong>Order Date:</strong><br>
+                                                                            March 7, 2014<br><br>
+                                                                        </address>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-heading">
+                                                                        <h3 class="panel-title"><strong>Order summary</strong></h3>
+                                                                    </div>
+                                                                    <div class="panel-body">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-condensed">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <td><strong>Item</strong></td>
+                                                                                        <td class="text-center"><strong>Price</strong></td>
+                                                                                        <td class="text-center"><strong>Quantity</strong></td>
+                                                                                        <td class="text-right"><strong>Totals</strong></td>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                                                                    <tr>
+                                                                                        <td>BS-200</td>
+                                                                                        <td class="text-center">$10.99</td>
+                                                                                        <td class="text-center">1</td>
+                                                                                        <td class="text-right">$10.99</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>BS-400</td>
+                                                                                        <td class="text-center">$20.00</td>
+                                                                                        <td class="text-center">3</td>
+                                                                                        <td class="text-right">$60.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>BS-1000</td>
+                                                                                        <td class="text-center">$600.00</td>
+                                                                                        <td class="text-center">1</td>
+                                                                                        <td class="text-right">$600.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="thick-line"></td>
+                                                                                        <td class="thick-line"></td>
+                                                                                        <td class="thick-line text-center"><strong>Subtotal</strong></td>
+                                                                                        <td class="thick-line text-right">$670.99</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="no-line"></td>
+                                                                                        <td class="no-line"></td>
+                                                                                        <td class="no-line text-center"><strong>Shipping</strong></td>
+                                                                                        <td class="no-line text-right">$15</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td class="no-line"></td>
+                                                                                        <td class="no-line"></td>
+                                                                                        <td class="no-line text-center"><strong>Total</strong></td>
+                                                                                        <td class="no-line text-right">$685.99</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        `).ready(function(){
+                                        $('#CancelOrder_Btn').click(function(){
+                                            clearInterval(interval);
+                                            $('#left').empty();
+                                            $('#left').append(`<h4>Hủy Đơn Hàng Thành Công!</h4><a href="/menu">Tiếp Tục Mua Sắm</a>`);
+                                        });
+                                        $('#SubmitOrder_Btn').click(function(){
+                                            localStorage.setItem('time',0);
+                                        });
 
-                                    $.ajaxSetup({
-                                        headers: {
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        }
                                     });
-                                    $.ajax({
-                                        url: "/processcheckout",
-                                        type: 'POST',
-                                        data: {
-                                            name: name,
-                                            phone: phone,
-                                            birthday: birthday,
-                                            address: address,
-                                            email: email,
-                                            payment:payment,
-                                            shipping:shipping
-                                        },
-                                        success: function (data) {
-                                            alert(data);
+                                
+
+                                    // $('#timmer').html("cec");
+                                    
+                                    var interval =setInterval(CountDown,1000);
+                                    function CountDown(){
+                                        let timeLeft = localStorage.getItem('time');
+                                            localStorage.setItem('time',timeLeft-1);
+                                            $('#timmer').html("Bạn Cón <span style='color:red'>"+(timeLeft>0?timeLeft:0)+" </span> Giây Để Xác Nhận Đơn Hàng");
+                                            if(timeLeft<=0){
+                                                
+                                                clearInterval(interval);
+                                                $.ajax({
+                                                    url: "/processcheckout",
+                                                    type: 'POST',
+                                                    data: {
+                                                        name: name,
+                                                        phone: phone,
+                                                        birthday: birthday,
+                                                        address: address,
+                                                        email: email,
+                                                        payment:payment,
+                                                        shipping:shipping
+                                                    },
+                                                    success: function (data) {
+                                                        if(data['result']=="success"){
+                                                            swal("Thành Công!", "Đặt Hàng Thành Công! Chuyển Hướng Về Menu", "success");
+                                                            setTimeout(function(){
+                                                                window.location.href = '/menu';
+                                                             }, 1000);
+                                                        }
+                                                        else{
+                                                            swal("Thất Bại!", "Đặt Hàng Thất Bại!", "error");
+                                                        }
+                                                       
+                                                    }
+                                                });
+                                            }    
                                         }
-                                    });
+                                        // $.ajax({
+                                        //     url: "/processcheckout",
+                                        //     type: 'POST',
+                                        //     data: {
+                                        //         name: name,
+                                        //         phone: phone,
+                                        //         birthday: birthday,
+                                        //         address: address,
+                                        //         email: email,
+                                        //         payment:payment,
+                                        //         shipping:shipping
+                                        //     },
+                                        //     success: function (data) {
+                                        //         alert(data);
+                                        //     }
+                                        // });
+                                    
                                 } else {
                                     return false;
                                 }

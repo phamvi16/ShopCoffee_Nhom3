@@ -43,7 +43,7 @@ if($data==null){
 
 <div class="container checkout mb-4">
 
-    <div class="col-xs-12 col-sm-7 wrapper-checkout-left">
+    <div class="col-xs-12 col-sm-7 wrapper-checkout-left" id="left">
         <!-- <h1 class="name text-center">Cafe House</h1>
         <div class="mt-5">
             <h3 class="cre-acc">CREATE NEW ACCOUNT</h3>
@@ -83,7 +83,7 @@ if($data==null){
 
     </div> <!--end form-->
 
-    <div class="col-sm-5 wrapper-checkout-right pr-0">
+    <div class="col-sm-5 wrapper-checkout-right pr-0" id="right">
         <div class="d-flex align-items-center">
             <div class="order-sum mt-4">Order Summary</div>
             <div class="edit mt-4"><a href="/gio-hang">Chỉnh Sửa</a></div>
@@ -93,7 +93,6 @@ if($data==null){
             $totalPrice_Topping=0;
 
             $totalPrice_Product=0;
-if($data!=null){
 
             foreach($data as $key =>$value){
                 
@@ -126,7 +125,6 @@ if($data!=null){
                 </div>
                 ';
             }
-        }
 
         ?>
 

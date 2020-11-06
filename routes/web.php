@@ -65,6 +65,11 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::put('/update', [ProductController::class, 'update']);
 		Route::get('/show', [ProductController::class, 'show']);
 		Route::get('/delete/{id}', [ProductController::class, 'delete']);
+
+		//filter
+		Route::get('/filter/priceasc', [ProductController::class, 'filterPriceAsc']);
+		Route::get('/filter/pricedesc', [ProductController::class, 'filterPriceDesc']);
+		Route::get('/filter/category/{id}', [ProductController::class, 'filterCategory']);
 	});
 	
 	//Topping route group

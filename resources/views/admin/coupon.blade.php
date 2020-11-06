@@ -1,5 +1,5 @@
 @extends('admin_layout')
-@section('title', 'Coupon')
+@section('title', 'Phiếu giảm giá')
 @section('content')
 <div class="panel-header panel-header-sm"></div>
 <div class="content">
@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header d-flex">
-                    <h4 class="card-title"> All Coupon</h4>
+                    <h4 class="card-title">Danh sách mã giảm giá</h4>
                     <a href="coupon/add" class="btn btn-primary btn--icon add-btn"></a>
                 </div>
                 <div class="card-body ">
@@ -16,21 +16,21 @@
                             <thead class=" text-primary">
                                 <th>STT</th>
                                 <th>ID Coupon</th>
-                                <th>Type</th>
-                                <th>Value</th>
-                                <th>Description</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Action</th>
+                                <th>Loại</th>
+                                <th>Giá trị</th>
+                                <th>Mô tả</th>
+                                <th>Ngày bắt đầu</th>
+                                <th>Ngày kết thúc</th>
+                                <th>Tác vụ</th>
                             </thead>
                             <tbody>
 
                             @php
                                 $i=0;
                             @endphp
-                                    
+
                             @foreach($all_coupon as $cou)
-                                    
+
                                 @php
                                     $i++;
                                 @endphp
@@ -78,7 +78,7 @@
                                                     <i class="fa fa-times icon text-danger text"></i></a>
                                             </td>
                                         @Endif
-                                            
+
                                     </tr>
 
                             @endforeach

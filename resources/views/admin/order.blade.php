@@ -9,12 +9,6 @@
                     <div class="card-header ">
                     <h4 class="card-title"> All Order</h4>
                     </div>
-
-                   <div style="width:20%" class="d-flex">
-
-                    <input type="date" id='birthday' name='birthday' class=" ml-5 mr-3" placeholder="" value="">
-                    <input type="date" id='birthday' name='birthday' class="ml-3 " placeholder="" value="">
-                   </div>
                     <div class="card-body ">
                         <div class="table-responsive">
                             <table class="table">
@@ -23,13 +17,13 @@
                                         STT
                                     </th>
                                     <th>
-                                        Tên
+                                        Name
                                     </th>
                                     <th>
-                                        Hình ảnh
+                                        Image
                                     </th>
                                     <th>
-                                       Trạng thái
+                                        Action
                                     </th>
 
 

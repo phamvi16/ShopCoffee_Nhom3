@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                
+
 
                     <div class="table-responsive">
                         <table class="table">
@@ -69,16 +69,16 @@
                                 <th>Tên</th>
                                 <th>Hình ảnh</th>
                                 <th>Size</th>
-                                <th>Price</th>
-                                <th>Sale_Price</th>
-                                <th>Category</th>
-                                <th>Action</th>                             
+                                <th>Giá gốc</th>
+                                <th>Giá bán</th>
+                                <th>Danh mục</th>
+                                <th>Tác vụ</th>
                             </thead>
                             <tbody>
                                     @php
                                         $i=0;
                                     @endphp
-                                    
+
                                     @foreach($all_product as $pro)
 
                                         @if ($pro->Visibility != 'Delete')
@@ -165,7 +165,7 @@
                 }
             });
 
-            
+
         });
     });
 </script>

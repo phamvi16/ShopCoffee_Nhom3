@@ -2,7 +2,6 @@ $(document).ready(function () {
     function formatNumber (num) {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
     }
-
     $Ship1Name="Giao Tận Nơi";
     $Ship1Cost="15,000 VNĐ";
     $Ship2Name="Khách Đến Nhận";
@@ -18,6 +17,7 @@ $(document).ready(function () {
         var password = $("input[name='spassword']").val();
         var email = $("input[name='email']").val();
         var email_regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        
         // $.ajaxSetup({
         //     headers: {
         //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -121,118 +121,10 @@ $(document).ready(function () {
                             <input class="form-control in-mail in-add" type="email" placeholder="Email.." name="email" required>
                         </label>
 
-                        <input class="form-control in-com mt-3" type="text" placeholder="Địa Chỉ.." name="address" required>
-
-                        <select class="form-control in-com mt-3" id="select_PaymentMethod" name="payment">
-                        </select>
-
-                        <select class="form-control in-com mt-3" id="select_ShippingMethod" name="shipping">
-                            <option vale="Giao Tận nơi" >Giao Tận Nơi</option>
-                            <option value="Khách Đến Nhận">Khách Đến Nhận</option>
-                        </select>
-
-
-                        <textarea class="textarea pt-2 mt-3 form-group" name="note" id="note" cols="83" rows="5"
-                            placeholder="Lời Nhắn.."></textarea>
-            
-                        <button class="btn btn-primary chkout-sub mt-4" id="checkoutBtn" >Thanh Toán</button>
-                     </form>`).
-                        ready(function () {
-                            $sum = $('#SumCost').data('value');
-                            if($('#select_ShippingMethod').children('option:selected').val()==$Ship1Name){
-                                $('#ShipCost').text($Ship1Cost);
-                                $('#SumCost').text(formatNumber( $sum + 15000) + "VNĐ");
-                            }
-                            else{
-                                $('#ShipCost').text($Ship2Cost);
-                                $('#SumCost').text(formatNumber($sum) + "VNĐ");
-                            }
-
-                            $('#select_ShippingMethod').change(function() {
-                                if(this.value==$Ship1Name){
-                                    $('#ShipCost').text($Ship1Cost);
-                                    $('#SumCost').text(formatNumber($sum + 15000) + "VNĐ");
-                                }
-                                else{
-                                    $('#ShipCost').text($Ship2Cost);
-                                    $('#SumCost').text(formatNumber($sum) + "VNĐ");
-                                }
-                              });
-
-                            for(var i = 0;i<data['all_paymentmethod'].length;i++){
-                                $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i].Id+`">`+data['all_paymentmethod'][i].Name+`</option>`);
-                            }
-                            $('#checkoutBtn').click(function (e) {
-                                e.preventDefault();
-                                if ($('#info_form').validate({
-                                        rules: {
-                                            name: {
-                                                required: true
-                                            },
-                                            email: {
-                                                required: true,
-                                                email: true
-                                            },
-                                            address: {
-                                                required: true
-                                            },
-                                            birthday: {
-                                                required: true
-                                            }
-                                        },
-                                        messages: {
-                                            name: {
-                                                required: "Vui Lòng Nhập họ Tên"
-                                            },
-                                            email: {
-                                                required: "vui Lòng nhập email",
-                                                email: "Email sai định dạng"
-                                            },
-                                            address: {
-                                                required: "Vui Lòng nhập Địa Chỉ"
-                                            },
-                                            birthday: {
-                                                required: "Vui Lòng Nhập Ngày"
-                                            }
-                                        },
-                                        highlight: function (element) {
-                                            $(element).parent().addClass('errorLog')
-                                        },
-                                        unhighlight: function (element) {
-                                            $(element).parent().removeClass('errorLog')
-                                        }
-                                    }).form()) {
-                                    var phone = $('input[name="getPhone"]').val();
-                                    var name = $('input[name="name"]').val();
-                                    var birthday = $('input[name="birthday"]').val();
-                                    var address = $('input[name="address"]').val();
-                                    var email = $('input[name="email"]').val();
-                                    var payment = $('#select_PaymentMethod').children("option:selected").val();
-                                    var shipping = $('#select_ShippingMethod').children("option:selected").val();
-  
-                                    $.ajax({
-                                        url: "/processcheckout",
-                                        type: 'POST',
-                                        data: {
-                                            name: name,
-                                            phone: phone,
-                                            birthday: birthday,
-                                            address: address,
-                                            email: email,
-                                            payment:payment,
-                                            shipping:shipping
-
-                                        },
-                                        success: function (data) {
-                                            alert(data);
-                                        }
-                                    });
-                                } else {
-                                    return false;
-                                }
-                            });
-                        });
-                    } else {
+                        <input class="form-control in-com mt-3" type="text" placeholder="Địa Chỉ.." name="address" required>`);
+                        
+                    } // end if data trống
+                    else {
                         $('#result').empty();
                         $('#result').append(`
                         <form id="info_form" class="append" method="post" >
@@ -253,276 +145,286 @@ $(document).ready(function () {
                             </label>
                             <input class="form-control in-com mt-3" type="text" placeholder="Địa Chỉ.." name="address" value="` + data['address'] + `" required style="background:#a5e8c1">
 
-                            <select class="form-control in-com mt-3" id="select_PaymentMethod">
-                            </select>    
+                            `);
+                    } // end nếu có data
 
-                            <select class="form-control in-com mt-3" id="select_ShippingMethod">
-                                <option vale="Giao Tận nơi" >Giao Tận Nơi</option>
-                                <option value="Khách Đến Nhận">Khách Đến Nhận</option>
-                            </select>
-                            
-                            <textarea class="textarea pt-2 mt-3 form-group" name="note" id="note" cols="83" rows="5"
-                                placeholder="Lời Nhắn.."></textarea>
-                
-                            <button class="btn btn-primary chkout-sub mt-4" id="checkoutBtn" >Thanh Toán</button>
-                        </form>
-                        `).ready(function () {
+                    // --------------------- append các thông tin còn lại
+                    $('#result').append(`<select class="form-control in-com mt-3" id="select_PaymentMethod">
+                    </select>    
 
-                            $sum = $('#SumCost').data('value');
-                            if($('#select_ShippingMethod').children('option:selected').val()==$Ship1Name){
+                    <select class="form-control in-com mt-3" id="select_ShippingMethod">
+                        <option vale="Giao Tận nơi" >Giao Tận Nơi</option>
+                        <option value="Khách Đến Nhận">Khách Đến Nhận</option>
+                    </select>
+                    
+                    <textarea class="textarea pt-2 mt-3 form-group" name="note" id="note" cols="83" rows="5"
+                        placeholder="Lời Nhắn.."></textarea>
+        
+                    <button class="btn btn-primary chkout-sub mt-4" id="checkoutBtn" >Thanh Toán</button>
+                    </form>
+                    `).ready(function () {
+
+                        $sum = $('#SumCost').data('value');
+                        if($('#select_ShippingMethod').children('option:selected').val()==$Ship1Name){
+                            $('#ShipCost').text($Ship1Cost);
+                            $('#SumCost').text(formatNumber( $sum + 15000) + "VNĐ");
+                        }
+                        else{
+                            $('#ShipCost').text($Ship2Cost);
+                            $('#SumCost').text(formatNumber($sum) + "VNĐ");
+                        }
+
+                        $('#select_ShippingMethod').change(function() {
+                            if(this.value==$Ship1Name){
                                 $('#ShipCost').text($Ship1Cost);
-                                $('#SumCost').text(formatNumber( $sum + 15000) + "VNĐ");
+                                $('#SumCost').text(formatNumber($sum + 15000) + "VNĐ");
                             }
                             else{
                                 $('#ShipCost').text($Ship2Cost);
                                 $('#SumCost').text(formatNumber($sum) + "VNĐ");
                             }
+                        });
 
-                            $('#select_ShippingMethod').change(function() {
-                                if(this.value==$Ship1Name){
-                                    $('#ShipCost').text($Ship1Cost);
-                                    $('#SumCost').text(formatNumber($sum + 15000) + "VNĐ");
-                                }
-                                else{
-                                    $('#ShipCost').text($Ship2Cost);
-                                    $('#SumCost').text(formatNumber($sum) + "VNĐ");
-                                }
-                              });
-
-                            for(var i = 0;i<data['all_paymentmethod'].length;i++){
-                                $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i].Id+`">`+data['all_paymentmethod'][i].Name+`</option>`);
-                            }
-                            
-                            $('#checkoutBtn').click(function (e) {
-                                e.preventDefault();
-                                if ($('#info_form').validate({
-                                        rules: {
-                                            name: {
-                                                required: true
-                                            },
-                                            email: {
-                                                required: true,
-                                                email: true
-                                            },
-                                            address: {
-                                                required: true
-                                            },
-                                            birthday: {
-                                                required: true
-                                            }
+                        for(var i = 0;i<data['all_paymentmethod'].length;i++){
+                            $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i].Id+`">`+data['all_paymentmethod'][i].Name+`</option>`);
+                        }
+                        
+                        $('#checkoutBtn').click(function (e) {
+                            e.preventDefault();
+                            if ($('#info_form').validate({
+                                    rules: {
+                                        name: {
+                                            required: true
                                         },
-                                        messages: {
-                                            name: {
-                                                required: "Vui Lòng Nhập họ Tên"
-                                            },
-                                            email: {
-                                                required: "vui Lòng nhập email",
-                                                email: "Email sai định dạng"
-                                            },
-                                            address: {
-                                                required: "Vui Lòng nhập Địa Chỉ"
-                                            },
-                                            birthday: {
-                                                required: "Vui Lòng Nhập Ngày"
-                                            }
+                                        email: {
+                                            required: true,
+                                            email: true
                                         },
-                                        highlight: function (element) {
-                                            $(element).parent().addClass('errorLog')
+                                        address: {
+                                            required: true
                                         },
-                                        unhighlight: function (element) {
-                                            $(element).parent().removeClass('errorLog')
+                                        birthday: {
+                                            required: true
                                         }
-                                    }).form()) {
-                                    var phone = $('input[name="getPhone"]').val();
-                                    var name = $('input[name="name"]').val();
-                                    var birthday = $('input[name="birthday"]').val();
-                                    var address = $('input[name="address"]').val();
-                                    var email = $('input[name="email"]').val();
-                                    var payment = $('#select_PaymentMethod').children("option:selected").val();
-                                    var shipping = $('#select_ShippingMethod').children("option:selected").val();
-                                    $('#left').empty();
-                                    $('#right').empty();
-                                    localStorage.setItem('time',120);
-                                    $('#left').append(`<h4><b><i id="timmer">Bạn Cón <span style="color:red">`+localStorage.getItem('time')+` </span>Giây Để Xác Nhận Đơn Hàng </i></b></h4>
-                                                        <button class="btn btn-danger" id="CancelOrder_Btn">Hủy Đơn Hàng</button>
-                                                        <button class="btn btn-success" id="SubmitOrder_Btn">Xác Nhận Đơn Hàng </button>
-                                                        
-                                                        <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-xs-12">
-                                                                <div class="invoice-title">
-                                                                    <h2>Cafe House</h2><h3 class="pull-right">New Order</h3>
+                                    },
+                                    messages: {
+                                        name: {
+                                            required: "Vui Lòng Nhập họ Tên"
+                                        },
+                                        email: {
+                                            required: "vui Lòng nhập email",
+                                            email: "Email sai định dạng"
+                                        },
+                                        address: {
+                                            required: "Vui Lòng nhập Địa Chỉ"
+                                        },
+                                        birthday: {
+                                            required: "Vui Lòng Nhập Ngày"
+                                        }
+                                    },
+                                    highlight: function (element) {
+                                        $(element).parent().addClass('errorLog')
+                                    },
+                                    unhighlight: function (element) {
+                                        $(element).parent().removeClass('errorLog')
+                                    }
+                                }).form()) {
+                                var phone = $('input[name="getPhone"]').val();
+                                var name = $('input[name="name"]').val();
+                                var birthday = $('input[name="birthday"]').val();
+                                var address = $('input[name="address"]').val();
+                                var email = $('input[name="email"]').val();
+                                var payment = $('#select_PaymentMethod').children("option:selected").val();
+                                var shipping = $('#select_ShippingMethod').children("option:selected").val();
+                                var currentdate = new Date();
+                                var shipcost =0;
+                                var payment_name =$('#select_PaymentMethod').children("option:selected").text();
+                                if(shipping =="Giao Tận Nơi"){
+                                    shipcost=15000;
+                                }
+
+                                $('#left').empty();
+                                $('#right').empty();
+                                localStorage.setItem('time',120);
+                                $('#left').append(`<div class="container">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="invoice-title">
+                                                                <h2>Cafe House</h2><h3 class="pull-right">New Order</h3>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="row">
+                                                                <div class="col-xs-6">
+                                                                    <address>
+                                                                    <strong>Khách Hàng :</strong><br>
+                                                                        `+name+`<br>
+                                                                        `+"Phone: "+phone +`
+                                                                    </address>
                                                                 </div>
-                                                                <hr>
-                                                                <div class="row">
-                                                                    <div class="col-xs-6">
-                                                                        <address>
-                                                                        <strong>Khách Hàng :</strong><br>
-                                                                            `+name+`<br>
-                                                                            `+address+`
-                                                                        </address>
-                                                                    </div>
-                                                                    <div class="col-xs-6 text-right">
-                                                                        <address>
-                                                                        <strong>Giao Tới:</strong><br>
-                                                                            `+name+`<br>
-                                                                            `+address+`
-                                                                        </address>
-                                                                    </div>
+                                                                <div class="col-xs-6 text-right">
+                                                                    <address>
+                                                                    `+(shipping=="Giao Tận Nơi"?`
+                                                                    <strong>Giao Tới:</strong><br>
+                                                                        `+address+`
+                                                                    </address>'`:"")+
+                                                                    `
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="col-xs-6">
-                                                                        <address>
-                                                                            <strong>Hình Thức Giao Hàng:</strong><br>
-                                                                            `+shipping+`<br>
-                                                                        </address>
-                                                                    </div>
-                                                                    <div class="col-xs-6 text-right">
-                                                                        <address>
-                                                                            <strong>Order Date:</strong><br>
-                                                                            March 7, 2014<br><br>
-                                                                        </address>
-                                                                    </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xs-6">
+                                                                    <address>
+                                                                        <strong>Hình Thức Giao Hàng:</strong><br>
+                                                                        `+shipping+`<br>
+                                                                    </address>
+                                                                    <address>
+                                                                        <strong>Hình Thức Giao Hàng:</strong><br>
+                                                                        `+payment_name+`<br>
+                                                                    </address>
+                                                                </div>
+                                                                    
+                                                                <div class="col-xs-6 text-right">
+                                                                    <address>
+                                                                        <strong>Thời Gian Đặt Hàng:</strong><br>
+                                                                        `+currentdate.toLocaleTimeString()+" Ngày "+currentdate.toLocaleDateString()+`<br><br>
+                                                                    </address>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="panel panel-default">
-                                                                    <div class="panel-heading">
-                                                                        <h3 class="panel-title"><strong>Order summary</strong></h3>
-                                                                    </div>
-                                                                    <div class="panel-body">
-                                                                        <div class="table-responsive">
-                                                                            <table class="table table-condensed">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <td><strong>Item</strong></td>
-                                                                                        <td class="text-center"><strong>Price</strong></td>
-                                                                                        <td class="text-center"><strong>Quantity</strong></td>
-                                                                                        <td class="text-right"><strong>Totals</strong></td>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <!-- foreach ($order->lineItems as $line) or some such thing here -->
-                                                                                    <tr>
-                                                                                        <td>BS-200</td>
-                                                                                        <td class="text-center">$10.99</td>
-                                                                                        <td class="text-center">1</td>
-                                                                                        <td class="text-right">$10.99</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>BS-400</td>
-                                                                                        <td class="text-center">$20.00</td>
-                                                                                        <td class="text-center">3</td>
-                                                                                        <td class="text-right">$60.00</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>BS-1000</td>
-                                                                                        <td class="text-center">$600.00</td>
-                                                                                        <td class="text-center">1</td>
-                                                                                        <td class="text-right">$600.00</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td class="thick-line"></td>
-                                                                                        <td class="thick-line"></td>
-                                                                                        <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                                                                        <td class="thick-line text-right">$670.99</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td class="no-line"></td>
-                                                                                        <td class="no-line"></td>
-                                                                                        <td class="no-line text-center"><strong>Shipping</strong></td>
-                                                                                        <td class="no-line text-right">$15</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td class="no-line"></td>
-                                                                                        <td class="no-line"></td>
-                                                                                        <td class="no-line text-center"><strong>Total</strong></td>
-                                                                                        <td class="no-line text-right">$685.99</td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    <h3 class="panel-title"><strong>Chi Tiết Đơn Hàng</strong></h3>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-condensed">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <td><strong>Sản Phẩm</strong></td>
+                                                                                    <td class="text-center"><strong>Giá</strong></td>
+                                                                                    <td class="text-center"><strong>Topping</strong></td>
+                                                                                    <td class="text-right"><strong>Tổng</strong></td>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody id="data">
+                                                                                
+                                                                            </tbody>
+                                                                        </table>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                        `).ready(function(){
-                                        $('#CancelOrder_Btn').click(function(){
-                                            clearInterval(interval);
-                                            $('#left').empty();
-                                            $('#left').append(`<h4>Hủy Đơn Hàng Thành Công!</h4><a href="/menu">Tiếp Tục Mua Sắm</a>`);
-                                        });
-                                        $('#SubmitOrder_Btn').click(function(){
-                                            localStorage.setItem('time',0);
-                                        });
-
-                                    });
-                                
-
-                                    // $('#timmer').html("cec");
-                                    
-                                    var interval =setInterval(CountDown,1000);
-                                    function CountDown(){
-                                        let timeLeft = localStorage.getItem('time');
-                                            localStorage.setItem('time',timeLeft-1);
-                                            $('#timmer').html("Bạn Cón <span style='color:red'>"+(timeLeft>0?timeLeft:0)+" </span> Giây Để Xác Nhận Đơn Hàng");
-                                            if(timeLeft<=0){
-                                                
-                                                clearInterval(interval);
-                                                $.ajax({
-                                                    url: "/processcheckout",
-                                                    type: 'POST',
-                                                    data: {
-                                                        name: name,
-                                                        phone: phone,
-                                                        birthday: birthday,
-                                                        address: address,
-                                                        email: email,
-                                                        payment:payment,
-                                                        shipping:shipping
-                                                    },
-                                                    success: function (data) {
-                                                        if(data['result']=="success"){
-                                                            swal("Thành Công!", "Đặt Hàng Thành Công! Chuyển Hướng Về Menu", "success");
-                                                            setTimeout(function(){
-                                                                window.location.href = '/menu';
-                                                             }, 1000);
+                                                </div>`).ready(function(){
+                                                    var totalCostTopping = 0;
+                                                    var Total = 0;
+                                                    // console.log(data);
+                                                    for(var i = 0 ; i< data['cart'].length;i++){
+                                                        var subtopping =0;
+                                                        var subcost = parseInt(data['cart'][i]['product_price']);
+                                                        var showTopping =[];
+                                                        $.each(data['cart'][i]['topping'], function( index, value ) {
+                                                            subtopping+=parseInt(value);
+                                                            var thistopping = data['alltopping'].find(p=>p.Id ==index);
+                                                            showTopping.push(thistopping.Name);
+                                                          });
+                                                          subcost += subtopping;
+                                                          totalCostTopping += subtopping;
+                                                          Total+=subcost;
+                                                        $('#data').append(`
+                                                        <tr>
+                                                            <td>`+data['cart'][i]['product_name']+`</td>
+                                                            <td class="text-center">`+formatNumber(data['cart'][i]['product_price'])+`</td>
+                                                            <td class="text-center" id="topping`+i+`">
+                                                            </td>
+                                                            <td class="text-right">`+formatNumber(subcost)+`</td>
+                                                        </tr>
+                                                        `);
+                                                        console.log(showTopping);
+                                                        for(var y = 0 ; y<showTopping.length;y++){
+                                                            $('#topping'+i).append(`<div>`+showTopping[y]+`</div>`);
                                                         }
-                                                        else{
-                                                            swal("Thất Bại!", "Đặt Hàng Thất Bại!", "error");
-                                                        }
-                                                       
                                                     }
+
+                                                    $('#data').append(`
+                                                        <tr> 
+                                                            <td class="thick-line"></td>
+                                                            <td class="thick-line"></td>
+                                                            <td class="thick-line text-center"><strong>Tổng Tiền Topping</strong><small>(đã tính vào tổng)</small></td>
+                                                            <td class="thick-line text-right">`+formatNumber(totalCostTopping)+`</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="no-line"></td>
+                                                            <td class="no-line"></td>
+                                                            <td class="no-line text-center"><strong>Phí Ship</strong></td>
+                                                            <td class="no-line text-right">`+formatNumber(shipcost)+`</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="no-line"></td>
+                                                            <td class="no-line"></td>
+                                                            <td class="no-line text-center"><strong>Tổng Cộng</strong></td>
+                                                            <td class="no-line text-right">`+formatNumber(Total + shipcost)+` VNĐ</td>
+                                                        </tr>`);
                                                 });
-                                            }    
-                                        }
-                                        // $.ajax({
-                                        //     url: "/processcheckout",
-                                        //     type: 'POST',
-                                        //     data: {
-                                        //         name: name,
-                                        //         phone: phone,
-                                        //         birthday: birthday,
-                                        //         address: address,
-                                        //         email: email,
-                                        //         payment:payment,
-                                        //         shipping:shipping
-                                        //     },
-                                        //     success: function (data) {
-                                        //         alert(data);
-                                        //     }
-                                        // });
-                                    
-                                } else {
-                                    return false;
-                                }
-                            });
-                        });
-                    }
+                                $('#left').append(`<h4><b><i id="timmer">Bạn Cón <span style="color:red">`+localStorage.getItem('time')+` </span>Giây Để Xác Nhận Đơn Hàng </i></b></h4>
+                                    <button class="btn btn-danger" id="CancelOrder_Btn">Hủy Đơn Hàng</button>
+                                    <button class="btn btn-success" id="SubmitOrder_Btn">Xác Nhận Đơn Hàng </button>`).ready(function(){
+                                    $('#CancelOrder_Btn').click(function(){
+                                        clearInterval(interval);
+                                        $('#left').empty();
+                                        $('#left').append(`<h4>Hủy Đơn Hàng Thành Công!</h4><a href="/menu">Tiếp Tục Mua Sắm</a>`);
+                                    });
+                                    $('#SubmitOrder_Btn').click(function(){
+                                        localStorage.setItem('time',0);
+                                    });
+
+                                });
+                            
+                                // set count down Time
+                                var interval =setInterval(CountDown,1000);
+                                function CountDown(){
+                                    let timeLeft = localStorage.getItem('time');
+                                        localStorage.setItem('time',timeLeft-1);
+                                        $('#timmer').html("Bạn Cón <span style='color:red'>"+(timeLeft>0?timeLeft:0)+" </span> Giây Để Xác Nhận Đơn Hàng");
+                                        if(timeLeft<=0){
+                                            
+                                            clearInterval(interval);
+                                            $.ajax({
+                                                url: "/processcheckout",
+                                                type: 'POST',
+                                                data: {
+                                                    name: name,
+                                                    phone: phone,
+                                                    birthday: birthday,
+                                                    address: address,
+                                                    email: email,
+                                                    payment:payment,
+                                                    shipping:shipping
+                                                },
+                                                success: function (data) {
+                                                    if(data['result']=="success"){
+                                                        swal("Thành Công!", "Đặt Hàng Thành Công! Chuyển Hướng Về Menu", "success");
+                                                        setTimeout(function(){
+                                                            window.location.href = '/menu';
+                                                        }, 2000);
+                                                    }
+                                                    else{
+                                                        swal("Thất Bại!", "Đặt Hàng Thất Bại!", "error");
+                                                    }
+                                                    console.log(data);
+                                                }
+                                            });
+                                        }    
+                                    }
+                                
+                            } else {
+                                return false;
+                            }
+                        }); // End checkout button Event++
+                    }); // -------------------------------------- ENd append các thông tin còn lại => end success (data)
                 }
             });
         }

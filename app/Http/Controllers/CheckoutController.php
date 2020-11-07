@@ -21,6 +21,8 @@ class CheckoutController extends Controller
         $all_paymentmethod = DB::table('payment_method')->where('status','Hỗ Trợ')->get();
         
         if($isbought == "first_time"){
+            $data['cart'] = session('cart');
+            $data['alltopping'] = DB::table('topping')->get();
             $data['isBought']=0;
             $data['TryGetVal']=0;
             $data['all_paymentmethod']=$all_paymentmethod;
@@ -36,6 +38,8 @@ class CheckoutController extends Controller
                 $data2['isBought']=1;
             }
             $data2['all_paymentmethod']=$all_paymentmethod;
+            $data2['cart'] = session('cart');
+            $data2['alltopping'] = DB::table('topping')->get();
             return $data2;
         }
     }
@@ -45,13 +49,6 @@ class CheckoutController extends Controller
         $data = session('cart');
 
         $result = (new OrderService())->InsertCheckout($data, $request);
-        // echo dd($data);
-        // if($result == 1){
-        //     return $data;
-        // }
-        // else{
-        //     return $result;
-        // }
         if($result == 1){
             $data['result']="success";
         }

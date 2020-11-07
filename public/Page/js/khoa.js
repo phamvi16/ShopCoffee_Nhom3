@@ -343,7 +343,6 @@ $(document).ready(function () {
                                                             <td class="text-right">`+formatNumber(subcost)+`</td>
                                                         </tr>
                                                         `);
-                                                        console.log(showTopping);
                                                         for(var y = 0 ; y<showTopping.length;y++){
                                                             $('#topping'+i).append(`<div>`+showTopping[y]+`</div>`);
                                                         }
@@ -369,7 +368,7 @@ $(document).ready(function () {
                                                             <td class="no-line text-right">`+formatNumber(Total + shipcost)+` VNĐ</td>
                                                         </tr>`);
                                                 });
-                                $('#left').append(`<h4><b><i id="timmer">Bạn Cón <span style="color:red">`+localStorage.getItem('time')+` </span>Giây Để Xác Nhận Đơn Hàng </i></b></h4>
+                                $('#left').append(`<h4><b><i id="timmer">Bạn Cón <span style="color:red">`+localStorage.getItem('time')+` </span>Giây Để Xác Nhận Và Hủy Đơn Hàng </i></b></h4>
                                     <button class="btn btn-danger" id="CancelOrder_Btn">Hủy Đơn Hàng</button>
                                     <button class="btn btn-success" id="SubmitOrder_Btn">Xác Nhận Đơn Hàng </button>`).ready(function(){
                                     $('#CancelOrder_Btn').click(function(){
@@ -388,7 +387,7 @@ $(document).ready(function () {
                                 function CountDown(){
                                     let timeLeft = localStorage.getItem('time');
                                         localStorage.setItem('time',timeLeft-1);
-                                        $('#timmer').html("Bạn Cón <span style='color:red'>"+(timeLeft>0?timeLeft:0)+" </span> Giây Để Xác Nhận Đơn Hàng");
+                                        $('#timmer').html("Bạn Cón <span style='color:red'>"+(timeLeft>0?timeLeft:0)+" </span> Giây Để Xác Nhận Và Hủy Đơn Hàng");
                                         if(timeLeft<=0){
                                             
                                             clearInterval(interval);
@@ -408,13 +407,12 @@ $(document).ready(function () {
                                                     if(data['result']=="success"){
                                                         swal("Thành Công!", "Đặt Hàng Thành Công! Chuyển Hướng Về Menu", "success");
                                                         setTimeout(function(){
-                                                            window.location.href = '/menu';
-                                                        }, 2000);
+                                                            window.location.href = '/clearcart';
+                                                        }, 1000);
                                                     }
                                                     else{
                                                         swal("Thất Bại!", "Đặt Hàng Thất Bại!", "error");
                                                     }
-                                                    console.log(data);
                                                 }
                                             });
                                         }    

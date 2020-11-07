@@ -57,4 +57,8 @@ class CheckoutController extends Controller
         }
         return $data;
     }
+    public function ClearCart(){
+        session()->forget('cart');
+        return redirect('/menu');
+    }
 }

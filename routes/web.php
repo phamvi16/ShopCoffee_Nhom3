@@ -113,6 +113,7 @@ Route::post('/signup', [LoginController::class, 'SignUp']);
 //checkout route
 Route::post('/verify', [CheckoutController::class, 'Verify']);
 Route::post('/processcheckout', [CheckoutController::class, 'Checkout']);
+Route::get('/clearcart',[CheckoutController::class,'ClearCart']);
 
 //Cart
 Route::post('/add-cart', [CartController::class,'add_cart']);

@@ -47,7 +47,7 @@
                                 <div class="d-flex">
 
                                 @if ($pro->Visibility == 'Publish')
-                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4">ADD TO CART</button>
+                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" data-pos="menu" class="btn btn-primary add-to-cart mr-4">ADD TO CART</button>
                                 @elseif ($pro->Visibility == 'Out-Stock')
                                     <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled>ADD TO CART</button>
                                 @endif

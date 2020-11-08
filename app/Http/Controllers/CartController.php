@@ -66,8 +66,7 @@ class CartController extends Controller
           Session::put('cart',$cart);
       }
       Session::save();
-        // echo json_encode($cart);
-    //  print_r($data);
+      echo "Added";
     }
    public function del_product($session_id){
         $cart =Session::get('cart');

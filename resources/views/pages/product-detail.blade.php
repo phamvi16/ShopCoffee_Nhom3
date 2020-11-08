@@ -11,9 +11,8 @@
                     <section class="page-content" id="content">
                         <div class="product-leftside">
                              <div class="images-container">
-
                                   <a href="/product-detail/{{ $pro->Id ?? '' }}">
-                                  <img class="js-qv-product-cover" src="{{ asset('ProductImages/Products/') . '/' . ($pro->Image ?? '') }}" alt="{{ $pro->Name ?? '' }}" style="width: 300px;height:300px;
+                                  <img class="js-qv-product-cover" src="{{ asset('ProductImages/Products/') . '/' . ($pro->Image ?? '') }}" data-product-image = "{{ $pro->Image }}" alt="{{ $pro->Name ?? '' }}" style="width: 300px;height:300px;
                                   margin-left: 20%;">
                                   </a>
                             </div>
@@ -49,7 +48,7 @@
                                      @foreach ($pro->product_size->sortByDesc("Size") as $size)
                                      @csrf
                                         <li class="input-container pull-xs-left">
-                                            <input class="input-radio add-to-cart" type="radio"  name="Size" data-product-id="{{ $size->Id_Product ?? '' }}" data-saleprice="{{ number_format($size->Sale_Price, 0, '.', '.') ?? 0 }}" data-price="{{ number_format($size->Price, 0, '.', '.') ?? 0 }}" value="{{ $size->Id ?? '' }}" {{ ($loop->first) ? "checked" : "" }}>
+                                            <input class="input-radio" type="radio"  name="Size" data-product-id="{{ $size->Id_Product ?? '' }}" data-buyprice="{{ $size->Sale_Price }}" data-saleprice="{{ number_format($size->Sale_Price, 0, '.', '.') ?? 0 }}" data-price="{{ number_format($size->Price, 0, '.', '.') ?? 0 }}" value="{{ $size->Id ?? '' }}" {{ ($loop->first) ? "checked" : "" }}>
                                             <span class="radio-label">{{ $size->Size ?? '' }}</span>
                                         </li>
                                     @endforeach
@@ -76,7 +75,7 @@
                                 <input type="hidden" value="{{$pro->product_size->first()->Size}}" class="cart_product_size_{{$pro->Id}}">
                                 
                                 @if ($pro->Visibility == "Publish")
-                                    <a href="#" data-id="{{$size->Id_Product}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
+                                    <a href="#" data-id="{{$size->Id_Product}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" data-pos="prodetail" class="btn btn-primary add-to-cart mr-4">ADD TO CART</a>
                                 @elseif ($pro->Visibility == "Out-Stock")
                                     <a href="#" name="add-to-cart" type="add-to-cart" class="btn btn-primary add-to-cart mr-4" disabled>ADD TO CART</a>
                                 @endif

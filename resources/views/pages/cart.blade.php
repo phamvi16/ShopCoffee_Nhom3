@@ -114,10 +114,10 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <img src="/ProductImages/Products/" id="image"
+                    <img src="" id="image"
                         style="height: 100px;width:100px" />
                     <h4 class="modal-title text-black m-5 name" id="exampleModalLabel"></h4>
-                    <h4 class="modal-title text-black m-5 size" id="Size_click">Size: {{ $cart['product_size'] }}</h4>
+                    <h4 class="modal-title text-black m-5 size" id="Size_click">Size: <span></span></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -127,7 +127,7 @@
                     <form>
                         <div class="form-group row modal-header" id="size_form">
                             <div class="mb-4 mb-lg-0 mr-5"> Size:</div>
-                            <div class="form-check form-check-inline mr-5">
+                            <div class="form-check form-check-inline mr-5 size-radio">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="click_radio"
                                     value="option1">
                                 <label class="form-check-label" for="inlineRadio1">{{ $cart['product_size'] }}</label>

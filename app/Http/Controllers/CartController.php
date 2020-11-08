@@ -86,8 +86,12 @@ class CartController extends Controller
 
     public function get_modal(Request $request)
     {
+      // Get item in cart
       $cart_item = Session::get('cart')[$request->key];
+      // Get all available sizes
+      $all_pro_sizes = Product::find($cart_item['product_id'])->product_size->sortByDesc('Size');
       $data = array(
+              'size_view' => view('../partials.modal-size', ["all_pro_sizes" => $all_pro_sizes, "product_size" => $cart_item["product_size"]])->render(),
               'cart_item' => $cart_item
           );
       echo json_encode($data);

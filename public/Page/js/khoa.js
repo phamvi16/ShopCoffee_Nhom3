@@ -277,7 +277,7 @@ $(document).ready(function () {
                                                                         `+shipping+`<br>
                                                                     </address>
                                                                     <address>
-                                                                        <strong>Hình Thức Giao Hàng:</strong><br>
+                                                                        <strong>Hình Thức Thanh Toán:</strong><br>
                                                                         `+payment_name+`<br>
                                                                     </address>
                                                                 </div>

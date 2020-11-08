@@ -62,7 +62,7 @@
                             </span>
                             <span class="col-sm-2 btn btn-success btn-update text-white">
                                 <a href="#" data-id_form="{{ $cart['product_id'] }}" name="add-to-cart" type="add-to-cart"
-                                    data-toggle="modal" data-target="#exampleModal" class="mt-5 text-white">
+                                    data-toggle="modal" data-key="{{ $key }}" data-target="#exampleModal{{ $key }}" class="mt-5 text-white">
                                     Cập nhật
                                 </a>
                             </span>
@@ -114,10 +114,10 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <img src="/ProductImages/Products/{{ $cart['product_image'] }}" id="image"
+                    <img src="/ProductImages/Products/" id="image"
                         style="height: 100px;width:100px" />
-                    <h4 class="modal-title text-black m-5" id="exampleModalLabel">{{ $cart['product_name'] }}</h4>
-                    <h4 class="modal-title text-black m-5" id="Size_click">Size: {{ $cart['product_size'] }}</h4>
+                    <h4 class="modal-title text-black m-5 name" id="exampleModalLabel"></h4>
+                    <h4 class="modal-title text-black m-5 size" id="Size_click">Size: {{ $cart['product_size'] }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -298,4 +298,7 @@
     </script>
 
 
+@endsection
+@section('script')
+<script type="text/javascript" src="{{ asset('Page/js/cart.js') }}"></script>
 @endsection

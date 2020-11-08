@@ -84,4 +84,13 @@ class CartController extends Controller
         }
     }
 
+    public function get_modal(Request $request)
+    {
+      $cart_item = Session::get('cart')[$request->key];
+      $data = array(
+              'cart_item' => $cart_item
+          );
+      echo json_encode($data);
+    }
+
 }

@@ -112,6 +112,7 @@ Route::post('/processcheckout', [CheckoutController::class, 'Checkout']);
 //Cart
 Route::post('/add-cart', [CartController::class,'add_cart']);
 Route::get('/gio-hang', [CartController::class,'gio_hang']);
+Route::post('/get-modal', [CartController::class,'get_modal']);
 Route::get('/del-pro-cart/{session_is}', [CartController::class,'del_product']);
 Route::get('/show', [CartController::class, 'show']);
 

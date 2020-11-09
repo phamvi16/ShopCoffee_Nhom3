@@ -108,19 +108,6 @@
                                 <h4 class="m-4 font-weight-bold">Topping:</h4>
                                 <div class="text-center row topping">
                                     
-                                    @foreach (App\Models\Topping::All() as $topi)
-                                        <ul style="list-style: none" class="text-left col-md-6">
-                                            <li class="form-group form-check">
-                                                <input type="checkbox" class="form-check-input" name="Topping[]" id="Topping{{ $topi->Id }}" data-Topping-price = "{{ $topi->Price }}" value={{ $topi->Id }}>
-                                                <label class="form-check-label font-weight-normal ml-5" for="Topping{{ $topi->Id }}">
-                                                    {{ $topi->Name }}
-                                                    <span style="font-size: 1.3rem">
-                                                        &nbsp;&nbsp;&nbsp;{{ number_format($topi->Price, 0, ',', '.') }}đ</span>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                    @endforeach
-                                    
                                 </div>
                                 <div class="hr"></div>
                                 <h4 class="font-weight-bold">Lượng đường (%)</h4>

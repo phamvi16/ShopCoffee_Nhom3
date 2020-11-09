@@ -53,26 +53,32 @@ class CartService
 		$cart_item["ice"] = $request->Ice ?? 0;
 		$cart_item["sugar"] = $request->Sugar;
 		$cart_item["hot"] = $request->Hot ?? "";
-		// Get id topping in request
-		[$keys, $values] = Arr::divide($request->Topping);
-		$topping_new_id = $values;
-		// Get id topping in cart
-		[$keys, $values] = Arr::divide($cart_item_toppings);
-		$topping_old_id = $keys;
-		// Get removed toppings
-		$removedToppings = array_diff($topping_old_id, $topping_new_id);
-		// Get added toppings
-		$addedToppings = array_diff($topping_new_id, $topping_old_id);
+		if (!empty($request->Topping)) {
+			// Get id topping in request
+			[$keys, $values] = Arr::divide($request->Topping);
+			$topping_new_id = $values;
+			// Get id topping in cart
+			[$keys, $values] = Arr::divide($cart_item_toppings);
+			$topping_old_id = $keys;
+			// Get removed toppings
+			$removedToppings = array_diff($topping_old_id, $topping_new_id);
+			// Get added toppings
+			$addedToppings = array_diff($topping_new_id, $topping_old_id);
 
-		foreach ($removedToppings as $key => $value) {
-			// Remove toppings
-        	Arr::forget($cart_item_toppings, $value);
-        }
+			foreach ($removedToppings as $key => $value) {
+				// Remove toppings
+	        	Arr::forget($cart_item_toppings, $value);
+	        }
 
-        foreach ($addedToppings as $key => $value) {
-        	// Add toppings
-        	$cart_item_toppings[$value] = Topping::find($value)->Price;
-        }
+	        foreach ($addedToppings as $key => $value) {
+	        	// Add toppings
+	        	$cart_item_toppings[$value] = Topping::find($value)->Price;
+	        }
+		} else {
+			// Delete if topping empty
+			$cart_item_toppings = [];
+		}
+		
 		// Store in session
 		$cart_item["topping"] = $cart_item_toppings;
 		// Save session

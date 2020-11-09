@@ -46,7 +46,7 @@ class CartController extends Controller
               'product_size' => $data['cart_product_size'],
               'ice'=>100,
               'sugar'=>100,
-              'hot'=>'100',
+              'hot'=>'',
               'topping'=>[
                ],
             
@@ -63,7 +63,7 @@ class CartController extends Controller
               'product_size' => $data['cart_product_size'],
               'ice'=>100,
               'sugar'=>100,
-              'hot'=>'100',
+              'hot'=>'',
               'topping'=>[
                ],
               
@@ -96,6 +96,7 @@ class CartController extends Controller
       $all_pro_sizes = Product::find($cart_item['product_id'])->product_size->sortByDesc('Size');
       $data = array(
               'size_view' => view('../partials.modal-size', ["all_pro_sizes" => $all_pro_sizes, "product_size" => $cart_item["product_size"]])->render(),
+              'topping_view' => view('../partials.modal-topping-view', ["session_toppings" => $cart_item['topping']])->render(),
               'item_total' => (new CartService())->getCartItemTotal($request->key),
               'cart_item' => $cart_item
           );
@@ -105,8 +106,11 @@ class CartController extends Controller
     public function update(Request $request)
     {
       $cartService = new CartService();
+      // Update session
       $cartService->updateCartItem($request);
+      // Get cart total
       $cart_total = $cartService->getCartTotal();
+      // Get updated item
       $cart_item = Session::get('cart')[$request->item_key];
       $data = array(
               'item_view' => view('../partials.cart-item-view', ["item" => $cart_item, "cartkey" => $request->item_key])->render(),
@@ -116,12 +120,4 @@ class CartController extends Controller
           );
       echo json_encode($data);
     }
-
-    public function test()
-    {
-      $tmp = Session::get('cart')[0]['topping'];
-      // echo (gettype(collect($tmp)->keys()));
-      
-    }
-
 }

@@ -12,7 +12,7 @@ $(document).ready(function() {
 			data: {key: key},
 			success: function(reponse){
 				var res = JSON.parse(JSON.stringify(reponse));
-				// console.log(res.cart_item);
+				console.log(res.cart_item);
 				// Change image
 				modal.find('.modal-header img').attr('src', '/ProductImages/Products/' + res.cart_item['product_image']);
 				// Change name
@@ -23,14 +23,21 @@ $(document).ready(function() {
 				modal.find('.modal-header h4.price span').text(parseInt(res.cart_item['product_price']).toLocaleString('vi'));
 				// Load available sizes
 				modal.find('.size-radio').html(res.size_view);
+
+				// Load toppings
+				modal.find('.modal-header  div.row.topping').html(res.topping_view);
 				
 				// Change attribute sugar
 				modal.find('div.sugar input[name="Sugar"][value="' + res.cart_item["sugar"] + '"]').prop('checked', true);
 				// Change attribute ice
 				modal.find('div.ice input[name="Ice"][value="' + res.cart_item["ice"] + '"]').prop('checked', true);
+				
 				// Change attribute hot
 				if (res.cart_item['hot'] != "") {
-					modal.find('div.ice input[name="Hot"]').prop('checked', true);	
+					modal.find('div.ice input[name="Hot"]').prop('checked', true);
+				}
+				else {
+					modal.find('div.ice input[name="Hot"]').prop('checked', false);
 				}
 				
 				// Change data key of button update
@@ -106,11 +113,9 @@ $(document).ready(function() {
 		event.preventDefault();
 		var buttonOK = modal.find('.update-topping-btn');
 		var key = parseInt(buttonOK.attr('data-key'));
-		/* Act on the event */
 		// Lấy giá trị của form
 		var data = $(this).serialize() + "&item_key=" + key;
 		
-		console.log(data);
 		$.ajax({
 			url: '/gio-hang/update',
 			type: 'post',
@@ -122,8 +127,7 @@ $(document).ready(function() {
 				$('div.row.items.' + key).prepend(res.item_view);
 				$('.total div.pl-5.pt-4.mr-5 span').text(parseInt(res.cart_total).toLocaleString('vi'));
 				$('.d-flex div.pl-5.pt-4.mr-5 span').text(parseInt(res.cart_total).toLocaleString('vi'));
-				
-				console.log(res);
+				swal('Thông báo', 'Cập nhật thành công', 'success');
 				console.log("success");
 			},
 			error: function(error) {

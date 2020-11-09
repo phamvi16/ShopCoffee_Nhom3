@@ -35,7 +35,7 @@
                         <input type="hidden" value="{{$pro->Id}}" class="cart_product_id_{{$pro->Id}}">
                         <input type="hidden" value="{{$pro->Name}}" class="cart_product_name_{{$pro->Id}}">
                         <input type="hidden" value="{{$pro->Image}}" class="cart_product_image_{{$pro->Id}}">
-                        
+
                         @foreach($pro->product_size as $size)
                         <input type="hidden" value="{{ $size->Sale_Price}}" class="cart_product_price_{{ $size->Id_Product}}">
                         <input type="hidden" value="{{ $size->Size}}" class="cart_product_size_{{ $size->Id_Product}}">
@@ -49,7 +49,7 @@
                                 @if ($pro->Visibility == 'Publish')
                                     <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" data-pos="menu" class="btn btn-primary add-to-cart mr-4">ADD TO CART</button>
                                 @elseif ($pro->Visibility == 'Out-Stock')
-                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled>ADD TO CART</button>
+                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled>THÊM GIỎ HÀNG</button>
                                 @endif
 
                                 <p style="text-decoration: line-through" class="mt-4 mr-3 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Sale_Price)}}</span>đ</p>

@@ -18,10 +18,132 @@ use App\Services\CategoryService;
 class ProductController extends Controller
 {
     public function index(){
+        $cate = Category::all();
         $all_product = Product::where('Visibility', '<>', 'Delete')->get();
-        return view('admin.product', compact('all_product'));
+        $catnow = null;
+        return view('admin.product', compact('all_product', 'cate', 'catnow'))->with('fil', "stt");
     }
-    
+
+    public function filterCategory($id){
+        $cate = Category::All();
+        $all_product = Category::find($id)->product;
+        $catnow = $id;
+        return view('admin.product', compact('all_product', 'cate', 'catnow'));
+    }
+
+    public function filterPriceAsc(){
+        $cate = Category::all();
+        $all_product = Product::where('Visibility', '<>', 'Delete')->get();
+        $catnow = null;
+
+        $n=0;
+        foreach ($all_product as $pro)
+        {
+            $n++;
+        }
+
+        for ($i = 0; $i < $n-1; $i++)
+        {
+            for ($j = $i+1; $j < $n; $j++)
+            {
+                if ($all_product[$i]->product_size[0]->Sale_Price > $all_product[$j]->product_size[0]->Sale_Price)
+                {
+                    $temp = $all_product[$i];
+                    $all_product[$i] = $all_product[$j];
+                    $all_product[$j] = $temp;
+                }
+            }
+        }
+
+        for ($i = 0; $i < $n-1; $i++)
+        {
+            if ($all_product[$i]->product_size->count() < 2) continue;
+            for ($j = $i+1; $j < $n; $j++)
+            {
+                if ($all_product[$j]->product_size->count() < 2) continue;
+                if ($all_product[$i]->product_size[1]->Sale_Price > $all_product[$j]->product_size[1]->Sale_Price)
+                {
+                    $temp = $all_product[$i];
+                    $all_product[$i] = $all_product[$j];
+                    $all_product[$j] = $temp;
+                }
+            }
+        }
+
+        for ($i = 0; $i < $n-1; $i++)
+        {
+            if ($all_product[$i]->product_size->count() < 3) continue;
+            for ($j = $i+1; $j < $n; $j++)
+            {
+                if ($all_product[$j]->product_size->count() < 3) continue;
+                if ($all_product[$i]->product_size[2]->Sale_Price > $all_product[$j]->product_size[2]->Sale_Price)
+                {
+                    $temp = $all_product[$i];
+                    $all_product[$i] = $all_product[$j];
+                    $all_product[$j] = $temp;
+                }
+            }
+        }
+
+        return view('admin.product', compact('all_product', 'cate', 'catnow'))->with('fil', "asc");
+    }
+
+    public function filterPriceDesc(){
+        $cate = Category::all();
+        $all_product = Product::where('Visibility', '<>', 'Delete')->get();
+        $catnow = null;
+
+        $n=0;
+        foreach ($all_product as $pro)
+        {
+            $n++;
+        }
+
+        for ($i = 0; $i < $n-1; $i++)
+        {
+            for ($j = $i+1; $j < $n; $j++)
+            {
+                if ($all_product[$i]->product_size[0]->Sale_Price < $all_product[$j]->product_size[0]->Sale_Price)
+                {
+                    $temp = $all_product[$i];
+                    $all_product[$i] = $all_product[$j];
+                    $all_product[$j] = $temp;
+                }
+            }
+        }
+
+        for ($i = 0; $i < $n-1; $i++)
+        {
+            if ($all_product[$i]->product_size->count() < 2) continue;
+            for ($j = $i+1; $j < $n; $j++)
+            {
+                if ($all_product[$j]->product_size->count() < 2) continue;
+                if ($all_product[$i]->product_size[1]->Sale_Price < $all_product[$j]->product_size[1]->Sale_Price)
+                {
+                    $temp = $all_product[$i];
+                    $all_product[$i] = $all_product[$j];
+                    $all_product[$j] = $temp;
+                }
+            }
+        }
+
+        for ($i = 0; $i < $n-1; $i++)
+        {
+            if ($all_product[$i]->product_size->count() < 3) continue;
+            for ($j = $i+1; $j < $n; $j++)
+            {
+                if ($all_product[$j]->product_size->count() < 3) continue;
+                if ($all_product[$i]->product_size[2]->Sale_Price < $all_product[$j]->product_size[2]->Sale_Price)
+                {
+                    $temp = $all_product[$i];
+                    $all_product[$i] = $all_product[$j];
+                    $all_product[$j] = $temp;
+                }
+            }
+        }
+
+        return view('admin.product', compact('all_product', 'cate', 'catnow'))->with('fil', "desc");
+    }
 
     // Show form to add new product
     public function create(){

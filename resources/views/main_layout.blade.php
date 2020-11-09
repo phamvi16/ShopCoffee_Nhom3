@@ -11,7 +11,6 @@
   <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel='stylesheet'  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
   <link href="{{asset('Page/css/boostrap-4.5.2.min.css')}}" rel='stylesheet'  async>
   <!-- <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'> -->
-  <!-- <link href="{{asset('Page/css/fontawsome-allcss.css')}}" rel="stylesheet"> -->
   <link href="{{asset('Page/css/bootstrap.min.css')}}" rel="stylesheet" async>
   <link href="{{asset('Page/css/font-awesome.min.css')}}" rel="stylesheet" async>
   <link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet">
@@ -24,7 +23,7 @@
   <link href="{{asset('Page/css/sweetalert.css')}}" rel="stylesheet"async>
   <link href="{{asset('Page/css/login.css')}}" rel="stylesheet"async>
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" async/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> -->
 
 
   @yield('style', '')
@@ -49,19 +48,35 @@
             <div class="mobile-menu-icon">
               <i class="fa fa-bars"></i>
             </div>
-            <nav class="tm-nav " >
-              <ul>
+            <nav class="tm-nav  " >
+              <ul >
                 <li><a href="{{URL::to('/trang-chu')}}" class="active">TRANG CHỦ</a></li>
                 <li><a href="{{URL::to('/menu')}}">THỰC ĐƠN</a></li>
                 <li><a href="{{URL::to('/gio-hang')}}">GIỎ HÀNG</a></li>
                 <li><a href="{{URL::to('/lien-he')}}">LIÊN HỆ</a></li>
-                <li><a href="{{URL::to('/dang-nhap')}}">ĐĂNG NHẬP</a></li>
+                {{-- <li><a href="{{URL::to('/dang-nhap')}}">ĐĂNG NHẬP</a></li> --}}
                 <li>
-                 <form action="{{URL::to('/tim-kiem')}}" method="get" class="form-inline " style="margin-top: 10px;">
+                <div class="dropdown show">
+                    <a class=" dropdown-toggle" href="{{URL::to('/dang-nhap')}}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ĐĂNG NHẬP
+                    </a>
+                    <div class=" dropdown-menu " aria-labelledby="dropdownMenuLink">
+                        <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/dang-nhap')}}">Đăng nhập</a>
+                        <hr/>
+                      <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/tai-khoan')}}">Tài khoản của tôi</a>
+                      <hr/>
+                      <a class=" dropdown-menu-color dropdown-item" href="#">Cài đặt</a>
 
-                  <input class="form-control mr-sm-2 " name="keywords_submit"  type="text" placeholder="Nhập nội dung..." aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" style="background-color:#140718" type="submit">Tìm kiếm</button>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                 <form action="{{URL::to('/tim-kiem')}}" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
+
+                  <input class="form-control mr-sm-2  "  name="keywords_submit"  type="text" placeholder="Nhập nội dung..." aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0 fas fa-search" style="background-color:#140718" type="submit"></button>
                 </form>
+
               </li>
               </ul>
             </nav>
@@ -130,7 +145,7 @@
    <script type="text/javascript" src="{{asset('Page/js/jquery.animateNumber.min.js')}}"async></script>
    <script type="text/javascript" src="{{asset('Page/js/aos.js')}}"async></script>
    <script type="text/javascript" src="{{asset('Page/js/main.js')}}"async></script>
-   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"async></script>
+   <script type="text/javascript" src="{{asset('Page/js/sweetalert.js')}}"async></script>
    <script>
     $.ajaxSetup({
                 headers: {

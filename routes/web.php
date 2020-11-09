@@ -37,9 +37,11 @@ Route::get('/trang-chu', [HomeController::class, 'index']);
 Route::get('/menu', [MenuController::class, 'index']);
 Route::get('/lien-he', [ContactController::class,'index']);
 Route::get('/dang-nhap', [LoginController::class, 'index']);
+Route::get('/tai-khoan', [LoginController::class, 'myaccount']);  /*/{id?}*/
 Route::get('/gio-hang', [CartController::class,'index']);
 Route::get('/checkout', [CheckoutController::class,'index']);
 Route::get('/product-detail/{id?}', [ProductController::class,'show']);
+
 
 
 
@@ -65,8 +67,13 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::put('/update', [ProductController::class, 'update']);
 		Route::get('/show', [ProductController::class, 'show']);
 		Route::get('/delete/{id}', [ProductController::class, 'delete']);
+
+		//filter
+		Route::get('/filter/priceasc', [ProductController::class, 'filterPriceAsc']);
+		Route::get('/filter/pricedesc', [ProductController::class, 'filterPriceDesc']);
+		Route::get('/filter/category/{id}', [ProductController::class, 'filterCategory']);
 	});
-	
+
 	//Topping route group
 	Route::group(['prefix' => 'topping'], function(){
 		Route::get('/', [ToppingController::class, 'index']);
@@ -94,7 +101,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 	//Order
     Route::get('/order', [OrderController::class, 'index']);
-    
+
 });
 
 //show Product_category Menu
@@ -108,6 +115,7 @@ Route::post('/signup', [LoginController::class, 'SignUp']);
 //checkout route
 Route::post('/verify', [CheckoutController::class, 'Verify']);
 Route::post('/processcheckout', [CheckoutController::class, 'Checkout']);
+Route::get('/clearcart',[CheckoutController::class,'ClearCart']);
 
 //Cart
 Route::post('/add-cart', [CartController::class,'add_cart']);

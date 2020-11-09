@@ -53,26 +53,26 @@
                 <a href="{{ URL::to('/checkout') }}" class="btn btn-primary btn-checkout mt-5">THANH TOÁN</a>
                 <div class="hr mt-4"></div>
 
-                <div id="open-coup">
+                {{--  <div id="open-coup">
                     <div class="d-flex" onclick="showCoupon()">
                         <div class="pl-5 pt-4 total app-coup mr-4">Thêm Coupon</div>
                         <i class="fas fa-chevron-down pr-5 down-icon"></i>
                     </div>
-                </div>
+                </div>  --}}
 
-                <div id="close-coup" style="display: none;">
+                {{--  <div id="close-coup" style="display: none;">
                     <div class="d-flex" onclick="closeCoupon()">
                         <div class="pl-5 pt-4 total app-coup mr-4">Thêm Coupon</div>
                         <i class="fas fa-chevron-up pr-5 down-icon"></i>
                     </div>
-                </div>
+                </div>  --}}
 
-                <div id="coupon" style="display: none;">
+                {{--  <div id="coupon" style="display: none;">
                     <div class="pl-5 pt-4">Nhập Coupon nếu có..</div>
                     <input class="input-coup mt-4" type="text" placeholder="Coupon..">
                     <button class="btn btn-primary btn-apply">THÊM COUPON</button>
-                </div>
-                <div class="hr mt-4"></div>
+                </div>  --}}
+                {{--  <div class="hr mt-4"></div>  --}}
             </div>
         </div>
 
@@ -219,11 +219,16 @@
                             </button>
                         </div>
                     </form>
+
                 </div>
+                @endif
             </div>
+
         </div>
+
     </div>
-    @endif
+
+
     <script>
         function showCoupon() {
             document.getElementById("open-coup").style.display = "none";

@@ -1,5 +1,5 @@
 @extends('admin_layout')
-@section('title', 'Customer')
+@section('title', 'Khách hàng')
 @section('content')
     <div class="panel-header panel-header-sm"></div>
         <div class="content">
@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="card ">
                         <div class="card-header ">
-                        <h4 class="card-title">All Customer</h4>
+                        <h4 class="card-title">Danh sách khách hàng</h4>
                         </div>
                         <div class="card-body ">
                             <div class="table-responsive">
@@ -18,19 +18,19 @@
                                             STT
                                         </th>
                                         <th>
-                                            Name
+                                            Tên
                                         </th>
                                         <th>
-                                            Phone
+                                            Số Điện Thoại
                                         </th>
                                         <th>
                                             Email
                                         </th>
                                         <th>
-                                            Level
+                                            Hạng Mức
                                         </th>
                                         <th>
-                                            Action
+                                            Tác Vụ
                                         </th>
                                     </thead>
 
@@ -38,9 +38,9 @@
                                     @php
                                         $i=0;
                                     @endphp
-                                            
+
                                     @foreach($account as $acc)
-                                            
+
                                         @php
                                             $i++;
                                             $phone = $acc['Phone'];

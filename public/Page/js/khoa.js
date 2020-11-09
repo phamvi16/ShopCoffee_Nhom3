@@ -368,9 +368,9 @@ $(document).ready(function () {
                                                             <td class="no-line text-right">`+formatNumber(Total + shipcost)+` VNĐ</td>
                                                         </tr>`);
                                                 });
-                                $('#left').append(`<h4><b><i id="timmer">Bạn Cón <span style="color:red">`+localStorage.getItem('time')+` </span>Giây Để Xác Nhận Và Hủy Đơn Hàng </i></b></h4>
-                                    <button class="btn btn-danger" id="CancelOrder_Btn">Hủy Đơn Hàng</button>
-                                    <button class="btn btn-success" id="SubmitOrder_Btn">Xác Nhận Đơn Hàng </button>`).ready(function(){
+                                $('#left').append(`<h4><b><i id="timmer">Bạn Có<span style="color:red">`+localStorage.getItem('time')+` </span> Giây Để Xác Nhận Lại Đơn Hàng. Bạn Có Muốn Hủy Đặt Hàng Không ? </i></b></h4>
+                                    <button class="btn btn-danger" id="CancelOrder_Btn">Tôi Muốn Hủy</button>
+                                    <button class="btn btn-success" id="SubmitOrder_Btn">Đã Xác Nhận <i class="fas fa-angle-double-right"></i> </button>`).ready(function(){
                                     $('#CancelOrder_Btn').click(function(){
                                         clearInterval(interval);
                                         $('#left').empty();
@@ -387,7 +387,7 @@ $(document).ready(function () {
                                 function CountDown(){
                                     let timeLeft = localStorage.getItem('time');
                                         localStorage.setItem('time',timeLeft-1);
-                                        $('#timmer').html("Bạn Cón <span style='color:red'>"+(timeLeft>0?timeLeft:0)+" </span> Giây Để Xác Nhận Và Hủy Đơn Hàng");
+                                        $('#timmer').html("Bạn Còn <span style='color:red'>"+(timeLeft>0?timeLeft:0)+" </span> Giây Để Xác Nhận Lại Đơn Hàng. Bạn Có Muốn Hủy Đơn Hàng Không ?");
                                         if(timeLeft<=0){
                                             
                                             clearInterval(interval);

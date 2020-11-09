@@ -271,11 +271,16 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
+                @endif
             </div>
+
         </div>
+
     </div>
-    @endif
+
+
     <script>
         function showCoupon() {
             document.getElementById("open-coup").style.display = "none";

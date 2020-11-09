@@ -34,39 +34,8 @@
                         $total+=$subtotal;
                         @endphp
 
-                        <div class="row items">
-                            <span class="col-sm-1 my-5 icon-dlt">
-                                <a href="{{ url('/del-pro-cart/' . $cart['session_id']) }}">
-                                    <i class="fas fa-times text-danger"></i>
-                                </a>
-                            </span>
-                            <span class="col-xs-12 col-sm-6 d-flex align-items-center">
-                                <img id="img-cart" class="item-img"
-                                    src="/ProductImages/Products/{{ $cart['product_image'] }}">
-                                <div class="item-content">
-                                    <div class="mt-3" style="font-weight: 600; font-size: 16px">{{ $cart['product_name'] }}
-                                    </div>
-                                    <div class="text mt-4">
-                                        <div> Size: {{ $cart['product_size'] }}</div>
-                                        <div>Topping: ..</div>
-                                    </div>
-                                </div>
-                            </span>
-                            <span class="col-sm-2 mt-5 price-cart">{{ number_format($cart['product_price'], 0, ',', '.') }}
-                                VNĐ</span>
-
-                            <span data-id_form="{{ $cart['product_id'] }}" name="add-to-cart" type="add-to-cart"
-                                data-toggle="modal" data-target="#exampleModal"
-                                class="col-sm-2 mt-5 show-form">{{ number_format($cart['product_price'], 0, ',', '.') }}
-                                VNĐ
-                            </span>
-                            <span class="col-sm-2 btn btn-success btn-update text-white">
-                                <a href="#" data-id_form="{{ $cart['product_id'] }}" name="add-to-cart" type="add-to-cart"
-                                    data-toggle="modal" data-key="{{ $key }}" data-target="#exampleModal{{ $key }}" class="mt-5 text-white">
-                                    Cập nhật
-                                </a>
-                            </span>
-                            <div class="hr mt-4 w-100"></div>
+                        <div class="row items {{ $key }}">
+                            @include('partials.cart-item-view', ["item" => $cart, "cartkey" => $key])
                         </div>
                     @endforeach
             </div>
@@ -75,11 +44,11 @@
                 <div class="hr"></div>
                 <div class="d-flex">
                     <div class="pl-5 pt-4 sub">GIÁ</div>
-                    <div class="pl-5 pt-4 mr-5">30.000 VNĐ</div>
+                    <div class="pl-5 pt-4 mr-5"><span>{{ number_format((new App\Services\CartService())->getCartTotal(), 0, ',', '.') }}</span> VNĐ</div>
                 </div>
                 <div class="d-flex total">
                     <div class="pl-5 pt-4" style="flex-grow: 1">TỔNG TIỀN</div>
-                    <div class="pl-5 pt-4 mr-5"> {{ number_format($total, 0, ',', '.') }}VNĐ</div>
+                    <div class="pl-5 pt-4 mr-5"> <span>{{ number_format((new App\Services\CartService())->getCartTotal(), 0, ',', '.') }}</span> VNĐ</div>
                 </div>
                 <a href="{{ URL::to('/checkout') }}" class="btn btn-primary btn-checkout mt-5">THANH TOÁN</a>
                 <div class="hr mt-4"></div>
@@ -118,41 +87,32 @@
                         style="height: 100px;width:100px" />
                     <h4 class="modal-title text-black m-5 name" id="exampleModalLabel"></h4>
                     <h4 class="modal-title text-black m-5 size" id="Size_click">Size: <span></span></h4>
+                    <h4 class="modal-title text-black m-5 price" id="Size_click">Giá: <span></span>đ</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
                 <div class="modal-body p-5">
-                    <form>
+                    <form method="post" id="frm-update">
+                        @csrf
                         <div class="form-group row modal-header" id="size_form">
                             <div class="mb-4 mb-lg-0 mr-5"> Size:</div>
                             <div class="form-check form-check-inline mr-5 size-radio">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="click_radio"
-                                    value="option1">
-                                <label class="form-check-label" for="inlineRadio1">{{ $cart['product_size'] }}</label>
+                                <!-- SIZE -->
                             </div>
                         </div>
 
                         <div class="form-group row modal-header">
                             <div class="col-md-12">
                                 <h4 class="m-4 font-weight-bold">Topping:</h4>
-                                <div class="text-center row">
+                                <div class="text-center row topping">
+                                    
                                     @foreach (App\Models\Topping::All() as $topi)
                                         <ul style="list-style: none" class="text-left col-md-6">
                                             <li class="form-group form-check">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                <label class="form-check-label font-weight-normal ml-5" for="exampleCheck1">
-                                                    {{ $topi->Name }}
-                                                    <span style="font-size: 1.3rem">
-                                                        &nbsp;&nbsp;&nbsp;{{ number_format($topi->Price, 0, ',', '.') }}đ</span>
-                                                </label>
-                                            </li>
-                                        </ul>
-                                        <ul style="list-style: none" class="text-left col-md-6">
-                                            <li class="form-group form-check">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                <label class="form-check-label font-weight-normal ml-5" for="exampleCheck1">
+                                                <input type="checkbox" class="form-check-input" name="Topping[]" id="Topping{{ $topi->Id }}" data-Topping-price = "{{ $topi->Price }}" value={{ $topi->Id }}>
+                                                <label class="form-check-label font-weight-normal ml-5" for="Topping{{ $topi->Id }}">
                                                     {{ $topi->Name }}
                                                     <span style="font-size: 1.3rem">
                                                         &nbsp;&nbsp;&nbsp;{{ number_format($topi->Price, 0, ',', '.') }}đ</span>
@@ -160,15 +120,16 @@
                                             </li>
                                         </ul>
                                     @endforeach
+                                    
                                 </div>
                                 <div class="hr"></div>
                                 <h4 class="font-weight-bold">Lượng đường (%)</h4>
-                                <div class="row mt-4">
+                                <div class="row mt-4 sugar">
                                     <div class="col col-2">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="custom-checkbox">
-                                                    <input id="269920" name="sugar" type="radio" value="269920" checked="checked">
+                                                    <input id="269920" name="Sugar" type="radio" value="100" checked="checked">
                                                     <label for="269920" class="font-weight-normal">100</label>
                                                 </div>
                                             </div>
@@ -178,7 +139,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="custom-checkbox">
-                                                    <input id="269921" name="sugar" type="radio" value="269921">
+                                                    <input id="269921" name="Sugar" type="radio" value="70">
                                                     <label for="269921" class="font-weight-normal">70</label>
                                                 </div>
                                             </div>
@@ -188,7 +149,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="custom-checkbox">
-                                                    <input id="269922" name="sugar" type="radio" value="269922">
+                                                    <input id="269922" name="Sugar" type="radio" value="50">
                                                     <label for="269922" class="font-weight-normal">50</label>
                                                 </div>
                                             </div>
@@ -198,7 +159,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="custom-checkbox">
-                                                    <input id="269923" name="sugar" type="radio" value="269923">
+                                                    <input id="269923" name="Sugar" type="radio" value="0">
                                                     <label for="269923" class="font-weight-normal">0</label>
                                                 </div>
                                             </div>
@@ -209,13 +170,13 @@
                                 <div class="hr mt-4"></div>
 
                                 <h4 class="font-weight-bold">Lượng đá (%)</h4>
-                                <div class="row mt-4">
+                                <div class="row mt-4 ice">
 
                                     <div class="col col-2">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="custom-checkbox">
-                                                    <input id="100" name="ice" type="radio" value="100" checked="checked">
+                                                    <input id="100" name="Ice" type="radio" value="100" checked="checked">
                                                     <label for="100" class="font-weight-normal">100</label>
                                                 </div>
                                             </div>
@@ -225,7 +186,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="custom-checkbox">
-                                                    <input id="70" name="ice" type="radio" value="70">
+                                                    <input id="70" name="Ice" type="radio" value="70">
                                                     <label for="70" class="font-weight-normal">70</label>
                                                 </div>
                                             </div>
@@ -235,7 +196,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="custom-checkbox">
-                                                    <input id="50" name="ice" type="radio" value="50">
+                                                    <input id="50" name="Ice" type="radio" value="50">
                                                     <label for="50" class="font-weight-normal">50</label>
                                                 </div>
                                             </div>
@@ -245,7 +206,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="custom-checkbox">
-                                                    <input id="0" name="ice" type="radio" value="0">
+                                                    <input id="0" name="Ice" type="radio" value="0">
                                                     <label for="0" class="font-weight-normal">0</label>
                                                 </div>
                                             </div>
@@ -255,7 +216,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <div class="custom-checkbox">
-                                                    <input id="hot" name="ice" type="radio" value="">
+                                                    <input id="hot" name="Hot" type="radio" value="hot">
                                                     <label for="hot" class="font-weight-normal">Nóng</label>
                                                 </div>
                                             </div>
@@ -266,9 +227,9 @@
                             </div>
                         </div>
                         <div class="form-group text-center">
-                            <div class="ml-auto modal-title btn m-5 update-topping-btn" id="Size_click">
-                                OK: + {{ number_format($total, 0, ',', '.') }} đ
-                            </div>
+                            <button data-key="" class="ml-auto modal-title btn m-5 update-topping-btn" name="update" value="" id="Size_click" type="submit">
+                                OK: + <span data-total="">{{ number_format($total, 0, ',', '.') }}</span> đ
+                            </button>
                         </div>
                     </form>
                 </div>

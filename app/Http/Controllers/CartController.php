@@ -2,11 +2,16 @@
 namespace App\Http\Controllers;
 use DB;
 use Session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use App\Models\ProductSize;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Cart;
 use session_start;
+
+use App\Services\CartService;
+
 class CartController extends Controller
 {
 
@@ -15,7 +20,7 @@ class CartController extends Controller
         return ($pro != null) ?  view('pages.product-detail', compact('pro')) : abort(404);
     }
      public function gio_hang(Request $request){
-    
+      // dd(Session::get('cart'));
        return view('pages.cart');
     }
     // cách 1 fail:
@@ -39,8 +44,8 @@ class CartController extends Controller
               'product_image' => $data['cart_product_image'],
               'product_price' => $data['cart_product_price'],
               'product_size' => $data['cart_product_size'],
-              'ice'=>'100',
-              'sugar'=>'100',
+              'ice'=>100,
+              'sugar'=>100,
               'hot'=>'100',
               'topping'=>[
                ],
@@ -56,8 +61,8 @@ class CartController extends Controller
               'product_image' => $data['cart_product_image'],
               'product_price' => $data['cart_product_price'],  
               'product_size' => $data['cart_product_size'],
-              'ice'=>'100',
-              'sugar'=>'100',
+              'ice'=>100,
+              'sugar'=>100,
               'hot'=>'100',
               'topping'=>[
                ],
@@ -91,9 +96,32 @@ class CartController extends Controller
       $all_pro_sizes = Product::find($cart_item['product_id'])->product_size->sortByDesc('Size');
       $data = array(
               'size_view' => view('../partials.modal-size', ["all_pro_sizes" => $all_pro_sizes, "product_size" => $cart_item["product_size"]])->render(),
+              'item_total' => (new CartService())->getCartItemTotal($request->key),
               'cart_item' => $cart_item
           );
       echo json_encode($data);
+    }
+
+    public function update(Request $request)
+    {
+      $cartService = new CartService();
+      $cartService->updateCartItem($request);
+      $cart_total = $cartService->getCartTotal();
+      $cart_item = Session::get('cart')[$request->item_key];
+      $data = array(
+              'item_view' => view('../partials.cart-item-view', ["item" => $cart_item, "cartkey" => $request->item_key])->render(),
+              'key' => $request->item_key,
+              'session' => Session::get('cart'),
+              'cart_total' => $cart_total
+          );
+      echo json_encode($data);
+    }
+
+    public function test()
+    {
+      $tmp = Session::get('cart')[0]['topping'];
+      // echo (gettype(collect($tmp)->keys()));
+      
     }
 
 }

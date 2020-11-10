@@ -38,4 +38,7 @@ class LoginController extends Controller
             return "Đăng Ký Thất Bại";
         }
     }
+    public function myaccount(Request $request){
+        return view('pages.myaccount');
+    }
 }

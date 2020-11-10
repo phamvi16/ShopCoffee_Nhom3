@@ -15,8 +15,8 @@ $(document).ready(function(){
               data: {cart_product_id:cart_product_id,cart_product_size:cart_product_size,cart_product_name:cart_product_name,cart_product_image:cart_product_image,_token:_token,cart_product_price:cart_product_price},
                dataType:('json'),
               success:function(cart){
-               alert(cart);
-                swal("Add to cart success !", "success");
+              //  alert(cart);
+                swal("Thông Báo","Thêm Vào Giỏ Thành Công !", "success");
               },
          });
       });

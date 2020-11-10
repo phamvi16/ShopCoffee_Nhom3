@@ -151,7 +151,7 @@ $(document).ready(function () {
                         <option vale="Giao Tận nơi" >Giao Tận Nơi</option>
                         <option value="Khách Đến Nhận">Khách Đến Nhận</option>
                     </select>
-                    
+
                     <textarea class="textarea pt-2 mt-3 form-group" name="note" id="note" cols="83" rows="5"
                         placeholder="Lời Nhắn.."></textarea>
         
@@ -254,8 +254,9 @@ $(document).ready(function () {
                                 var totall = $('#SumCost').attr('data-total');
                                 var discountt = $('#SumCost').attr('data-discount');
                                 
-                                var coupon = $('#couponValue').val();
-
+                                var coupon = $('input[name="coupon"]').val();
+                                
+                                console.log(coupon);
                                 var payment_name =$('#select_PaymentMethod').children("option:selected").text();
                                 if(shipping =="Giao Tận Nơi"){
                                     shipcost=15000;
@@ -527,7 +528,8 @@ $(document).ready(function () {
                             currency="VNĐ";
                             $('#SumCost').attr('data-discount',data['Value']);
                         }
-                        
+                        $('input[name="coupon"]').val(data['Id']);
+                        alert($('input[name="coupon"]').val());
                         $('#SumCost').text(formatNumber( ( parseInt(shipcost)+ $('#SumCost').attr('data-total') - $('#SumCost').attr('data-discount'))>0?(parseInt(shipcost)+ parseInt($('#SumCost').attr('data-total')) - parseInt($('#SumCost').attr('data-discount'))):0));
 
                         $('#coupon-form').hide();

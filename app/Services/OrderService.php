@@ -92,6 +92,9 @@ class OrderService{
 
     }
     public function Insert_OrderTable($customer_shippingid,$coupon,$payment_method,$shipping_method,$total_quantity,$total,$point,$status){
+        if($coupon==null){
+            $coupon ="Default";
+        }
         
         DB::beginTransaction();
         try{

@@ -1,6 +1,6 @@
 @extends('main_layout')
 @section('content')
-<?php 
+<?php
 //   Session::forget('cart');
 //   $item = [
 //     'product_id'=>'1',
@@ -47,8 +47,8 @@ if(session()->has('coupon')){
             <h3  class="cre-acc" >Xác Nhận Thông Tin <small style="font-size:50%;"> (* Truy xuất thông tin cũ - tiết kiệm thời gian) </small> </h3>
             <hr>
             <label class="lab-2" for="phone">
-            Nhập Số Điện Thoại 
-                <input class="form-control in-mail in-add" type="text" placeholder="Nhập Số Điện Thoại.." onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="phone" maxlength="11" required 
+            Nhập Số Điện Thoại
+                <input class="form-control in-mail in-add" type="text" placeholder="Nhập Số Điện Thoại.." onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="phone" maxlength="11" required
                 @unless (!session()->has('user'))
                     value={{session()->get('user')}}
                     disabled
@@ -68,7 +68,7 @@ if(session()->has('coupon')){
             <label class="lab-2">
                 <button class="btn btn-success" id="verifyBtn">Xác Nhận</button>
             </label>
-            
+
         </form>
 
         <div id="result">
@@ -96,7 +96,7 @@ if(session()->has('coupon')){
                         <div class="ml-4 mb-2 name-sum"><a href="./product-detail/'.$value['product_id'].'">'.$value['product_name'].'</a></div>
                         <div class="ml-4">Size: '.$value["product_size"].'</div>
                         <div class="ml-4">Topping:';
-                       
+
             // $list_topping = collect($data[$i]['topping'])->keys();
             // forea($y=0;$y<Count($list_topping);$y++){
             //     $item = collect($all_topping)->where('Id',$list_topping[$y])->first();
@@ -113,7 +113,7 @@ if(session()->has('coupon')){
             echo'</div>
                     </div>
                     <div class="mr-4">'.number_format($value['product_price']).' VNĐ</div>
-                    
+
                 </div>
                 ';
             }
@@ -121,7 +121,7 @@ if(session()->has('coupon')){
         ?>
 
         <div class="hr mt-4"></div>
-        
+
         <h3 class="cre-acc">Mã Giảm Giá</h3>
         <div class="hr-small"></div>
         <div class="hr"></div>

@@ -29,39 +29,25 @@
                             </div>
                         </div>
                     </div>
-
-                   <div  class="d-flex"  >
-                        <span class="ml-3 mt-1">Lọc theo ngày tháng:</span>
-                        <input type="date" id='birthday' name='birthday' class=" ml-3 mr-3" placeholder="" value="">
-                        <input type="date" id='birthday' name='birthday' class="ml-3" placeholder="" value="">
-                        <div class="btn-group ml-5 " >
-                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Lọc theo Status
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">Status1</a>
-                              <a class="dropdown-item" href="#">Status1</a>
-                              <a class="dropdown-item" href="#">Status1</a>
-                            </div>
-                          </div>
-                   </div>
                     <div class="card-body ">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
-                                        STT
+                                        ID
                                     </th>
                                     <th>
-                                        Tên
+                                        Số điện thoại
                                     </th>
                                     <th>
-                                        Hình ảnh
+                                        Thời gian đặt
                                     </th>
                                     <th>
-                                        Tác vụ
+                                        Phương thức giao hàng
                                     </th>
-
+                                    <th>
+                                        Tổng tiền
+                                    </th>
 
                                 </thead>
                                 <tbody>
@@ -77,6 +63,12 @@
                                         </td>
                                         <td>
                                             asjqk
+                                        </td>
+                                        <td>
+                                            asjqk
+                                        </td>
+                                        <td class="i-eye">
+                                            <i class="fas fa-eye"></i>
                                         </td>
                                     </tr>
                                 </tbody>

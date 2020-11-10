@@ -42,7 +42,7 @@
                                         <td>
                                             <img src="/CategoryImages/Categories/{{$cat -> Image}}" height="80" width="100">
                                         </td>
-                                        <td>
+                                        <td class="px-5">
                                             {{$cat->Count}}
                                         </td>
                                         <td>

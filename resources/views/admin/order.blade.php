@@ -34,18 +34,20 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
-                                        STT
+                                        ID
                                     </th>
                                     <th>
-                                        Tên
+                                        Số điện thoại
                                     </th>
                                     <th>
-                                        Hình ảnh
+                                        Thời gian đặt
                                     </th>
                                     <th>
-                                        Tác vụ
+                                        Phương thức giao hàng
                                     </th>
-
+                                    <th>
+                                        Tổng tiền
+                                    </th>
 
                                 </thead>
                                 <tbody>
@@ -61,6 +63,12 @@
                                         </td>
                                         <td>
                                             asjqk
+                                        </td>
+                                        <td>
+                                            asjqk
+                                        </td>
+                                        <td class="i-eye">
+                                            <i class="fas fa-eye"></i>
                                         </td>
                                     </tr>
                                 </tbody>

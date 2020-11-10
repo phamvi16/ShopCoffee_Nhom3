@@ -4,7 +4,7 @@
 </style>
 <div class="mt-4">
     <div class="container">
-         
+
          <div id="loginbox">
             <div class="panel panel-info">
                <div class="imgcontainer">
@@ -14,7 +14,7 @@
                     <form id="loginform" method="post" action="/login">
                     <h4 style="color:red"><b id="warning_mess"></b></h4>
                         <div class="container">
-                              <label for="phone"><b>Số Điện Thoại</bbe></label>
+                              <label for="phone"><b>Số Điện Thoại</b></label>
                               <input type="text" placeholder="Tài Khoản..." name="phone" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
                               <label for="password"><b>Mật Khẩu</b></label>
                               <input type="password" placeholder="Mật Khẩu..." name="password" required>
@@ -25,7 +25,7 @@
                     <div class="form-group">
                             <div class="col-md-12 control">
                                 <div style="border-top: 1px solid#888;">
-                                    <span class="psw" style="font-size:85%;padding-top:15px;">Chưa có tài khoản? 
+                                    <span class="psw" style="font-size:85%;padding-top:15px;">Chưa có tài khoản?
                                         <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()"> Đăng Ký Ngay!</a>
                                     </span>
                                 </div>

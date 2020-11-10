@@ -59,7 +59,7 @@
                                             <td>
                                                 {{$acc['Email']}}
                                             </td>
-                                            <td>
+                                            <td class="px-4">
                                                 {{$acc['Level']}}
                                             </td>
                                             <td>

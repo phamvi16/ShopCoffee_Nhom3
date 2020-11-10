@@ -22,6 +22,8 @@
   <link href="{{asset('Page/css/checkout.css')}}" rel="stylesheet"async>
   <link href="{{asset('Page/css/sweetalert.css')}}" rel="stylesheet"async>
   <link href="{{asset('Page/css/login.css')}}" rel="stylesheet"async>
+  <link href="{{asset('Page/css/myaccount.css')}}" rel="stylesheet"async>
+
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" async/>
   <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> -->
 
@@ -59,7 +61,7 @@
                 <div class="dropdown show">
                     @if (!session()->has('user'))
                     <a href="{{URL::to('/dang-nhap')}}" role="button" >
-                       Đăng Nhập 
+                       Đăng Nhập
                     </a>
                     @else
                     <a class=" dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

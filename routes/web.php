@@ -38,6 +38,7 @@ Route::get('/menu', [MenuController::class, 'index']);
 Route::get('/lien-he', [ContactController::class,'index']);
 Route::get('/dang-nhap', [LoginController::class, 'index']);
 Route::get('/tai-khoan', [LoginController::class, 'myaccount']);  /*/{id?}*/
+Route::get('/tai-khoan/don-hang', [LoginController::class,'order']);
 Route::get('/gio-hang', [CartController::class,'index']);
 Route::get('/checkout', [CheckoutController::class,'index']);
 Route::get('/product-detail/{id?}', [ProductController::class,'show']);

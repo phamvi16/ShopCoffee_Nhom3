@@ -15,7 +15,7 @@
                     <div class="col-md-4 hidden-sm hidden-xs mb-4">
                         <div class="option browse-tags">
                             <label class="lb-filter hide" for="sort-by">Sắp xếp theo:</label>
-                            <span class="custom-dropdown custom-dropdown--grey">
+                            <span class="custom-dropdown custom-dropdown--grey d-flex justify-content-around">
                                 @if ($catnow == null)
                                     <form action="/admin/product/filter/" id="filter" method="get" enctype="multipart/form-data">
                                         <select class="sort-by custom-dropdown__select">
@@ -70,7 +70,7 @@
                                 <th>Hình ảnh</th>
                                 <th>Size</th>
                                 <th>Giá gốc</th>
-                                <th>Giá bán</th>
+                                <th>Giá giảm</th>
                                 <th>Danh mục</th>
                                 <th>Tác vụ</th>
                             </thead>
@@ -92,25 +92,25 @@
                                                 <td>{{ $pro -> Name }}</td>
                                                 <td><img src="/ProductImages/Products/{{$pro -> Image}}" height="100" width="100"></td>
 
-                                                <td>
+                                                <td class="px-4">
                                                 @foreach($pro -> product_size as $cate)
                                                 <P><br>{{ $cate-> Size }}</p>
                                                 @endforeach
                                                 </td>
 
-                                                <td>
+                                                <td class="px-3">
                                                 @foreach($pro -> product_size as $cate)
                                                 <p><br>{{ $cate-> Price }}$</p>
                                                 @endforeach
                                                 </td>
 
-                                                <td>
+                                                <td class="px-4">
                                                 @foreach($pro -> product_size as $cate)
                                                 <p><br>{{ $cate-> Sale_Price }}$</p>
                                                 @endforeach
                                                 </td>
 
-                                                <td>
+                                                <td class="px-4">
                                                 @foreach($pro -> category as $cate)
                                                 <p><br>{{ $cate-> Name }}</p>
                                                 @endforeach

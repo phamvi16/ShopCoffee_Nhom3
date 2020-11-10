@@ -2,10 +2,11 @@ $(document).ready(function () {
     function formatNumber (num) {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
     }
+    sessionStorage.setItem('percent','');
     $Ship1Name="Giao Tận Nơi";
-    $Ship1Cost="15,000 VNĐ";
+    $Ship1Cost="15,000";
     $Ship2Name="Khách Đến Nhận";
-    $Ship2Cost="0 VNĐ";
+    $Ship2Cost="0";
     // sign up 
     $("#signupBtn").click(function (e) {
         e.preventDefault();
@@ -17,11 +18,6 @@ $(document).ready(function () {
         var email = $("input[name='email']").val();
         var email_regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         
-        // $.ajaxSetup({
-        //     headers: {
-        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //     }
-        // });
         if(name.length==0){
             $("#alert_mess").html("<h4 style='color:red'><b>Bạn Chưa nhập Tên</b></h4>");
         }
@@ -73,7 +69,7 @@ $(document).ready(function () {
     // get thong tin - checkout
     $("#verifyBtn").click(function (e) {
         e.preventDefault();
-
+        // sessionStorage.setItem('percent','');
         var phone = $("input[name='phone']").val();
         var isbought = $("input[name='isbought']:checked").val();
 
@@ -163,25 +159,43 @@ $(document).ready(function () {
                     </form>
                     `).ready(function () {
 
-                        $sum = $('#SumCost').data('value');
+                        $sum = parseInt($('#SumCost').attr('data-total'));
                         if($('#select_ShippingMethod').children('option:selected').val()==$Ship1Name){
                             $('#ShipCost').text($Ship1Cost);
-                            $('#SumCost').text(formatNumber( $sum + 15000) + "VNĐ");
+                            // $('#SumCost').attr('data-total',$sum + 15000);
+                            var shipcost = parseInt($('#ShipCost').text().replace(/\,/g, ''));
+                            if(!sessionStorage.getItem('percent').length==0){
+                                $('#SumCost').attr('data-discount',($sum+shipcost)*sessionStorage.getItem('percent')/100);
+                            }
+                            $('#SumCost').text(formatNumber( ($sum + shipcost  - $('#SumCost').attr('data-discount'))>0?$sum + 15000  - $('#SumCost').attr('data-discount'):0) );
                         }
                         else{
                             $('#ShipCost').text($Ship2Cost);
-                            $('#SumCost').text(formatNumber($sum) + "VNĐ");
+                            $('#SumCost').attr('data-total',$sum);
+                            if(!sessionStorage.getItem('percent').length==0){
+                                $('#SumCost').attr('discount',$sum*sessionStorage.getItem('percent')/100);
+                            }
+                            $('#SumCost').text(formatNumber($sum- $('#SumCost').attr('data-discount')));
                         }
 
                         $('#select_ShippingMethod').change(function() {
                             if(this.value==$Ship1Name){
                                 $('#ShipCost').text($Ship1Cost);
-                                $('#SumCost').text(formatNumber($sum + 15000) + "VNĐ");
+                                var shipcost = parseInt($('#ShipCost').text().replace(/\,/g, ''));
+                                $('#SumCost').attr('data-total',$sum + shipcost);
+                                if(!sessionStorage.getItem('percent').length==0){
+                                    $('#SumCost').attr('data-discount',($sum+shipcost)*sessionStorage.getItem('percent')/100);
+                                }
+                                // $('#SumCost').text(formatNumber($sum + 15000));
                             }
                             else{
                                 $('#ShipCost').text($Ship2Cost);
-                                $('#SumCost').text(formatNumber($sum) + "VNĐ");
+                                $('#SumCost').attr('data-total',$sum);
+                                if(!sessionStorage.getItem('percent').length==0){
+                                    $('#SumCost').attr('data-discount',$sum*sessionStorage.getItem('percent')/100);
+                                }
                             }
+                            $('#SumCost').text(formatNumber(  ($('#SumCost').attr('data-total') - $('#SumCost').attr('data-discount'))>0?($('#SumCost').attr('data-total') - $('#SumCost').attr('data-discount')):0));
                         });
 
                         for(var i = 0;i<data['all_paymentmethod'].length;i++){
@@ -237,6 +251,11 @@ $(document).ready(function () {
                                 var shipping = $('#select_ShippingMethod').children("option:selected").val();
                                 var currentdate = new Date();
                                 var shipcost =0;
+                                var totall = $('#SumCost').attr('data-total');
+                                var discountt = $('#SumCost').attr('data-discount');
+                                
+                                var coupon = $('#couponValue').val();
+
                                 var payment_name =$('#select_PaymentMethod').children("option:selected").text();
                                 if(shipping =="Giao Tận Nơi"){
                                     shipcost=15000;
@@ -352,7 +371,7 @@ $(document).ready(function () {
                                                             <td class="thick-line"></td>
                                                             <td class="thick-line"></td>
                                                             <td class="thick-line text-center"><strong>Tổng Tiền Topping</strong><small>(đã tính vào tổng)</small></td>
-                                                            <td class="thick-line text-right">`+formatNumber(totalCostTopping)+`</td>
+                                                            <td class="thick-line text-right">`+formatNumber(totalCostTopping)+` VNđ</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="no-line"></td>
@@ -363,8 +382,14 @@ $(document).ready(function () {
                                                         <tr>
                                                             <td class="no-line"></td>
                                                             <td class="no-line"></td>
+                                                            <td class="no-line text-center"><strong>Coupon</strong></td>
+                                                            <td class="no-line text-right">- `+formatNumber(discountt)+` VNđ</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="no-line"></td>
+                                                            <td class="no-line"></td>
                                                             <td class="no-line text-center"><strong>Tổng Cộng</strong></td>
-                                                            <td class="no-line text-right">`+formatNumber(Total + shipcost)+` VNĐ</td>
+                                                            <td class="no-line text-right">`+formatNumber(parseInt(totall)+parseInt(shipcost)-parseInt(discountt))+` VNĐ</td>
                                                         </tr>`);
                                                 });
                                 $('#left').append(`<h4><b><i id="timmer">Bạn Có<span style="color:red">`+localStorage.getItem('time')+` </span> Giây Để Xác Nhận Lại Đơn Hàng. Bạn Có Muốn Hủy Đặt Hàng Không ? </i></b></h4>
@@ -400,7 +425,8 @@ $(document).ready(function () {
                                                     address: address,
                                                     email: email,
                                                     payment:payment,
-                                                    shipping:shipping
+                                                    shipping:shipping,
+                                                    coupon:coupon
                                                 },
                                                 success: function (data) {
                                                     if(data['result']=="success"){
@@ -454,10 +480,11 @@ $(document).ready(function () {
             }
         });
     });
+
     $('#logoutBtn').click(function(){
         $.ajax({
             url: "/logout",
-            type: 'POST',
+            type: 'GET',
             success: function (data) {
                 if(data==1){
                     location.reload();
@@ -465,4 +492,50 @@ $(document).ready(function () {
             }
         });
     });  
+
+    $('#applyBtn').click(function(){
+        var coupon = $('input[id="couponValue"]').val();
+        if(coupon==null || coupon==""){
+            $('#alertApply').empty();
+            $('#alertApply').append('<p style="color:red">Bạn Chưa Nhập Coupon</p>');
+        }
+        else{
+            $.ajax({
+                url: "/applycoupon",
+                type: 'POST',
+                data:{
+                    coupon:coupon
+                },
+                success: function (data) {
+                    if(data==0){
+                        $('#alertApply').empty();
+                        $('#alertApply').append('<p style="color:red">Coupon không có giá trị</p>');
+                    }
+                    else{
+                        var currency ="";
+                        // var sum  = parseInt($('#SumCost').text().replace(/\,/g, ''));
+                        var sum= $('#SumCost').attr('data-total');
+                        var shipcost = parseInt($('#ShipCost').text().replace(/\,/g, ''));
+
+                        if(data['Type']=="Percent"){ // phantram
+                            currency ="%";        
+                            $('#SumCost').attr('data-discount',data['Value']*(parseInt(shipcost)+parseInt(sum))/100);
+                            sessionStorage.setItem('percent',data['Value']);
+                        }
+                        else if(data['Type']=="Fixed"){ // tien
+                            currency="VNĐ";
+                            $('#SumCost').attr('data-discount',data['Value']);
+                        }
+                        
+                        $('#SumCost').text(formatNumber( ( parseInt(shipcost)+ $('#SumCost').attr('data-total') - $('#SumCost').attr('data-discount'))>0?(parseInt(shipcost)+ parseInt($('#SumCost').attr('data-total')) - parseInt($('#SumCost').attr('data-discount'))):0));
+
+                        $('#coupon-form').hide();
+                        $('#alertApply').empty();
+                        $('#alertApply').append(`<p style="color:green">Áp Dụng Coupon Thành Công. <span style="color:#a86319">Được Giảm `+ formatNumber(data['Value'])+" "+currency+`</span></p>`);
+
+                    }
+                }
+            });
+        }
+    });
 });

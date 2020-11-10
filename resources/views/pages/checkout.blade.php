@@ -33,12 +33,9 @@
 //   Session::push('cart', $item);
 //   echo dd( Session::get('cart'));
 $data = Session::get('cart');
-if($data==null){
-    echo '<script async>
-    window.location.href ="/gio-hang"</script>';
+if(session()->has('coupon')){
+    session()->forget('coupon');
 }
-
-
  ?>
 
 <div class="container checkout mb-4">
@@ -68,7 +65,6 @@ if($data==null){
                     <input type="radio" name="isbought" value="n_time">Sử Dụng Thông Tin Cũ</input>
                 @endif
             </label>
-            <input  name="_token" type="hidden" value="{{csrf_token()}}">
             <label class="lab-2">
                 <button class="btn btn-success" id="verifyBtn">Xác Nhận</button>
             </label>
@@ -92,7 +88,6 @@ if($data==null){
             $totalPrice_Product=0;
 
             foreach($data as $key =>$value){
-                
                 $totalPrice_Product += $value['product_price'];
         echo '<div class="hr mt-4"></div>
                 <div class="d-flex align-items-center">
@@ -126,33 +121,36 @@ if($data==null){
         ?>
 
         <div class="hr mt-4"></div>
-
+        
         <h3 class="cre-acc">Mã Giảm Giá</h3>
         <div class="hr-small"></div>
         <div class="hr"></div>
-        <div>
-            <input class="form-control in-coupon" style="display: inline;" type="text" placeholder="nhập mã giảm giá..">
-            <button class="btn btn-primary btn-apply ml-2">Apply</button>
+        <div class="input-group" id="coupon-form">
+            <input class="form-control in-coupon" style="display: inline;" type="text" placeholder="nhập mã giảm giá.." id="couponValue">
+            <span class="input-group-btn">
+                <button class="btn btn-primary btn-apply ml-2" id="applyBtn">Áp Dụng</button>
+            </span>
         </div>
+        <div id="alertApply"></div>
 
         <div class="hr mt-5"></div>
 
 
         <div class="d-flex">
             <div class="subtotal mb-2">Tiền Topping</div>
-            <div class="mr-4">{{number_format($totalPrice_Topping)}} VNĐ</div>
+            <div class="mr-4">{{number_format($totalPrice_Topping)}}</div><span class="mr-4">VNĐ</span>
         </div>
 
         <div class="d-flex">
             <div class="subtotal mb-2">Shipping</div>
-            <div class="mr-4" id="ShipCost">0 VNĐ</div>
+            <div class="mr-4" id="ShipCost">0</div><span class="mr-4">VNĐ</span>
         </div>
 
         <div class="hr mt-4 mb-4"></div>
 
         <div class="d-flex wrapper-total">
             <div class="total-w">Tổng Cộng</div>
-            <div class="mr-4 total" id="SumCost" data-value="{{$totalPrice_Topping + $totalPrice_Product}}">{{number_format($totalPrice_Topping + $totalPrice_Product)}} VNĐ</div>
+            <div class="mr-4 total" id="SumCost" data-total="{{$totalPrice_Topping + $totalPrice_Product}}" data-discount="0">{{number_format($totalPrice_Topping + $totalPrice_Product)}}</div><span class="mr-4 total">VNĐ</span>
         </div>
 
 

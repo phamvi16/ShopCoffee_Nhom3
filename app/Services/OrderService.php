@@ -96,7 +96,7 @@ class OrderService{
         try{
             $newOrder = Order::create([
                 'customer'=>$customer_shippingid,
-                'coupon'=>"BigSale",
+                'coupon'=>"Sale30",
                 'payment_method'=>$payment_method,
                 'shipping_method'=>$shipping_method,
                 'total_quantity'=>$total_quantity,

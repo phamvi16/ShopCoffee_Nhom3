@@ -341,38 +341,40 @@ $(document).ready(function () {
                                                     var totalCostTopping = 0;
                                                     var Total = 0;
                                                     // console.log(data);
-                                                    for(var i = 0 ; i< data['cart'].length;i++){
-                                                        var subtopping =0;
-                                                        var subcost = parseInt(data['cart'][i]['product_price']);
-                                                        var showTopping =[];
-                                                        $.each(data['cart'][i]['topping'], function( index, value ) {
-                                                            subtopping+=parseInt(value);
-                                                            var thistopping = data['alltopping'].find(p=>p.Id ==index);
-                                                            showTopping.push(thistopping.Name);
-                                                          });
-                                                          subcost += subtopping;
-                                                          totalCostTopping += subtopping;
-                                                          Total+=subcost;
-                                                        $('#data').append(`
-                                                        <tr>
-                                                            <td>`+data['cart'][i]['product_name']+`</td>
-                                                            <td class="text-center">`+formatNumber(data['cart'][i]['product_price'])+`</td>
-                                                            <td class="text-center" id="topping`+i+`">
-                                                            </td>
-                                                            <td class="text-right">`+formatNumber(subcost)+`</td>
-                                                        </tr>
-                                                        `);
-                                                        for(var y = 0 ; y<showTopping.length;y++){
-                                                            $('#topping'+i).append(`<div>`+showTopping[y]+`</div>`);
-                                                        }
-                                                    }
 
+                                                        $.each(data['cart'],function(key,value){
+                                                            var subtopping =0;
+                                                            var subcost = parseInt(data['cart'][key]['product_price']);
+                                                            var showTopping =[];
+                                                            $.each(data['cart'][key]['topping'], function( index, value ) {
+                                                                subtopping+=parseInt(value);
+                                                                var thistopping = data['alltopping'].find(p=>p.Id ==index);
+                                                                showTopping.push(thistopping.Name);
+                                                            });
+                                                            subcost += subtopping;
+                                                            totalCostTopping += subtopping;
+                                                            Total+=subcost;
+                                                            $('#data').append(`
+                                                            <tr>
+                                                                <td>`+data['cart'][key]['product_name']+`</td>
+                                                                <td class="text-center">`+formatNumber(data['cart'][key]['product_price'])+`</td>
+                                                                <td class="text-center" id="topping`+i+`">
+                                                                </td>
+                                                                <td class="text-right">`+formatNumber(subcost)+`</td>
+                                                            </tr>
+                                                            `);
+                                                            for(var y = 0 ; y<showTopping.length;y++){
+                                                                $('#topping'+i).append(`<div>`+showTopping[y]+`</div>`);
+                                                            }
+                                                        });
+                                                        
+                                                    
                                                     $('#data').append(`
                                                         <tr> 
                                                             <td class="thick-line"></td>
                                                             <td class="thick-line"></td>
                                                             <td class="thick-line text-center"><strong>Tổng Tiền Topping</strong><small>(đã tính vào tổng)</small></td>
-                                                            <td class="thick-line text-right">`+formatNumber(totalCostTopping)+` VNđ</td>
+                                                            <td class="thick-line text-right">`+formatNumber(totalCostTopping)+`</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="no-line"></td>
@@ -384,13 +386,13 @@ $(document).ready(function () {
                                                             <td class="no-line"></td>
                                                             <td class="no-line"></td>
                                                             <td class="no-line text-center"><strong>Coupon</strong></td>
-                                                            <td class="no-line text-right">- `+formatNumber(discountt)+` VNđ</td>
+                                                            <td class="no-line text-right">- `+formatNumber(discountt)+` VNĐ</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="no-line"></td>
                                                             <td class="no-line"></td>
                                                             <td class="no-line text-center"><strong>Tổng Cộng</strong></td>
-                                                            <td class="no-line text-right">`+formatNumber(parseInt(totall)+parseInt(shipcost)-parseInt(discountt))+` VNĐ</td>
+                                                            <td class="no-line text-right">`+formatNumber((parseInt(totall)+parseInt(shipcost)-parseInt(discountt))>0?(parseInt(totall)+parseInt(shipcost)-parseInt(discountt)):0)+` VNĐ</td>
                                                         </tr>`);
                                                 });
                                 $('#left').append(`<h4><b><i id="timmer">Bạn Có<span style="color:red">`+localStorage.getItem('time')+` </span> Giây Để Xác Nhận Lại Đơn Hàng. Bạn Có Muốn Hủy Đặt Hàng Không ? </i></b></h4>

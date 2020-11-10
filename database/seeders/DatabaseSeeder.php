@@ -1065,6 +1065,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
        //coupon
+       DB::table('coupon')->insert([
+        'Id'=>'Default',
+        'Type'=>'Percent',
+        'Value'=>0,
+        'Description'=>'Voucher Mặc Định - 0%',
+        'Started_at'=>'2020-10-27',
+        'Ended_at'=>'2020-10-31',
+        ]);
         DB::table('coupon')->insert([
             'Id'=>'Sale50',
             'Type'=>'Percent',
@@ -1098,12 +1106,20 @@ class DatabaseSeeder extends Seeder
             'Ended_at'=>'2020-10-31',
         ]);
         DB::table('coupon')->insert([
-            'Id'=>'BigSale',
-            'Type'=>'Product',
-            'Value'=>1,
-            'Description'=>'Mua 1 Tặng 1',
+            'Id'=>'1',
+            'Type'=>'Percent',
+            'Value'=>30,
+            'Description'=>'Giảm 30%',
             'Started_at'=>'2020-10-27',
-            'Ended_at'=>'2020-10-31',
+            'Ended_at'=>'2020-11-13',
+        ]);
+        DB::table('coupon')->insert([
+            'Id'=>'2',
+            'Type'=>'Fixed',
+            'Value'=>30000,
+            'Description'=>'Giảm 30k',
+            'Started_at'=>'2020-10-27',
+            'Ended_at'=>'2020-11-13',
         ]);
 
         //payment_method

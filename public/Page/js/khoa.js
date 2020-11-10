@@ -6,7 +6,6 @@ $(document).ready(function () {
     $Ship1Cost="15,000 VNĐ";
     $Ship2Name="Khách Đến Nhận";
     $Ship2Cost="0 VNĐ";
-    let timeLeft = 10;
     // sign up 
     $("#signupBtn").click(function (e) {
         e.preventDefault();
@@ -448,9 +447,22 @@ $(document).ready(function () {
                 }
                 else{
                     $('#warning_mess').text("");
-                    alert("success + redirect");
+                    if(data==1)
+                        window.location.href="/menu";
+                    else window.location.href="/checkout";
                 }
             }
         });
     });
+    $('#logoutBtn').click(function(){
+        $.ajax({
+            url: "/logout",
+            type: 'POST',
+            success: function (data) {
+                if(data==1){
+                    location.reload();
+                }
+            }
+        });
+    });  
 });

@@ -7,11 +7,16 @@ use App\Models\Topping;
 use App\Models\PaymentMethod;
 use App\Services\CustomerService;
 use App\Services\OrderService;
+use Illuminate\Support\Carbon;
 use DB;
 class CheckoutController extends Controller
 {
     public function index(){
+
         $all_topping = DB::table('topping')->get();
+        if(!session()->has('cart')){
+            return redirect()->to('/gio-hang');
+        }
         return view('pages.checkout',compact('all_topping'));
     }
     public function Verify(Request $request){
@@ -60,5 +65,21 @@ class CheckoutController extends Controller
     public function ClearCart(){
         session()->forget('cart');
         return redirect('/menu');
+    }
+    public function ApplyCoupon(Request $request){
+        $all_coupon = DB::table('coupon')->where('Started_at','<=',Carbon::now())->where('Ended_at','>=',Carbon::now())->get();
+        $tmp = collect($all_coupon)->where('Id',$request->coupon)->first();
+        if($tmp!=null){
+            
+            $result = json_decode(json_encode($tmp),true);
+            $dump_obj = [$result['Id'],$result['Value']];
+            session()->put('coupon',$dump_obj);
+            
+            return $result;
+        }
+        else{
+            return 0;
+        }
+        // return Count($all_coupon);
     }
 }

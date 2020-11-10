@@ -54,20 +54,25 @@
                 <li><a href="{{URL::to('/menu')}}">THỰC ĐƠN</a></li>
                 <li><a href="{{URL::to('/gio-hang')}}">GIỎ HÀNG</a></li>
                 <li><a href="{{URL::to('/lien-he')}}">LIÊN HỆ</a></li>
-                {{-- <li><a href="{{URL::to('/dang-nhap')}}">ĐĂNG NHẬP</a></li> --}}
+                  {{--<li><a href="{{URL::to('/dang-nhap')}}">ĐĂNG NHẬP</a></li>--}}
                 <li>
                 <div class="dropdown show">
-                    <a class=" dropdown-toggle" href="{{URL::to('/dang-nhap')}}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ĐĂNG NHẬP
+                    @if (!session()->has('user'))
+                    <a href="{{URL::to('/dang-nhap')}}" role="button" >
+                       Đăng Nhập 
+                    </a>
+                    @else
+                    <a class=" dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{session()->get('user')}}
                     </a>
                     <div class=" dropdown-menu " aria-labelledby="dropdownMenuLink">
-                        <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/dang-nhap')}}">Đăng nhập</a>
+                          <a class=" dropdown-menu-color dropdown-item" role="button" id="logoutBtn"> Đăng Xuất</a>
                         <hr/>
-                      <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/tai-khoan')}}">Tài khoản của tôi</a>
-                      <hr/>
-                      <a class=" dropdown-menu-color dropdown-item" href="#">Cài đặt</a>
-
-                    </div>
+                          <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/tai-khoan')}}">Tài khoản của tôi</a>
+                        <hr/>
+                          <a class=" dropdown-menu-color dropdown-item" href="#">Cài đặt</a>
+                      </div>
+                    @endif
                   </div>
                 </li>
                 <li>

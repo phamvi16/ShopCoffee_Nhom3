@@ -111,17 +111,21 @@ Route::get('/tim-kiem',[MenuController::class, 'search']);
 // login and signup route
 Route::post('/login', [LoginController::class, 'Login']);
 Route::post('/signup', [LoginController::class, 'SignUp']);
+Route::get('/logout',[LoginController::class,'Logout']);
 
 //checkout route
 Route::post('/verify', [CheckoutController::class, 'Verify']);
 Route::post('/processcheckout', [CheckoutController::class, 'Checkout']);
 Route::get('/clearcart',[CheckoutController::class,'ClearCart']);
-
+Route::post('/applycoupon', [CheckoutController::class, 'ApplyCoupon']);
 //Cart
 Route::post('/add-cart', [CartController::class,'add_cart']);
 Route::get('/gio-hang', [CartController::class,'gio_hang']);
+Route::post('gio-hang/get-modal', [CartController::class,'get_modal']);
+Route::post('gio-hang/update', [CartController::class,'update']);
 Route::get('/del-pro-cart/{session_is}', [CartController::class,'del_product']);
 Route::get('/show', [CartController::class, 'show']);
+Route::get('/test', [CartController::class, 'test']);
 
 
 

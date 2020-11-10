@@ -73,10 +73,7 @@
             <div class="col-md-4 right mb-4 container w-100">
                 <h4 class="pl-5 pt-4 title">TỔNG ĐƠN</h4>
                 <div class="hr"></div>
-                <div class="d-flex">
-                    <div class="pl-5 pt-4 sub">GIÁ</div>
-                    <div class="pl-5 pt-4 mr-5">30.000 VNĐ</div>
-                </div>
+
                 <div class="d-flex total">
                     <div class="pl-5 pt-4" style="flex-grow: 1">TỔNG TIỀN</div>
                     <div class="pl-5 pt-4 mr-5"> {{ number_format($total, 0, ',', '.') }}VNĐ</div>
@@ -84,26 +81,26 @@
                 <a href="{{ URL::to('/checkout') }}" class="btn btn-primary btn-checkout mt-5">THANH TOÁN</a>
                 <div class="hr mt-4"></div>
 
-                <div id="open-coup">
+                {{--  <div id="open-coup">
                     <div class="d-flex" onclick="showCoupon()">
                         <div class="pl-5 pt-4 total app-coup mr-4">Thêm Coupon</div>
                         <i class="fas fa-chevron-down pr-5 down-icon"></i>
                     </div>
-                </div>
+                </div>  --}}
 
-                <div id="close-coup" style="display: none;">
+                {{--  <div id="close-coup" style="display: none;">
                     <div class="d-flex" onclick="closeCoupon()">
                         <div class="pl-5 pt-4 total app-coup mr-4">Thêm Coupon</div>
                         <i class="fas fa-chevron-up pr-5 down-icon"></i>
                     </div>
-                </div>
+                </div>  --}}
 
-                <div id="coupon" style="display: none;">
+                {{--  <div id="coupon" style="display: none;">
                     <div class="pl-5 pt-4">Nhập Coupon nếu có..</div>
                     <input class="input-coup mt-4" type="text" placeholder="Coupon..">
                     <button class="btn btn-primary btn-apply">THÊM COUPON</button>
-                </div>
-                <div class="hr mt-4"></div>
+                </div>  --}}
+                {{--  <div class="hr mt-4"></div>  --}}
             </div>
         </div>
 
@@ -271,11 +268,16 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
+                @endif
             </div>
+
         </div>
+
     </div>
-    @endif
+
+
     <script>
         function showCoupon() {
             document.getElementById("open-coup").style.display = "none";

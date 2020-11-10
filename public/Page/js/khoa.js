@@ -426,7 +426,8 @@ $(document).ready(function () {
                                                     email: email,
                                                     payment:payment,
                                                     shipping:shipping,
-                                                    coupon:coupon
+                                                    coupon:coupon,
+                                                    discount:discountt
                                                 },
                                                 success: function (data) {
                                                     if(data['result']=="success"){

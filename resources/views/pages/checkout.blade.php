@@ -44,32 +44,29 @@ if($data==null){
 <div class="container checkout mb-4">
 
     <div class="col-xs-12 col-sm-7 wrapper-checkout-left" id="left">
-        <!-- <h1 class="name text-center">Cafe House</h1>
-        <div class="mt-5">
-            <h3 class="cre-acc">CREATE NEW ACCOUNT</h3>
-            <div class="hr-small"></div>
-            <div class="hr"></div>
-            <label style="position: relative;">
-                <input class="form-control in-mail" type="text" placeholder="Email">
-                <span class="required"></span>
-            </label>
-            <label class="lab-2" style="position: relative;">
-                <input class="form-control in-mail" type="text" placeholder="Password">
-                <span class="required"></span>
-            </label>
-        </div> -->
+
         <form id="verify_form" method="post">
         {{ csrf_field() }}
             <h3  class="cre-acc" >Xác Nhận Thông Tin <small style="font-size:50%;"> (* Truy xuất thông tin cũ - tiết kiệm thời gian) </small> </h3>
             <hr>
             <label class="lab-2" for="phone">
             Nhập Số Điện Thoại 
-                <input class="form-control in-mail in-add" type="text" placeholder="Nhập Số Điện Thoại.." onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="phone" maxlength="11" required>
+                <input class="form-control in-mail in-add" type="text" placeholder="Nhập Số Điện Thoại.." onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="phone" maxlength="11" required 
+                @unless (!session()->has('user'))
+                    value={{session()->get('user')}}
+                    disabled
+                @endunless
+                >
             </label>
             <hr>
             <label class="lab-2" for="isbought">
-                <input type="radio" name="isbought" value="first_time" checked>Mua Lần Đầu</input>
-                <input type="radio" name="isbought" value="n_time">Đã Từng Mua</input>
+                @if(!session()->has('user'))
+                    <input type="radio" name="isbought" value="first_time" checked>Mua Lần Đầu</input>
+                    <input type="radio" name="isbought" value="n_time">Đã Từng Mua</input>
+                @else
+                    <input type="radio" name="isbought" value="first_time" checked>Nhập Thông Tin Mới</input>
+                    <input type="radio" name="isbought" value="n_time">Sử Dụng Thông Tin Cũ</input>
+                @endif
             </label>
             <input  name="_token" type="hidden" value="{{csrf_token()}}">
             <label class="lab-2">

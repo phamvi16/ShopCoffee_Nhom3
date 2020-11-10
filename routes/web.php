@@ -111,6 +111,7 @@ Route::get('/tim-kiem',[MenuController::class, 'search']);
 // login and signup route
 Route::post('/login', [LoginController::class, 'Login']);
 Route::post('/signup', [LoginController::class, 'SignUp']);
+Route::post('/logout',[LoginController::class,'Logout']);
 
 //checkout route
 Route::post('/verify', [CheckoutController::class, 'Verify']);

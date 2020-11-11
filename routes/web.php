@@ -120,8 +120,11 @@ Route::get('/clearcart',[CheckoutController::class,'ClearCart']);
 //Cart
 Route::post('/add-cart', [CartController::class,'add_cart']);
 Route::get('/gio-hang', [CartController::class,'gio_hang']);
+Route::post('gio-hang/get-modal', [CartController::class,'get_modal']);
+Route::post('gio-hang/update', [CartController::class,'update']);
 Route::get('/del-pro-cart/{session_is}', [CartController::class,'del_product']);
 Route::get('/show', [CartController::class, 'show']);
+Route::get('/test', [CartController::class, 'test']);
 
 
 

@@ -56,6 +56,9 @@ class LoginController extends Controller
         }
     }
     public function myaccount(Request $request){
-        return view('pages.myaccount');
+        return view('pages.myaccount.myaccount');
+    }
+    public function order(Request $request){
+        return view('pages.myaccount.order');
     }
 }

@@ -17,6 +17,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('Admins/demo/demo.css')}}" rel="stylesheet" />
     <link href="{{asset('Admins/css/category.css')}}" rel="stylesheet" />
+    <link href="{{asset('Admins/css/order.css')}}" rel="stylesheet" />
     @yield('style', '')
 
 </head>

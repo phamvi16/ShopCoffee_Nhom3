@@ -557,7 +557,7 @@ $(document).ready(function () {
                             $('#SumCost').attr('data-discount',data['Value']);
                         }
                         $('input[name="coupon"]').val(data['Id']);
-                        alert($('input[name="coupon"]').val());
+                        // alert($('input[name="coupon"]').val());
                         $('#SumCost').text(formatNumber( ( parseInt(shipcost)+ $('#SumCost').attr('data-total') - $('#SumCost').attr('data-discount'))>0?(parseInt(shipcost)+ parseInt($('#SumCost').attr('data-total')) - parseInt($('#SumCost').attr('data-discount'))):0));
 
                         $('#coupon-form').hide();

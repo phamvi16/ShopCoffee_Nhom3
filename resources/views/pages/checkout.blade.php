@@ -131,6 +131,7 @@ if(session()->has('coupon')){
                 <button class="btn btn-primary btn-apply ml-2" id="applyBtn">Áp Dụng</button>
             </span>
         </div>
+        <input type="hidden" name="coupon"></input>
         <div id="alertApply"></div>
 
         <div class="hr mt-5"></div>

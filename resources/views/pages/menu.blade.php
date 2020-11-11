@@ -2,7 +2,6 @@
 @section('content')
 <div class="tm-main-section light-gray-bg">
     <div class="container-fluid" id="main">
-
         <section class="tm-section row">
             <div class="col-lg-12 tm-section-header-container margin-bottom-30">
                 <h2 class="tm-section-header gold-text tm-handwriting-font"><img src="{{asset("Page/img/logo.png")}}" alt="Logo" class="tm-site-logo"> {{(Request::is('tim-kiem')) ? 'Kết quả tìm kiếm cho "' . ($keywords??"") . '"': "Our Menus"}}</h2>

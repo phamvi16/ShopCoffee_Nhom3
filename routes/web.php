@@ -102,6 +102,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 	//Order
     Route::get('/order', [OrderController::class, 'index']);
+    Route::get('/detail-order', [OrderController::class, 'detail']);
 
 });
 

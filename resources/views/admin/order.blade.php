@@ -71,7 +71,7 @@
                                             asjqk
                                         </td>
                                         <td class="i-eye">
-                                            <i class="fas fa-eye"></i>
+                                            <a href="/admin/detail-order"><i class="fas fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>

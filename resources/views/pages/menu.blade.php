@@ -43,7 +43,6 @@
                         </span>
                     </div>
                 </div>
-
                 @forelse($all_product as $pro)
                     @if ($pro->Visibility != 'Hidden' && $pro->Visibility != 'Delete')
                         <a class="menu-item" href="/product-detail/{{$pro->Id}}">

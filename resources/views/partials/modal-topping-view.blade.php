@@ -1,4 +1,4 @@
-@foreach (App\Models\Topping::All() as $topi)
+@foreach (App\Models\Topping::where('Status', 'not like', '%Delete%')->get() as $topi)
     @if (array_key_exists($topi->Id, $session_toppings))
         <ul style="list-style: none" class="text-left col-md-6">
             <li class="form-group form-check">

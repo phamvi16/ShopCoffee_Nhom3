@@ -2,3 +2,58 @@
     color: #2a5788;
     font-size: 1.3rem;
 }
+.fz-th {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: #0c2646;
+    /* color: #204065; */
+}
+.table-agile-info{
+	background: #fff;
+    padding: 2em;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.panel {
+    border: none ! important;
+}
+.panel-default>.panel-heading {
+    color: #f96332 ! important;
+    background-color: #fff ! important;
+    border-color: #ddede0 ! important;
+    font-size: 20px;
+}
+.panel-heading {
+    position: relative;
+    height: 57px;
+    line-height: 57px;
+    letter-spacing: 0.2px;
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0 16px;
+    background:#ddede0;
+   border-top-right-radius: 2px;
+   border-top-left-radius: 2px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+@media (max-width: 768px){
+    .table-agile-info {
+        padding: 2em 2em 10.7em;
+    }
+}
+
+@media (max-width: 736px){
+    .table-agile-info {
+        padding: 2em;
+    }
+}
+
+@media (max-width: 480px){
+    .table-agile-info {
+        padding: 1em;
+    }
+}

@@ -461,28 +461,54 @@ $(document).ready(function () {
     //login ajax
     $('#loginBtn').click(function(e){
         e.preventDefault();
-        var phone = $("input[name='phone']").val();
-        var password = $("input[name='password']").val();
-
-        $.ajax({
-            url: "/login",
-            type: 'POST',
-            data: {
-                phone: phone,
-                password: password,
-            },
-            success: function (data) {
-                if(data==0){
-                    $('#warning_mess').text("Đăng Nhập Thất Bại! vui Lòng Kiểm Tra Lại Tài Khoản/Mật Khẩu");
+        if ($('#loginform').validate({
+            rules: {
+                phone: {
+                    required: true,
+                    minlength:9,
+                    maxlength:11
+                    
+                },
+                password: {
+                    required: true,
+                    minlength: 5
                 }
-                else{
-                    $('#warning_mess').text("");
-                    if(data==1)
-                        window.location.href="/menu";
-                    else window.location.href="/checkout";
+            },
+            messages: {
+                phone: {
+                    required: "Vui Lòng Nhập họ Tên",
+                    minlength:"sdt dài từ 9 -> 11 số",
+                    maxlength:"sdt dài từ 9 -> 11 số"
+                },
+                password: {
+                    required: "vui Lòng nhập Số Điện Thoại",
+                    minlength: "Mật Khẩu Phải Dài Hơn 4 Kí tự"
                 }
             }
-        });
+            }).form()){
+                var phone = $("input[name='phone']").val();
+                var password = $("input[name='password']").val();
+                
+                $.ajax({
+                    url: "/login",
+                    type: 'POST',
+                    data: {
+                        phone: phone,
+                        password: password,
+                    },
+                    success: function (data) {
+                        if(data==0){
+                            $('#warning_mess').text("Đăng Nhập Thất Bại! vui Lòng Kiểm Tra Lại Tài Khoản/Mật Khẩu");
+                        }
+                        else{
+                            $('#warning_mess').text("");
+                            if(data==1)
+                                window.location.href="/menu";
+                            else window.location.href="/checkout";
+                        }
+                    }
+                });
+            }
     });
 
     $('#logoutBtn').click(function(){
@@ -531,7 +557,7 @@ $(document).ready(function () {
                             $('#SumCost').attr('data-discount',data['Value']);
                         }
                         $('input[name="coupon"]').val(data['Id']);
-                        alert($('input[name="coupon"]').val());
+                        // alert($('input[name="coupon"]').val());
                         $('#SumCost').text(formatNumber( ( parseInt(shipcost)+ $('#SumCost').attr('data-total') - $('#SumCost').attr('data-discount'))>0?(parseInt(shipcost)+ parseInt($('#SumCost').attr('data-total')) - parseInt($('#SumCost').attr('data-discount'))):0));
 
                         $('#coupon-form').hide();

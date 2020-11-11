@@ -26,8 +26,9 @@ class OrderService{
 
 
             $ProcessCustomer = (new CustomerService())->InsertOrUpdate_FromView($request); // xong phan nay
-
+            
             if($ProcessCustomer){
+                
                 $ProcessOrder = $this->InsertData_Checkout($data,$request->phone,$request->payment,$request->shipping,$request->coupon,$request->discount);
                 if($ProcessOrder){
                     return 1;

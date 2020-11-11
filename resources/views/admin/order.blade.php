@@ -17,17 +17,20 @@
                             <input type="date" id='birthday' name='birthday' class="ml-3" placeholder="" value="">
                         </div>
 
-                        <div class="btn-group ml-5 ">
-                            <button type="button" class="btn btn-danger dropdown-toggle mr-5" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Lọc theo trạng thái
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Đang xử lý</a>
-                                <a class="dropdown-item" href="#">Đang giao</a>
-                                <a class="dropdown-item" href="#">Đã giao</a>
+                        <div class=" btn-group ml-5  " >
+                            <div class="option browse-tags ">
+                                <label class="lb-filter hide" for="sort-by">Sắp xếp theo:</label>
+                                <span>
+                                    <select class="sort-by custom-dropdown__select btn btn-danger dropdown-toggle mr-5" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" >
+                                        <option value="manual">Đang xử lý</option>
+                                        <option value="price-ascending" data-filter="">Đang giao</option>
+                                        <option value="price-descending" data-filter="">Đã giao</option>
+                                    </select>
+                                </span>
                             </div>
                         </div>
+
                     </div>
                     <div class="card-body ">
                         <div class="table-responsive">
@@ -79,6 +82,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection

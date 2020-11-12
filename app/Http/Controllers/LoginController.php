@@ -12,7 +12,7 @@ class LoginController extends Controller
             return redirect()->to('/trang-chu');
         }
         else{
-            return view('pages.login');
+            return response(view('pages.login'))->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
         }
     }
 

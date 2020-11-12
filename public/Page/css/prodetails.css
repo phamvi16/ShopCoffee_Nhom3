@@ -1126,7 +1126,7 @@ p {
 	margin-top: 10px;
 	text-transform: capitalize;
 	font-weight: normal;
-	color: #000;
+	color: #88614a;
 	padding-bottom: 15px;
 	margin-bottom: 15px;
 	border-bottom: 1px solid #dfdfdf;
@@ -1160,7 +1160,9 @@ p {
 .input-color:hover + span,
 .input-radio:checked + span,
 .input-radio:hover + span {
-	border: 2px solid #262626;
+    /* border: 2px solid #262626; */
+    background-color: #c79c5f8c !important;
+    color: #88614a !important;
 }
 .radio-label {
 	background: #FFFFFF;
@@ -1170,12 +1172,12 @@ p {
 	border: 2px solid #FFFFFF;
 }
 .product-actions .control-label {
-	width: 100%;
+	/* width: 100%; */
 	margin-bottom: 5px;
-	display: block;
-	width: 100%;
+	/* display: block; */
+	/* width: 100%; */
 	font-weight: 600;
-	color: #262626;
+	color: #88614a;
 }
 .product-actions .add-to-cart {
 	padding: 6px 25px;
@@ -1242,8 +1244,9 @@ p {
 	margin-bottom: 10px;
 }
 .product-prices div {
+    color: #88614a;
 	margin-bottom: 6px;
-	font-size: 24px;
+	font-size: 18px;
 	font-weight: 600;
 	display: inline-block;
 }
@@ -1844,12 +1847,12 @@ input.input-radio {
 /*PRODUCT-PRICE-AREA*/
 
 .product-prices {
-    margin-left: 9px;
-    margin-top: 2em !important;
+    /* margin-left: 9px; */
+    margin-top: 1em !important;
 }
 
 span#saleprice {
-    font-size: 35px !important;
+    font-size: 30px !important;
     color: #3b3939;
 }
 
@@ -1890,7 +1893,7 @@ div#short-description, .product-reference, .product-variants, #product-availabil
 /*PRODUCT SIZE AREA*/
 
 ul#product-size-area {
-    margin: 1em 2em !important;
+    margin: 0em 2em !important;
 }
 
 li.input-container.pull-xs-left {
@@ -1901,3 +1904,23 @@ span#product-availability, .product-additional-info {
     margin-left: 11px;
     margin-bottom: 5px !important;
 }
+
+
+/* ---OTHER AREA----------------------------- */
+.label {
+    color: #88614a;
+}
+.cate-prodetail {
+    background-color: #C79C5F;
+    border-radius: 10px;
+    padding: 2px 6px;
+    color: #fff !important;
+    box-shadow: 1px 3px #aaa;
+}
+.input-size:checked {
+    background-color: #c79c5f8c !important;
+    color: #88614a !important;
+}
+/* .current-price {
+    color: #88614a;
+} */

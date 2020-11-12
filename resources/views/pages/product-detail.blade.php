@@ -87,7 +87,7 @@
                                 @endif
                             </div>
                             <div class="clearfix"></div>
-                            <span id="product-availability">
+                            <span id="product-availability" class="mt-3">
                                 <span class="product-{{ $pro->Visibility == 'Publish' ? 'available' : 'unavailable' }}"
                                     id="status">
                                     @if ($pro->Visibility == 'Publish')
@@ -121,7 +121,7 @@
 
 
     </div>
-    <section class="product-tabcontent">
+    {{-- <section class="product-tabcontent">
         <div class="tabs">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
@@ -138,7 +138,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 </div>
 </div>
 

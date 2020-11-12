@@ -64,7 +64,7 @@
                                 @if ($pro->Visibility == 'Publish')
                                     <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" data-pos="menu" class="btn btn-primary add-to-cart mr-4">THÊM GIỎ HÀNG</button>
                                 @elseif ($pro->Visibility == 'Out-Stock')
-                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled>THÊM GIỎ HÀNG</button>
+                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled style="opacity: 0.5">THÊM GIỎ HÀNG</button>
                                 @endif
 
                                 @if($pro->product_size->sortByDesc("Size")->first()->Sale_Price != $pro->product_size->sortByDesc("Size")->first()->Price)

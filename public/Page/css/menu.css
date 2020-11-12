@@ -125,3 +125,37 @@ a:hover {
     border-radius: 20px;
     border: 1px solid #88614a;
 }
+.out{
+    position: relative;
+}
+.outofstock{
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    /* filter: blur(3px);
+    -webkit-filter: blur(3px);
+   */
+    /* Full height */
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position: absolute; */
+}
+.text-block {
+    position: absolute;
+    bottom: 50%;
+    right: 35%;
+    /* top:0;
+    left:0; */
+    background-color:#eb3434;
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: italic;
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+    /* background-color: #3b3c43; */
+    /* -ms-transform: rotate(20deg); */
+    transform: rotate(20deg);
+}

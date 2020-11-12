@@ -55,7 +55,17 @@
                         <input type="hidden" value="{{ $size->Sale_Price}}" class="cart_product_price_{{ $size->Id_Product}}">
                         <input type="hidden" value="{{ $size->Size}}" class="cart_product_size_{{ $size->Id_Product}}">
                         @endforeach
-                            <img class="card-img-top img-menu " src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
+                            @if($pro->Visibility=="Out-Stock")
+                            <div class="out">
+                                <img class="card-img-top img-menu outofstock" src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
+                                <div class="text-block">
+                                <h4>Hết hàng</h4>
+                                <!-- <p>What a beautiful sunrise</p> -->
+                            </div>
+                            </div>
+                            @else
+                            <img class="card-img-top img-menu" src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
+                            @endif
                             <div class="card-body mt-1">
                                 <h5 class="card-title"><a href="/product-detail/{{$pro->Id}}">{{$pro->Name}}</a></h5>
                                 <p class="card-text">{{$pro->Description}}</p>

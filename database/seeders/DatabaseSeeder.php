@@ -164,7 +164,7 @@ class DatabaseSeeder extends Seeder
         	'Name'=>'Matcha Đá Xay',
             'Image'=>'matchafre.jpg',
             'Description'=>'Matcha Freeze',
-        	'Visibility'=>'Publish',
+        	'Visibility'=>'Out-Stock',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Socola Đá Xay',
@@ -176,7 +176,7 @@ class DatabaseSeeder extends Seeder
         	'Name'=>'Caramel Đá Xay',
             'Image'=>'caramelfre.jpg',
             'Description'=>'Caramel Freeze',
-        	'Visibility'=>'Publish',
+        	'Visibility'=>'Out-Stock',
         ]);
         DB::table('product')->insert([
         	'Name'=>'Tiramisu',
@@ -249,8 +249,8 @@ class DatabaseSeeder extends Seeder
         DB::table('product_size')->insert([
             'Id_Product'=>1,
             'Size'=>'S',
-            'Price'=>30000,
-            'Sale_Price'=>30000,
+            'Price'=>35000,
+            'Sale_Price'=> 35000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>1,
@@ -267,410 +267,416 @@ class DatabaseSeeder extends Seeder
         DB::table('product_size')->insert([
             'Id_Product'=>2,
             'Size'=>'S',
-            'Price'=>50000,
-            'Sale_Price'=>50000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>2,
-            'Size'=>'M',
-            'Price'=>55000,
+            'Price'=>60000,
             'Sale_Price'=>55000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>2,
-            'Size'=>'L',
-            'Price'=>60000,
+            'Size'=>'M',
+            'Price'=>65000,
             'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>2,
+            'Size'=>'L',
+            'Price'=>70000,
+            'Sale_Price'=>65000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>3,
             'Size'=>'S',
-            'Price'=>50000,
-            'Sale_Price'=>50000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>3,
-            'Size'=>'M',
-            'Price'=>55000,
+            'Price'=>60000,
             'Sale_Price'=>55000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>3,
+            'Size'=>'M',
+            'Price'=>65000,
+            'Sale_Price'=>65000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>3,
             'Size'=>'L',
-            'Price'=>60000,
-            'Sale_Price'=>60000,
+            'Price'=>70000,
+            'Sale_Price'=>70000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>4,
             'Size'=>'S',
-            'Price'=>25000,
-            'Sale_Price'=>25000,
+            'Price'=>35000,
+            'Sale_Price'=>35000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>4,
             'Size'=>'M',
-            'Price'=>30000,
-            'Sale_Price'=>30000,
+            'Price'=>40000,
+            'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>4,
             'Size'=>'L',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>5,
+            'Size'=>'S',
             'Price'=>35000,
             'Sale_Price'=>35000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>5,
-            'Size'=>'S',
-            'Price'=>25000,
-            'Sale_Price'=>25000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>5,
             'Size'=>'M',
-            'Price'=>30000,
-            'Sale_Price'=>30000,
+            'Price'=>40000,
+            'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>5,
             'Size'=>'L',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>6,
+            'Size'=>'S',
             'Price'=>35000,
             'Sale_Price'=>35000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>6,
-            'Size'=>'S',
-            'Price'=>25000,
-            'Sale_Price'=>25000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>6,
             'Size'=>'M',
-            'Price'=>30000,
-            'Sale_Price'=>30000,
+            'Price'=>40000,
+            'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>6,
             'Size'=>'L',
+            'Price'=>45000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>7,
+            'Size'=>'S',
             'Price'=>35000,
             'Sale_Price'=>35000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>7,
-            'Size'=>'S',
-            'Price'=>25000,
-            'Sale_Price'=>25000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>7,
             'Size'=>'M',
-            'Price'=>30000,
-            'Sale_Price'=>30000,
+            'Price'=>40000,
+            'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>7,
             'Size'=>'L',
-            'Price'=>35000,
-            'Sale_Price'=>35000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>8,
-            'Size'=>'S',
-            'Price'=>35000,
-            'Sale_Price'=>35000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>8,
-            'Size'=>'M',
             'Price'=>45000,
             'Sale_Price'=>45000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>8,
-            'Size'=>'L',
+            'Size'=>'S',
+            'Price'=>45000,
+            'Sale_Price'=>40000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>8,
+            'Size'=>'M',
             'Price'=>50000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>8,
+            'Size'=>'L',
+            'Price'=>55000,
             'Sale_Price'=>50000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>9,
             'Size'=>'S',
-            'Price'=>35000,
-            'Sale_Price'=>35000,
+            'Price'=>45000,
+            'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>9,
             'Size'=>'M',
-            'Price'=>45000,
+            'Price'=>50000,
             'Sale_Price'=>45000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>9,
             'Size'=>'L',
-            'Price'=>50000,
+            'Price'=>55000,
             'Sale_Price'=>50000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>10,
             'Size'=>'S',
-            'Price'=>35000,
-            'Sale_Price'=>35000,
+            'Price'=>45000,
+            'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>10,
             'Size'=>'M',
-            'Price'=>45000,
+            'Price'=>50000,
             'Sale_Price'=>45000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>10,
             'Size'=>'L',
-            'Price'=>50000,
+            'Price'=>55000,
             'Sale_Price'=>50000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>11,
             'Size'=>'S',
-            'Price'=>35000,
-            'Sale_Price'=>35000,
+            'Price'=>45000,
+            'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>11,
             'Size'=>'M',
-            'Price'=>45000,
+            'Price'=>50000,
             'Sale_Price'=>45000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>11,
             'Size'=>'L',
-            'Price'=>50000,
+            'Price'=>55000,
             'Sale_Price'=>50000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>12,
             'Size'=>'S',
-            'Price'=>40000,
+            'Price'=>45000,
             'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>12,
             'Size'=>'M',
-            'Price'=>45000,
+            'Price'=>50000,
             'Sale_Price'=>45000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>12,
             'Size'=>'L',
             'Price'=>55000,
-            'Sale_Price'=>55000,
+            'Sale_Price'=>50000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>13,
             'Size'=>'S',
-            'Price'=>35000,
+            'Price'=>45000,
+            'Sale_Price'=>40000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>13,
+            'Size'=>'M',
+            'Price'=>50000,
+            'Sale_Price'=>45000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>13,
+            'Size'=>'L',
+            'Price'=>55000,
+            'Sale_Price'=>50000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>14,
+            'Size'=>'S',
+            'Price'=>55000,
+            'Sale_Price'=>55000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>14,
+            'Size'=>'M',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>14,
+            'Size'=>'L',
+            'Price'=>65000,
+            'Sale_Price'=>65000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>15,
+            'Size'=>'S',
+            'Price'=>55000,
+            'Sale_Price'=>55000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>15,
+            'Size'=>'M',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>15,
+            'Size'=>'L',
+            'Price'=>65000,
+            'Sale_Price'=>65000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>16,
+            'Size'=>'S',
+            'Price'=>55000,
+            'Sale_Price'=>55000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>16,
+            'Size'=>'M',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>16,
+            'Size'=>'L',
+            'Price'=>65000,
+            'Sale_Price'=>65000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>17,
+            'Size'=>'S',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>17,
+            'Size'=>'M',
+            'Price'=>70000,
+            'Sale_Price'=>70000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>17,
+            'Size'=>'L',
+            'Price'=>75000,
+            'Sale_Price'=>75000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>18,
+            'Size'=>'S',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>18,
+            'Size'=>'M',
+            'Price'=>70000,
+            'Sale_Price'=>70000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>18,
+            'Size'=>'L',
+            'Price'=>75000,
+            'Sale_Price'=>75000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>19,
+            'Size'=>'S',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>19,
+            'Size'=>'M',
+            'Price'=>70000,
+            'Sale_Price'=>70000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>19,
+            'Size'=>'L',
+            'Price'=>75000,
+            'Sale_Price'=>75000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>20,
+            'Size'=>'S',
+            'Price'=>60000,
+            'Sale_Price'=>60000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>20,
+            'Size'=>'M',
+            'Price'=>70000,
+            'Sale_Price'=>70000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>20,
+            'Size'=>'L',
+            'Price'=>75000,
+            'Sale_Price'=>75000,
+        ]);
+        DB::table('product_size')->insert([
+            'Id_Product'=>21,
+            'Size'=>'None',
+            'Price'=>40000,
             'Sale_Price'=>35000,
         ]);
         DB::table('product_size')->insert([
-            'Id_Product'=>13,
-            'Size'=>'M',
-            'Price'=>45000,
-            'Sale_Price'=>45000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>13,
-            'Size'=>'L',
-            'Price'=>50000,
-            'Sale_Price'=>50000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>14,
-            'Size'=>'S',
-            'Price'=>45000,
-            'Sale_Price'=>45000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>14,
-            'Size'=>'M',
-            'Price'=>50000,
-            'Sale_Price'=>50000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>14,
-            'Size'=>'L',
-            'Price'=>55000,
-            'Sale_Price'=>55000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>15,
-            'Size'=>'S',
-            'Price'=>45000,
-            'Sale_Price'=>45000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>15,
-            'Size'=>'M',
-            'Price'=>50000,
-            'Sale_Price'=>50000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>15,
-            'Size'=>'L',
-            'Price'=>55000,
-            'Sale_Price'=>55000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>16,
-            'Size'=>'S',
-            'Price'=>45000,
-            'Sale_Price'=>45000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>16,
-            'Size'=>'M',
-            'Price'=>50000,
-            'Sale_Price'=>50000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>16,
-            'Size'=>'L',
-            'Price'=>55000,
-            'Sale_Price'=>55000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>17,
-            'Size'=>'S',
-            'Price'=>50000,
-            'Sale_Price'=>50000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>17,
-            'Size'=>'M',
-            'Price'=>60000,
-            'Sale_Price'=>60000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>17,
-            'Size'=>'L',
-            'Price'=>65000,
-            'Sale_Price'=>65000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>18,
-            'Size'=>'S',
-            'Price'=>50000,
-            'Sale_Price'=>50000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>18,
-            'Size'=>'M',
-            'Price'=>60000,
-            'Sale_Price'=>60000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>18,
-            'Size'=>'L',
-            'Price'=>65000,
-            'Sale_Price'=>65000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>19,
-            'Size'=>'S',
-            'Price'=>50000,
-            'Sale_Price'=>50000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>19,
-            'Size'=>'M',
-            'Price'=>60000,
-            'Sale_Price'=>60000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>19,
-            'Size'=>'L',
-            'Price'=>65000,
-            'Sale_Price'=>65000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>20,
-            'Size'=>'S',
-            'Price'=>50000,
-            'Sale_Price'=>50000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>20,
-            'Size'=>'M',
-            'Price'=>60000,
-            'Sale_Price'=>60000,
-        ]);
-        DB::table('product_size')->insert([
             'Id_Product'=>21,
             'Size'=>'None',
-            'Price'=>20000,
-            'Sale_Price'=>20000,
-        ]);
-        DB::table('product_size')->insert([
-            'Id_Product'=>21,
-            'Size'=>'None',
-            'Price'=>20000,
-            'Sale_Price'=>20000,
+            'Price'=>40000,
+            'Sale_Price'=>35000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>22,
             'Size'=>'None',
-            'Price'=>25000,
-            'Sale_Price'=>25000,
+            'Price'=>45000,
+            'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>23,
             'Size'=>'None',
-            'Price'=>25000,
-            'Sale_Price'=>25000,
+            'Price'=>45000,
+            'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>24,
             'Size'=>'None',
-            'Price'=>25000,
-            'Sale_Price'=>25000,
+            'Price'=>45000,
+            'Sale_Price'=>40000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>25,
             'Size'=>'None',
-            'Price'=>30000,
-            'Sale_Price'=>30000,
+            'Price'=>50000,
+            'Sale_Price'=>45000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>26,
             'Size'=>'None',
-            'Price'=>30000,
-            'Sale_Price'=>30000,
+            'Price'=>50000,
+            'Sale_Price'=>45000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>27,
             'Size'=>'None',
-            'Price'=>30000,
-            'Sale_Price'=>30000,
+            'Price'=>50000,
+            'Sale_Price'=>45000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>28,
             'Size'=>'None',
-            'Price'=>20000,
-            'Sale_Price'=>20000,
+            'Price'=>35000,
+            'Sale_Price'=>32000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>29,
             'Size'=>'None',
-            'Price'=>20000,
-            'Sale_Price'=>20000,
+            'Price'=>35000,
+            'Sale_Price'=>32000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>30,
             'Size'=>'None',
-            'Price'=>20000,
-            'Sale_Price'=>20000,
+            'Price'=>35000,
+            'Sale_Price'=>32000,
         ]);
         DB::table('product_size')->insert([
             'Id_Product'=>31,
             'Size'=>'None',
-            'Price'=>20000,
-            'Sale_Price'=>20000,
+            'Price'=>35000,
+            'Sale_Price'=>32000,
         ]);
 
         //product_category

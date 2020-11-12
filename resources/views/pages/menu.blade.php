@@ -67,8 +67,14 @@
                                     <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled>THÊM GIỎ HÀNG</button>
                                 @endif
 
-                                <p style="text-decoration: line-through" class="mt-4 mr-3 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Sale_Price)}} đ</p>
+                                @if($pro->product_size->sortByDesc("Size")->first()->Sale_Price != $pro->product_size->sortByDesc("Size")->first()->Price)
+                                
+                                <p class="mt-4 mr-3 font-weight-bold" style="color:red">{{number_format($pro->product_size->sortByDesc("Size")->first()->Sale_Price)}} đ </p>
+                                <p style="text-decoration: line-through" class="mt-4 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Price)}} đ</p>
+                                
+                                @else
                                 <p class="mt-4 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Price)}} đ</p>
+                                @endif
                                 </div>
                             </div>
                         </div>

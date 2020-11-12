@@ -6,12 +6,12 @@
     </span>
     <span class="col-xs-12 col-sm-6 d-flex align-items-center">
         <img id="img-cart" class="item-img"
-            src="/ProductImages/Products/{{ $item['product_image'] }}">
+            src="/ProductImages/Products/{{ $item['product_image'] ?? "" }}">
         <div class="item-content">
-            <div class="mt-3" style="font-weight: 600; font-size: 16px">{{ $item['product_name'] }}
+            <div class="mt-3" style="font-weight: 600; font-size: 16px">{{ $item['product_name'] ?? "" }}
             </div>
             <div class="text mt-4">
-                <div> Size: {{ $item['product_size'] }}</div>
+                <div> Size: {{ $item['product_size'] ?? "" }}</div>
                 <div>Topping:
                     @if (count($item['topping']) > 0)
                         @foreach ($item['topping'] as $key => $value)
@@ -19,9 +19,9 @@
                                 $topping = App\Models\Topping::find($key);
                             @endphp
                             @if ($loop->last)
-                                {{ $topping->Name }}
+                                {{ $topping->Name ?? "" }}
                             @else
-                                {{ $topping->Name }},
+                                {{ $topping->Name ?? ""}},
                             @endif
                             <br>
                         @endforeach

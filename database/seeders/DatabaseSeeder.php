@@ -613,12 +613,6 @@ class DatabaseSeeder extends Seeder
             'Sale_Price'=>35000,
         ]);
         DB::table('product_size')->insert([
-            'Id_Product'=>21,
-            'Size'=>'None',
-            'Price'=>40000,
-            'Sale_Price'=>35000,
-        ]);
-        DB::table('product_size')->insert([
             'Id_Product'=>22,
             'Size'=>'None',
             'Price'=>45000,

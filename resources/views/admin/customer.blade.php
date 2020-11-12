@@ -1,5 +1,5 @@
 @extends('admin_layout')
-@section('title', 'Customer')
+@section('title', 'Khách hàng')
 @section('content')
     <div class="panel-header panel-header-sm"></div>
         <div class="content">
@@ -7,55 +7,71 @@
                 <div class="col-md-12">
                     <div class="card ">
                         <div class="card-header ">
-                        <h4 class="card-title">All Customer</h4>
+                        <h4 class="card-title">Danh sách khách hàng</h4>
                         </div>
                         <div class="card-body ">
                             <div class="table-responsive">
                                 <table class="table">
+
                                     <thead class=" text-primary">
                                         <th>
                                             STT
                                         </th>
                                         <th>
-                                            Name
+                                            Tên
                                         </th>
                                         <th>
-                                            Birthday
-                                        </th>
-                                        <th>
-                                            Phone
+                                            Số Điện Thoại
                                         </th>
                                         <th>
                                             Email
                                         </th>
                                         <th>
-                                            Address
+                                            Hạng Mức
                                         </th>
-
-
+                                        <th>
+                                            Tác Vụ
+                                        </th>
                                     </thead>
+
                                     <tbody>
+                                    @php
+                                        $i=0;
+                                    @endphp
+
+                                    @foreach($account as $acc)
+
+                                        @php
+                                            $i++;
+                                            $phone = $acc['Phone'];
+                                        @endphp
+
                                         <tr>
                                             <td>
-                                                1
+                                                {{$i}}
                                             </td>
                                             <td>
-                                                Dakota Rice
+                                                {{$acc['Name']}}
                                             </td>
                                             <td>
-                                                01/01/2020
+                                                {{$phone}}
                                             </td>
                                             <td>
-                                                0123456789
+                                                {{$acc['Email']}}
+                                            </td>
+                                            <td class="px-4">
+                                                {{$acc['Level']}}
                                             </td>
                                             <td>
-                                                abc@gmail.com
-                                            </td>
-                                            <td>
-                                                TPHCM
+                                                <a href="{{URL::to('/admin/customer/' . $phone)}}" class="active styling-edit">
+                                                    <i class="fas fa-list icon"></i>
+                                                </a>
                                             </td>
                                         </tr>
+
+                                    @endforeach
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>

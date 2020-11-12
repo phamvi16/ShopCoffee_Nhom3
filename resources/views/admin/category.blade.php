@@ -1,5 +1,5 @@
 @extends('admin_layout')
-@section('title', 'Category')
+@section('title', 'Danh mục')
 @section('content')
 <div class="panel-header panel-header-sm"></div>
 <div class="content">
@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header d-flex">
-                    <h4 class="card-title"> All Category</h4>
+                    <h4 class="card-title">Danh mục</h4>
                     <a href="category/add" class="btn btn-primary btn--icon add-btn"></a>
                 </div>
                 <div class="card-body ">
@@ -15,19 +15,19 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>STT</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Count</th>
-                                <th>Action</th>
+                                <th>Tên</th>
+                                <th>Hình ảnh</th>
+                                <th>Số lượng</th>
+                                <th>Tác vụ</th>
                             </thead>
                             <tbody>
 
                             @php
                                 $i=0;
                             @endphp
-                                    
+
                             @foreach($all_category as $cat)
-                                    
+
                                 @php
                                     $i++;
                                 @endphp
@@ -40,9 +40,9 @@
                                             {{$cat->Name}}
                                         </td>
                                         <td>
-                                            <img src="/CategoryImages/Categories/{{$cat -> Image}}" height="100" width="100">
+                                            <img src="/CategoryImages/Categories/{{$cat -> Image}}" height="80" width="100">
                                         </td>
-                                        <td>
+                                        <td class="px-5">
                                             {{$cat->Count}}
                                         </td>
                                         <td>

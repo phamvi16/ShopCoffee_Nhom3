@@ -10,6 +10,8 @@ class PaymentMethod extends Model
     use HasFactory;
 
     protected $table = "payment_method";
+    protected $primaryKey = 'Id';
+    protected $fillable = ['name','status'];
 
     public function order()
     {

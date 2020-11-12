@@ -17,6 +17,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('Admins/demo/demo.css')}}" rel="stylesheet" />
     <link href="{{asset('Admins/css/category.css')}}" rel="stylesheet" />
+    <link href="{{asset('Admins/css/order.css')}}" rel="stylesheet" />
     @yield('style', '')
 
 </head>
@@ -29,28 +30,28 @@
     -->
             <div class="logo">
 
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    The Coffee Shop
+                <a href="" class="simple-text logo-normal">
+                    Cafe House
                 </a>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li>
                         <a href="/admin">
-                            <i class="now-ui-icons design_app"></i>
-                            <p>Dashboard</p>
+                            <i class="now-ui-icons shopping_shop"></i>
+                            <p>Trang chủ</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/category">
-                            <i class="now-ui-icons education_atom"></i>
-                            <p>Category</p>
+                            <i class="now-ui-icons files_paper"></i>
+                            <p>Danh mục</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/product">
-                            <i class="now-ui-icons location_map-big"></i>
-                            <p>Product</p>
+                            <i class="now-ui-icons shopping_bag-16"></i>
+                            <p>Sản phẩm</p>
                         </a>
                     </li>
                     <li>
@@ -60,15 +61,21 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/admin/coupon">
+                            <i class="now-ui-icons shopping_tag-content"></i>
+                            <p>Phiếu giảm giá</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/admin/customer">
-                            <i class="now-ui-icons ui-1_bell-53"></i>
-                            <p>Customer</p>
+                            <i class="now-ui-icons users_single-02"></i>
+                            <p>Khách hàng</p>
                         </a>
                     </li>
                     <li>
                         <a href="/admin/order">
-                            <i class="now-ui-icons users_single-02"></i>
-                            <p>Order</p>
+                            <i class="now-ui-icons education_paper"></i>
+                            <p>Đơn hàng</p>
                         </a>
                     </li>
 

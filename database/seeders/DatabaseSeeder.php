@@ -994,75 +994,75 @@ class DatabaseSeeder extends Seeder
         	'Status'=>'Còn hàng',
         ]);
         
-        //customer_account
-        DB::table('customer_account')->insert([
-        	'Phone'=>'081412',
-        	'Password'=>'123',
-        ]);
-        DB::table('customer_account')->insert([
-        	'Phone'=>'741780',
-        	'Password'=>'123',
-        ]);
-        DB::table('customer_account')->insert([
-        	'Phone'=>'384921',
-        	'Password'=>'123',
-        ]);
-        DB::table('customer_account')->insert([
-        	'Phone'=>'123123',
-        	'Password'=>'123',
-        ]);
+        // //customer_account
+        // DB::table('customer_account')->insert([
+        // 	'Phone'=>'081412',
+        // 	'Password'=>'123',
+        // ]);
+        // DB::table('customer_account')->insert([
+        // 	'Phone'=>'741780',
+        // 	'Password'=>'123',
+        // ]);
+        // DB::table('customer_account')->insert([
+        // 	'Phone'=>'384921',
+        // 	'Password'=>'123',
+        // ]);
+        // DB::table('customer_account')->insert([
+        // 	'Phone'=>'123123',
+        // 	'Password'=>'123',
+        // ]);
 
-        //customer_detail
-        DB::table('customer_detail')->insert([
-        	'Phone'=>'081412',
-        	'Name'=>'Tài',
-            'Birthday'=>'1999-02-24',
-            'Email'=>'taivuongduy2@gmail.com',
-        ]);
-        DB::table('customer_detail')->insert([
-        	'Phone'=>'741780',
-        	'Name'=>'Khoa',
-            'Birthday'=>'1999-10-10',
-            'Email'=>'ohwhynotme1999@gmail.com',
-        ]);
-        DB::table('customer_detail')->insert([
-        	'Phone'=>'384921',
-        	'Name'=>'Ân',
-            'Birthday'=>'1999-05-01',
-            'Email'=>'an.nt.techdev@gmail.com',
-        ]);
-        DB::table('customer_detail')->insert([
-        	'Phone'=>'123123',
-        	'Name'=>'Nhã',
-            'Birthday'=>'1999-11-18',
-            'Email'=>'nha1999@gmail.com',
-        ]);
+        // //customer_detail
+        // DB::table('customer_detail')->insert([
+        // 	'Phone'=>'081412',
+        // 	'Name'=>'Tài',
+        //     'Birthday'=>'1999-02-24',
+        //     'Email'=>'taivuongduy2@gmail.com',
+        // ]);
+        // DB::table('customer_detail')->insert([
+        // 	'Phone'=>'741780',
+        // 	'Name'=>'Khoa',
+        //     'Birthday'=>'1999-10-10',
+        //     'Email'=>'ohwhynotme1999@gmail.com',
+        // ]);
+        // DB::table('customer_detail')->insert([
+        // 	'Phone'=>'384921',
+        // 	'Name'=>'Ân',
+        //     'Birthday'=>'1999-05-01',
+        //     'Email'=>'an.nt.techdev@gmail.com',
+        // ]);
+        // DB::table('customer_detail')->insert([
+        // 	'Phone'=>'123123',
+        // 	'Name'=>'Nhã',
+        //     'Birthday'=>'1999-11-18',
+        //     'Email'=>'nha1999@gmail.com',
+        // ]);
 
-        //loyalty
-        DB::table('loyalty')->insert([
-            'Phone'=>'081412',
-            'Level'=>'Vàng',
-            'Point' =>'1888',
-            'Discount_Loyalty' => '5',
-        ]);
-        DB::table('loyalty')->insert([
-            'Phone'=>'741780',
-            'Level'=>'Bạch Kim',
-            'Point' =>'4675',
-            'Discount_Loyalty' => '10',
-        ]);
-        DB::table('loyalty')->insert([
-            'Phone'=>'384921',
-            'Level'=>'Bạc',
-            'Point' =>'890',
-            'Discount_Loyalty' => '0',
-        ]);
-        DB::table('loyalty')->insert([
-            'Phone'=>'123123',
-            'Level'=>'Đồng',
-            'Point' =>'50',
-            'Discount_Loyalty' => '0',
-        ]);
+        // //loyalty
+        // DB::table('loyalty')->insert([
+        //     'Phone'=>'081412',
+        //     'Level'=>'Vàng',
+        //     'Point' =>'1888',
+        //     'Discount_Loyalty' => '5',
+        // ]);
+        // DB::table('loyalty')->insert([
+        //     'Phone'=>'741780',
+        //     'Level'=>'Bạch Kim',
+        //     'Point' =>'4675',
+        //     'Discount_Loyalty' => '10',
+        // ]);
+        // DB::table('loyalty')->insert([
+        //     'Phone'=>'384921',
+        //     'Level'=>'Bạc',
+        //     'Point' =>'890',
+        //     'Discount_Loyalty' => '0',
+        // ]);
+        // DB::table('loyalty')->insert([
+        //     'Phone'=>'123123',
+        //     'Level'=>'Đồng',
+        //     'Point' =>'50',
+        //     'Discount_Loyalty' => '0',
+        // ]);
 
        //coupon
        DB::table('coupon')->insert([
@@ -1161,5 +1161,5 @@ php artisan serve
 /*
 php artisan migrate:refresh
 php artisan db:seed --class=DatabaseSeeder
-php artisan serve
+php artisan ser
 */

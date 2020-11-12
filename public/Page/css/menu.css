@@ -51,6 +51,13 @@ a:hover {
     color: #fff;
     background-color: #88614a;
 }
+.add-to-cart:disabled {
+    background-color: #88614a;
+    opacity: 0.5;
+}
+.add-to-cart:disabled:hover {
+    background-color: #88614a;
+}
 
 .more-info {
     color: #644a3b;

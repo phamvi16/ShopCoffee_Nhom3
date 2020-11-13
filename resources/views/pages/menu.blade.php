@@ -11,19 +11,21 @@
             </div>
             <div>
                 <div>
-                <div class="col-lg-3 col-md-3 col-sm-2 mr-4">
-                    <div class="tm-position-relative margin-bottom-30">
-                    @foreach($all_category as $cate)
+                <div class="col-lg-3 col-md-3 col-sm-3 mr-4 wrapper " >
+                    <div class="tm-position-relative margin-bottom-30 sidebar">
+
                       <div >
-                        <nav class="tm-side-menu">
+                        <nav class="tm-side-menu menu-sidebar">
+                            @foreach($all_category as $cate)
                             <ul>
-                                    <li><a href="/menu/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
+                                    <li class="text-menu" ><a href="/menu/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
                             </ul>
+                            @endforeach
                         </nav>
                       </div>
 
-                        @endforeach
-                        <img src="{{asset("Page/img/vertical-menu-bg.png")}}" alt="Menu bg" class="tm-side-menu-bg">
+
+                        {{--  <img src="{{asset("Page/img/vertical-menu-bg.png")}}" alt="Menu bg" class="tm-side-menu-bg">  --}}
 
                     </div>
                 </div>
@@ -78,10 +80,10 @@
                                 @endif
 
                                 @if($pro->product_size->sortByDesc("Size")->first()->Sale_Price != $pro->product_size->sortByDesc("Size")->first()->Price)
-                                
+
                                 <p class="mt-4 mr-3 font-weight-bold" style="color:red">{{number_format($pro->product_size->sortByDesc("Size")->first()->Sale_Price)}} đ </p>
                                 <p style="text-decoration: line-through" class="mt-4 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Price)}} đ</p>
-                                
+
                                 @else
                                 <p class="mt-4 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Price)}} đ</p>
                                 @endif

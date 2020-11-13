@@ -55,17 +55,7 @@
                         <input type="hidden" value="{{ $size->Sale_Price}}" class="cart_product_price_{{ $size->Id_Product}}">
                         <input type="hidden" value="{{ $size->Size}}" class="cart_product_size_{{ $size->Id_Product}}">
                         @endforeach
-                            @if($pro->Visibility=="Out-Stock")
-                            <div class="out">
-                                <img class="card-img-top img-menu outofstock" src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
-                                <div class="text-block">
-                                <h4>Hết hàng</h4>
-                                <!-- <p>What a beautiful sunrise</p> -->
-                            </div>
-                            </div>
-                            @else
-                            <img class="card-img-top img-menu" src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
-                            @endif
+                            <img class="card-img-top img-menu " src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
                             <div class="card-body mt-1">
                                 <h5 class="card-title"><a href="/product-detail/{{$pro->Id}}">{{$pro->Name}}</a></h5>
                                 <p class="card-text">{{$pro->Description}}</p>
@@ -74,17 +64,11 @@
                                 @if ($pro->Visibility == 'Publish')
                                     <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" data-pos="menu" class="btn btn-primary add-to-cart mr-4">THÊM GIỎ HÀNG</button>
                                 @elseif ($pro->Visibility == 'Out-Stock')
-                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled style="opacity: 0.5">THÊM GIỎ HÀNG</button>
+                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled>THÊM GIỎ HÀNG</button>
                                 @endif
 
-                                @if($pro->product_size->sortByDesc("Size")->first()->Sale_Price != $pro->product_size->sortByDesc("Size")->first()->Price)
-                                
-                                <p class="mt-4 mr-3 font-weight-bold" style="color:red">{{number_format($pro->product_size->sortByDesc("Size")->first()->Sale_Price)}} đ </p>
-                                <p style="text-decoration: line-through" class="mt-4 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Price)}} đ</p>
-                                
-                                @else
+                                <p style="text-decoration: line-through" class="mt-4 mr-3 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Sale_Price)}} đ</p>
                                 <p class="mt-4 font-weight-bold ">{{number_format($pro->product_size->sortByDesc("Size")->first()->Price)}} đ</p>
-                                @endif
                                 </div>
                             </div>
                         </div>

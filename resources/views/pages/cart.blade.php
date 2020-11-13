@@ -4,7 +4,7 @@
     <div class="container wrapper-cart">
         <div class="row">
             <div class="col-md-8 left mt-5 container w-100">
-                <h2 class="title">GIỎ HÀNG</h2>
+                <h2 class="title cart-title-respon">GIỎ HÀNG</h2>
                 @if (session()->has('message'))
                     <div class="alert alert-success">
                         {!! session()->get('message') !!}
@@ -17,9 +17,9 @@
 
                 <div class="hr mt-4 w-100"></div>
                 <div class="wrapper-title row">
-                    <div class="drink-cart">MÓN</div>
-                    <div class="total price">GIÁ</div>
-                    <div class="total-cart">TỔNG TIỀN</div>
+                    <div class="drink-cart title-respon">MÓN</div>
+                    <div class="total price title-respon">GIÁ</div>
+                    <div class="total-cart title-respon">TỔNG TIỀN</div>
                 </div>
                 <div class="hr w-100"></div>
 
@@ -39,16 +39,16 @@
                         </div>
                     @endforeach
             </div>
-            <div class="col-md-4 right mb-5 container w-100">
+            <div class="col-md-4 right mb-5 container w-100 cart-right">
                 <h4 class="pl-5 pt-4 title">TỔNG ĐƠN</h4>
                 <div class="hr"></div>
                 <div class="d-flex">
                     <div class="pl-5 pt-4 sub">GIÁ</div>
-                    <div class="pl-5 pt-4 mr-5"><span>{{ number_format((new App\Services\CartService())->getCartTotal(), 0, ',', '.') }}</span> VNĐ</div>
+                    <div class="pl-5 pt-4 mr-5"><span>{{ number_format((new App\Services\CartService())->getCartTotal(), 0, ',', '.') }}</span> đ</div>
                 </div>
-                <div class="d-flex total">
+                <div class="d-flex">
                     <div class="pl-5 pt-4" style="flex-grow: 1">TỔNG TIỀN</div>
-                    <div class="pl-5 pt-4 mr-5"> <span>{{ number_format((new App\Services\CartService())->getCartTotal(), 0, ',', '.') }}</span> VNĐ</div>
+                    <div class="pl-5 pt-4 mr-5"> <span>{{ number_format((new App\Services\CartService())->getCartTotal(), 0, ',', '.') }}</span> đ</div>
                 </div>
                 <a href="{{ URL::to('/checkout') }}" class="btn btn-primary btn-checkout mt-5">THANH TOÁN</a>
                 <div class="hr mt-4"></div>

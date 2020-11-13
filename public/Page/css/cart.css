@@ -26,7 +26,7 @@
     font-weight: 900;
 }
 .wrapper-cart .left .total {
-    padding-left: 50px;
+    padding-left: 78px;
 }
 .wrapper-cart .left .items {
     margin-bottom: 20px;
@@ -138,12 +138,11 @@
     font-size: 2rem;
 }
 .price-cart {
-    margin-left: -6%;
+    margin-left: 3rem;
 }
 .btn-update {
     max-width: fit-content;
     height: fit-content;
-    margin-top: 2.5rem;
 }
 .update-topping-btn {
     background-color: #cf2127 !important;
@@ -157,15 +156,106 @@
 .show-form {
     margin-left: -20px;
 }
-/* .drink-cart {
-    margin-left: 10%;
-} */
+.drink-cart {
+    margin-left: 5%;
+}
 .price {
     margin-left: 42%;
 }
 .total-cart {
-    margin-left: 10%;
+    margin-left: 7%;
 }
-/* @media (max-width: 1024px) {
-
+/* .btn-update-respon {
+    position: absolute;
+    right: 0;
+    top: 20rem;
 } */
+@media (max-width: 350px) {
+    .title-respon {
+        font-size: 11px !important;
+    }
+    .price-cart {
+        margin-left: 0 !important;
+    }
+}
+@media (max-width: 450px) {
+    .total {
+        margin-left: 30% !important;
+    }
+    /* .drink-cart {
+        margin-left: 14%;
+    } */
+}
+@media (max-width: 540px) {
+    .cart-img-respon {
+        display: none !important;
+    }
+    .right {
+        margin-top: 0 !important;
+    }
+    .item-content {
+        margin-left: 0 !important;
+    }
+    .cart-btn-update {
+        display: none;
+    }
+    .btn-2 {
+        display: block !important;
+    }
+    .price {
+        margin-left: 17rem !important;
+    }
+    /* .total-cart {
+        margin-left: 10rem !important;
+    } */
+}
+@media (max-width: 768px) {
+    .logo-responsive, .name-shop-responsive {
+        display: none;
+    }
+    /* .cart-img-respon {
+        width: 85px !important;
+        height: 70px !important;
+    } */
+    .cart-img-respon {
+        display: none !important;
+    }
+    .price {
+        margin-left: 36%;
+    }
+    .title-respon {
+        font-size: 13px;
+    }
+    .cart-proname-respon {
+        font-size: 14px !important;
+        width: inherit;
+    }
+    .cart-price-respon {
+        font-size: small;
+        padding: 0 !important;
+    }
+    .cart-title-respon {
+        font-size: 18px;
+    }
+    .total {
+        padding: 0 !important;
+    }
+    .title {
+        font-size: small;
+    }
+    .item-content {
+        width: 130px !important;
+    }
+    .show-form {
+        margin-left: 0 !important;
+    }
+}
+@media (max-width: 1024px) {
+    .price {
+        margin-left: 40%;
+    }
+    .cart-title-respon {
+        font-size: 18px;
+    }
+}
+

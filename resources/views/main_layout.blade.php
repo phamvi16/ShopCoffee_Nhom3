@@ -44,8 +44,8 @@
         <div class="row">
           <div class="tm-top-header-inner ">
             <div class="tm-logo-container">
-              <img src="{{asset('Page/img/logo.png')}}" alt="Logo" class="tm-site-logo">
-              <h1 class="tm-site-name tm-handwriting-font">Cafe House</h1>
+              <img src="{{asset('Page/img/logo.png')}}" alt="Logo" class="tm-site-logo logo-responsive">
+              <h1 class="tm-site-name tm-handwriting-font name-shop-responsive">Cafe House</h1>
             </div>
             <div class="mobile-menu-icon">
               <i class="fa fa-bars"></i>

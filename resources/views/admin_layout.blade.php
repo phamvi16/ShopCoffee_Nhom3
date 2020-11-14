@@ -63,7 +63,7 @@
                     <li>
                         <a href="/admin/coupon">
                             <i class="now-ui-icons shopping_tag-content"></i>
-                            <p>Phiếu giảm giá</p>
+                            <p>Mã giảm giá</p>
                         </a>
                     </li>
                     <li>

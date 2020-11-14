@@ -11,75 +11,54 @@
             </div>
             <div>
                 <div>
-                <div class="col-lg-3 col-md-3 col-sm-2 mr-4">
-                    <div class="tm-position-relative margin-bottom-30" id="cate-filter">
+                <div class="col-lg-3 col-md-3 col-sm-3 mr-4 wrapper">
+                    <div class="tm-position-relative margin-bottom-30 sidebar" id="cate-filter">
                         <div >
-                            <nav class="tm-side-menu">
+                            <nav class="tm-side-menu menu-sidebar">
                                 <ul>
                                     @if ($catnow == 0)
                                         @if ($sort == 'all')
-                                            <li><a name="cate-filter" value="0" href="/menu/sort/all/filter/category/0" class="active">All</a></li>
+                                            <li class="text-menu"><a name="cate-filter" value="0" href="/menu/sort/all/filter/category/0" class="active">All</a></li>
                                         @elseif ($sort == 'asc')
-                                            <li><a name="cate-filter" value="0" href="/menu/sort/priceasc/filter/category/0" class="active">All</a></li>
+                                            <li class="text-menu"><a name="cate-filter" value="0" href="/menu/sort/priceasc/filter/category/0" class="active">All</a></li>
                                         @elseif ($sort == 'desc')
-                                            <li><a name="cate-filter" value="0" href="/menu/sort/pricedesc/filter/category/0" class="active">All</a></li>
+                                            <li class="text-menu"><a name="cate-filter" value="0" href="/menu/sort/pricedesc/filter/category/0" class="active">All</a></li>
                                         @endif
                                     @else
                                         @if ($sort == 'all')
-                                            <li><a name="cate-filter" value="0" href="/menu/sort/all/filter/category/0" class="">All</a></li>
+                                            <li class="text-menu"><a name="cate-filter" value="0" href="/menu/sort/all/filter/category/0" class="">All</a></li>
                                         @elseif ($sort == 'asc')
-                                            <li><a name="cate-filter" value="0" href="/menu/sort/priceasc/filter/category/0" class="">All</a></li>
+                                            <li class="text-menu"><a name="cate-filter" value="0" href="/menu/sort/priceasc/filter/category/0" class="">All</a></li>
                                         @elseif ($sort == 'desc')
-                                            <li><a name="cate-filter" value="0" href="/menu/sort/pricedesc/filter/category/0" class="">All</a></li>
+                                            <li class="text-menu"><a name="cate-filter" value="0" href="/menu/sort/pricedesc/filter/category/0" class="">All</a></li>
                                         @endif
-                                    @endif
+                                    @endif    
+                                    <input type="hidden" id="cat-now" value="{{$catnow}}" />
+                                    @foreach($all_category as $cate)
+                                        @if ($catnow == $cate->Id)
+                                            @if ($sort == 'all')
+                                                <li class="text-menu"><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/all/filter/category/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
+                                            @elseif ($sort == 'asc')
+                                                <li class="text-menu"><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/priceasc/filter/category/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
+                                            @elseif ($sort == 'desc')
+                                                <li class="text-menu"><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/pricedesc/filter/category/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
+                                            @endif
+                                        @else
+                                            @if ($sort == 'all')
+                                                <li class="text-menu"><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/all/filter/category/{{$cate->Id}}" class="">{{$cate->Name}}</a></li>
+                                            @elseif ($sort == 'asc')
+                                                <li class="text-menu"><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/priceasc/filter/category/{{$cate->Id}}" class="">{{$cate->Name}}</a></li>
+                                            @elseif ($sort == 'desc')
+                                                <li class="text-menu"><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/pricedesc/filter/category/{{$cate->Id}}" class="">{{$cate->Name}}</a></li>
+                                            @endif
+                                        @endif
+                                    @endforeach
                                 </ul>
                             </nav>
                         </div>
-                    <input type="hidden" id="cat-now" value="{{$catnow}}" />
-                    @foreach($all_category as $cate)
-                        <div>
-                            <nav class="tm-side-menu">
-                                <ul>
-                                    @if ($catnow == $cate->Id)
-                                        @if ($sort == 'all')
-                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/all/filter/category/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
-                                        @elseif ($sort == 'asc')
-                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/priceasc/filter/category/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
-                                        @elseif ($sort == 'desc')
-                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/pricedesc/filter/category/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
-                                        @endif
-                                    @else
-                                        @if ($sort == 'all')
-                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/all/filter/category/{{$cate->Id}}" class="">{{$cate->Name}}</a></li>
-                                        @elseif ($sort == 'asc')
-                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/priceasc/filter/category/{{$cate->Id}}" class="">{{$cate->Name}}</a></li>
-                                        @elseif ($sort == 'desc')
-                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/pricedesc/filter/category/{{$cate->Id}}" class="">{{$cate->Name}}</a></li>
-                                        @endif
-                                    @endif
-                                </ul>
-                            </nav>
-                        </div>
-                    @endforeach
-                        <img src="{{asset("Page/img/vertical-menu-bg.png")}}" alt="Menu bg" class="tm-side-menu-bg">
-                <div class="col-lg-3 col-md-3 col-sm-3 mr-4 wrapper " >
-                    <div class="tm-position-relative margin-bottom-30 sidebar">
-
-
-                        <nav class="tm-side-menu menu-sidebar" >
-                            @foreach($all_category as $cate)
-                            <ul>
-                                    <li class="text-menu"><a href="/menu/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
-                            </ul>
-                            @endforeach
-                        </nav>
-
-
-
-                        {{--  <img src="{{asset("Page/img/vertical-menu-bg.png")}}" alt="Menu bg" class="tm-side-menu-bg">  --}}
-
+                        <!-- <img src="{{asset("Page/img/vertical-menu-bg.png")}}" alt="Menu bg" class="tm-side-menu-bg"> -->
                     </div>
+                </div>
                 </div>
                 <div class=" hidden-sm hidden-xs " >
                     <div class="option browse-tags ">

@@ -16,46 +16,39 @@
                         <div class="option browse-tags">
                             <label class="lb-filter hide" for="sort-by">Sắp xếp theo:</label>
                             <span class="custom-dropdown custom-dropdown--grey d-flex justify-content-around">
-                                @if ($catnow == null)
-                                    <form action="/admin/product/filter/" id="filter" method="get" enctype="multipart/form-data">
-                                        <select class="sort-by custom-dropdown__select">
-                                            @if ($fil == 'stt')
-                                                <option name="filter" value="stt" data-filter="" selected>STT</option>
+                                <form action="" id="filter" method="get" enctype="multipart/form-data">
+                                    <select class="sort-by custom-dropdown__select">
+                                        @if ($sort == 'all')
+                                            <option name="filter" value="all" data-filter="" selected>All</option>
+                                        @else
+                                            <option name="filter" value="all" data-filter="">All</option>
+                                        @endif
+                                        @if ($sort == 'asc')
+                                            <option name="filter" value="price-ascending" data-filter="" selected>Giá: Tăng dần</option>
+                                        @else
+                                            <option name="filter" value="price-ascending" data-filter="">Giá: Tăng dần</option>
+                                        @endif
+                                        @if ($sort == 'desc')
+                                            <option name="filter" value="price-descending" data-filter="" selected>Giá: Giảm dần</option>
+                                        @else
+                                            <option name="filter" value="price-descending" data-filter="">Giá: Giảm dần</option>
+                                        @endif
+                                    </select>
+                                </form>
+                                <form action="" id="cate-filter" method="get" enctype="multipart/form-data">
+                                    <select class="sort-by custom-dropdown__select">
+                                        @if ($catnow == 0)
+                                            <option name="cate-filter" value="0" data-filter="" selected>All</option>
+                                        @endif
+                                        @foreach ($cate as $cat)
+                                            @if ($catnow == $cat->Id)
+                                                <option name="cate-filter" value="{{$cat->Id}}" data-filter="" selected>{{$cat->Name}}</option>
                                             @else
-                                                <option name="filter" value="stt" data-filter="">STT</option>
-                                            @endif
-                                            @if ($fil == 'asc')
-                                                <option name="filter" value="price-ascending" data-filter="" selected>Giá: Tăng dần</option>
-                                            @else
-                                                <option name="filter" value="price-ascending" data-filter="">Giá: Tăng dần</option>
-                                            @endif
-                                            @if ($fil == 'desc')
-                                                <option name="filter" value="price-descending" data-filter="" selected>Giá: Giảm dần</option>
-                                            @else
-                                                <option name="filter" value="price-descending" data-filter="">Giá: Giảm dần</option>
-                                            @endif
-                                        </select>
-                                    </form>
-                                    <form action="/admin/product/filter/category" id="cate-filter" method="get" enctype="multipart/form-data">
-                                        <select class="sort-by custom-dropdown__select">
-                                            @foreach ($cate as $cat)
                                                 <option name="cate-filter" value="{{$cat->Id}}" data-filter="">{{$cat->Name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </form>
-                                @else
-                                    <form action="/admin/product/filter/category" id="cate-filter" method="get" enctype="multipart/form-data">
-                                        <select class="sort-by custom-dropdown__select">
-                                            @foreach ($cate as $cat)
-                                                @if ($catnow == $cat->Id)
-                                                    <option name="cate-filter" value="{{$cat->Id}}" data-filter="" selected>{{$cat->Name}}</option>
-                                                @else
-                                                    <option name="cate-filter" value="{{$cat->Id}}" data-filter="">{{$cat->Name}}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </form>
-                                @endif
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </form>
                             </span>
                         </div>
                     </div>
@@ -145,27 +138,67 @@
         $("#filter").change(function(){
             if (document.getElementsByName('filter')[0].selected == true)
             {
-                $(location).attr('href', '/admin/product');
+                //$(location).attr('href', '/admin/product');
+                $("option[name='cate-filter']").each(function(i, arr){
+                    if (arr.selected == true)
+                    {
+                        $(location).attr('href', '/admin/product/sort/all/filter/category/' + arr.getAttribute('value'));
+                    }
+                });
             }
             else if (document.getElementsByName('filter')[1].selected == true)
             {
-                $(location).attr('href', '/admin/product/filter/priceasc');
+                //$(location).attr('href', '/admin/product/sort/priceasc');
+                $("option[name='cate-filter']").each(function(i, arr){
+                    if (arr.selected == true)
+                    {
+                        $(location).attr('href', '/admin/product/sort/priceasc/filter/category/' + arr.getAttribute('value'));
+                    }
+                });
             }
             else if (document.getElementsByName('filter')[2].selected == true)
             {
-                $(location).attr('href', '/admin/product/filter/pricedesc');
+                //$(location).attr('href', '/admin/product/filter/pricedesc');
+                $("option[name='cate-filter']").each(function(i, arr){
+                    if (arr.selected == true)
+                    {
+                        $(location).attr('href', '/admin/product/sort/pricedesc/filter/category/' + arr.getAttribute('value'));
+                    }
+                });
             }
         });
 
         $("#cate-filter").change(function(){
-            $("option[name='cate-filter']").each(function(i, arr){
-                if (arr.selected == true)
-                {
-                    $(location).attr('href', '/admin/product/filter/category/' + arr.getAttribute('value'));
-                }
-            });
-
-
+            if (document.getElementsByName('filter')[0].selected == true)
+            {
+                //$(location).attr('href', '/admin/product');
+                $("option[name='cate-filter']").each(function(i, arr){
+                    if (arr.selected == true)
+                    {
+                        $(location).attr('href', '/admin/product/sort/all/filter/category/' + arr.getAttribute('value'));
+                    }
+                });
+            }
+            else if (document.getElementsByName('filter')[1].selected == true)
+            {
+                //$(location).attr('href', '/admin/product/sort/priceasc');
+                $("option[name='cate-filter']").each(function(i, arr){
+                    if (arr.selected == true)
+                    {
+                        $(location).attr('href', '/admin/product/sort/priceasc/filter/category/' + arr.getAttribute('value'));
+                    }
+                });
+            }
+            else if (document.getElementsByName('filter')[2].selected == true)
+            {
+                //$(location).attr('href', '/admin/product/filter/pricedesc');
+                $("option[name='cate-filter']").each(function(i, arr){
+                    if (arr.selected == true)
+                    {
+                        $(location).attr('href', '/admin/product/sort/pricedesc/filter/category/' + arr.getAttribute('value'));
+                    }
+                });
+            }
         });
     });
 </script>

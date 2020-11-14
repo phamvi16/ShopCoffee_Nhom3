@@ -12,33 +12,83 @@
             <div>
                 <div>
                 <div class="col-lg-3 col-md-3 col-sm-2 mr-4">
-                    <div class="tm-position-relative margin-bottom-30">
+                    <div class="tm-position-relative margin-bottom-30" id="cate-filter">
+                        <div >
+                            <nav class="tm-side-menu">
+                                <ul>
+                                    @if ($catnow == 0)
+                                        @if ($sort == 'all')
+                                            <li><a name="cate-filter" value="0" href="/menu/sort/all/filter/category/0" class="active">All</a></li>
+                                        @elseif ($sort == 'asc')
+                                            <li><a name="cate-filter" value="0" href="/menu/sort/priceasc/filter/category/0" class="active">All</a></li>
+                                        @elseif ($sort == 'desc')
+                                            <li><a name="cate-filter" value="0" href="/menu/sort/pricedesc/filter/category/0" class="active">All</a></li>
+                                        @endif
+                                    @else
+                                        @if ($sort == 'all')
+                                            <li><a name="cate-filter" value="0" href="/menu/sort/all/filter/category/0" class="">All</a></li>
+                                        @elseif ($sort == 'asc')
+                                            <li><a name="cate-filter" value="0" href="/menu/sort/priceasc/filter/category/0" class="">All</a></li>
+                                        @elseif ($sort == 'desc')
+                                            <li><a name="cate-filter" value="0" href="/menu/sort/pricedesc/filter/category/0" class="">All</a></li>
+                                        @endif
+                                    @endif
+                                </ul>
+                            </nav>
+                        </div>
+                    <input type="hidden" id="cat-now" value="{{$catnow}}" />
                     @foreach($all_category as $cate)
-                      <div >
-                        <nav class="tm-side-menu">
-                            <ul>
-                                    <li><a href="/menu/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
-                            </ul>
-                        </nav>
-                      </div>
-
-                        @endforeach
+                        <div>
+                            <nav class="tm-side-menu">
+                                <ul>
+                                    @if ($catnow == $cate->Id)
+                                        @if ($sort == 'all')
+                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/all/filter/category/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
+                                        @elseif ($sort == 'asc')
+                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/priceasc/filter/category/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
+                                        @elseif ($sort == 'desc')
+                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/pricedesc/filter/category/{{$cate->Id}}" class="active">{{$cate->Name}}</a></li>
+                                        @endif
+                                    @else
+                                        @if ($sort == 'all')
+                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/all/filter/category/{{$cate->Id}}" class="">{{$cate->Name}}</a></li>
+                                        @elseif ($sort == 'asc')
+                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/priceasc/filter/category/{{$cate->Id}}" class="">{{$cate->Name}}</a></li>
+                                        @elseif ($sort == 'desc')
+                                            <li><a name="cate-filter" Value="{{$cate->Id}}" href="/menu/sort/pricedesc/filter/category/{{$cate->Id}}" class="">{{$cate->Name}}</a></li>
+                                        @endif
+                                    @endif
+                                </ul>
+                            </nav>
+                        </div>
+                    @endforeach
                         <img src="{{asset("Page/img/vertical-menu-bg.png")}}" alt="Menu bg" class="tm-side-menu-bg">
-
                     </div>
                 </div>
                 <div class=" hidden-sm hidden-xs " >
                     <div class="option browse-tags ">
                         <label class="lb-filter hide" for="sort-by">Sắp xếp theo:</label>
                         <span class="custom-dropdown custom-dropdown--grey ">
-                            <select class="sort-by custom-dropdown__select btn btn-light dropdown-toggle mr-5" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false" style="position: relative;right:-50%;">
-                                <option value="manual">Sản phẩm mới nhất</option>
-                                <option value="price-ascending" data-filter="">Giá: Tăng dần</option>
-                                <option value="price-descending" data-filter="">Giá: Giảm dần</option>
-                                <option value="title-descending" data-filter="">Sản phẩm bán chạy nhất</option>
-
-                            </select>
+                            <form action="" id="filter" method="get" enctype="multipart/form-data">
+                                <select class="sort-by custom-dropdown__select btn btn-light dropdown-toggle mr-5" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" style="position: relative;right:-50%;">
+                                    @if ($sort == 'all')
+                                        <option name="filter" value="all" data-filter="" selected>All</option>
+                                    @else
+                                        <option name="filter" value="all" data-filter="">All</option>
+                                    @endif
+                                    @if ($sort == 'asc')
+                                        <option name="filter" value="price-ascending" data-filter="" selected>Giá: Tăng dần</option>
+                                    @else
+                                        <option name="filter" value="price-ascending" data-filter="">Giá: Tăng dần</option>
+                                    @endif
+                                    @if ($sort == 'desc')
+                                        <option name="filter" value="price-descending" data-filter="" selected>Giá: Giảm dần</option>
+                                    @else
+                                        <option name="filter" value="price-descending" data-filter="">Giá: Giảm dần</option>
+                                    @endif
+                                </select>
+                            </form>
                         </span>
                     </div>
                 </div>
@@ -82,4 +132,25 @@
         </section>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#filter").change(function(){
+            if (document.getElementsByName('filter')[0].selected == true)
+            {
+                $(location).attr('href', '/menu/sort/all/filter/category/' + $('#cat-now').val());
+            }
+            else if (document.getElementsByName('filter')[1].selected == true)
+            {
+                $(location).attr('href', '/menu/sort/priceasc/filter/category/' + $('#cat-now').val());
+            }
+            else if (document.getElementsByName('filter')[2].selected == true)
+            {
+                $(location).attr('href', '/menu/sort/pricedesc/filter/category/' + $('#cat-now').val());
+            }
+        });
+    });
+</script>
 @endsection

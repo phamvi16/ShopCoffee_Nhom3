@@ -1,5 +1,5 @@
 @extends('admin_layout')
-@section('title', 'Product')
+@section('title', 'Sản phẩm')
 @section('content')
 <div class="panel-header panel-header-sm"></div>
 <div class="content">
@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header d-flex">
-                    <h4 class="card-title"> All Product</h4>
+                    <h4 class="card-title"> Danh sách Sản phẩm</h4>
                     <a href="product/create"class="btn btn-primary btn--icon add-btn">
                     <i class="card-title">Create Product </i></a>
                 </div>
@@ -95,13 +95,13 @@
 
                                                 <td class="px-3">
                                                 @foreach($pro -> product_size as $cate)
-                                                <p><br>{{ $cate-> Price }}$</p>
+                                                <p><br>{{ $cate-> Price }} VNĐ</p>
                                                 @endforeach
                                                 </td>
 
                                                 <td class="px-4">
                                                 @foreach($pro -> product_size as $cate)
-                                                <p><br>{{ $cate-> Sale_Price }}$</p>
+                                                <p><br>{{ $cate-> Sale_Price }} VNĐ</p>
                                                 @endforeach
                                                 </td>
 

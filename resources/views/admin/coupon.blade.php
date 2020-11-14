@@ -1,5 +1,5 @@
 @extends('admin_layout')
-@section('title', 'Phiếu giảm giá')
+@section('title', 'Mã giảm giá')
 @section('content')
 <div class="panel-header panel-header-sm"></div>
 <div class="content">
@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header d-flex">
-                    <h4 class="card-title">Danh sách mã giảm giá</h4>
+                    <h4 class="card-title">Danh sách Mã giảm giá</h4>
                     <a href="coupon/add" class="btn btn-primary btn--icon add-btn"></a>
                 </div>
                 <div class="card-body ">

@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="card ">
                         <div class="card-header d-flex">
-                        <h4 class="card-title">All Topping</h4>
+                        <h4 class="card-title">Danh sách Topping</h4>
                         <a href="topping/add" class="btn btn-primary btn--icon add-btn"></a>
                         </div>
                         <div class="card-body ">
@@ -52,7 +52,7 @@
                                                 {{$top->Name}}
                                             </td>
                                             <td>
-                                                {{$top->Price}}
+                                                {{$top->Price}} VNĐ
                                             </td>
                                             <td>
                                                 {{$top->Status}}

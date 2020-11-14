@@ -52,7 +52,7 @@
                                             </td>
                                         @elseif ($cou->Type == 'Fixed')
                                             <td>
-                                                {{$cou->Value}}$
+                                                {{$cou->Value}} VNĐ
                                             </td>
                                         @else
                                             <td>

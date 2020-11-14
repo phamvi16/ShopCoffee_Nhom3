@@ -11,11 +11,24 @@
                 <section class="page-content" id="content">
                     <div class="product-leftside">
                         <div class="images-container">
+                        @if($pro->Visibility =="Out-Stock")
+                            <div class="out">
+                                <a href="/product-detail/{{ $pro->Id ?? '' }}">
+                                    <img class="js-qv-product-cover outofstock"
+                                        src="{{ asset('ProductImages/Products/') . '/' . ($pro->Image ?? '') }}"
+                                        data-product-image="{{ $pro->Image }}" alt="{{ $pro->Name ?? '' }}" style="width: 350px;height:300px;">
+                                    <div class="text-block">
+                                        <h4>Hết hàng</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        @else
                             <a href="/product-detail/{{ $pro->Id ?? '' }}">
                                 <img class="js-qv-product-cover"
                                     src="{{ asset('ProductImages/Products/') . '/' . ($pro->Image ?? '') }}"
                                     data-product-image="{{ $pro->Image }}" alt="{{ $pro->Name ?? '' }}" style="width: 350px;height:300px;">
                             </a>
+                        @endif
                         </div>
                     </div>
                 </section>
@@ -65,14 +78,11 @@
                             <div class="product-price h5">
                                 <div class="current-price">
                                     <span>Giá: &nbsp;&nbsp;</span>
-                                    <span
-                                        id="saleprice">{{ number_format($pro->product_size->sortByDesc('Size')->first()->Sale_Price, 0, '.', '.') ?? 0 }}
-                                        VND</span>
+                                    <span id="saleprice">{{ number_format($pro->product_size->sortByDesc('Size')->first()->Sale_Price, 0, '.', '.') ?? 0 }} VND</span>
                                 </div>
                             </div>
-                            <div class="tax-shipping-delivery-label" id="price">
-                                {{ number_format($pro->product_size->sortByDesc('Size')->first()->Price, 0, '.', '.') ?? 0 }}
-                                VND
+                            <div class="tax-shipping-delivery-label" id="price"{{$pro->product_size->sortByDesc('Size')->first()->Price == $pro->product_size->sortByDesc('Size')->first()->Sale_Price?'hidden':''}}>
+                                {{ number_format($pro->product_size->sortByDesc('Size')->first()->Price, 0, '.', '.') ?? 0 }} VND
                             </div>
                         </div>
                         <div class="product-add-to-cart">

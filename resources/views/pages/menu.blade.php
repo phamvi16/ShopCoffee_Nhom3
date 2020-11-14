@@ -61,9 +61,8 @@
                             <div class="out">
                                 <img class="card-img-top img-menu outofstock" src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >
                                 <div class="text-block">
-                                <h4>Hết hàng</h4>
-                                <!-- <p>What a beautiful sunrise</p> -->
-                            </div>
+                                    <h4>Hết hàng</h4>
+                                </div>
                             </div>
                             @else
                             <img class="card-img-top img-menu" src="/ProductImages/Products/{{$pro -> Image}}" alt="Card image cap" >

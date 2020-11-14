@@ -39,6 +39,8 @@
                                     <select class="sort-by custom-dropdown__select">
                                         @if ($catnow == 0)
                                             <option name="cate-filter" value="0" data-filter="" selected>All</option>
+                                        @else 
+                                            <option name="cate-filter" value="0" data-filter="">All</option>
                                         @endif
                                         @foreach ($cate as $cat)
                                             @if ($catnow == $cat->Id)

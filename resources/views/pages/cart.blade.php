@@ -42,11 +42,11 @@
             <div class="col-md-4 right mb-5 container w-100 cart-right">
                 <h4 class="pl-5 pt-4 title">TỔNG ĐƠN</h4>
                 <div class="hr"></div>
-                <div class="d-flex">
+                <div class="d-flex cart-right-respon">
                     <div class="pl-5 pt-4 sub">GIÁ</div>
                     <div class="pl-5 pt-4 mr-5"><span>{{ number_format((new App\Services\CartService())->getCartTotal(), 0, ',', '.') }}</span> đ</div>
                 </div>
-                <div class="d-flex">
+                <div class="d-flex cart-right-respon">
                     <div class="pl-5 pt-4" style="flex-grow: 1">TỔNG TIỀN</div>
                     <div class="pl-5 pt-4 mr-5"> <span>{{ number_format((new App\Services\CartService())->getCartTotal(), 0, ',', '.') }}</span> đ</div>
                 </div>

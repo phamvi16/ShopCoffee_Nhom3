@@ -249,6 +249,9 @@
     .show-form {
         margin-left: 0 !important;
     }
+    .cart-right-respon {
+        font-size: smaller;
+    }
 }
 @media (max-width: 1024px) {
     .price {

@@ -1130,7 +1130,7 @@ p {
 	padding-bottom: 15px;
 	margin-bottom: 15px;
 	border-bottom: 1px solid #dfdfdf;
-	font-size: 40px;
+	font-size: xx-large;
 	line-height: 32px;
 }
 .product-information .manufacturer-logo {
@@ -1921,6 +1921,7 @@ span#product-availability, .product-additional-info {
     background-color: #c79c5f8c !important;
     color: #88614a !important;
 }
+
 /* .current-price {
     color: #88614a;
 } */

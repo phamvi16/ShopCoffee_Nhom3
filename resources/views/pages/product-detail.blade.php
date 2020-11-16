@@ -26,14 +26,14 @@
                             <a href="/product-detail/{{ $pro->Id ?? '' }}">
                                 <img class="js-qv-product-cover"
                                     src="{{ asset('ProductImages/Products/') . '/' . ($pro->Image ?? '') }}"
-                                    data-product-image="{{ $pro->Image }}" alt="{{ $pro->Name ?? '' }}" style="width: 350px;height:300px;">
+                                    data-product-image="{{ $pro->Image }}" alt="{{ $pro->Name ?? '' }}" style="width: 100%;height:250px;">
                             </a>
                         @endif
                         </div>
                     </div>
                 </section>
             </div>
-            <div class="pp-right-column col-sm-7 col-md-7">
+            <div class="container pp-right-column col-sm-7 col-md-7">
                 <h1 class="h1 productpage_title" id="name">{{ $pro->Name ?? '' }}</h1>
                 <div class="product-reference">
                     <label class="label">Danh mục: </label>

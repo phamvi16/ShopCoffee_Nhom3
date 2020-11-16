@@ -14,7 +14,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 mr-4 wrapper">
                     <div class="tm-position-relative margin-bottom-30 sidebar" id="cate-filter">
                         <div >
-                            <nav class="tm-side-menu menu-sidebar">
+                            <nav class="tm-side-menu menu-sidebar ">
                                 <ul>
                                     @if ($catnow == 0)
                                         @if ($sort == 'all')
@@ -32,7 +32,7 @@
                                         @elseif ($sort == 'desc')
                                             <li class="text-menu"><a name="cate-filter" value="0" href="/menu/sort/pricedesc/filter/category/0" class="">All</a></li>
                                         @endif
-                                    @endif    
+                                    @endif
                                     <input type="hidden" id="cat-now" value="{{$catnow}}" />
                                     @foreach($all_category as $cate)
                                         @if ($catnow == $cate->Id)
@@ -56,7 +56,7 @@
                                 </ul>
                             </nav>
                         </div>
-                        <!-- <img src="{{asset("Page/img/vertical-menu-bg.png")}}" alt="Menu bg" class="tm-side-menu-bg"> -->
+                        {{-- <img src="{{asset("Page/img/vertical-menu-bg.png")}}" alt="Menu bg" class="tm-side-menu-bg"> --}}
                     </div>
                 </div>
                 </div>
@@ -113,12 +113,12 @@
                             <div class="card-body mt-1">
                                 <h5 class="card-title"><a href="/product-detail/{{$pro->Id}}">{{$pro->Name}}</a></h5>
                                 <p class="card-text">{{$pro->Description}}</p>
-                                <div class="d-flex">
+                                <div class="d-flex text-cart">
 
                                 @if ($pro->Visibility == 'Publish')
-                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" data-pos="menu" class="btn btn-primary add-to-cart mr-4">THÊM GIỎ HÀNG</button>
+                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" data-pos="menu" class="btn btn-primary add-to-cart mr-4"><span class="add-cart">THÊM GIỎ HÀNG</span></button>
                                 @elseif ($pro->Visibility == 'Out-Stock')
-                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled style="opacity: 0.5">THÊM GIỎ HÀNG</button>
+                                    <button href="#" data-id="{{$pro->Id}}" name="add-to-cart" type="add-to-cart" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary add-to-cart mr-4" disabled style="opacity: 0.5"><span class="add-cart">THÊM GIỎ HÀNG</span></button>
                                 @endif
 
                                 @if($pro->product_size->sortByDesc("Size")->first()->Sale_Price != $pro->product_size->sortByDesc("Size")->first()->Price)

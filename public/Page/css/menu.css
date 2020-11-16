@@ -178,3 +178,24 @@ a:hover {
     margin: 10px;
     border-bottom: 1px dotted #c79c60;
 }
+
+@media (max-width: 1024px) {
+    .add-cart {
+        font-size: 10px;
+    }
+    .add-to-cart {
+        padding: 1%;
+    }
+    .text-cart {
+        display: inline !important;
+    }
+    .card-menu {
+        height: 420px;
+    }
+    .tm-side-menu {
+        width: 98%;
+    }
+    .text-menu {
+        font-size: 14px;
+    }
+}

@@ -151,7 +151,8 @@ if(session()->has('coupon')){
 
             <div class="d-flex wrapper-total">
                 <div class="total-w">Tổng Cộng</div>
-                <div class="mr-4 total" id="SumCost" data-total="{{$totalPrice_Topping + $totalPrice_Product}}" data-discount="0">{{number_format($totalPrice_Topping + $totalPrice_Product)}}</div><span class="mr-4 total">VNĐ</span>
+                <div class="mr-4" style="font-size: large" id="SumCost" data-total="{{$totalPrice_Topping + $totalPrice_Product}}" data-discount="0">{{number_format($totalPrice_Topping + $totalPrice_Product)}}</div>
+                <span class="mr-4" style="font-size: large">VNĐ</span>
             </div>
 
 

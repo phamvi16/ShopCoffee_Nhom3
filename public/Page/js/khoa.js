@@ -101,7 +101,7 @@ $(document).ready(function () {
                     <form id="info_form" class="append" method="post" action="/processcheckout">
 
                         <div class="hr-small"></div>
-                        <div class="hr" style="width: 120%"></div>
+                        <div class="hr" style="width: 100%"></div>
                         <input name="getPhone" type="hidden" value="` + phone + `" >
                         <label class="mt-4">
                             <input class="form-control in-mail" type="text" placeholder="Họ Tên" name="name" required>
@@ -125,7 +125,7 @@ $(document).ready(function () {
                         <form id="info_form" class="append" method="post" >
                             <h3 class="cre-acc">BILLING INFORMATION</h3>
                             <div class="hr-small"></div>
-                            <div class="hr" style="width: 100%"></div>
+
                             <input name="getPhone" type="hidden" value="` + phone + `" ">
                             <label class="mt-4" for="name">
                                 <input class="form-control in-mail" type="text" placeholder="Họ Tên" name="name" value="` + data['name'] + `"required style="background:#a5e8c1">
@@ -152,7 +152,7 @@ $(document).ready(function () {
                         <option value="Khách Đến Nhận">Khách Đến Nhận</option>
                     </select>
 
-                    <textarea class="textarea pt-2 mt-3 form-group" name="note" id="note" cols="63" rows="5"
+                    <textarea class="textarea pt-2 mt-3 form-group" name="note" id="note" rows="5"
                         placeholder="Lời Nhắn.."></textarea>
 
                     <button class="btn btn-primary chkout-sub mt-4" id="checkoutBtn" >Thanh Toán</button>

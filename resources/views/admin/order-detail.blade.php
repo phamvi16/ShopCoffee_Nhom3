@@ -9,39 +9,6 @@
                     <div class="card-header ">
                         <h4 class="card-title">Chi tiết đơn hàng</h4>
                     </div>
-                    {{-- <div class="table-agile-info">
-
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Thông tin đăng nhập
-                            </div>
-
-                            <div class="table-responsive">
-                                <table class="table table-striped b-t b-light">
-                                    <thead>
-                                        <tr>
-                                            <th class="fz-th">Tên khách hàng</th>
-                                            <th class="fz-th">Số điện thoại</th>
-                                            <th class="fz-th">Email</th>
-
-                                            <th style="width:30px;"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <tr>
-                                            <td>Nguyen Van Ti</td>
-                                            <td>0123456789</td>
-                                            <td>tinv@gmail.com</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                        </div>
-                    </div> --}}
                     <br>
                     <div class="table-agile-info">
 

@@ -1,0 +1,13 @@
+.label-cus {
+    font-size: 1rem !important;
+    color: #333 !important;
+    font-weight: 500 !important;
+}
+.reset {
+    margin-left: 23% !important;
+    padding: 10px 12px !important;
+    border-radius: 50%;
+}
+.i-reset {
+    font-size: medium;
+}

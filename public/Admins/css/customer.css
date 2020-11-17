@@ -16,7 +16,7 @@
 
 .success {
     color: #155724 !important;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #d4edda !important;
     border-color: #c3e6cb !important;
     position: relative !important;
@@ -28,7 +28,7 @@
 
 .error {
     color: #721c24 !important;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #f8d7da !important;
     border-color: #f5c6cb !important;
     position: relative !important;

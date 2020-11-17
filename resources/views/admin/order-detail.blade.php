@@ -22,7 +22,6 @@
                                 <div class="alert-box error alert-success alert">Lỗi:{{ $error }}</div>
                             @endforeach
 
-
                         @endif
                         {{-- <div class="table-agile-info">
 

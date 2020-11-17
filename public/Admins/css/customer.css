@@ -27,10 +27,10 @@
 }
 
 .error {
-    color: red !important;
+    color: #721c24 !important;
     font-size: 18px;
-    background-color: #d4edda !important;
-    border-color: #c3e6cb !important;
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb !important;
     position: relative !important;
     padding: .75rem 1.25rem !important;
     margin-bottom: 1rem !important;

@@ -94,7 +94,16 @@ if(session()->has('coupon')){
                         <img class="img-order-sum" src="/ProductImages/Products/'.$value['product_image'].'" alt="">
                         <div class="flex-column" style="flex-grow: 1">
                             <div class="ml-4 mb-2 name-sum"><a href="./product-detail/'.$value['product_id'].'">'.$value['product_name'].'</a></div>
-                            <div class="ml-4">Size: '.$value["product_size"].'</div>
+                            <div class="ml-4">Size: '.$value["product_size"].'
+                            <br><small>'.$value['sugar'].'% Đường / ';
+                            if($value['ice']==0){
+                                echo 'Nóng';
+                            }
+                            else{
+                                echo $value['ice'].'% Đá';
+                            }
+                            echo'</small>
+                            </div>
                             <div class="ml-4">Topping:';
 
                 // $list_topping = collect($data[$i]['topping'])->keys();

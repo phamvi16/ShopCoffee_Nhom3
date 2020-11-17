@@ -89,42 +89,57 @@ if(session()->has('coupon')){
 
                 foreach($data as $key =>$value){
                     $totalPrice_Product += $value['product_price'];
-            echo '<div class="hr mt-4"></div>
-                    <div class="d-flex align-items-center">
-                        <img class="img-order-sum" src="/ProductImages/Products/'.$value['product_image'].'" alt="">
-                        <div class="flex-column" style="flex-grow: 1">
-                            <div class="ml-4 mb-2 name-sum"><a href="./product-detail/'.$value['product_id'].'">'.$value['product_name'].'</a></div>
-                            <div class="ml-4">Size: '.$value["product_size"].'
-                            <br><small>'.$value['sugar'].'% Đường / ';
-                            if($value['ice']==0){
-                                echo 'Nóng';
-                            }
-                            else{
-                                echo $value['ice'].'% Đá';
-                            }
-                            echo'</small>
-                            </div>
-                            <div class="ml-4">Topping:';
-
-                // $list_topping = collect($data[$i]['topping'])->keys();
-                // forea($y=0;$y<Count($list_topping);$y++){
-                //     $item = collect($all_topping)->where('Id',$list_topping[$y])->first();
-                //     echo  '<div><small><i>'.$item->Name.'</i></small></div>';
-                //     $totalPrice_Topping+=$item->Price;
-                // }
-                if(Count($value['topping']) == 0) echo'none';
-                else
-                foreach($value['topping'] as $id => $gia){
-                    $item = collect($all_topping)->where('Id',$id)->first();
-                    echo  '<div><small><i>'.$item->Name.'</i></small></div>';
-                    $totalPrice_Topping+=$gia;
-                }
-                echo'</div>
-                        </div>
-                        <div class="mr-4">'.number_format($value['product_price']).' VNĐ</div>
-
-                    </div>
-                    ';
+                    $isCake = false;
+                    if($value['product_size']=="None"){
+                        $isCake=true;
+                    }
+                    if(!$isCake){
+                        echo '<div class="hr mt-4"></div>
+                        <div class="d-flex align-items-center">
+                            <img class="img-order-sum" src="/ProductImages/Products/'.$value['product_image'].'" alt="">
+                            <div class="flex-column" style="flex-grow: 1">
+                                <div class="ml-4 mb-2 name-sum"><a href="./product-detail/'.$value['product_id'].'">'.$value['product_name'].'</a></div>
+                                
+                                <div class="ml-4">Size: '.$value["product_size"].'
+                                <br><small>'.$value['sugar'].'% Đường / ';
+                                if($value['ice']==0){
+                                    echo 'Nóng';
+                                }
+                                else{
+                                    echo $value['ice'].'% Đá';
+                                }
+                                echo'</small>
+                                </div>
+                                <div class="ml-4">Topping:';
+    
+                                if(Count($value['topping']) == 0) echo'none';
+                                else
+                                foreach($value['topping'] as $id => $gia){
+                                    $item = collect($all_topping)->where('Id',$id)->first();
+                                    echo  '<div><small><i>'.$item->Name.'</i></small></div>';
+                                    $totalPrice_Topping+=$gia;
+                                }
+                                echo'</div>
+                                        </div>
+                                        <div class="mr-4">'.number_format($value['product_price']).' VNĐ</div>
+    
+                                    </div>
+                                    ';
+                    }
+                    else{
+                        echo '<div class="hr mt-4"></div>
+                        <div class="d-flex align-items-center">
+                            <img class="img-order-sum" src="/ProductImages/Products/'.$value['product_image'].'" alt="">
+                            <div class="flex-column" style="flex-grow: 1">
+                                <div class="ml-4 mb-2 name-sum"><a href="./product-detail/'.$value['product_id'].'">'.$value['product_name'].'</a></div>';
+                                echo'</div>
+                                        <div class="mr-4">'.number_format($value['product_price']).' VNĐ</div>
+    
+                                    </div>
+                                    ';
+                                
+                    }
+           
                 }
 
             ?>

@@ -348,15 +348,24 @@ $(document).ready(function () {
                                                             var subcost = parseInt(data['cart'][key]['product_price']);
                                                             var showTopping =[];
                                                             var ice="";
+                                                            var sugar=data['cart'][key]['sugar']+'% Đường/';
+                                                            var size= 'Size:'+data['cart'][key]['product_size'];
+
                                                             $.each(data['cart'][key]['topping'], function( index, value ) {
                                                                 subtopping+=parseInt(value);
                                                                 var thistopping = data['alltopping'].find(p=>p.Id ==index);
                                                                 showTopping.push(thistopping.Name);
                                                             });
+
                                                             subcost += subtopping;
                                                             totalCostTopping += subtopping;
                                                             Total+=subcost;
-                                                            if(data['cart'][key]['ice']==0){
+                                                            if(data['cart'][key]['product_size']=="None"){
+                                                                ice="";
+                                                                sugar="";
+                                                                size="";
+                                                            }
+                                                            else if(data['cart'][key]['ice']==0){
                                                                 ice = "Nóng";
                                                             }
                                                             else{
@@ -364,16 +373,16 @@ $(document).ready(function () {
                                                             }
                                                             $('#data').append(`
                                                             <tr>
-                                                                <td>`+data['cart'][key]['product_name']+`</td>
-                                                                <td>`+ data['cart'][key]['sugar']+`% Đường/`+ice+`</td>
+                                                                <td>`+data['cart'][key]['product_name']+` <small>`+size+`</small></td>
+                                                                <td>`+ sugar+ice+`</td>
                                                                 <td class="text-center">`+formatNumber(data['cart'][key]['product_price'])+`</td>
-                                                                <td class="text-center" id="topping`+i+`">
+                                                                <td class="text-center" id="topping`+key+`">
                                                                 </td>
                                                                 <td class="text-right">`+formatNumber(subcost)+`</td>
                                                             </tr>
                                                             `);
                                                             for(var y = 0 ; y<showTopping.length;y++){
-                                                                $('#topping'+i).append(`<div>`+showTopping[y]+`</div>`);
+                                                                $('#topping'+key).append(`<div>`+showTopping[y]+`</div>`);
                                                             }
                                                         });
 

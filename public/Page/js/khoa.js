@@ -323,6 +323,7 @@ $(document).ready(function () {
                                                                             <thead>
                                                                                 <tr>
                                                                                     <td><strong>Sản Phẩm</strong></td>
+                                                                                    <td class="text-center"><strong>Thuộc Tính</strong></td>
                                                                                     <td class="text-center"><strong>Giá</strong></td>
                                                                                     <td class="text-center"><strong>Topping</strong></td>
                                                                                     <td class="text-right"><strong>Tổng</strong></td>
@@ -346,6 +347,7 @@ $(document).ready(function () {
                                                             var subtopping =0;
                                                             var subcost = parseInt(data['cart'][key]['product_price']);
                                                             var showTopping =[];
+                                                            var ice="";
                                                             $.each(data['cart'][key]['topping'], function( index, value ) {
                                                                 subtopping+=parseInt(value);
                                                                 var thistopping = data['alltopping'].find(p=>p.Id ==index);
@@ -354,9 +356,16 @@ $(document).ready(function () {
                                                             subcost += subtopping;
                                                             totalCostTopping += subtopping;
                                                             Total+=subcost;
+                                                            if(data['cart'][key]['ice']==0){
+                                                                ice = "Nóng";
+                                                            }
+                                                            else{
+                                                                ice = data['cart'][key]['ice']+"% Đá";
+                                                            }
                                                             $('#data').append(`
                                                             <tr>
                                                                 <td>`+data['cart'][key]['product_name']+`</td>
+                                                                <td>`+ data['cart'][key]['sugar']+`% Đường/`+ice+`</td>
                                                                 <td class="text-center">`+formatNumber(data['cart'][key]['product_price'])+`</td>
                                                                 <td class="text-center" id="topping`+i+`">
                                                                 </td>
@@ -373,10 +382,12 @@ $(document).ready(function () {
                                                         <tr>
                                                             <td class="thick-line"></td>
                                                             <td class="thick-line"></td>
+                                                            <td class="thick-line"></td>
                                                             <td class="thick-line text-center"><strong>Tổng Tiền Topping</strong><small>(đã tính vào tổng)</small></td>
                                                             <td class="thick-line text-right">`+formatNumber(totalCostTopping)+`</td>
                                                         </tr>
                                                         <tr>
+                                                            <td class="no-line"></td>
                                                             <td class="no-line"></td>
                                                             <td class="no-line"></td>
                                                             <td class="no-line text-center"><strong>Phí Ship</strong></td>
@@ -385,10 +396,12 @@ $(document).ready(function () {
                                                         <tr>
                                                             <td class="no-line"></td>
                                                             <td class="no-line"></td>
+                                                            <td class="no-line"></td>
                                                             <td class="no-line text-center"><strong>Coupon</strong></td>
                                                             <td class="no-line text-right">- `+formatNumber(discountt)+` VNĐ</td>
                                                         </tr>
                                                         <tr>
+                                                            <td class="no-line"></td>
                                                             <td class="no-line"></td>
                                                             <td class="no-line"></td>
                                                             <td class="no-line text-center"><strong>Tổng Cộng</strong></td>

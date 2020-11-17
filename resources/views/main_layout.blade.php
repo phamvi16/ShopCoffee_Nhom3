@@ -44,8 +44,8 @@
         <div class="row">
           <div class="tm-top-header-inner ">
             <div class="tm-logo-container">
-              <img src="{{asset('Page/img/logo.png')}}" alt="Logo" class="tm-site-logo">
-              <h1 class="tm-site-name tm-handwriting-font">Cafe House</h1>
+              <img src="{{asset('Page/img/logo.png')}}" alt="Logo" class="tm-site-logo logo-responsive">
+              <h1 class="tm-site-name tm-handwriting-font name-shop-responsive">Cafe House</h1>
             </div>
             <div class="mobile-menu-icon">
               <i class="fa fa-bars"></i>
@@ -78,7 +78,7 @@
                   </div>
                 </li>
                 <li>
-                 <form action="{{URL::to('/tim-kiem')}}" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
+                 <form action="{{URL::to('/menu/tim-kiem')}}" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
 
                   <input class="form-control mr-sm-2  "  name="keywords_submit"  type="text" placeholder="Nhập nội dung..." aria-label="Search">
                   <button class="btn btn-outline-success my-2 my-sm-0 fas fa-search" style="background-color:#140718" type="submit"></button>

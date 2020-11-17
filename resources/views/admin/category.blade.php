@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header d-flex">
-                    <h4 class="card-title">Danh mục</h4>
+                    <h4 class="card-title">Danh sách Danh mục</h4>
                     <a href="category/add" class="btn btn-primary btn--icon add-btn"></a>
                 </div>
                 <div class="card-body ">

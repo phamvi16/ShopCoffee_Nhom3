@@ -39,7 +39,7 @@
                     <label class="label">Danh mục: </label>
                     <span id="category">&nbsp;
                         @foreach ($pro->category as $category)
-                            <a href="/menu/{{ $category->Id }}" class="cate-prodetail">
+                            <a href="/menu/sort/all/filter/category/{{ $category->Id }}" class="cate-prodetail">
                                 @if ($loop->last)
                                     {{ $category->Name }}
                             </a>

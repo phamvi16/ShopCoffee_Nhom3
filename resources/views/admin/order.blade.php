@@ -33,6 +33,9 @@
 
                     </div>
                     <div class="card-body ">
+                        @error('id')
+                            <div class="alert-box error" style="color: red;">Lỗi khi xem chi tiết đơn hàng: {{ $message }}</div>
+                        @enderror
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
@@ -71,7 +74,7 @@
                                             asjqk
                                         </td>
                                         <td class="i-eye">
-                                            <a href="/admin/detail-order"><i class="fas fa-eye"></i></a>
+                                            <a href="/admin/order/{{ $order->Id ?? "" }}"><i class="fas fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>

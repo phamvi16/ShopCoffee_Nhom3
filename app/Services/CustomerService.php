@@ -213,6 +213,42 @@ class CustomerService{
 
         return $data;
     }
+
+    // Table customer_shipping
+    public function get_customer_shipping_by_id($id)
+    {
+        $customerShipping = CustomerShipping::find($id);
+        $customerDetail = $this->get_customer_detai_by_phone($customerShipping->Phone);
+        $shippingInfo = $this->get_shipping_info_by_id($customerShipping->Id_Shipping);
+
+        $customerShippingResult = [];
+        // Get customer info
+        if ($customerDetail != null) {
+            $customerShippingResult['CustomerName'] = $customerDetail->Name;
+            $customerShippingResult['CustomerPhone'] = $customerShipping->Phone;
+        }
+
+        // Get shipping info
+        if ($shippingInfo != null) {
+            $customerShippingResult['ShippingName'] = $shippingInfo->Name;
+            $customerShippingResult['ShippingPhone'] = $shippingInfo->Phone;
+            $customerShippingResult['ShippingAddress'] = $shippingInfo->Address;
+        }
+
+        return $customerShippingResult;
+    }
+
+    public function get_customer_detai_by_phone($phone)
+    {
+        $cusDetail = CustomerDetail::find($phone);
+        return $cusDetail ?? null;
+    }
+
+    public function get_shipping_info_by_id($shippingId)
+    {
+        $shippingInfo = ShippingInformation::find($shippingId);
+        return $shippingInfo ?? null;
+    }
 }
 
 ?>

@@ -45,20 +45,24 @@
             class="col-sm-2 show-form cart-price-respon">{{ number_format((new App\Services\CartService())->getCartItemTotal($cartkey), 0, ',', '.') }}
             đ
         </span>
-        <span class="col-md-2 btn btn-success btn-update text-white cart-btn-update">
-            <a href="#" data-id_form="{{ $item['product_id'] }}" name="add-to-cart" type="add-to-cart"
-                data-toggle="modal" data-key="{{ $cartkey }}" data-target="#exampleModal{{ $cartkey }}" class="mt-5 text-white">
-                Cập nhật
-            </a>
-        </span>
+        @if ($item['product_size'] != "None")
+            <span class="col-md-2 btn btn-success btn-update text-white cart-btn-update">
+                <a href="#" data-id_form="{{ $item['product_id'] }}" name="add-to-cart" type="add-to-cart"
+                    data-toggle="modal" data-key="{{ $cartkey }}" data-target="#exampleModal{{ $cartkey }}" class="mt-5 text-white">
+                    Cập nhật
+                </a>
+            </span>
+        @endif
+        
     </span>
-
-        <div class="btn btn-success btn-update text-white btn-2 d-none" style="margin-left: 70%">
-            <a href="#" data-id_form="{{ $item['product_id'] }}" name="add-to-cart" type="add-to-cart"
-                data-toggle="modal" data-key="{{ $cartkey }}" data-target="#exampleModal{{ $cartkey }}" class="mt-5 text-white">
-                Cập nhật
-            </a>
-        </div>
+        @if ($item['product_size'] != "None")
+            <div class="btn btn-success btn-update text-white btn-2 d-none" style="margin-left: 70%">
+                <a href="#" data-id_form="{{ $item['product_id'] }}" name="add-to-cart" type="add-to-cart"
+                    data-toggle="modal" data-key="{{ $cartkey }}" data-target="#exampleModal{{ $cartkey }}" class="mt-5 text-white">
+                    Cập nhật
+                </a>
+            </div>
+        @endif
 
 
     {{-- <span class="col-sm-2 mt-5 price-cart cart-price-respon">{{ number_format($item['product_price'], 0, ',', '.') }}

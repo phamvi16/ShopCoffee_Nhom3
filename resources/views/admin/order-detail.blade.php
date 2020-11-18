@@ -5,12 +5,10 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="card ">
-                    <div class="card-header ">
-                        <h4 class="card-title">Chi tiết đơn hàng</h4>
-                    </div>
-                    <br>
-                    <div class="table-agile-info">
+
+
+
+
                 @if (!empty($orderDetail))
                     <div class="card ">
                         <div class="card-header ">
@@ -175,7 +173,6 @@
                     </div>
                 @endif
             </div>
-        </div>
-    </div>
+
 
 @endsection

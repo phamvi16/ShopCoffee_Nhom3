@@ -1,4 +1,3 @@
-{{-- <div class="row items{{ $key }}"> --}}
     <span class="col-sm-1 my-5 icon-dlt">
         <a href="{{ url('/del-pro-cart/' . $item['session_id']) }}">
             <i class="fas fa-times text-danger"></i>
@@ -11,27 +10,26 @@
             <div class="mt-3" style="font-weight: 600; font-size: 16px">{{ $item['product_name'] ?? "" }}
             </div>
             <div class="text mt-4">
-                <div> Size: {{ $item['product_size'] ?? "" }}</div>
-                <div>Topping:
-                    @if (count($item['topping']) > 0)
-                        @foreach ($item['topping'] as $key => $value)
-                            @php
-                                $topping = App\Models\Topping::find($key);
-                            @endphp
-                            @if ($loop->last)
-                                {{ $topping->Name ?? "" }}
-                            @else
-                                {{ $topping->Name ?? ""}},
-                            @endif
-                            <br>
-                        @endforeach
-
-                    @else
-                        Chưa có topping
-                    @endif
-                    
-                                        
-                </div>
+                @if ($item['product_size'] != "None")
+                    <div> Size: {{ $item['product_size'] ?? "" }}</div>
+                    <div>Topping:
+                        @if (count($item['topping']) > 0)
+                            @foreach ($item['topping'] as $key => $value)
+                                @php
+                                    $topping = App\Models\Topping::find($key);
+                                @endphp
+                                @if ($loop->last)
+                                    {{ $topping->Name ?? "" }}
+                                @else
+                                    {{ $topping->Name ?? ""}},
+                                @endif
+                                <br>
+                            @endforeach
+                        @else
+                            Chưa thêm topping
+                        @endif
+                    </div>
+                @endif
             </div>
         </div>
     </span>
@@ -50,4 +48,3 @@
         </a>
     </span>
     <div class="hr mt-4 w-100"></div>
-{{-- </div> --}}

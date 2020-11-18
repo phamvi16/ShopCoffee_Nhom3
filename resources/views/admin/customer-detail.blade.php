@@ -17,7 +17,6 @@
                                     Thông tin tài khoản
                                 </div>
 
-
                                 <div class="table-responsive">
                                     <table class="table table-striped b-t b-light">
                                         <thead>
@@ -32,10 +31,10 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>0987654321</td>
-                                                <td><input class="border-0" type="password" value="123456789" disabled></td>
-                                                <td>24/11/2020</td>
-                                                <td>25/11/2020</td>
+                                                <td>{{$account['phone']}}</td>
+                                                <td><input class="border-0" type="password" value="{{$account['password']}}" disabled></td>
+                                                <td>{{$account['created']}}</td>
+                                                <td>{{$account['updated']}}</td>
                                                 <td class="btn btn-primary reset my-2"><i class="fas fa-undo-alt i-reset"></i></td>
                                             </tr>
                                         </tbody>
@@ -52,7 +51,6 @@
                                     Thông tin khách hàng
                                 </div>
 
-
                                 <div class="table-responsive">
                                     <table class="table table-striped b-t b-light">
                                         <thead>
@@ -63,18 +61,20 @@
                                                 <th class="label-cus">Địa chỉ</th>
                                                 <th class="label-cus">Hạng mức</th>
                                                 <th class="label-cus">Điểm tích lũy</th>
+                                                <th class="label-cus">Chiết khấu</th>
 
                                                 <th style="width:30px;"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Nguyen Van Teo</td>
-                                                <td>0987654321</td>
-                                                <td>teonv@gmail.com</td>
-                                                <td>123 Cộng Hòa, p.13, Tân Bình, TPHCM</td>
-                                                <td>KH thân thiết</td>
-                                                <td>150</td>
+                                                <td>{{$account['name']}}</td>
+                                                <td>{{$account['phone']}}</td>
+                                                <td>{{$account['email']}}</td>
+                                                <td>{{$account['address']}}</td>
+                                                <td>{{$account['level']}}</td>
+                                                <td>{{$account['point']}}</td>
+                                                <td>{{$account['discount']}}%</td>
                                             </tr>
                                         </tbody>
                                     </table>

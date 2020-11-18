@@ -8,6 +8,7 @@ use App\Models\CustomerDetail;
 use App\Models\CustomerShipping;
 use App\Models\ShippingInformation;
 use App\Models\Loyalty;
+use Illuminate\Support\Carbon;
 
 use Illuminate\Support\Facades\DB;
 
@@ -64,7 +65,8 @@ class CustomerService{
     }
 
     // Account Manage
-    public function InsertAccount_FromView(Request $request){
+    public function InsertAccount_FromView(Request $request)
+    {
         // $newpass = substr(md5(microtime()),rand(0,26),10);
         DB::beginTransaction();
         try {
@@ -80,7 +82,7 @@ class CustomerService{
             ]);
             Loyalty::create([
                 'phone'=>$request->phone,
-                'level'=>'Bronze',
+                'level'=>'Khách Hàng Mới',
                 'point'=>0,
                 'discount_loyalty'=>0
                 
@@ -89,7 +91,9 @@ class CustomerService{
                 'name'=>$request->name,
                 'phone'=>$request->phone,
                 'email'=>$request->email,
-                'address'=>$request->address
+                'address'=>$request->address,
+                "created_at" => \Carbon\Carbon::now(), 
+                "updated_at" => \Carbon\Carbon::now()
             ]);
             // $idship = ShippingInformation::latest()->first();
 
@@ -122,7 +126,7 @@ class CustomerService{
             DB::table('shipping_information')
             ->updateOrInsert(
                 ['phone'=>$request->phone ],
-                ['name'=>$request->name,'email'=>$request->email,'address'=>$request->address,'phone' => $request->phone]
+                ['name'=>$request->name,'email'=>$request->email,'address'=>$request->address,'phone' => $request->phone,"updated_at" => \Carbon\Carbon::now()]
             );
 
             $findID = DB::table('shipping_information')->where('phone', $request->phone)->first();
@@ -152,7 +156,6 @@ class CustomerService{
                 return 1;
             }
             else return 0;
-
         }
         else{
             if($this->InsertAccount_FromView($request) == 1){
@@ -161,32 +164,81 @@ class CustomerService{
             else return 0;
             
         }
-
     }
 
+    // Update Point when checkout
+    public function UpdatePoint($point, $phone)
+    {
+        Loyalty::where('phone', $phone)->increment('Point', $point);
+        $acc = Loyalty::where('phone', '=', $phone)->first();
+        if ($acc->Point < 100) 
+        {
+            DB::table('loyalty')
+            ->updateOrInsert(
+                ['phone' => $phone],
+                ['level' => 'Khách Hàng Mới', 'Discount_Loyalty' => 0, 'updated_at' => \Carbon\Carbon::now()]
+            );
+        }
+        else if ($acc->Point > 100 && $acc->Point < 500) 
+        {
+            DB::table('loyalty')
+            ->updateOrInsert(
+                ['phone' => $phone],
+                ['level' => 'Khách Hàng Thân Thiết', 'Discount_Loyalty' => 5, 'updated_at' => \Carbon\Carbon::now()]
+            );
+        }
+        else if ($acc->Point > 500 && $acc->Point < 1000) 
+        {
+            DB::table('loyalty')
+            ->updateOrInsert(
+                ['phone' => $phone],
+                ['level' => 'Khách Hàng Cao Cấp', 'Discount_Loyalty' => 10, 'updated_at' => \Carbon\Carbon::now()]
+            );
+        }
+        else if ($acc->Point > 1000) 
+        {
+            DB::table('loyalty')
+            ->updateOrInsert(
+                ['phone' => $phone],
+                ['level' => 'Khách Hàng VIP', 'Discount_Loyalty' => 20, 'updated_at' => \Carbon\Carbon::now()]
+            );
+        }
+        return 1;
+    }
+
+    // Get Single Customer
     public function GetInfor($phone)
     {
         $account = CustomerAccount::where('phone', '=', $phone)->first();
         if($account == null) return false;
 
-        $general = CustomerShipping::where('phone','=',$phone)->first();
+        $general = CustomerShipping::where('phone', '=', $phone)->first();
         if($general == null) return false;
 
-        $detail = CustomerDetail::where('phone','=',$phone)->first();
-        $shipping_info = ShippingInformation::where('id','=',$general->Id_Shipping)->first();
+        $detail = CustomerDetail::where('phone', '=', $phone)->first();
+        if($detail == null) return false;
+
+        $loyalty = Loyalty::where('phone', '=', $phone)->first();
+        if($loyalty == null) return false;
+
+        $shipping_info = ShippingInformation::where('id', '=', $general->Id_Shipping)->first();
+        if($shipping_info == null) return false;
 
         $data = [];
 
-        $data['phone']=$phone;
-        $data['name']=$shipping_info->Name;
-        $data['email']=$shipping_info->Email;
-        $data['address']=$shipping_info->Address;
+        $data['phone'] = $phone;
+        $data['password'] = $account->Password;
+        $data['name'] = $shipping_info->Name;
+        $data['email'] = $shipping_info->Email;
+        $data['address'] = $shipping_info->Address;
         $data['birthday'] = $detail->Birthday;
-        // echo dd($data);
+        $data['level'] = $loyalty->Level;
+        $data['point'] = $loyalty->Point;
+        $data['discount'] = $loyalty->Discount_Loyalty;
+        $data['created'] = $shipping_info->created_at;
+        $data['updated'] = $shipping_info->updated_at;
+        
         return $data;
-    }
-    public function UpdatePoint($point,$phone){
-            return Loyalty::where('phone',$phone)->increment('Point',$point);
     }
 
     //Admin - get all customer
@@ -196,7 +248,6 @@ class CustomerService{
         $i = 0;
 
         $account = CustomerDetail::all();
-
         foreach ($account as $acc)
         {
             $loy = Loyalty::where('phone', '=', $acc->Phone)->first();

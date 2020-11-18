@@ -15,6 +15,7 @@ class CustomerController extends Controller
 
     public function getCustomer($phone)
     {
-        return view('admin.customer-detail');
+        $account = (new CustomerService())->GetInfor($phone);
+        return view('admin.customer-detail', compact('account'));
     }
 }

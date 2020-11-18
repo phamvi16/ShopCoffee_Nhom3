@@ -28,28 +28,30 @@ class CustomerService{
 
     public function CheckSignup($name,$birthday,$phone,$password,$email)
     {
-        $isExistPhone = CustomerAccount::where('phone', '=', $phone)->first();
+        $isExistPhone = CustomerAccount::where('phone', '=', $phone)->where('password','!=','NULL')->first();
         if($isExistPhone !=null) return 0;
         else{
             DB::beginTransaction();
             try {
-                CustomerAccount::create([
-                    'phone'=> $phone,
-                    'password'=>$password
-                ]);
-                CustomerDetail::create([
-                    'phone'=>$phone,
-                    'name'=>$name,
+                DB::table('customer_account')
+                ->updateOrInsert(
+                    ['phone'=> $phone],
+                    ['password'=>$password]
+                );
+                DB::table('customer_detail')
+                ->updateOrInsert(
+                    ['phone'=>$phone],
+                    ['name'=>$name,
                     'birthday'=>$birthday,
-                    'email'=>$email
-                ]);
-                Loyalty::create([
-                    'phone'=>$phone,
-                    'level'=>'Bronze',
+                    'email'=>$email]
+                );
+                DB::table('loyalty')->updateOrInsert(
+                    ['phone'=>$phone],
+                    ['level'=>'Bronze',
                     'point'=>0,
-                    'discount_loyalty'=>0
-                    
-                ]);
+                    'discount_loyalty'=>0]
+                );
+                DB::commit();
 
                 DB::commit();
                 return 1;
@@ -63,12 +65,12 @@ class CustomerService{
 
     // Account Manage
     public function InsertAccount_FromView(Request $request){
-        $newpass = substr(md5(microtime()),rand(0,26),10);
+        // $newpass = substr(md5(microtime()),rand(0,26),10);
         DB::beginTransaction();
         try {
             CustomerAccount::create([
                 'phone'=> $request->phone,
-                'password'=>$newpass
+                'password'=>"NULL"
             ]);
             CustomerDetail::create([
                 'phone'=>$request->phone,

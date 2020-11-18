@@ -26,9 +26,10 @@ class OrderService{
 
 
             $ProcessCustomer = (new CustomerService())->InsertOrUpdate_FromView($request); // xong phan nay
-
+            
             if($ProcessCustomer){
-                $ProcessOrder = $this->InsertData_Checkout($data,$request->phone,$request->payment,$request->shipping);
+                
+                $ProcessOrder = $this->InsertData_Checkout($data,$request->phone,$request->payment,$request->shipping,$request->coupon,$request->discount);
                 if($ProcessOrder){
                     return 1;
                 }
@@ -43,10 +44,9 @@ class OrderService{
             }
 
     }
-    public function InsertData_Checkout($data,$phone,$payment_method,$shipping_method){
+    public function InsertData_Checkout($data,$phone,$payment_method,$shipping_method,$coupon,$discount){
         $status ="Chờ Xử Lý";
         $customer_shipping = DB::table('shipping_information')->where('phone', $phone)->first();
-        $coupon = "1";
         $total_quantity=0;
         if($shipping_method =="Giao Tận Nơi"){
             $total=15000;
@@ -68,6 +68,8 @@ class OrderService{
                 $total +=$gia;
             }
         }
+        $total-=$discount;
+        
         
         $point = floor($total/10000);
 
@@ -91,12 +93,15 @@ class OrderService{
 
     }
     public function Insert_OrderTable($customer_shippingid,$coupon,$payment_method,$shipping_method,$total_quantity,$total,$point,$status){
+        if($coupon==null){
+            $coupon ="Default";
+        }
         
         DB::beginTransaction();
         try{
             $newOrder = Order::create([
                 'customer'=>$customer_shippingid,
-                'coupon'=>"BigSale",
+                'coupon'=>$coupon,
                 'payment_method'=>$payment_method,
                 'shipping_method'=>$shipping_method,
                 'total_quantity'=>$total_quantity,

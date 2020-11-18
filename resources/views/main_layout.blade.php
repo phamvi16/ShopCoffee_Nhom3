@@ -22,6 +22,8 @@
   <link href="{{asset('Page/css/checkout.css')}}" rel="stylesheet"async>
   <link href="{{asset('Page/css/sweetalert.css')}}" rel="stylesheet"async>
   <link href="{{asset('Page/css/login.css')}}" rel="stylesheet"async>
+  <link href="{{asset('Page/css/myaccount.css')}}" rel="stylesheet"async>
+
   <link rel="shortcut icon" href="{{asset('Page/img/favicon.ico')}}" type="image/x-icon" async/>
   <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> -->
 
@@ -42,8 +44,8 @@
         <div class="row">
           <div class="tm-top-header-inner ">
             <div class="tm-logo-container">
-              <img src="{{asset('Page/img/logo.png')}}" alt="Logo" class="tm-site-logo">
-              <h1 class="tm-site-name tm-handwriting-font">Cafe House</h1>
+              <img src="{{asset('Page/img/logo.png')}}" alt="Logo" class="tm-site-logo logo-responsive">
+              <h1 class="tm-site-name tm-handwriting-font name-shop-responsive">Cafe House</h1>
             </div>
             <div class="mobile-menu-icon">
               <i class="fa fa-bars"></i>
@@ -54,24 +56,29 @@
                 <li><a href="{{URL::to('/menu')}}">THỰC ĐƠN</a></li>
                 <li><a href="{{URL::to('/gio-hang')}}">GIỎ HÀNG</a></li>
                 <li><a href="{{URL::to('/lien-he')}}">LIÊN HỆ</a></li>
-                {{-- <li><a href="{{URL::to('/dang-nhap')}}">ĐĂNG NHẬP</a></li> --}}
+                  {{--<li><a href="{{URL::to('/dang-nhap')}}">ĐĂNG NHẬP</a></li>--}}
                 <li>
                 <div class="dropdown show">
-                    <a class=" dropdown-toggle" href="{{URL::to('/dang-nhap')}}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ĐĂNG NHẬP
+                    @if (!session()->has('user'))
+                    <a href="{{URL::to('/dang-nhap')}}" role="button" >
+                       Đăng Nhập
+                    </a>
+                    @else
+                    <a class=" dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{session()->get('user')}}
                     </a>
                     <div class=" dropdown-menu " aria-labelledby="dropdownMenuLink">
-                        <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/dang-nhap')}}">Đăng nhập</a>
+                          <a class=" dropdown-menu-color dropdown-item" role="button" id="logoutBtn"> Đăng Xuất</a>
                         <hr/>
-                      <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/tai-khoan')}}">Tài khoản của tôi</a>
-                      <hr/>
-                      <a class=" dropdown-menu-color dropdown-item" href="#">Cài đặt</a>
-
-                    </div>
+                          <a class=" dropdown-menu-color dropdown-item" href="{{URL::to('/tai-khoan')}}">Tài khoản của tôi</a>
+                        <hr/>
+                          <a class=" dropdown-menu-color dropdown-item" href="#">Cài đặt</a>
+                      </div>
+                    @endif
                   </div>
                 </li>
                 <li>
-                 <form action="{{URL::to('/tim-kiem')}}" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
+                 <form action="{{URL::to('/menu/tim-kiem')}}" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
 
                   <input class="form-control mr-sm-2  "  name="keywords_submit"  type="text" placeholder="Nhập nội dung..." aria-label="Search">
                   <button class="btn btn-outline-success my-2 my-sm-0 fas fa-search" style="background-color:#140718" type="submit"></button>
@@ -156,6 +163,17 @@
    <script type="text/javascript" src="{{ asset('Page/js/addcart.js') }}"async></script>
     <script type="text/javascript" src="{{asset('Page/js/khoa.js')}}" async></script>
     <script type="text/javascript" src="{{asset('Page/js/jquery.validate.js')}}"async></script>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5f97c15aaca01a1688360263/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
     @yield('script', '')
  </body>
  </html>

@@ -1,4 +1,4 @@
-    <span class="col-sm-1 my-5 icon-dlt">
+   {{-- <span class="col-sm-1 my-5 icon-dlt">
         <a href="{{ url('/del-pro-cart/' . $item['session_id']) }}">
             <i class="fas fa-times text-danger"></i>
         </a>

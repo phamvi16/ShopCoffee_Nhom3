@@ -31,11 +31,12 @@
                                         </thead>
                                         <tbody>
                                             <tr>
+                                                <input type="hidden" value="{{$account['phone']}}" id="phone" />
                                                 <td>{{$account['phone']}}</td>
                                                 <td><input class="border-0" type="password" value="{{$account['password']}}" disabled></td>
                                                 <td>{{$account['created']}}</td>
                                                 <td>{{$account['updated']}}</td>
-                                                <td class="btn btn-primary reset my-2"><i class="fas fa-undo-alt i-reset"></i></td>
+                                                <td class="btn btn-primary reset my-2" id="reset"><i class="fas fa-undo-alt i-reset"></i></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -89,4 +90,14 @@
         </div>
     </div>
 
+@endsection
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#reset").click(function(){
+            $(location).attr('href', '/admin/customer/reset/' + $('#phone').val());
+        });
+    });
+</script>
 @endsection

@@ -206,6 +206,17 @@ class CustomerService{
         return 1;
     }
 
+    public function updatePassword($phone, $password)
+    {
+        $acc = CustomerAccount::where('phone', '=', $phone)->first();
+        DB::table('customer_account')
+            ->updateOrInsert(
+                ['phone' => $phone],
+                ['password' => $password, 'updated_at' => \Carbon\Carbon::now()]
+            );
+        return 1;
+    }
+
     // Get Single Customer
     public function GetInfor($phone)
     {

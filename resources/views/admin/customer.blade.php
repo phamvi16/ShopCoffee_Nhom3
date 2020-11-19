@@ -2,82 +2,69 @@
 @section('title', 'Khách hàng')
 @section('content')
     <div class="panel-header panel-header-sm"></div>
-        <div class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card ">
-                        <div class="card-header ">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card ">
+                    <div class="card-header d-flex">
                         <h4 class="card-title">Danh sách Khách hàng</h4>
-                        </div>
-                        <div class="card-body ">
-                            <div class="table-responsive">
-                                <table class="table">
+                    </div>
+                    <div class="card-body ">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>STT</th>
+                                    <th>Tên</th>
+                                    <th>Số Điện Thoại</th>
+                                    <th>Email</th>
+                                    <th>Hạng Mức</th>
+                                    <th>Tác Vụ</th>
+                                </thead>
+                                <tbody>
 
-                                    <thead class=" text-primary">
-                                        <th>
-                                            STT
-                                        </th>
-                                        <th>
-                                            Tên
-                                        </th>
-                                        <th>
-                                            Số Điện Thoại
-                                        </th>
-                                        <th>
-                                            Email
-                                        </th>
-                                        <th>
-                                            Hạng Mức
-                                        </th>
-                                        <th>
-                                            Tác Vụ
-                                        </th>
-                                    </thead>
+                                @php
+                                    $i=0;
+                                @endphp
 
-                                    <tbody>
+                                @foreach($account as $acc)
+
                                     @php
-                                        $i=0;
+                                        $i++;
+                                        $phone = $acc['Phone'];
                                     @endphp
 
-                                    @foreach($account as $acc)
+                                    <tr>
+                                        <td>
+                                            {{$i}}
+                                        </td>
+                                        <td>
+                                            {{$acc['Name']}}
+                                        </td>
+                                        <td>
+                                            {{$phone}}
+                                        </td>
+                                        <td>
+                                            {{$acc['Email']}}
+                                        </td>
+                                        <td class="px-4">
+                                            {{$acc['Level']}}
+                                        </td>
+                                        <td>
+                                            <a href="{{URL::to('/admin/customer/' . $phone)}}" class="active styling-edit">
+                                                <i class="fas fa-list icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
 
-                                        @php
-                                            $i++;
-                                            $phone = $acc['Phone'];
-                                        @endphp
+                                @endforeach
 
-                                        <tr>
-                                            <td>
-                                                {{$i}}
-                                            </td>
-                                            <td>
-                                                {{$acc['Name']}}
-                                            </td>
-                                            <td>
-                                                {{$phone}}
-                                            </td>
-                                            <td>
-                                                {{$acc['Email']}}
-                                            </td>
-                                            <td class="px-4">
-                                                {{$acc['Level']}}
-                                            </td>
-                                            <td>
-                                                <a href="{{URL::to('/admin/customer/' . $phone)}}" class="active styling-edit">
-                                                    <i class="fas fa-list icon"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                    @endforeach
-                                    </tbody>
-
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 @endsection

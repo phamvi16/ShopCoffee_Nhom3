@@ -70,8 +70,6 @@ Route::group(['prefix' => 'admin'], function(){
 
 		//filter
 		Route::get('/sort/{sort}/filter/category/{id}', [ProductController::class, 'filterCategory']);
-		Route::get('/sort/{sort}/filter/category{id}', [ProductController::class, 'filterCategory']);
-		Route::get('/sort/{sort}/filter/category/{id}', [ProductController::class, 'filterCategory']);
 	});
 
 	//Topping route group
@@ -97,6 +95,7 @@ Route::group(['prefix' => 'admin'], function(){
 	//Customer
 	Route::group(['prefix' => 'customer'], function(){
 		Route::get('/', [CustomerController::class, 'index']);
+		Route::get('/{phone}', [CustomerController::class, 'getCustomer']);
 	});
 
 	//Order
@@ -126,6 +125,7 @@ Route::post('/verify', [CheckoutController::class, 'Verify']);
 Route::post('/processcheckout', [CheckoutController::class, 'Checkout']);
 Route::get('/clearcart',[CheckoutController::class,'ClearCart']);
 Route::post('/applycoupon', [CheckoutController::class, 'ApplyCoupon']);
+
 //Cart
 Route::post('/add-cart', [CartController::class,'add_cart']);
 Route::get('/gio-hang', [CartController::class,'gio_hang']);

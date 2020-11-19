@@ -151,8 +151,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <button type="submit" name="btnSave" class="btn btn-info">Save</button>
-                                            <a href="/admin/coupon" name="btnBack" class="btn back">Back</a>
+                                            <button type="submit" name="btnSave" class="btn btn-info">Lưu</button>
+                                            <a href="/admin/coupon" name="btnBack" class="btn back">Quay lại</a>
                                         </div>
                                     </div>
                                 </div>

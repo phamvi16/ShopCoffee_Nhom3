@@ -697,7 +697,7 @@ button.tm-more-button {
     top: 0px;
     right: 15px;
     background-color: rgba(0,0,0,0.6);
-    padding: 6px 15px;
+    padding: 4px 15px;
     z-index: 1000;
   }
   .tm-nav {

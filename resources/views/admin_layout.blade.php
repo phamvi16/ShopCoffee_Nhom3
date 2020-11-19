@@ -18,6 +18,7 @@
     <link href="{{asset('Admins/demo/demo.css')}}" rel="stylesheet" />
     <link href="{{asset('Admins/css/category.css')}}" rel="stylesheet" />
     <link href="{{asset('Admins/css/order.css')}}" rel="stylesheet" />
+    <link href="{{asset('Admins/css/customer.css')}}" rel="stylesheet" />
     @yield('style', '')
 
 </head>

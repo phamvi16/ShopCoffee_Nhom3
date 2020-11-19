@@ -25,7 +25,7 @@
                                                 <th class="label-cus">Mật khẩu</th>
                                                 <th class="label-cus">Ngày tạo</th>
                                                 <th class="label-cus">Ngày cập nhật</th>
-                                                <th class="label-cus">Đặt lại mật khẩu</th>
+                                                <th class="label-cus" colspan="2">Đặt lại mật khẩu</th>
                                                 <th style="width:30px;"></th>
                                             </tr>
                                         </thead>
@@ -36,7 +36,13 @@
                                                 <td><input class="border-0" type="password" value="{{$account['password']}}" disabled></td>
                                                 <td>{{$account['created']}}</td>
                                                 <td>{{$account['updated']}}</td>
-                                                <td class="btn btn-primary reset my-2" id="reset"><i class="fas fa-undo-alt i-reset"></i></td>
+                                                @if ($account['password'] != 'NULL')
+                                                    <td class="btn btn-primary reset my-2" id="reset"><i class="fas fa-undo-alt i-reset"></i></td>
+                                                    <td>Tạo lại mật khẩu và gửi Email cho khách hàng</td>
+                                                @else
+                                                    <td>Tài khoản chưa được khách hàng tạo</td>
+                                                    <td></td>
+                                                @endif
                                             </tr>
                                         </tbody>
                                     </table>

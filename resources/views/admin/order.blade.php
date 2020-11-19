@@ -36,44 +36,27 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
-                                    <th>
-                                        ID
-                                    </th>
-                                    <th>
-                                        Số điện thoại
-                                    </th>
-                                    <th>
-                                        Thời gian đặt
-                                    </th>
-                                    <th>
-                                        Phương thức giao hàng
-                                    </th>
-                                    <th>
-                                        Tổng tiền
-                                    </th>
+                                    <th>ID</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Thời gian đặt</th>
+                                    <th>Phương thức giao hàng</th>
+                                    <th>Tổng tiền</th>
 
                                 </thead>
                                 <tbody>
+                                @foreach ($all_order as $order)
                                     <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            Dakota Rice
-                                        </td>
-                                        <td>
-                                            Niger
-                                        </td>
-                                        <td>
-                                            asjqk
-                                        </td>
-                                        <td>
-                                            asjqk
-                                        </td>
+                                        <td>1</td>
+                                        <td>{{$order->customer_shipping->Phone}}</td>
+                                        <td>{{$order->created_at}} </td>
+                                        <td>{{$order->payment_method->Name}} </td>
+                                        <td>{{$order->Total}}</td>
+                                    
                                         <td class="i-eye">
                                             <a href="/admin/detail-order"><i class="fas fa-eye"></i></a>
                                         </td>
                                     </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

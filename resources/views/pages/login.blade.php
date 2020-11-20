@@ -19,7 +19,7 @@
                               <label for="password"><b>Mật Khẩu</b></label>
                               <input type="password" placeholder="Mật Khẩu..." name="password" required>
 
-                              <button type="submit" id="loginBtn">Login</button>
+                              <button type="submit" id="loginBtn">ĐĂNG NHẬP</button>
                          </div>
                     <!-- end input info -->
                     <div class="form-group">
@@ -56,7 +56,7 @@
                               <label for="sphone"><b>Số Điện Thoại</b></label>
                               <input type="text" placeholder="điện thoại..(9-11 số)" maxlength="11" minlength="9" name="sphone" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
 
-                              <label for="spassword"><b>Password</b></label>
+                              <label for="spassword"><b>Mật Khẩu</b></label>
                               <input type="password" maxlength="20" minlength="5" placeholder="Mật Khẩu (5-20 kí tự)" name="spassword" required>
 
                               <label for="email"><b>Email</b></label>
@@ -64,7 +64,7 @@
 
                               <input  name="_token" type="hidden" value="{{csrf_token()}}">
 
-                              <button class="signup-submit" id="signupBtn" type="submit">Sign Up</button>
+                              <button class="signup-submit" id="signupBtn" type="submit">ĐĂNG KÝ</button>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12 control">

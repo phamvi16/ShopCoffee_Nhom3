@@ -79,7 +79,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" name="" class="btn btn-info">Lưu</button>
-                                            <a href="/admin/category" name="btnBack" class="btn back">Quay lại</a>
+                                            <a href="/admin/topping" name="btnBack" class="btn back">Quay lại</a>
                                         </div>
                                     </div>
                                 </div>

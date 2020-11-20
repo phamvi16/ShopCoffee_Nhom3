@@ -18,6 +18,7 @@
     <link href="{{asset('Admins/demo/demo.css')}}" rel="stylesheet" />
     <link href="{{asset('Admins/css/category.css')}}" rel="stylesheet" />
     <link href="{{asset('Admins/css/order.css')}}" rel="stylesheet" />
+    <link href="{{asset('Admins/css/customer.css')}}" rel="stylesheet" />
     @yield('style', '')
 
 </head>
@@ -63,7 +64,7 @@
                     <li>
                         <a href="/admin/coupon">
                             <i class="now-ui-icons shopping_tag-content"></i>
-                            <p>Phiếu giảm giá</p>
+                            <p>Mã giảm giá</p>
                         </a>
                     </li>
                     <li>

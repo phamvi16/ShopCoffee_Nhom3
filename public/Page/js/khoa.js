@@ -7,7 +7,7 @@ $(document).ready(function () {
     $Ship1Cost="15,000";
     $Ship2Name="Khách Đến Nhận";
     $Ship2Cost="0";
-    // sign up 
+    // sign up
     $("#signupBtn").click(function (e) {
         e.preventDefault();
 
@@ -17,7 +17,7 @@ $(document).ready(function () {
         var password = $("input[name='spassword']").val();
         var email = $("input[name='email']").val();
         var email_regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        
+
         if(name.length==0){
             $("#alert_mess").html("<h4 style='color:red'><b>Bạn Chưa nhập Tên</b></h4>");
         }
@@ -30,7 +30,7 @@ $(document).ready(function () {
             $("#alert_mess").html("<h4 style='color:red'><b>Mật Khẩu dài 5 - 20 kí tự</b></h4>");
         } else if (!email_regex.test(email)) {
             $("#alert_mess").html("<h4 style='color:red'><b>Email Sai Định dạng</b></h4>");
-        } 
+        }
         else {
             $.ajax({
                 url: "/signup",
@@ -91,17 +91,17 @@ $(document).ready(function () {
                 success: function (data) {
 
                     if (data['isBought'] == 0) {
-                        $('#result').empty(); 
+                        $('#result').empty();
                         // console.log(data['all_paymentmethod']);
                         if(data['TryGetVal']==1){
                             $("#result").append("<p style='color:red'>Không Thể Tìm Thấy Dữ Liệu</p>");
                         }
-                        $('#result').append(` 
+                        $('#result').append(`
                         <h3 class="cre-acc">BILLING INFORMATION</h3>
                     <form id="info_form" class="append" method="post" action="/processcheckout">
-                       
+
                         <div class="hr-small"></div>
-                        <div class="hr" style="width: 120%"></div>
+                        <div class="hr" style="width: 100%"></div>
                         <input name="getPhone" type="hidden" value="` + phone + `" >
                         <label class="mt-4">
                             <input class="form-control in-mail" type="text" placeholder="Họ Tên" name="name" required>
@@ -110,14 +110,14 @@ $(document).ready(function () {
                         <label class="mt-4 lab-address">
                             <input class="form-control in-mail in-add" type="date" placeholder="Ngày Sinh" name="birthday" required>
                         </label>
-        
-            
+
+
                         <label class="mt-4 lab-address">
                             <input class="form-control in-mail in-add" type="email" placeholder="Email.." name="email" required>
                         </label>
 
                         <input class="form-control in-com mt-3" type="text" placeholder="Địa Chỉ.." name="address" required>`);
-                        
+
                     } // end if data trống
                     else {
                         $('#result').empty();
@@ -125,7 +125,7 @@ $(document).ready(function () {
                         <form id="info_form" class="append" method="post" >
                             <h3 class="cre-acc">BILLING INFORMATION</h3>
                             <div class="hr-small"></div>
-                            <div class="hr" style="width: 120%"></div>
+
                             <input name="getPhone" type="hidden" value="` + phone + `" ">
                             <label class="mt-4" for="name">
                                 <input class="form-control in-mail" type="text" placeholder="Họ Tên" name="name" value="` + data['name'] + `"required style="background:#a5e8c1">
@@ -133,8 +133,8 @@ $(document).ready(function () {
                             <label class="mt-4 lab-address" for="birthday">
                                 <input class="form-control in-mail in-add" type="date" placeholder="Ngày Sinh" name="birthday" value ="` + data['birthday'] + `"required style="background:#a5e8c1">
                             </label>
-            
-                        
+
+
                             <label class="mt-4 lab-address" for="email">
                                 <input class="form-control in-mail in-add" type="email" placeholder="Email.." name="email" value ="` + data['email'] + `" style="background:#a5e8c1" >
                             </label>
@@ -145,16 +145,16 @@ $(document).ready(function () {
 
                     // --------------------- append các thông tin còn lại
                     $('#result').append(`<select class="form-control in-com mt-3" id="select_PaymentMethod">
-                    </select>    
+                    </select>
 
                     <select class="form-control in-com mt-3" id="select_ShippingMethod">
                         <option vale="Giao Tận nơi" >Giao Tận Nơi</option>
                         <option value="Khách Đến Nhận">Khách Đến Nhận</option>
                     </select>
 
-                    <textarea class="textarea pt-2 mt-3 form-group" name="note" id="note" cols="83" rows="5"
+                    <textarea class="textarea pt-2 mt-3 form-group" name="note" id="note" rows="5"
                         placeholder="Lời Nhắn.."></textarea>
-        
+
                     <button class="btn btn-primary chkout-sub mt-4" id="checkoutBtn" >Thanh Toán</button>
                     </form>
                     `).ready(function () {
@@ -201,7 +201,7 @@ $(document).ready(function () {
                         for(var i = 0;i<data['all_paymentmethod'].length;i++){
                             $('#select_PaymentMethod').append(`<option value="`+data['all_paymentmethod'][i].Id+`">`+data['all_paymentmethod'][i].Name+`</option>`);
                         }
-                        
+
                         $('#checkoutBtn').click(function (e) {
                             e.preventDefault();
                             if ($('#info_form').validate({
@@ -253,9 +253,9 @@ $(document).ready(function () {
                                 var shipcost =0;
                                 var totall = $('#SumCost').attr('data-total');
                                 var discountt = $('#SumCost').attr('data-discount');
-                                
+
                                 var coupon = $('input[name="coupon"]').val();
-                                
+
                                 console.log(coupon);
                                 var payment_name =$('#select_PaymentMethod').children("option:selected").text();
                                 if(shipping =="Giao Tận Nơi"){
@@ -300,7 +300,7 @@ $(document).ready(function () {
                                                                         `+payment_name+`<br>
                                                                     </address>
                                                                 </div>
-                                                                    
+
                                                                 <div class="col-xs-6 text-right">
                                                                     <address>
                                                                         <strong>Thời Gian Đặt Hàng:</strong><br>
@@ -310,7 +310,7 @@ $(document).ready(function () {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="panel panel-default">
@@ -323,13 +323,14 @@ $(document).ready(function () {
                                                                             <thead>
                                                                                 <tr>
                                                                                     <td><strong>Sản Phẩm</strong></td>
+                                                                                    <td class="text-center"><strong>Thuộc Tính</strong></td>
                                                                                     <td class="text-center"><strong>Giá</strong></td>
                                                                                     <td class="text-center"><strong>Topping</strong></td>
                                                                                     <td class="text-right"><strong>Tổng</strong></td>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody id="data">
-                                                                                
+
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
@@ -346,31 +347,49 @@ $(document).ready(function () {
                                                             var subtopping =0;
                                                             var subcost = parseInt(data['cart'][key]['product_price']);
                                                             var showTopping =[];
+                                                            var ice="";
+                                                            var sugar=data['cart'][key]['sugar']+'% Đường/';
+                                                            var size= 'Size:'+data['cart'][key]['product_size'];
+
                                                             $.each(data['cart'][key]['topping'], function( index, value ) {
                                                                 subtopping+=parseInt(value);
                                                                 var thistopping = data['alltopping'].find(p=>p.Id ==index);
                                                                 showTopping.push(thistopping.Name);
                                                             });
+
                                                             subcost += subtopping;
                                                             totalCostTopping += subtopping;
                                                             Total+=subcost;
+                                                            if(data['cart'][key]['product_size']=="None"){
+                                                                ice="";
+                                                                sugar="";
+                                                                size="";
+                                                            }
+                                                            else if(data['cart'][key]['ice']==0){
+                                                                ice = "Nóng";
+                                                            }
+                                                            else{
+                                                                ice = data['cart'][key]['ice']+"% Đá";
+                                                            }
                                                             $('#data').append(`
                                                             <tr>
-                                                                <td>`+data['cart'][key]['product_name']+`</td>
+                                                                <td>`+data['cart'][key]['product_name']+` <small>`+size+`</small></td>
+                                                                <td>`+ sugar+ice+`</td>
                                                                 <td class="text-center">`+formatNumber(data['cart'][key]['product_price'])+`</td>
-                                                                <td class="text-center" id="topping`+i+`">
+                                                                <td class="text-center" id="topping`+key+`">
                                                                 </td>
                                                                 <td class="text-right">`+formatNumber(subcost)+`</td>
                                                             </tr>
                                                             `);
                                                             for(var y = 0 ; y<showTopping.length;y++){
-                                                                $('#topping'+i).append(`<div>`+showTopping[y]+`</div>`);
+                                                                $('#topping'+key).append(`<div>`+showTopping[y]+`</div>`);
                                                             }
                                                         });
-                                                        
-                                                    
+
+
                                                     $('#data').append(`
-                                                        <tr> 
+                                                        <tr>
+                                                            <td class="thick-line"></td>
                                                             <td class="thick-line"></td>
                                                             <td class="thick-line"></td>
                                                             <td class="thick-line text-center"><strong>Tổng Tiền Topping</strong><small>(đã tính vào tổng)</small></td>
@@ -379,16 +398,19 @@ $(document).ready(function () {
                                                         <tr>
                                                             <td class="no-line"></td>
                                                             <td class="no-line"></td>
+                                                            <td class="no-line"></td>
                                                             <td class="no-line text-center"><strong>Phí Ship</strong></td>
                                                             <td class="no-line text-right">`+formatNumber(shipcost)+`</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="no-line"></td>
                                                             <td class="no-line"></td>
+                                                            <td class="no-line"></td>
                                                             <td class="no-line text-center"><strong>Coupon</strong></td>
                                                             <td class="no-line text-right">- `+formatNumber(discountt)+` VNĐ</td>
                                                         </tr>
                                                         <tr>
+                                                            <td class="no-line"></td>
                                                             <td class="no-line"></td>
                                                             <td class="no-line"></td>
                                                             <td class="no-line text-center"><strong>Tổng Cộng</strong></td>
@@ -408,7 +430,7 @@ $(document).ready(function () {
                                     });
 
                                 });
-                            
+
                                 // set count down Time
                                 var interval =setInterval(CountDown,1000);
                                 function CountDown(){
@@ -416,7 +438,7 @@ $(document).ready(function () {
                                         localStorage.setItem('time',timeLeft-1);
                                         $('#timmer').html("Bạn Còn <span style='color:red'>"+(timeLeft>0?timeLeft:0)+" </span> Giây Để Xác Nhận Lại Đơn Hàng. Bạn Có Muốn Hủy Đơn Hàng Không ?");
                                         if(timeLeft<=0){
-                                            
+
                                             clearInterval(interval);
                                             $.ajax({
                                                 url: "/processcheckout",
@@ -444,9 +466,9 @@ $(document).ready(function () {
                                                     }
                                                 }
                                             });
-                                        }    
+                                        }
                                     }
-                                
+
                             } else {
                                 return false;
                             }
@@ -456,7 +478,7 @@ $(document).ready(function () {
             });
         }
     });
-    
+
     // end get thong tin -check out
     //login ajax
     $('#loginBtn').click(function(e){
@@ -467,7 +489,7 @@ $(document).ready(function () {
                     required: true,
                     minlength:9,
                     maxlength:11
-                    
+
                 },
                 password: {
                     required: true,
@@ -488,7 +510,7 @@ $(document).ready(function () {
             }).form()){
                 var phone = $("input[name='phone']").val();
                 var password = $("input[name='password']").val();
-                
+
                 $.ajax({
                     url: "/login",
                     type: 'POST',
@@ -521,7 +543,7 @@ $(document).ready(function () {
                 }
             }
         });
-    });  
+    });
 
     $('#applyBtn').click(function(){
         var coupon = $('input[id="couponValue"]').val();
@@ -548,7 +570,7 @@ $(document).ready(function () {
                         var shipcost = parseInt($('#ShipCost').text().replace(/\,/g, ''));
 
                         if(data['Type']=="Percent"){ // phantram
-                            currency ="%";        
+                            currency ="%";
                             $('#SumCost').attr('data-discount',data['Value']*(parseInt(shipcost)+parseInt(sum))/100);
                             sessionStorage.setItem('percent',data['Value']);
                         }

@@ -20,22 +20,67 @@ class ProductController extends Controller
     public function index(){
         $cate = Category::all();
         $all_product = Product::where('Visibility', '<>', 'Delete')->get();
-        $catnow = null;
-        return view('admin.product', compact('all_product', 'cate', 'catnow'))->with('fil', "stt");
+        $catnow = 0;
+        return view('admin.product', compact('all_product', 'cate', 'catnow'))->with('sort', "all");
     }
 
-    public function filterCategory($id){
+    public function filterCategory($sort, $id)
+    {
         $cate = Category::All();
-        $all_product = Category::find($id)->product;
-        $catnow = $id;
-        return view('admin.product', compact('all_product', 'cate', 'catnow'));
+        
+        if ($sort == "all")
+        {
+            if ($id != 0)
+            {
+                $all_product = Category::find($id)->product;
+                $catnow = $id;
+            }
+            else
+            {
+                $all_product = Product::all();
+                $catnow = 0;
+            }
+
+            return view('admin.product', compact('all_product', 'cate', 'catnow'))->with('sort', "all");
+        }
+        else if ($sort == "priceasc")
+        {
+            if ($id != 0)
+            {
+                $all_product = Category::find($id)->product;
+                $catnow = $id;
+            }
+            else
+            {
+                $all_product = Product::all();
+                $catnow = 0;    
+            }
+
+            $all_product = $this->filterPriceAsc($all_product);
+            return view('admin.product', compact('all_product', 'cate', 'catnow'))->with('sort', "asc");
+        }
+        else if ($sort == "pricedesc")
+        {
+            if ($id != 0)
+            {
+                $all_product = Category::find($id)->product;
+                $catnow = $id;
+            }
+            else
+            {
+                $all_product = Product::all();
+                $catnow = 0;
+            }
+
+            $all_product = $this->filterPriceDesc($all_product);
+            return view('admin.product', compact('all_product', 'cate', 'catnow'))->with('sort', "desc");
+        }
+        
     }
 
-    public function filterPriceAsc(){
-        $cate = Category::all();
-        $all_product = Product::where('Visibility', '<>', 'Delete')->get();
-        $catnow = null;
-
+    public function filterPriceAsc($all_product)
+    {
+ 
         $n=0;
         foreach ($all_product as $pro)
         {
@@ -85,14 +130,11 @@ class ProductController extends Controller
             }
         }
 
-        return view('admin.product', compact('all_product', 'cate', 'catnow'))->with('fil', "asc");
+        return $all_product;
     }
 
-    public function filterPriceDesc(){
-        $cate = Category::all();
-        $all_product = Product::where('Visibility', '<>', 'Delete')->get();
-        $catnow = null;
-
+    public function filterPriceDesc($all_product){
+        
         $n=0;
         foreach ($all_product as $pro)
         {
@@ -142,7 +184,7 @@ class ProductController extends Controller
             }
         }
 
-        return view('admin.product', compact('all_product', 'cate', 'catnow'))->with('fil', "desc");
+        return $all_product;
     }
 
     // Show form to add new product

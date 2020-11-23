@@ -8,8 +8,7 @@
             <div class="card ">
                 <div class="card-header d-flex">
                     <h4 class="card-title"> Danh sách Sản phẩm</h4>
-                    <a href="product/create"class="btn btn-primary btn--icon add-btn">
-                    <i class="card-title">Create Product </i></a>
+                    <a href="product/create"class="btn btn-primary btn--icon add-btn"></a>
                 </div>
                 <div>
                     <div class="col-md-4 hidden-sm hidden-xs mb-4">
@@ -55,10 +54,9 @@
                         </div>
                     </div>
                 </div>
-
-
+                <div class="card-body ">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="tableproduct">
                             <thead class=" text-primary">
                                 <th>STT</th>
                                 <th>Tên</th>
@@ -93,25 +91,25 @@
                                                 @endforeach
                                                 </td>
 
-                                                <td class="px-3">
+                                               <td class="px-3">
                                                 @foreach($pro -> product_size as $cate)
                                                 <p><br>{{ $cate-> Price }} VNĐ</p>
                                                 @endforeach
                                                 </td>
 
-                                                <td class="px-4">
+                                               <td class="px-4">
                                                 @foreach($pro -> product_size as $cate)
                                                 <p><br>{{ $cate-> Sale_Price }} VNĐ</p>
                                                 @endforeach
                                                 </td>
 
-                                                <td class="px-4">
+                                               <td class="px-4">
                                                 @foreach($pro -> category as $cate)
                                                 <p><br>{{ $cate-> Name }}</p>
                                                 @endforeach
-                                                <td>
+                                                </td>
 
-                                                <td >
+                                                <td>
                                                     <a href="{{URL::to('/admin/product/edit/' . $pro -> Id)}}" class="active styling-edit icon-edit" >
                                                         <i class="fas fa-edit icon"></i></a>
                                                     <a onclick="return confirm('Are you sure to delete this product?')" href="{{URL::to('/admin/product/delete/' . $pro -> Id)}}" class="active styling-edit">

@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-body ">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="tablecoupon">
                             <thead class=" text-primary">
                                 <th>STT</th>
                                 <th>ID Coupon</th>
@@ -77,6 +77,8 @@
                                                 <a onclick="return confirm('Are you sure to delete this category?')" href="{{URL::to('/admin/coupon/delete/' . $cou->Id)}}" class="active styling-edit">
                                                     <i class="fa fa-times icon text-danger text"></i></a>
                                             </td>
+                                        @else
+                                        <td></td>    
                                         @Endif
 
                                     </tr>
@@ -90,6 +92,5 @@
         </div>
     </div>
 </div>
-
 
 @endsection

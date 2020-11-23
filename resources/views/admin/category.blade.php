@@ -10,9 +10,10 @@
                     <h4 class="card-title">Danh sách Danh mục</h4>
                     <a href="category/add" class="btn btn-primary btn--icon add-btn"></a>
                 </div>
-                <div class="card-body ">
+                
+                <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="tablecategory">
                             <thead class=" text-primary">
                                 <th>STT</th>
                                 <th>Tên</th>

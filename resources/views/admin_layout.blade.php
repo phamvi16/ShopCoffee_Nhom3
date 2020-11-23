@@ -19,6 +19,8 @@
     <link href="{{asset('Admins/css/category.css')}}" rel="stylesheet" />
     <link href="{{asset('Admins/css/order.css')}}" rel="stylesheet" />
     <link href="{{asset('Admins/css/customer.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  
     @yield('style', '')
 
 </head>
@@ -165,8 +167,10 @@
     </div>
 </body>
 <!--   Core JS Files   -->
+
 <script src="{{asset('Admins/js/core/jquery.min.js')}}"></script>
 <script src="{{asset('Admins/js/core/popper.min.js')}}"></script>
+<script type="text/javascript" charset="utf8" src="{{asset('Admins/js/plugins/datatable.js')}}"></script>
 <script src="{{asset('Admins/js/core/bootstrap.min.js')}}"></script>
 <script src="{{asset('Admins/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
 <!--  Google Maps Plugin    -->
@@ -183,7 +187,18 @@
     $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js
         demo.initDashboardPageCharts();
+	
     });
+</script>
+
+<script>
+ $(document).ready(function() {
+    $('#tableproduct').DataTable();
+    $('#tablecategory').DataTable();
+    $('#tablecustomer').DataTable();
+    $('#tabletopping').DataTable();
+    $('#tablecoupon').DataTable();
+ });
 </script>
 @yield('script')
 

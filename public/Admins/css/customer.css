@@ -3,11 +3,37 @@
     color: #333 !important;
     font-weight: 500 !important;
 }
+
 .reset {
     margin-left: 23% !important;
     padding: 10px 12px !important;
     border-radius: 50%;
 }
+
 .i-reset {
     font-size: medium;
+}
+
+.success {
+    color: #155724 !important;
+    font-size: 16px;
+    background-color: #d4edda !important;
+    border-color: #c3e6cb !important;
+    position: relative !important;
+    padding: .75rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid transparent;
+    border-radius: .25rem !important;
+}
+
+.error {
+    color: #721c24 !important;
+    font-size: 16px;
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb !important;
+    position: relative !important;
+    padding: .75rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid transparent;
+    border-radius: .25rem !important;
 }

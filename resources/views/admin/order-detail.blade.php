@@ -5,6 +5,10 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
+
+
+
+
                 @if (!empty($orderDetail))
                     <div class="card ">
                         <div class="card-header ">
@@ -13,8 +17,9 @@
                         @include('partials.alert-view')
                         @if($errors->any())
                             @foreach ($errors->all() as $error)
-                                <div class="alert-box error">Lỗi: {{ $error }}</div>
+                                <div class="alert-box error alert-success alert">Lỗi:{{ $error }}</div>
                             @endforeach
+
                         @endif
                         {{-- <div class="table-agile-info">
 
@@ -45,6 +50,7 @@
                                         </tbody>
                                     </table>
                                 </div>
+
                             </div>
                         </div> --}}
                         <br>
@@ -126,7 +132,7 @@
                                                     Không có sản phẩm trong đơn hàng.
                                                 </tr>
                                             @endforelse
-                                            
+
                                             <tr>
                                                 <td colspan="2">
                                                     @if ($orderDetail['ShippingMethod'] == "Giao Tận Nơi")
@@ -166,7 +172,6 @@
                     </div>
                 @endif
             </div>
-        </div>
-    </div>
+
 
 @endsection

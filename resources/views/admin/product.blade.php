@@ -14,7 +14,7 @@
                     <div class="col-md-4 hidden-sm hidden-xs mb-4">
                         <div class="option browse-tags">
                             <label class="lb-filter hide" for="sort-by">Sắp xếp theo:</label>
-                            <span class="custom-dropdown custom-dropdown--grey d-flex justify-content-around">
+                            <span class="custom-dropdown custom-dropdown--grey  justify-content-around">
                                 <form action="" id="filter" method="get" enctype="multipart/form-data">
                                     <select class="sort-by custom-dropdown__select">
                                         @if ($sort == 'all')
@@ -38,7 +38,7 @@
                                     <select class="sort-by custom-dropdown__select">
                                         @if ($catnow == 0)
                                             <option name="cate-filter" value="0" data-filter="" selected>All</option>
-                                        @else 
+                                        @else
                                             <option name="cate-filter" value="0" data-filter="">All</option>
                                         @endif
                                         @foreach ($cate as $cat)

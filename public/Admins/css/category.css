@@ -53,9 +53,9 @@
     display: flex;
 }
 
-.icon-edit {
+/* .icon-edit {
     margin-left: -100%;
-}
+} */
 
 @media (max-width:328px) {
     .custom-dropdown {

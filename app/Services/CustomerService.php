@@ -47,7 +47,7 @@ class CustomerService{
                 );
                 DB::table('loyalty')->updateOrInsert(
                     ['phone'=>$phone],
-                    ['level'=>'Bronze',
+                    ['level'=>'Khách Hàng Mới',
                     'point'=>0,
                     'discount_loyalty'=>0]
                 );

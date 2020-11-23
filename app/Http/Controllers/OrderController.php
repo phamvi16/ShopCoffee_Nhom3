@@ -20,7 +20,7 @@ class OrderController extends Controller
         return view('admin.order', compact('all_order', 'today'));
     }
     
-    public function show($id = null) {
+    public function edit($id = null) {
     	// Validate data
         $validator = Validator::make(['id' => $id], [
             'id' => ['required', 'numeric', 'exists:order,Id']
@@ -68,10 +68,10 @@ class OrderController extends Controller
         ])->validate();
 
 		if ((new OrderService())->update_order_status($request) == true) {
-			return redirect('/admin/order/' . $request->id)->with('success', 'Cập nhật trạng thái đơn hàng thành công');
+			return redirect('/admin/order/edit/' . $request->id)->with('success', 'Cập nhật trạng thái đơn hàng thành công');
 		}
 		else {
-			return redirect('/admin/order/' . $request->id)->with('error', 'Lỗi khi cập nhật trạng thái đơn hàng');
+			return redirect('/admin/order/edit/' . $request->id)->with('error', 'Lỗi khi cập nhật trạng thái đơn hàng');
 		}
     }
 
@@ -146,7 +146,6 @@ class OrderController extends Controller
         		$description .= " và lập từ ngày <b>" . Carbon::parse($fromDate)->format('d/m/Y') . "</b> đến ngày <b>" . Carbon::parse($toDate)->format('d/m/Y') . "</b>";
         	}
         }
-
     	$data = array(
               'filterResultView' => view('partials.order-list-view', ['all_order' => $orderQuery->get()])->render(),
               'description' => $description

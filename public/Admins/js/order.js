@@ -52,6 +52,7 @@ $(document).ready(function() {
 
 			// Check allow ajax
 			if (allow == true){
+				// console.log(fromDate + '/' + toDate + '/' + status);
 				filter(fromDate, toDate, status);
 			} 
 			else {
@@ -105,13 +106,14 @@ function filter(fromDate, toDate, status){
 	            // Show validation error
 	            $.each(error.responseJSON.errors, function (i, error) {
 	                $.each(error, function(index, value) {
+	                	// console.log(value);
 	                	$('.card .filter-option').after('<div class="alert-box error"><span>Lỗi: </span>'+ value +'</div>');
 	                });
 	            });
 	            // Show error
 				$('#order-table-body').html('<tr><td colspan="6">Không tìm thấy đơn hàng phù hợp</td></tr>');
 	        }
-			// console.log(error);
+			console.log(error);
 		}
 	});
 }

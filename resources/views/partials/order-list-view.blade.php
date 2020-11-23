@@ -7,7 +7,7 @@
         <td>{{$order->Total}}</td>
     
         <td class="i-eye">
-            <a href="/admin/order/{{ $order->Id ?? '' }}"><i class="fas fa-eye"></i></a>
+            <a href="/admin/order/edit/{{ $order->Id ?? '' }}"><i class="fas fa-eye"></i></a>
         </td>
     </tr>
 @empty

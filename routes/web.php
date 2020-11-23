@@ -100,11 +100,11 @@ Route::group(['prefix' => 'admin'], function(){
 
 	//Order
 	Route::group(['prefix' => 'order'], function(){
-		Route::get('/', [OrderController::class, 'index']);
-		Route::get('/{id?}', [OrderController::class, 'show']);
-		Route::put('/update', [OrderController::class, 'update']);
+		  Route::get('/', [OrderController::class, 'index']);
+	    Route::get('/{id?}', [OrderController::class, 'show']);
+      Route::put('/update', [OrderController::class, 'update']);
+	    Route::get('/filter', [OrderController::class, 'filter_orders']);
 	});
-
 });
 
 // Menu Group

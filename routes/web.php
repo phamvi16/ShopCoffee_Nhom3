@@ -96,6 +96,7 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::group(['prefix' => 'customer'], function(){
 		Route::get('/', [CustomerController::class, 'index']);
 		Route::get('/{phone}', [CustomerController::class, 'getCustomer']);
+		Route::get('/reset/{phone}', [CustomerController::class, 'resetPassword']);
 	});
 
 	//Order

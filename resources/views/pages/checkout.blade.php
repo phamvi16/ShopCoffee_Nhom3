@@ -103,9 +103,15 @@ if(session()->has('coupon')){
                                 <div class="ml-4">Size: '.$value["product_size"].'
                                 <br><small>'.$value['sugar'].'% Đường / ';
                                 if($value['ice']==0){
-                                    echo 'Nóng';
+                                    
+                                    if($value['hot']!=null){
+                                        echo'Nóng';
+                                    }
+                                    else{
+                                        echo 'Không Đá';
+                                    }
                                 }
-                                else{
+                                else if($value['ice']!=0){
                                     echo $value['ice'].'% Đá';
                                 }
                                 echo'</small>
